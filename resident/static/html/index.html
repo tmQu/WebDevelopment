@@ -3,10 +3,11 @@
     <title>Advertising Boards Map</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-    <link rel="stylesheet" href="../css/search.css" />
-    <link rel="stylesheet" href="../css/btnCurrentPosition.css" />
-    <link rel="stylesheet" href="../css/markerContent.css" />
-    <script type="module" src="../js/map.js"></script>
+  <link rel="stylesheet" href="../css/search.css">
+  <link rel="stylesheet" href="../css/btnCurrentPosition.css">
+  <link rel="stylesheet" href="../css/markerContent.css">
+  <link rel="stylesheet" href="../css/popupLocationInfo.css">
+  <script type="module" src="../js/map.js"></script>
 
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -33,12 +34,19 @@
       type="text"
       placeholder="&#xF002; Search Address" />
 
-    <!-- Current location button -->
-    <div class="location-button" id="btnCurPosition">
-      <div class="location-icon">
-        <i class="bi bi-crosshair"></i>
-      </div>
+  <!-- Current location button -->
+  <div class="location-button" id="btnCurPosition">
+    <div class="location-icon">
+      <i class="bi bi-crosshair"></i>
     </div>
+  </div>
+
+  <!-- Hiển thị thông tin vị trí khi nhấn -->
+  <div id="info">
+    <span id="close-button">&times;</span>
+    <h2>Thông tin vị trí</h2>
+    <p id="location-info"></p>
+  </div>
 
     <!-- Map -->
     <div id="map"></div>
