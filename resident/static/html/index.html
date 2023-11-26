@@ -1,77 +1,97 @@
 <html>
+  <head>
+    <title>Advertising Boards Map</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
-<head>
-  <title>Place Autocomplete</title>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link rel="stylesheet" href="../css/search.css" />
+    <link rel="stylesheet" href="../css/btnCurrentPosition.css" />
+    <link rel="stylesheet" href="../css/markerContent.css" />
+    <script type="module" src="../js/map.js"></script>
 
-  <link rel="stylesheet" href="../css/search.css">
-  <link rel="stylesheet" href="../css/btnCurrentPosition.css">
-  <link rel="stylesheet" href="../css/markerContent.css">
-  <script type="module" src="../js/map.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet" />
 
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <!-- Boostrap5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
 
-  <!-- Boostrap5 -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Boostrap5 icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
+  </head>
 
-  <!-- Boostrap5 icon -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
-</head>
+  <body>
+    <!-- Search bar -->
+    <input
+      id="pac-input"
+      class="controls"
+      type="text"
+      placeholder="&#xF002; Search Address" />
 
-<body>
-  <!-- Search bar -->
-  <input id="pac-input" class="controls" type="text" placeholder="&#xF002; Search Address" />
-
-  <!-- Current location button -->
-  <div class="location-button" id="btnCurPosition">
-    <div class="location-icon">
-      <i class="bi bi-crosshair"></i>
+    <!-- Current location button -->
+    <div class="location-button" id="btnCurPosition">
+      <div class="location-icon">
+        <i class="bi bi-crosshair"></i>
+      </div>
     </div>
-  </div>
 
-  <!-- Map -->
-  <div id="map"></div>
-  <div id="infowindow-content">
-    <span id="place-name" class="title"></span>
-    <br />
-    <span id="place-address"></span>
-  </div>
-  </div>
-
-  <div id="map"></div>
-  <div id="flex-container">
-    <div class="form-check form-switch" id="switch">
-      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-      <label class="form-check-label" for="flexSwitchCheckDefault">Bảng QC</label>
+    <!-- Map -->
+    <div id="map"></div>
+    <div id="infowindow-content">
+      <span id="place-name" class="title"></span>
+      <br />
+      <span id="place-address"></span>
     </div>
-    <div class="form-check form-switch" id="switch">
-      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-      <label class="form-check-label" for="flexSwitchCheckDefault">Báo cáo vi phạm</label>
+
+    <div id="map"></div>
+    <div id="flex-container">
+      <div class="form-check form-switch" id="switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="flexSwitchCheckDefault" />
+        <label class="form-check-label" for="flexSwitchCheckDefault">
+          Bảng QC
+        </label>
+      </div>
+      <div class="form-check form-switch" id="switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="flexSwitchCheckDefault" />
+        <label class="form-check-label" for="flexSwitchCheckDefault">
+          Báo cáo vi phạm
+        </label>
+      </div>
     </div>
-  </div>
-  <div id="infowindow-content">
-    <span id="place-name" class="title"></span><br />
-    <span id="place-address"></span>
-  </div>
+    <div id="infowindow-content">
+      <span id="place-name" class="title"></span>
+      <br />
+      <span id="place-address"></span>
+    </div>
 
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnPJ3dQrZeuW3KPaFPlhm757Dt3KdaS_s&callback=initMap&libraries=places&v=weekly"
+      defer></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
 
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzxW5txxZHhPZCjPrOvrjCE8awoF3IP50&callback=initMap&libraries=places&v=weekly"
+      defer></script>
 
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBnPJ3dQrZeuW3KPaFPlhm757Dt3KdaS_s&callback=initMap&libraries=places&v=weekly"
-    defer></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
-
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzxW5txxZHhPZCjPrOvrjCE8awoF3IP50&callback=initMap&libraries=places&v=weekly"
-    defer></script>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
-
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+  </body>
 </html>
