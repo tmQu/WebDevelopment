@@ -1,19 +1,23 @@
-.pan-btn {
-    background-color: #4CAF50; /* Màu nền */
-    border: none; /* Bỏ viền */
-    color: white; /* Màu chữ */
-    padding: 15px 32px; /* Khoảng cách padding */
-    text-align: center; /* Căn chỉnh văn bản ở giữa */
-    text-decoration: none; /* Không gạch chân */
-    display: inline-block; /* Hiển thị dạng block nhưng vẫn trong dòng */
-    font-size: 16px; /* Cỡ chữ */
-    margin: 4px 2px; /* Khoảng cách margin */
-    cursor: pointer; /* Con trỏ chuột dạng pointer khi di chuyển vào */
-    border-radius: 12px; /* Bo góc */
-    transition-duration: 0.4s; /* Thời gian chuyển đổi */
-  }
-  
-  .pan-btn:hover {
-    background-color: #45a049; /* Màu nền khi hover */
-  }
-  
+.location-button {
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  position: fixed;
+  bottom: 20px;
+  cursor: pointer;
+}
+
+.location-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  font-size: 24px;
+}
