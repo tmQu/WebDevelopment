@@ -9,8 +9,6 @@ function initMap() {
     zoom: 13,
     mapTypeControl: false,
   });
-  const geocoder = new google.maps.Geocoder();
-
     search(map);
     setMarker(map);
     btnCurrentPosition(map);
@@ -18,4 +16,3 @@ function initMap() {
 }
 
 window.initMap = initMap;
-// window.initAutocomplete = search;

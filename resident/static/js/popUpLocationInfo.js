@@ -32,10 +32,12 @@ function displayLocationInfo(latitude, longitude, map) {
                 
                 var title = results[0].address_components[1].long_name;
                 var address = results[0].formatted_address;
+                var types = results[0].types;
 
                 var contentString = '<div id="info-content">' +
                     '<h3>' + title + '</h3>' +
                     '<p>' + address + '</p>' +
+                    '<p>' + types + '</p>' +
                     '</div>';
 
                 infoWindow.setContent(contentString);
