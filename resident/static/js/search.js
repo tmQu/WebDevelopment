@@ -1,6 +1,3 @@
-import { parseContentMarker } from './marker.js';
-import { getDetailsInfor } from './getDetailsInfor.js';
-
 function search(map) {
   // Create the search box and link it to the UI element.
   const input = document.getElementById('pac-input');
