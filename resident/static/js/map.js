@@ -1,6 +1,7 @@
 import search from "./search.js";
 import { setMarker } from './marker.js'
 import btnCurrentPosition from "./btnCurrentPosition.js";
+import popUpLocationInfo from "./popUpLocationInfo.js";
 
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
@@ -12,6 +13,7 @@ function initMap() {
     search(map);
     setMarker(map);
     btnCurrentPosition(map);
+    popUpLocationInfo(map);
 }
 
 window.initMap = initMap;
