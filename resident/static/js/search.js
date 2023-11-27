@@ -58,6 +58,7 @@ function search(map) {
       } else {
         bounds.extend(place.geometry.location);
       }
+
     });
     map.fitBounds(bounds);
   });
