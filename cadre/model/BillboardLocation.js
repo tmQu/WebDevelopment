@@ -3,14 +3,15 @@ import mongoose from "mongoose";
 var BillboardLocationSchema = mongoose.Schema({
     id: {
         type: String,
-        require: true
+        require: true,
+        unique: true
     },
     location: {
         lat:{
             type: Number,
             require: true
         },
-        long: {
+        lng: {
             type: Number,
             require: true
         }
@@ -39,32 +40,16 @@ var BillboardLocationSchema = mongoose.Schema({
         type: Boolean,
         require: true
     },
-    size: {
-        width: {
-            type: Number,
-            require: true
-        },
-        height: {
-            type: Number,
-            require: true
-        },
-        metric: {
-            type: String,
-            require: true
-        }
-    },
 
-    advertismentType: {
-        type: String,
-        require: true
-    },
+
+
 
     advertisementForm: {
         type: String,
         require: true
     },
 
-    advertisementCategory: [
+    locationCategory: [
         /*
             [Đất công, công viên, Hành lang an toàn giao thông]
         */
@@ -72,7 +57,28 @@ var BillboardLocationSchema = mongoose.Schema({
 
     billboards: [
         /*
-            { 
+            {
+                quantity: Number,
+
+                billboardType: {
+                    type: String,
+                    require: true
+                },
+                size: {
+                    width: {
+                        type: Number,
+                        require: true
+                    },
+                    height: {
+                        type: Number,
+                        require: true
+                    },
+                    metric: {
+                        type: String,
+                        require: true
+                    }
+                },
+                quantity: Number
                 img: [
                     img1,img2, img3
                 ]
@@ -81,6 +87,7 @@ var BillboardLocationSchema = mongoose.Schema({
             } -> Billboard 1,
 
             {
+                ....
                 img: [
                     img1,img2, img3
                 ]
@@ -92,5 +99,7 @@ var BillboardLocationSchema = mongoose.Schema({
 })
 
 const BillboardLocation = mongoose.model('BillboardLocation', BillboardLocationSchema);
+
+
 
 export default BillboardLocation
