@@ -23,19 +23,7 @@ function initMap() {
   btnCurrentPosition(map);
   popUpLocationInfo(map);
   clusterMarker(map);
-
   report(map);
-  search(map);
-  billboard(map);
-  btnCurrentPosition(map);
-  popUpLocationInfo(map);
-  filter(map);
-
-  report(map);
-  search(map);
-  billboard(map);
-  btnCurrentPosition(map);
-  popUpLocationInfo(map);
   filter(map);
 }
 
