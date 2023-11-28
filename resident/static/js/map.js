@@ -4,6 +4,11 @@ import billboard from './billboard.js';
 import btnCurrentPosition from './btnCurrentPosition.js';
 import popUpLocationInfo from './popUpLocationInfo.js';
 import clusterMarker from './clusterMarker.js';
+import billboard from './billboard.js'
+import btnCurrentPosition from "./btnCurrentPosition.js";
+import popUpLocationInfo from "./popUpLocationInfo.js";
+import filter from "./filter.js"
+import report from "./report.js"
 
 function initMap() {
   const map = new google.maps.Map(document.getElementById('map'), {
@@ -12,11 +17,28 @@ function initMap() {
     zoom: 13,
     mapTypeControl: false,
   });
+<<<<<<< Updated upstream
   search(map);
   billboard(map);
   btnCurrentPosition(map);
   popUpLocationInfo(map);
   clusterMarker(map);
+
+  report(map);
+  search(map);
+  billboard(map);
+  btnCurrentPosition(map);
+  popUpLocationInfo(map);
+  filter(map);
+
+=======
+    report(map);
+    search(map);
+    billboard(map);
+    btnCurrentPosition(map);
+    popUpLocationInfo(map);
+    filter(map);
+>>>>>>> Stashed changes
 }
 
 window.initMap = initMap;
