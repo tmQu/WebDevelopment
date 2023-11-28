@@ -17,7 +17,7 @@ function initMap() {
     zoom: 13,
     mapTypeControl: false,
   });
-<<<<<<< Updated upstream
+
   search(map);
   billboard(map);
   btnCurrentPosition(map);
@@ -31,14 +31,12 @@ function initMap() {
   popUpLocationInfo(map);
   filter(map);
 
-=======
-    report(map);
-    search(map);
-    billboard(map);
-    btnCurrentPosition(map);
-    popUpLocationInfo(map);
-    filter(map);
->>>>>>> Stashed changes
+  report(map);
+  search(map);
+  billboard(map);
+  btnCurrentPosition(map);
+  popUpLocationInfo(map);
+  filter(map);
 }
 
 window.initMap = initMap;
