@@ -1,8 +1,8 @@
-.marker-content .advt-method {
+.marker-content .advt-form {
     margin-top: 0px;
 }
 
-.position, .addr{
+.location-category, .addr{
     margin: 5px 0px;
     line-height: 1.6;
 }
