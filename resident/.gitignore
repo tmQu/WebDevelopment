@@ -24,5 +24,6 @@ yarn-error.log*
 
 # Ignore data.json and getLocation.ipynb
 data.json
+data2.json
 getLocation.ipynb
 
