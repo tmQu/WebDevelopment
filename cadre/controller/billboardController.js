@@ -1,4 +1,4 @@
-import BillboardLocation from "../model/billboardLocation.js";
+import BillboardLocation from "../model/BillboardLocation.js";
 
 var billboardController = {
     getAllLocation: async (req, res) => {
