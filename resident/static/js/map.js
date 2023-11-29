@@ -4,9 +4,6 @@ import billboard from './billboard.js';
 import btnCurrentPosition from './btnCurrentPosition.js';
 import popUpLocationInfo from './popUpLocationInfo.js';
 import clusterMarker from './clusterMarker.js';
-import billboard from './billboard.js'
-import btnCurrentPosition from "./btnCurrentPosition.js";
-import popUpLocationInfo from "./popUpLocationInfo.js";
 import filter from "./filter.js"
 import report from "./report.js"
 
