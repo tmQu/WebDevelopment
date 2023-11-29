@@ -1,6 +1,6 @@
-
+const apiUrl = '192.168.99.126:4000'
 function getAllLocation(callback){
-    var url = 'http://localhost:4000/billboard/all';
+    var url = 'http://'+ apiUrl + '/billboard/all';
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE)
@@ -13,7 +13,7 @@ function getAllLocation(callback){
 }
 
 function getDetailBillboardLocation(id, callback) {
-    var url = 'http://localhost:4000/billboard/detail?id=' + id;
+    var url = 'http://'+ apiUrl + '/billboard/detail?id=' + id;
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE)
@@ -46,15 +46,17 @@ function parseBillBoardContent(billboardLocation, billboard){
 
     return `<div class="billboard">`+
     `<h3 class="billboard-type">`+
-        `${billboard.billboardType}`
-    `</h3>`
-    `<div class="billboard-addr">`
-        `<img src="../img/icon/icons8-maps.svg" alt="" style="height: 1em;">`
-       `${addr}`
-    `</div>`
-    `<div class="billboard-size">${size}</div>`
-    `<div class="billboard-form">${billboard.advertisementForm}</div>`
-    `<div class="billboard-category">${locationCategory}</div></div>`
+        `${billboard.billboardType}`+
+    `</h3>`+
+    `<div class="billboard-addr">`+
+        `<img src="../img/icon/icons8-maps.svg" alt="" style="height: 1em;">`+
+       `${addr}`+
+    `</div>`+
+    `<div class="billboard-size">${size}</div>`+
+    `<div class="billboard-form">${billboard.advertisementForm}</div>`+
+    `<div class="billboard-category">${locationCategory}</div>` +
+    `<div class="d-flex justify-content-between mt-4 mb-1"><button class="btn btn-outline-primary circle-btn"><i class="bi bi-info-lg"></i></button>` +
+    `<button class="btn btn-outline-danger"><i class="bi bi-exclamation-octagon"></i> Báo cáo cáo vi phạm</button></div></div>`
 }
 
 
@@ -92,6 +94,27 @@ function setMarker(map)
                 });
 
             })
+
+
+            marker.addListener('click', (event) => {
+                console.log(event.clientX, ' ', event.clientY);
+                if (event.clientX)
+                {
+                    map.setCenter(this.getPosition());
+                }
+                getDetailBillboardLocation(location.id, (detailInfor) => {
+                    var subWindow = document.getElementById('sub-window');
+                    var content = document.querySelector('#sub-window .overflow-content')
+                    console.log(detailInfor);
+                    content.innerHTML = "";
+                    detailInfor.billboards.forEach(billboard => {
+                        content.innerHTML += parseBillBoardContent(detailInfor, billboard)
+                        subWindow.classList.add('show-up')
+                    })
+                });
+
+            })
+
 
    
 

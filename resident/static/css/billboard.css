@@ -8,10 +8,16 @@
 
 #sub-window {
     height: 100vh;
-    width: 25%;
+    width: 30%;
     background-color: white;
     position: absolute;
     /* display: flex; */
+    display: none;
+    box-shadow:  0 .5rem 1rem rgba(0, 0, 0, .15);
+}
+
+#sub-window.show-up{
+    display: block;
 }
 
 .overflow-scroll {
@@ -34,14 +40,14 @@
     right: -22px;
     width: 22px;
     height: 48px;
-    border: solid black 1px;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 15px 15px 0px;
     cursor: pointer;
+    box-shadow:  0 .5rem 1rem rgba(0, 0, 0, .15);
 }
 .billboard {
     box-sizing: border-box;
     width: 90%;
-    height: 200px;
+    max-width: 500px;
     border: 1px solid black;
     padding: 20px;
     line-height: 1.4;
@@ -52,7 +58,10 @@
 
 
 
-
+.billboard {
+    font-size: 0.875rem;
+    margin-bottom: 10px;
+}
 
 .billboard-type{
     margin:  0px 0px;
@@ -61,5 +70,16 @@
 .billboard-addr{
    opacity: 0.7;
    margin-bottom: 10px;
+}
+
+.circle-btn{
+    border-width: 2px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 23px;
+    font-size: 12px;
+    padding: 0;
 }
 

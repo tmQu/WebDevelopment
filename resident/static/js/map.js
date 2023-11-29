@@ -1,12 +1,10 @@
 import search from './search.js';
 
-import billboard from './billboard.js';
 import btnCurrentPosition from './btnCurrentPosition.js';
 import popUpLocationInfo from './popUpLocationInfo.js';
 import clusterMarker from './clusterMarker.js';
 import billboard from './billboard.js'
-import btnCurrentPosition from "./btnCurrentPosition.js";
-import popUpLocationInfo from "./popUpLocationInfo.js";
+
 import filter from "./filter.js"
 import report from "./report.js"
 
@@ -16,6 +14,7 @@ function initMap() {
     center: { lat: 10.762622, lng: 106.660172 },
     zoom: 13,
     mapTypeControl: false,
+    gestureHandling: "greedy", // fix for smartphone -> cannot drag the map
   });
 
   search(map);
@@ -25,6 +24,10 @@ function initMap() {
   clusterMarker(map);
   report(map);
   filter(map);
+
+  map.addListener('click', () => {
+    document.getElementById('sub-window').classList.remove('show-up');
+  })
 }
 
 window.initMap = initMap;
