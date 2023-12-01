@@ -1,7 +1,8 @@
-function search(map) {
+async function search(map) {
   // Create the search box and link it to the UI element.
   const input = document.getElementById('pac-input');
-  const searchBox = new google.maps.places.SearchBox(input);
+  const { SearchBox } = await google.maps.importLibrary('places');
+  const searchBox = new SearchBox(input);
 
   map.controls[google.maps.ControlPosition.TOP_CENTER].push(input);
   // Bias the SearchBox results towards current map's viewport.
@@ -58,7 +59,6 @@ function search(map) {
       } else {
         bounds.extend(place.geometry.location);
       }
-
     });
     map.fitBounds(bounds);
   });
