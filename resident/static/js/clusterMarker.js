@@ -4,13 +4,16 @@ const clusterMarker = async (map) => {
     disableAutoPan: true,
   });
 
+  const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary(
+    "marker",
+  );
   // Add some markers to the map.
   const markers = data.map((position, i) => {
 
-    const pinGlyph = new google.maps.marker.PinElement({
+    const pinGlyph = new PinElement({
       glyphColor: 'white',
     });
-    const marker = new google.maps.marker.AdvancedMarkerElement({
+    const marker = new AdvancedMarkerElement({
       position,
       content: pinGlyph.element,
     });
