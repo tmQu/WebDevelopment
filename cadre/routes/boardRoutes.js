@@ -1,16 +1,17 @@
-const boardController = require('../controllers/boardController');
-const express = require('express');
+import boardController from "../controllers/boardController.js";
+import express from "express";
+
 const router = express.Router();
 
 router
-  .route('/')
+  .route("/")
   .get(boardController.getAllBoards)
   .post(boardController.createBoard);
 
 router
-  .route('/:id')
+  .route("/:id")
   .get(boardController.getById)
   .patch(boardController.updateBoard)
   .delete(boardController.deleteBoard);
 
-module.exports = router;
+export default router;

@@ -1,9 +1,12 @@
-const express = require('express');
-const morgan = require('morgan');
+import express from 'express';
+import morgan from 'morgan';
+import boardRouter from './routes/boardRoutes.js';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 const app = express();
 
-const boardRouter = require('./routes/boardRoutes');
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 console.log(process.env.NODE_ENV);
 if (process.env.NODE_ENV === 'development') {
@@ -16,4 +19,4 @@ app.use(express.static(`${__dirname}/public`));
 
 app.use('/api/v1/boards', boardRouter);
 
-module.exports = app;
+export default app;
