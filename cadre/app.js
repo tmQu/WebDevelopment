@@ -18,7 +18,5 @@ app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
 app.use('/api/v1/boards', boardRouter);
-app.post('/test', (req, res) => {
-  console.log(req.body);
-})
+
 export default app;

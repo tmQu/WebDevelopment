@@ -14,4 +14,9 @@ router
   .patch(boardController.updateBoard)
   .delete(boardController.deleteBoard);
 
+router
+  .route("/test"), (req, res) => {
+    console.log(req.body);
+  }
+
 export default router;
