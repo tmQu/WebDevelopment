@@ -10,9 +10,12 @@ app.use('/billboard', billboardRouter);
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.post('/test', (req, res) => {
+    console.log(req.body);
+})
 
 const dbName = "advertisement"
-mongoose.connect('mongodb://127.0.0.1:27017/' + dbName).catch(error => console.log(error));;
+// mongoose.connect('mongodb://127.0.0.1:27017/' + dbName).catch(error => console.log(error));;
 
 
 

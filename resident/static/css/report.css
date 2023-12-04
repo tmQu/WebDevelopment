@@ -5,18 +5,34 @@
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-form {
+#report-form {
     display: block;
-    margin: 20px auto;
+    margin:  auto;
+    margin-top: 15px;
     padding: 10px;
-    height: fit-content;
+    height: 95%;
     width: fit-content;
-    border-radius: 10px;
     padding-left: 10px;
     background-color: rgba(255, 255, 255, 0.7);
     font-size: medium;
+    overflow-y:auto
+}
+
+label {
+    font-size: medium;
+    font-weight: bold;
+    margin-left: 5px;
 }
 
 select {
     border-radius: 5px;
+}
+
+#editor {
+    background-color: #ffffff;
+    margin: 10px;
+}
+
+#submit {
+    margin-top: 10px;
 }
