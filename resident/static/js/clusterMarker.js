@@ -1,16 +1,34 @@
+var advertisementBoards = new Set();
+
+// This is a function to get advertisementBoards from database. 
+const getAdvertisementBoards = async () => {
+}
+
+
+// This is a function to add markers to advertisementBoards with 2 criteria:
+// 1. For advertised markers.
+// 2. For In-valid markers.
+const addMarker = function(newMarkers, currentMarkers, criteria) {
+  // It is only work on advertisementBoards. not do with map objects.
+  
+}
+
 const clusterMarker = async (map) => {
+  
   let infoWindow = new google.maps.InfoWindow({
     content: '',
     disableAutoPan: true,
   });
 
+  const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary(
+    'marker'
+  );
   // Add some markers to the map.
   const markers = data.map((position, i) => {
-
-    const pinGlyph = new google.maps.marker.PinElement({
+    const pinGlyph = new PinElement({
       glyphColor: 'white',
     });
-    const marker = new google.maps.marker.AdvancedMarkerElement({
+    const marker = new AdvancedMarkerElement({
       position,
       content: pinGlyph.element,
     });
