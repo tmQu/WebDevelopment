@@ -3,24 +3,7 @@ import boardModel from '../models/boardModel.js';
 const boardController = {
   getAllBoards: async (req, res) => {
     try {
-      const queryObj = { ...req.query };
-      const excludedFields = ["page", "sort", "limit", "fields"];
-      excludedFields.forEach((el) => delete queryObj[el]);
-
-      let queryStr = JSON.stringify(queryObj);
-      queryStr = queryStr.replace(
-        /\b(gte|gt|lte|lt)\b/g,
-        (match) => `$${match}`,
-      );
-
-      let query = boardModel.find(JSON.parse(queryStr));
-
-      if (req.query.sort) {
-        const sortBy = req.query.sort.split(",").join(" ");
-        query = query.sort(sortBy);
-      }
-
-      const boards = await query;
+      const boards = await boardModel.find();
 
       res.status(200).json({
         status: 'success',
