@@ -4,9 +4,7 @@ import btnCurrentPosition from './btnCurrentPosition.js';
 import popUpLocationInfo from './popUpLocationInfo.js';
 import getAdvertisementBoards from './clusterMarker.js';
 import billboard from './billboard.js'
-
 import filter from './filter.js';
-// import report from "./report.js"
 
 async function initMap() {
   const { Map } = await google.maps.importLibrary('maps');
@@ -22,9 +20,7 @@ async function initMap() {
   billboard(map);
   btnCurrentPosition(map);
   popUpLocationInfo(map);
-  // clusterMarker(map);
   getAdvertisementBoards(map);
-  // report(map);
   filter(map);
 
   map.addListener('click', () => {
@@ -32,5 +28,4 @@ async function initMap() {
   })
 }
 
-// window.initMap = initMap;
 initMap();

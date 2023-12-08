@@ -1,34 +1,63 @@
 var advertisementBoards = new Array();
 var mc = null;
 
+function getAllLocation(callback){
+  var url = 'http://'+ apiUrl + '/api/v1/boards/';
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = () => {
+      if (xhr.readyState === XMLHttpRequest.DONE)
+      {
+          callback(JSON.parse(xhr.responseText));
+      }
+  }
+  xhr.open('GET', url);
+  xhr.send();
+}
+
 // This is a function to get advertisementBoards from database.
+// Function to add markers and cluster them
+function handleMarkersAddition(data, map, advertisementBoards) {
+  addMarker(data, advertisementBoards);
+  clusterMarker(map, advertisementBoards);
+}
+
+// Function to remove markers and cluster them
+function handleMarkersRemoval(data, map, advertisementBoards) {
+  removeMarker(data, advertisementBoards);
+  clusterMarker(map, advertisementBoards);
+}
+
+// Main function to add event listeners
 const getAdvertisementBoards = (map) => {
-  document.getElementById('btnAds').addEventListener('change', function () {
-    if (this.checked) {
-      console.log('First switch is ON');
-      addMarker(data, advertisementBoards);
-      clusterMarker(map, advertisementBoards);
-    } else {
-      console.log('First switch is OFF');
-      // Perform actions when the first switch is OFF
-      removeMarker(data, advertisementBoards);
-      clusterMarker(map, advertisementBoards);
-    }
-  });
-  document
-    .getElementById('flexSwitchCheckDefault')
-    .addEventListener('change', function () {
+  // Event listener for the first switch
+  getAllLocation((data) => {
+    data = data.data
+    document.getElementById('btnAds').addEventListener('change', function () {
       if (this.checked) {
         console.log('First switch is ON');
-        addMarker(data2, advertisementBoards);
-        clusterMarker(map, advertisementBoards);
+        handleMarkersAddition(data, map, advertisementBoards);
       } else {
         console.log('First switch is OFF');
-        // Perform actions when the first switch is OFF
-        removeMarker(data2, advertisementBoards);
-        clusterMarker(map, advertisementBoards);
+        handleMarkersRemoval(data, map, advertisementBoards);
       }
     });
+  
+    // Event listener for the second switch
+    document
+      .getElementById('flexSwitchCheckDefault')
+      .addEventListener('change', function () {
+        if (this.checked) {
+          console.log('Second switch is ON');
+          handleMarkersAddition(data2, map, advertisementBoards);
+        } else {
+          console.log('Second switch is OFF');
+          handleMarkersRemoval(data2, map, advertisementBoards);
+        }
+      });
+  
+  })
+
+  
 };
 
 const addMarker = (newMarkers, currentMarkers) => {
@@ -73,13 +102,17 @@ const clusterMarker = async (map, data) => {
   );
   data = uniqueData;
   // Add some markers to the map.
+
+  // A marker with a with a URL pointing to a PNG.
+
   const markers = data.map((position, i) => {
-    const pinGlyph = new PinElement({
-      glyphColor: 'white',
-    });
+    const beachFlagImg = document.createElement('img');
+    beachFlagImg.src =
+      'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+
     const marker = new AdvancedMarkerElement({
       position,
-      content: pinGlyph.element,
+      content: beachFlagImg,
     });
 
     // markers can only be keyboard focusable when they have click listeners
@@ -99,46 +132,46 @@ const clusterMarker = async (map, data) => {
   });
 };
 
-var data = [
-  { lat: 10.778515490199908, lng: 106.69397771139802 },
-  { lat: 10.778511065772506, lng: 106.6939101530919 },
-  { lat: 10.778433638289044, lng: 106.6938943894886 },
-  { lat: 10.778595129871675, lng: 106.69382007535302 },
-  { lat: 10.778880505200917, lng: 106.69352056686552 },
-  { lat: 10.778712629289927, lng: 106.69412769829682 },
-  { lat: 10.779549144915222, lng: 106.69501626249468 },
-  { lat: 10.779564299162885, lng: 106.69489285079953 },
-  { lat: 10.779491558767873, lng: 106.69506562717413 },
-  { lat: 10.777778877164792, lng: 106.6932435413031 },
-  { lat: 10.777674895082527, lng: 106.6931603740245 },
-  { lat: 10.777065856453092, lng: 106.69067291639186 },
-  { lat: 10.777177266051183, lng: 106.69074852300588 },
-  { lat: 10.776887601009932, lng: 106.69071828035976 },
-  { lat: 10.777021292599613, lng: 106.69050658183818 },
-  { lat: 10.778573596176457, lng: 106.69204895678268 },
-  { lat: 10.77846218709557, lng: 106.69190530421287 },
-  { lat: 10.780653224781503, lng: 106.69396936480206 },
-  { lat: 10.780616088684198, lng: 106.69382571223525 },
-  { lat: 10.781434247028471, lng: 106.69469492832508 },
-  { lat: 10.782300475720291, lng: 106.69385854722083 },
-  { lat: 10.78227816943469, lng: 106.69397208311648 },
-  { lat: 10.78193470190304, lng: 106.69436921479081 },
-  { lat: 10.782020209423905, lng: 106.6952320876108 },
-  { lat: 10.78026906922618, lng: 106.69611334404561 },
-  { lat: 10.780218032423974, lng: 106.69624322827161 },
-  { lat: 10.78032010601703, lng: 106.69613932088902 },
-  { lat: 10.780464710210254, lng: 106.69757670630577 },
-  { lat: 10.780371142797478, lng: 106.69745548103162 },
-  { lat: 10.779435467057041, lng: 106.69712644099445 },
-  { lat: 10.78178315704443, lng: 106.69924788332906 },
-  { lat: 10.781723614409714, lng: 106.6994383801898 },
-  { lat: 10.779733532396364, lng: 106.69118829921712 },
-  { lat: 10.779894713507346, lng: 106.69130549673986 },
-  { lat: 10.77953781236701, lng: 106.69100078317854 },
-  { lat: 10.781356852471973, lng: 106.69279390528669 },
-  { lat: 10.78152954557973, lng: 106.69305173983753 },
-  { lat: 10.781299288080433, lng: 106.69305173983656 },
-  { lat: 10.780297665902395, lng: 106.68936001785096 },
+// var data = [
+//   { lat: 10.778515490199908, lng: 106.69397771139802 },
+//   { lat: 10.778511065772506, lng: 106.6939101530919 },
+//   { lat: 10.778433638289044, lng: 106.6938943894886 },
+//   { lat: 10.778595129871675, lng: 106.69382007535302 },
+//   { lat: 10.778880505200917, lng: 106.69352056686552 },
+//   { lat: 10.778712629289927, lng: 106.69412769829682 },
+//   { lat: 10.779549144915222, lng: 106.69501626249468 },
+//   { lat: 10.779564299162885, lng: 106.69489285079953 },
+//   { lat: 10.779491558767873, lng: 106.69506562717413 },
+//   { lat: 10.777778877164792, lng: 106.6932435413031 },
+//   { lat: 10.777674895082527, lng: 106.6931603740245 },
+//   { lat: 10.777065856453092, lng: 106.69067291639186 },
+//   { lat: 10.777177266051183, lng: 106.69074852300588 },
+//   { lat: 10.776887601009932, lng: 106.69071828035976 },
+//   { lat: 10.777021292599613, lng: 106.69050658183818 },
+//   { lat: 10.778573596176457, lng: 106.69204895678268 },
+//   { lat: 10.77846218709557, lng: 106.69190530421287 },
+//   { lat: 10.780653224781503, lng: 106.69396936480206 },
+//   { lat: 10.780616088684198, lng: 106.69382571223525 },
+//   { lat: 10.781434247028471, lng: 106.69469492832508 },
+//   { lat: 10.782300475720291, lng: 106.69385854722083 },
+//   { lat: 10.78227816943469, lng: 106.69397208311648 },
+//   { lat: 10.78193470190304, lng: 106.69436921479081 },
+//   { lat: 10.782020209423905, lng: 106.6952320876108 },
+//   { lat: 10.78026906922618, lng: 106.69611334404561 },
+//   { lat: 10.780218032423974, lng: 106.69624322827161 },
+//   { lat: 10.78032010601703, lng: 106.69613932088902 },
+//   { lat: 10.780464710210254, lng: 106.69757670630577 },
+//   { lat: 10.780371142797478, lng: 106.69745548103162 },
+//   { lat: 10.779435467057041, lng: 106.69712644099445 },
+//   { lat: 10.78178315704443, lng: 106.69924788332906 },
+//   { lat: 10.781723614409714, lng: 106.6994383801898 },
+//   { lat: 10.779733532396364, lng: 106.69118829921712 },
+//   { lat: 10.779894713507346, lng: 106.69130549673986 },
+//   { lat: 10.77953781236701, lng: 106.69100078317854 },
+//   { lat: 10.781356852471973, lng: 106.69279390528669 },
+//   { lat: 10.78152954557973, lng: 106.69305173983753 },
+//   { lat: 10.781299288080433, lng: 106.69305173983656 },
+//   { lat: 10.780297665902395, lng: 106.68936001785096 },
   // { lat: 10.784718593848098, lng: 106.68920766106976 },
   // { lat: 10.784603466340641, lng: 106.68934829809928 },
   // { lat: 10.784465313272804, lng: 106.68952409438322 },
