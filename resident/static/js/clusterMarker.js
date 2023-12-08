@@ -1,20 +1,63 @@
-var advertisementBoards = new Set();
+var advertisementBoards = new Array();
+var mc = null;
 
-// This is a function to get advertisementBoards from database. 
-const getAdvertisementBoards = async () => {
-}
+// This is a function to get advertisementBoards from database.
+const getAdvertisementBoards = (map) => {
+  document.getElementById('btnAds').addEventListener('change', function () {
+    if (this.checked) {
+      console.log('First switch is ON');
+      addMarker(data, advertisementBoards);
+      clusterMarker(map, advertisementBoards);
+    } else {
+      console.log('First switch is OFF');
+      // Perform actions when the first switch is OFF
+      removeMarker(data, advertisementBoards);
+      clusterMarker(map, advertisementBoards);
+    }
+  });
+  document
+    .getElementById('flexSwitchCheckDefault')
+    .addEventListener('change', function () {
+      if (this.checked) {
+        console.log('First switch is ON');
+        addMarker(data2, advertisementBoards);
+        clusterMarker(map, advertisementBoards);
+      } else {
+        console.log('First switch is OFF');
+        // Perform actions when the first switch is OFF
+        removeMarker(data2, advertisementBoards);
+        clusterMarker(map, advertisementBoards);
+      }
+    });
+};
 
+const addMarker = (newMarkers, currentMarkers) => {
+  for (let i = 0; i < newMarkers.length; i++) {
+    currentMarkers.push(newMarkers[i]);
+  }
+  return currentMarkers;
+};
 
-// This is a function to add markers to advertisementBoards with 2 criteria:
-// 1. For advertised markers.
-// 2. For In-valid markers.
-const addMarker = function(newMarkers, currentMarkers, criteria) {
-  // It is only work on advertisementBoards. not do with map objects.
-  
-}
+// This is a function to remove advertisementBoards from map.
+const removeMarker = (removeMarker, currentMarkers) => {
+  // Remove if they are same position.
+  for (let i = 0; i < removeMarker.length; i++) {
+    for (let j = 0; j < currentMarkers.length; j++) {
+      if (
+        removeMarker[i].lat === currentMarkers[j].lat &&
+        removeMarker[i].lng === currentMarkers[j].lng
+      ) {
+        currentMarkers.splice(j, 1);
+        console.log('Remove marker', currentMarkers[j]);
+        break;
+      }
+    }
+  }
 
-const clusterMarker = async (map) => {
-  
+  return currentMarkers;
+};
+
+const clusterMarker = async (map, data) => {
   let infoWindow = new google.maps.InfoWindow({
     content: '',
     disableAutoPan: true,
@@ -23,6 +66,12 @@ const clusterMarker = async (map) => {
   const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary(
     'marker'
   );
+
+  // filter the overlapping data
+  const uniqueData = data.filter(
+    (v, i, a) => a.findIndex((t) => t.lat === v.lat && t.lng === v.lng) === i
+  );
+  data = uniqueData;
   // Add some markers to the map.
   const markers = data.map((position, i) => {
     const pinGlyph = new PinElement({
@@ -42,11 +91,15 @@ const clusterMarker = async (map) => {
     return marker;
   });
 
-  // Add a marker clusterer to manage the markers.
-  new markerClusterer.MarkerClusterer({ markers, map });
+  if (mc) mc.clearMarkers();
+
+  mc = new markerClusterer.MarkerClusterer({
+    map,
+    markers,
+  });
 };
 
-const data = [
+var data = [
   { lat: 10.778515490199908, lng: 106.69397771139802 },
   { lat: 10.778511065772506, lng: 106.6939101530919 },
   { lat: 10.778433638289044, lng: 106.6938943894886 },
@@ -130,4 +183,19 @@ const data = [
   // { lat: 10.78455644850365, lng: 106.70778908913371 },
   // { lat: 10.784805507626814, lng: 106.70787782885742 },
 ];
-export default clusterMarker;
+
+var data2 = [
+  { lat: 10.778515490199908, lng: 106.69397771139802 },
+  { lat: 10.778511065772506, lng: 106.6939101530919 },
+  { lat: 10.778433638289044, lng: 106.6938943894886 },
+  { lat: 10.778595129871675, lng: 106.69382007535302 },
+  { lat: 10.778880505200917, lng: 106.69352056686552 },
+  { lat: 10.778712629289927, lng: 106.69412769829682 },
+  { lat: 10.779549144915222, lng: 106.69501626249468 },
+  { lat: 10.779564299162885, lng: 106.69489285079953 },
+  { lat: 10.779491558767873, lng: 106.69506562717413 },
+  { lat: 10.777778877164792, lng: 106.6932435413031 },
+  { lat: 10.777674895082527, lng: 106.6931603740245 },
+  { lat: 10.777065856453092, lng: 106.69067291639186 },
+];
+export default getAdvertisementBoards;

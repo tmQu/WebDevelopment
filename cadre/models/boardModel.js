@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 let BillboardLocationSchema = new mongoose.Schema({
   id: {
@@ -88,6 +88,7 @@ let BillboardLocationSchema = new mongoose.Schema({
   },
 });
 
-const boardModel = mongoose.model('boards', BillboardLocationSchema);
+
+const boardModel = mongoose.model("boards", BillboardLocationSchema);
 
 export default boardModel;

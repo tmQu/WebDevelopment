@@ -2,14 +2,14 @@ import search from './search.js';
 
 import btnCurrentPosition from './btnCurrentPosition.js';
 import popUpLocationInfo from './popUpLocationInfo.js';
-import clusterMarker from './clusterMarker.js';
+import getAdvertisementBoards from './clusterMarker.js';
 import billboard from './billboard.js'
 
-import filter from "./filter.js"
-import report from "./report.js"
+import filter from './filter.js';
+// import report from "./report.js"
 
 async function initMap() {
-  const { Map } = await google.maps.importLibrary("maps");
+  const { Map } = await google.maps.importLibrary('maps');
   const map = new Map(document.getElementById('map'), {
     mapId: '2b895ae082f50106',
     center: { lat: 10.762622, lng: 106.660172 },
@@ -22,8 +22,9 @@ async function initMap() {
   billboard(map);
   btnCurrentPosition(map);
   popUpLocationInfo(map);
-  clusterMarker(map);
-  report(map);
+  // clusterMarker(map);
+  getAdvertisementBoards(map);
+  // report(map);
   filter(map);
 
   map.addListener('click', () => {
