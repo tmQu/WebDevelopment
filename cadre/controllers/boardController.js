@@ -8,9 +8,9 @@ const boardController = {
       res.status(200).json({
         status: 'success',
         results: boards.length,
-        data: {
+        data: 
           boards,
-        },
+        
       });
     } catch (err) {
       res.status(404).json({
@@ -21,12 +21,11 @@ const boardController = {
   },
   getById: async (req, res) => {
     try {
-      const board = await boardModel.findById(req.params.id);
+      const board = await boardModel.find({id: req.params.id});
+      console.log(board[0])
       res.status(200).json({
         status: 'success',
-        data: {
-          board,
-        },
+        data: board[0],
       });
     } catch (err) {
       res.status(404).json({
@@ -94,7 +93,7 @@ const boardController = {
   },
   deleteBoard: async (req, res) => {
     try {
-      const board = await boardModel.findByIdAndDelete(req.params.id);
+      const board = await boardModel.findByIdAndDelete({id: req.params.id});
       if (!board) {
         return res.status(404).json({
           status: 'fail',

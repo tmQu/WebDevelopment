@@ -3,9 +3,11 @@ import morgan from 'morgan';
 import boardRouter from './routes/boardRoutes.js';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import cors from 'cors'
+
 
 const app = express();
-
+app.use(cors());
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 console.log(process.env.NODE_ENV);

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 let BillboardLocationSchema = new mongoose.Schema({
   id: {
@@ -51,12 +51,43 @@ let BillboardLocationSchema = new mongoose.Schema({
   },
 
   locationCategory: {
+    type: Array,
+    require: true,
+  },
+
+  billboards: [
+    {
+      idBillboard: {
+        type: String,
+        require: true,
+      },
+      imgBillboard: {
+        type: String,
+        require: true,
+      },
+      size: {
+        type: String,
+        require: true,
+      },
+      billboardType: {
+        type: String,
+        require: true,
+      },
+      expireDate: {
+        // date with iso8601 format
+        type: Date,
+        require: true,
+        default: Date.now,
+      },
+    },
+  ],
+
+  imgBillboardLocation: {
     type: String,
     require: true,
   },
 });
 
-
-const boardModel = mongoose.model("boards", BillboardLocationSchema);
+const boardModel = mongoose.model('boards', BillboardLocationSchema);
 
 export default boardModel;

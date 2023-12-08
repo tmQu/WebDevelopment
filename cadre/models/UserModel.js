@@ -21,7 +21,7 @@ var UserSchema = mongoose.Schema({
     }
 })
 
-const User = mongoose.model('user', user);
+const User = mongoose.model('user', UserSchema);
 
 
 
