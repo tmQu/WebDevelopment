@@ -155,7 +155,7 @@ const uploadFile = function(files) {
 
 function setReport(map) {
     const reportCover = document.getElementById('report');
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(reportCover);
+    // map.controls[google.maps.ControlPosition.TOP_LEFT].push(reportCover);
     
     // fileInput.addEventListener("change", event => {
     //     const files = event.target.files;
