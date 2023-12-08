@@ -1,13 +1,3 @@
-// uploadFile(() => {
-//     const reportFile = document.getElementById('formFile');
-//     for (let i = 0; i < reportFile.length; i++) {
-//         reportFile.append(reportFile[i].name, reportFile[i])
-//       }
-//     if (files > 2) {
-//         alert("Please upload maximum 2 files")
-//     }
-// })
-
 // Quill
 //customize toolbar
 var toolbarOptions = [
@@ -29,6 +19,9 @@ const checkMethod = function() {
     if (m === "0") {
         document.querySelector('#method').classList.add('is-invalid');
         document.querySelector('#requiredMethod').innerHTML = warn;
+        document.querySelector('#report-form').addEventListener('submit', event => {
+           event.preventDefault();
+        })
     }
 
     else {
@@ -51,6 +44,9 @@ const checkName = function() {
     else if (!n.match(/^[a-zA-Z\s]+$/)) {
         document.querySelector('#name').classList.add('is-invalid');
         document.querySelector('#requiredName').innerHTML = warn;
+        document.querySelector('#report-form').addEventListener('submit', event => {
+            event.preventDefault();
+        })
     }
 
     else {
@@ -73,6 +69,9 @@ const checkEmail = function() {
     else if (!e.match(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)) {
         document.querySelector('#email').classList.add('is-invalid');
         document.querySelector('#requiredEmail').innerHTML = warn;
+        document.querySelector('#report-form').addEventListener('submit', event => {
+            event.preventDefault();
+        })
     }
 
     else {
@@ -95,6 +94,9 @@ const checkPhone = function() {
     else if (!p.match(/^[0-9]{10,11}$/)) {
         document.querySelector('#phone').classList.add('is-invalid');
         document.querySelector('#requiredPhone').innerHTML = warn;
+        document.querySelector('#report-form').addEventListener('submit', event => {
+            event.preventDefault();
+        })
     }
 
     else {
@@ -103,14 +105,32 @@ const checkPhone = function() {
     }
 }
 
-const uploadFile = function(files) {
-    const reportFile = document.getElementById('formFile');
-    for (let i = 0; i < reportFile.length; i++) {
-        reportFile.append(reportFile[i].name, reportFile[i])
-        }
-    if (files > 2) {
-        alert("Please upload maximum 2 files")
+const uploadFile = function() {
+    //maximum number of files is 2
+    const fileInput = document.getElementById('formFile');
+    const warn = 'Vui lòng chọn tối đa 2 file';
+    const warnEmpty = 'Vui lòng không bỏ trống file';
+
+    if (fileInput.files.length === 0) {
+        document.querySelector('#formFile').classList.add('is-invalid');
+        document.querySelector('#requiredFile').innerHTML = warnEmpty;
     }
+    
+    if (fileInput.files.length > 2) {
+        document.querySelector('#formFile').classList.add('is-invalid');
+        document.querySelector('#requiredFile').innerHTML = warn;
+        //disable submit button
+        document.querySelector('#submit').classList.add('disabled');
+    }
+
+    else {
+        document.querySelector('#submit').classList.remove('disabled');
+        document.querySelector('#formFile').classList.remove('is-invalid');
+        document.querySelector('#requiredFile').innerHTML = 'File đính kèm';
+    }
+
+    
+    
 }
 
 // const handlingSubmit = function() {
@@ -153,25 +173,60 @@ const uploadFile = function(files) {
 //     })
 // }
 
-function setReport(map) {
-    const reportCover = document.getElementById('report');
-    // map.controls[google.maps.ControlPosition.TOP_LEFT].push(reportCover);
+// function setReport(map) {
+//     const reportCover = document.getElementById('report');
+//     map.controls[google.maps.ControlPosition.TOP_LEFT].push(reportCover);
     
-    // fileInput.addEventListener("change", event => {
-    //     const files = event.target.files;
-    //     uploadFile(files);
-    // });
+//     // fileInput.addEventListener("change", event => {
+//     //     const files = event.target.files;
+//     //     uploadFile(files);
+//     // });
 
-    let quill = new Quill('#editor', {
-        modules: {
-            toolbar: toolbarOptions,
-        },
-        theme: 'snow'
-    })
+//     var quill = new Quill('#editor', {
+//         modules: {
+//             toolbar: toolbarOptions,
+//         },
+//         theme: 'snow'
+//     })
 
-    //var delta = quill.getContents();
+//     //var delta = quill.getContents();
 
-    //document.querySelector('#report-form').addEventListener('submit', handlingSubmit);
+//     //document.querySelector('#report-form').addEventListener('submit', handlingSubmit);
+
+//     document.querySelector('#method').addEventListener('focusout', checkMethod);
+//     document.querySelector('#name').addEventListener('focusout', checkName);
+//     document.querySelector('#email').addEventListener('focusout', checkEmail);
+//     document.querySelector('#phone').addEventListener('focusout', checkPhone);
+
+
+// }
+
+var quill = new Quill('#editor', {
+    modules: {
+        toolbar: toolbarOptions,
+    },
+    theme: 'snow'
+})
+
+document.querySelector('#method').addEventListener('focusout', checkMethod);
+document.querySelector('#name').addEventListener('focusout', checkName);
+document.querySelector('#email').addEventListener('focusout', checkEmail);
+document.querySelector('#phone').addEventListener('focusout', checkPhone);
+document.querySelector('#formFile').addEventListener('focusout', uploadFile);
+
+function getData() {
+    const method = document.querySelector('#method').value;
+    const name = document.querySelector('#name').value;
+    const email = document.querySelector('#email').value;
+    const phone = document.querySelector('#phone').value;
+    const content = quill.root.innerHTML;
+    const file = document.querySelector('#formFile').files;
+    
+    //alert(content);
+    //this.submit();
 }
 
-export default setReport
+reportForm = document.getElementById('report-form');
+reportForm.addEventListener('submit', getData);
+console.log('Helo');
+//export default setReport
