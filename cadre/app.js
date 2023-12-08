@@ -63,7 +63,7 @@ var datatest = {
     ]
 }
 
-// import BillboardLocation from './model/billboardLocation.js';
+// import BillboardLocation from './model/BillboardLocation.js';
 // var locationTest = [
 //     {
 //         lat: 10.76320512569573,

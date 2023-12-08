@@ -43,11 +43,42 @@
       placeholder="&#xF002; Search Address" />
 
     <div id="sub-window">
-      <div class="overflow-scroll">
+      <div class="carousel slide mt-4">
+        <div class="carousel-inner" id = 'carousel-location'>
+          <img src="../img/test_billboard.jpg" class="d-block w-100" style="max-height: 240px; object-fit: cover">
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon shadow" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon shadow" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div class="of-scroll">
         <div class="overflow-content">
         </div>
       </div>
+
+      <!-- <div id = 'detail-infor'>
+        <button type="button" class="btn-close" aria-label="Close"></button>
+
+      </div> -->
+
       <button id="btn-collapse" class="btn btn-light"></button>
+      <script>
+      document.querySelector('#btn-collapse').onclick = () =>{
+          var subwindow = document.getElementById('sub-window');
+          if (subwindow.style.width == "0px")
+            subwindow.style.width = "35%";
+          else {
+            subwindow.style.width = "0";
+
+          }
+      }
+      </script>
     </div>
 
     <!-- Current location button -->
