@@ -56,6 +56,7 @@ let BillboardLocationSchema = new mongoose.Schema({
   },
 });
 
-const boardModel = mongoose.model("Board", BillboardLocationSchema);
+
+const boardModel = mongoose.model("boards", BillboardLocationSchema);
 
 export default boardModel;
