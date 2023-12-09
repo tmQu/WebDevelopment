@@ -21,7 +21,7 @@ const boardController = {
   },
   getById: async (req, res) => {
     try {
-      const board = await boardModel.find({id: req.params.id});
+      const board = await boardModel.find({_id: req.params.id});
       console.log(board[0])
       res.status(200).json({
         status: 'success',
@@ -37,7 +37,6 @@ const boardController = {
   createBoard: async (req, res) => {
     try {
       const newBoard = await boardModel.create(req.body);
-      console.log(req.body);
       res.status(201).json({
         status: 'success',
         data: {
@@ -93,7 +92,7 @@ const boardController = {
   },
   deleteBoard: async (req, res) => {
     try {
-      const board = await boardModel.findByIdAndDelete({id: req.params.id});
+      const board = await boardModel.findByIdAndDelete({_id: req.params.id});
       if (!board) {
         return res.status(404).json({
           status: 'fail',
