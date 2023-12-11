@@ -1,6 +1,34 @@
 import User from '../models/userModel.js';
 import AppError from '../utils/appError.js';
 import catchAsync from '../utils/catchAsync.js';
+import multer from 'multer'; // for uploading files
+import sharp from 'sharp'; // image processing library
+
+// const multerStorage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, 'static/img/users');
+//   },
+//   filename: (req, file, cb) => {
+//     // user-123abc123abc123abc-1234567890.jpeg
+//     const ext = file.mimetype.split('/')[1];
+//     cb(null, `user-${req.user._id}-${Date.now()}.${ext}`);
+//   },
+// });
+
+const multerStorage = multer.memoryStorage(); // store image as buffer
+
+const multerFilter = (req, file, cb) => {
+  // only accept image files
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
+  } else {
+    cb(new AppError('Not an image! Please upload only images.', 400), false);
+  }
+};
+
+const upload = multer({ storage: multerStorage, fileFilter: multerFilter });
+
+export { upload as uploadUserPhoto };
 
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
@@ -113,6 +141,8 @@ const userController = {
       'dateOfBirth'
     );
 
+    if (req.file) filterBody.photo = req.file.filename;
+
     // 3 Update user document
     const updatedUser = await User.findByIdAndUpdate(req.user._id, filterBody, {
       new: true,
@@ -134,6 +164,19 @@ const userController = {
       data: null,
     });
   },
+  resizeUserPhoto: catchAsync(async (req, res, next) => {
+    if (!req.file) return next();
+
+    req.file.filename = `user-${req.user._id}-${Date.now()}.jpeg`;
+
+    await sharp(req.file.buffer)
+      .resize(500, 500)
+      .toFormat('jpeg')
+      .jpeg({ quality: 90 })
+      .toFile(`static/img/users/${req.file.filename}`);
+
+    next();
+  }),
 };
 
 export default userController;
