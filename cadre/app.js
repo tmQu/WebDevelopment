@@ -9,6 +9,7 @@ import mongoSanitize from 'express-mongo-sanitize'; // Data sanitization against
 import xss from 'xss-clean'; // Data sanitization against XSS
 
 import boardRouter from './routes/boardRoutes.js';
+import accountRouter from './routes/accountRoutes.js';
 import userRouter from './routes/userRoutes.js';
 
 const app = express();
@@ -54,6 +55,7 @@ app.use((req, res, next) => {
 
 // 3) ROUTES
 app.use('/api/v1/boards', boardRouter);
+app.use('/api/v1/account', accountRouter);
 app.use('/api/v1/users', userRouter);
 
 export default app;

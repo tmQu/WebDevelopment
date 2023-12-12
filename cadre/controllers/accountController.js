@@ -1,4 +1,4 @@
-import accountModel from "../models/account.model.js";
+import accountModel from "../models/accountModel.js";
 
 const accountController = {
     getAllAccounts: async (req, res) => {
@@ -94,4 +94,4 @@ const accountController = {
     },
 };
 
-export { accountController };
+export default accountController;

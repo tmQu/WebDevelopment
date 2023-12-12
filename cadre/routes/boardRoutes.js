@@ -19,4 +19,8 @@ router
     boardController.deleteBoard
   );
 
+router
+  .route('/account/:id')
+  .get(boardController.getByAccount);
+
 export default router;

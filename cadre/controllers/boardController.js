@@ -1,5 +1,5 @@
 import boardModel from '../models/boardModel.js';
-import accountModel from '../models/account.model.js';
+import accountModel from '../models/accountModel.js';
 
 const boardController = {
   getAllBoards: async (req, res) => {
