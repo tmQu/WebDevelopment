@@ -1,9 +1,20 @@
 import boardModel from '../models/boardModel.js';
+import accountModel from '../models/accountModel.js';
 
 const boardController = {
   getAllBoards: async (req, res) => {
     try {
-      const boards = await boardModel.find();
+      let query = boardModel.find();
+
+      if (req.query.district) {
+        query = query.where('addr.district').equals(req.query.district);
+      }
+
+      if (req.query.ward) {
+        query = query.where('addr.ward').equals(req.query.ward);
+      }
+
+      const boards = await query;
 
       res.status(200).json({
         status: 'success',
@@ -26,6 +37,25 @@ const boardController = {
       res.status(200).json({
         status: 'success',
         data: board[0],
+      });
+    } catch (err) {
+      res.status(404).json({
+        status: 'fail',
+        message: err,
+      });
+    }
+  },
+  getByAccount: async (req, res) => {
+    try {
+      const account = await accountModel.findById(req.params.id);
+      const boards = await boardModel.find({ 'addr.district': account.role });
+
+      res.status(200).json({
+        status: 'success',
+        results: boards.length,
+        data: {
+          boards,
+        },
       });
     } catch (err) {
       res.status(404).json({

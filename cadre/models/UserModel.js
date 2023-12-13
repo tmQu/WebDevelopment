@@ -25,7 +25,10 @@ const userSchema = new mongoose.Schema({
     unique: true,
     validate: [validator.isMobilePhone, 'Please provide a valid phone number!'],
   },
-  photo: String,
+  photo: {
+    type: String,
+    default: 'default.jpg',
+  },
   role: {
     type: String,
     enum: ['admin', 'super-admin'],
