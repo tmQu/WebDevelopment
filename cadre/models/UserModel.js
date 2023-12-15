@@ -110,15 +110,18 @@ userSchema.methods.changedPasswordAfter = function (JWTTimestamp) {
 };
 
 userSchema.methods.createPasswordResetToken = function () {
-  const resetToken = crypto.randomBytes(32).toString('hex'); // random string
+  // Generate a 6-digit OTP
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+
+  // Hash the OTP and store it in the database
   this.passwordResetToken = crypto
     .createHash('sha256')
-    .update(resetToken)
-    .digest('hex'); // encrypted string
+    .update(otp)
+    .digest('hex');
 
-  console.log({ resetToken }, this.passwordResetToken);
-  this.passwordResetExpires = Date.now() + 10 * 60 * 1000; // 10 minutes
-  return resetToken;
+  // Set expiration time (10 minutes)
+  this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+  return otp;
 };
 
 const User = mongoose.model('users', userSchema);
