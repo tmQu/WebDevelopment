@@ -97,107 +97,184 @@ function parseBillBoardContent(billboardLocation, billboard, id){
 }
 
 
-function setMarker(map)
-{
-    const subWindow = document.getElementById('sub-window')
-    map.controls[google.maps.ControlPosition.TOP_LEFT].push(subWindow);
+// function setMarker(map)
+// {
+//     const subWindow = document.getElementById('sub-window')
+//     map.controls[google.maps.ControlPosition.TOP_LEFT].push(subWindow);
 
-    getAllLocation((locations) => {
-        locations = locations.data
-        console.log(locations)
-        const iconMarker = {
-            url: "../img/ad.256x256.png",
-            scaledSize: new google.maps.Size(25, 25)
-        };
+//     getAllLocation((locations) => {
+//         locations = locations.data
+//         console.log(locations)
+//         const iconMarker = {
+//             url: "../img/ad.256x256.png",
+//             scaledSize: new google.maps.Size(25, 25)
+//         };
 
-        const infowindow = new google.maps.InfoWindow({
-            maxWidth: 250
-        });
+//         const infowindow = new google.maps.InfoWindow({
+//             maxWidth: 250
+//         });
 
-        locations.forEach(location => {
-            var marker = new google.maps.Marker({
-                position: location.location,
-                map, 
-                icon: iconMarker, 
-                title: location.id
-            })
+//         locations.forEach(location => {
+//             var marker = new google.maps.Marker({
+//                 position: location.location,
+//                 map, 
+//                 icon: iconMarker, 
+//                 title: location.id
+//             })
 
-            marker.addListener('click', () => {
-                getDetailBillboardLocation(location.id, (detailInfor) => {
-                    console.log(detailInfor);
-                    detailInfor = detailInfor.data;
-                    console.log(detailInfor)
-                    infowindow.setContent(parseContentMarker(detailInfor));
-                    infowindow.open({
-                        anchor: marker,
-                        map
-                    })
-                });
+//             marker.addListener('click', () => {
+//                 getDetailBillboardLocation(location.id, (detailInfor) => {
+//                     console.log(detailInfor);
+//                     detailInfor = detailInfor.data;
+//                     console.log(detailInfor)
+//                     infowindow.setContent(parseContentMarker(detailInfor));
+//                     infowindow.open({
+//                         anchor: marker,
+//                         map
+//                     })
+//                 });
 
-            })
+//             })
 
 
-            marker.addListener('click', (event) => {
-                getDetailBillboardLocation(location.id, (detailInfor) => {
-                    console.log(detailInfor)
-                    detailInfor = detailInfor.data
-                    var subWindow = document.getElementById('sub-window');
-                    //subWindow.innerHTML =  addCarousel(['../img/test_billboard.jpg']) + subWindow.innerHTML;
-                    var content = document.querySelector('#sub-window .overflow-content')
-                    content.innerHTML = "";
-                    console.log(detailInfor)
-                    var idTest = [];
-                    detailInfor.billboards.forEach(id => idTest.push(id.idBillboard))
-                    detailInfor.billboards.forEach(billboard => {
-                        content.innerHTML += parseBillBoardContent(detailInfor, billboard, billboard.idBillboard);
+//             marker.addListener('click', (event) => {
+//                 getDetailBillboardLocation(location.id, (detailInfor) => {
+//                     console.log(detailInfor)
+//                     detailInfor = detailInfor.data
+//                     var subWindow = document.getElementById('sub-window');
+//                     //subWindow.innerHTML =  addCarousel(['../img/test_billboard.jpg']) + subWindow.innerHTML;
+//                     var content = document.querySelector('#sub-window .overflow-content')
+//                     content.innerHTML = "";
+//                     console.log(detailInfor)
+//                     var idTest = [];
+//                     detailInfor.billboards.forEach(id => idTest.push(id.idBillboard))
+//                     detailInfor.billboards.forEach(billboard => {
+//                         content.innerHTML += parseBillBoardContent(detailInfor, billboard, billboard.idBillboard);
                     
-                        subWindow.classList.add('show-up');
+//                         subWindow.classList.add('show-up');
 
-                    })
-                    idTest.forEach(id => {   
-                    document.querySelector(`#${id} button.circle-btn`).addEventListener('click', () => {
-                        document.querySelector(`#${id}`).classList.add('active');
-                        var detailInfor = document.querySelector(`#${id} .detail-infor`);
-                        detailInfor.classList.add('show-up');
-                        document.querySelector(`#${id} .btn-close`).onclick = () =>{
-                            document.querySelector(`#${id} .detail-infor`).classList.remove('show-up');
-                        }
-                    });
+//                     })
+//                     idTest.forEach(id => {   
+//                     document.querySelector(`#${id} button.circle-btn`).addEventListener('click', () => {
+//                         document.querySelector(`#${id}`).classList.add('active');
+//                         var detailInfor = document.querySelector(`#${id} .detail-infor`);
+//                         detailInfor.classList.add('show-up');
+//                         document.querySelector(`#${id} .btn-close`).onclick = () =>{
+//                             document.querySelector(`#${id} .detail-infor`).classList.remove('show-up');
+//                         }
+//                     });
 
-                    document.querySelector(`#${id} button.btn-outline-danger`).addEventListener('click', () => {
+//                     document.querySelector(`#${id} button.btn-outline-danger`).addEventListener('click', () => {
                         
-                        document.querySelector(`#report`).classList.add('show-up');
+//                         document.querySelector(`#report`).classList.add('show-up');
 
-                        document.getElementById('submit').addEventListener('click',()=> {
-                            var item = JSON.parse(localStorage.getItem('report')) || [];
-                            item.push(detailInfor.location)
-                            console.log(item)
-                            localStorage.setItem('report', JSON.stringify(item))
-                        });
-                    })
-                });
-                    // var btnInfors = document.querySelectorAll('button.circle-btn');
-                    // btnInfors.forEach(btn => {
-                    //     btn.addEventListener('click', (event) => {
-                    //         var idParent = event.target.parentNode.parentNode.id;
-                    //         console.log(event.target.parentNode)
-                    //         console.log(idParent);
+//                         document.getElementById('submit').addEventListener('click',()=> {
+//                             var item = JSON.parse(localStorage.getItem('report')) || [];
+//                             item.push(detailInfor.location)
+//                             console.log(item)
+//                             localStorage.setItem('report', JSON.stringify(item))
+//                         });
+//                     })
+//                 });
+//                     // var btnInfors = document.querySelectorAll('button.circle-btn');
+//                     // btnInfors.forEach(btn => {
+//                     //     btn.addEventListener('click', (event) => {
+//                     //         var idParent = event.target.parentNode.parentNode.id;
+//                     //         console.log(event.target.parentNode)
+//                     //         console.log(idParent);
 
 
-                    //         console.log(`#${idParent} .btn-close`   )
+//                     //         console.log(`#${idParent} .btn-close`   )
 
                     
-                    //     })
-                    // })
+//                     //     })
+//                     // })
            
-                });
+//                 });
 
-            })
+//             })
 
 
    
 
-        })
+//         })
+
+//     })
+// }
+
+function setMarker(location, marker,infowindow)
+{
+        
+    marker.addListener('click', () => {
+        console.log('ok')
+        getDetailBillboardLocation(location.id, (detailInfor) => {
+            console.log(detailInfor);
+            detailInfor = detailInfor.data;
+            console.log(detailInfor)
+            infowindow.setContent(parseContentMarker(detailInfor));
+            infowindow.open({
+                anchor: marker,
+                map
+            })
+        });
+
+    })
+
+
+    marker.addListener('click', (event) => {
+        getDetailBillboardLocation(location.id, (detailInfor) => {
+            console.log(detailInfor)
+            detailInfor = detailInfor.data
+            var subWindow = document.getElementById('sub-window');
+            //subWindow.innerHTML =  addCarousel(['../img/test_billboard.jpg']) + subWindow.innerHTML;
+            var content = document.querySelector('#sub-window .overflow-content')
+            content.innerHTML = "";
+            console.log(detailInfor)
+            var idTest = [];
+            detailInfor.billboards.forEach(id => idTest.push(id.idBillboard))
+            detailInfor.billboards.forEach(billboard => {
+                content.innerHTML += parseBillBoardContent(detailInfor, billboard, billboard.idBillboard);
+            
+                subWindow.classList.add('show-up');
+
+            })
+            idTest.forEach(id => {   
+            document.querySelector(`#${id} button.circle-btn`).addEventListener('click', () => {
+                document.querySelector(`#${id}`).classList.add('active');
+                var detailInfor = document.querySelector(`#${id} .detail-infor`);
+                detailInfor.classList.add('show-up');
+                document.querySelector(`#${id} .btn-close`).onclick = () =>{
+                    document.querySelector(`#${id} .detail-infor`).classList.remove('show-up');
+                }
+            });
+
+            document.querySelector(`#${id} button.btn-outline-danger`).addEventListener('click', () => {
+                
+                document.querySelector(`#report`).classList.add('show-up');
+
+                document.getElementById('submit').addEventListener('click',()=> {
+                    var item = JSON.parse(localStorage.getItem('report')) || [];
+                    item.push(detailInfor.location)
+                    console.log(item)
+                    localStorage.setItem('report', JSON.stringify(item))
+                });
+            })
+        });
+            // var btnInfors = document.querySelectorAll('button.circle-btn');
+            // btnInfors.forEach(btn => {
+            //     btn.addEventListener('click', (event) => {
+            //         var idParent = event.target.parentNode.parentNode.id;
+            //         console.log(event.target.parentNode)
+            //         console.log(idParent);
+
+
+            //         console.log(`#${idParent} .btn-close`   )
+
+            
+            //     })
+            // })
+    
+        });
 
     })
 }

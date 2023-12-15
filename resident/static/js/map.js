@@ -3,7 +3,7 @@ import search from './search.js';
 import btnCurrentPosition from './btnCurrentPosition.js';
 import popUpLocationInfo from './popUpLocationInfo.js';
 import getAdvertisementBoards from './clusterMarker.js';
-import billboard from './billboard.js'
+// import billboard from './billboard.js'
 import filter from './filter.js';
 
 async function initMap() {
@@ -17,7 +17,8 @@ async function initMap() {
   });
 
   search(map);
-  billboard(map);
+  const subWindow = document.getElementById('sub-window')
+  map.controls[google.maps.ControlPosition.TOP_LEFT].push(subWindow);
   btnCurrentPosition(map);
   popUpLocationInfo(map);
   getAdvertisementBoards(map);

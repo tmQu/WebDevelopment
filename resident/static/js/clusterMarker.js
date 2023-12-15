@@ -1,5 +1,11 @@
+import setMarker from "./billboard.js";
+
 var advertisementBoards = new Array();
 var mc = null;
+
+
+const apiUrl = 'localhost:4000'
+
 
 function getAllLocation(callback){
   var url = 'http://'+ apiUrl + '/api/v1/boards/';
@@ -48,10 +54,10 @@ const getAdvertisementBoards = (map) => {
       .addEventListener('change', function () {
         if (this.checked) {
           console.log('Second switch is ON');
-          handleMarkersAddition(data2, map, advertisementBoards);
+          handleMarkersAddition(report, map, advertisementBoards);
         } else {
           console.log('Second switch is OFF');
-          handleMarkersRemoval(data2, map, advertisementBoards);
+          handleMarkersRemoval(report, map, advertisementBoards);
         }
       });
   
@@ -73,11 +79,12 @@ const removeMarker = (removeMarker, currentMarkers) => {
   for (let i = 0; i < removeMarker.length; i++) {
     for (let j = 0; j < currentMarkers.length; j++) {
       if (
-        removeMarker[i].lat === currentMarkers[j].lat &&
-        removeMarker[i].lng === currentMarkers[j].lng
+        removeMarker[i].location.lat === currentMarkers[j].location.lat &&
+        removeMarker[i].location.lng === currentMarkers[j].location.lng &&
+        removeMarker[i].id === currentMarkers[j].id
       ) {
         currentMarkers.splice(j, 1);
-        console.log('Remove marker', currentMarkers[j]);
+        
         break;
       }
     }
@@ -90,6 +97,7 @@ const clusterMarker = async (map, data) => {
   let infoWindow = new google.maps.InfoWindow({
     content: '',
     disableAutoPan: true,
+    maxWidth: 250
   });
 
   const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary(
@@ -98,38 +106,47 @@ const clusterMarker = async (map, data) => {
 
   // filter the overlapping data
   const uniqueData = data.filter(
-    (v, i, a) => a.findIndex((t) => t.lat === v.lat && t.lng === v.lng) === i
+    (v, i, a) => a.findIndex((t) => t.location.lat === v.location.lat && t.location.lng === v.location.lng) === i
   );
   data = uniqueData;
   // Add some markers to the map.
 
   // A marker with a with a URL pointing to a PNG.
 
-  const markers = data.map((position, i) => {
-    const beachFlagImg = document.createElement('img');
-    beachFlagImg.src =
-      'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+  const markers = []
+  
+  data.forEach((markerInfo) => {
+    const iconImage = document.createElement('img');
+    iconImage.style.width = '25px'
+    console.log(markerInfo.id)
+    if (markerInfo.id.includes('BL'))
+    {
+      iconImage.src = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
+    }
+    else {
+      iconImage.src = "../img/ad.256x256.png"
+    }
     const marker = new AdvancedMarkerElement({
-      position,
-      content: beachFlagImg,
+      position: markerInfo.location,
+      content: iconImage,
     });
 
     // markers can only be keyboard focusable when they have click listeners
     // open info window when marker is clicked
-    marker.addListener('click', () => {
-      infoWindow.setContent(position.lat + ', ' + position.lng);
-      infoWindow.open(map, marker);
-    });
-    return marker;
+    if (markerInfo.id.includes('BL'))
+      setMarker(markerInfo, marker, infoWindow);
+    markers.push(marker)
   });
 
   if (mc) mc.clearMarkers();
-
+  console.log(markers)
   mc = new markerClusterer.MarkerClusterer({
     map,
     markers,
   });
+
+
 };
 
 // var data = [
@@ -215,7 +232,7 @@ const clusterMarker = async (map, data) => {
   // { lat: 10.783146991452142, lng: 106.69819190140646 },
   // { lat: 10.78455644850365, lng: 106.70778908913371 },
   // { lat: 10.784805507626814, lng: 106.70787782885742 },
-];
+// ];
 
 var data2 = [
   { lat: 10.778515490199908, lng: 106.69397771139802 },
@@ -231,4 +248,15 @@ var data2 = [
   { lat: 10.777674895082527, lng: 106.6931603740245 },
   { lat: 10.777065856453092, lng: 106.69067291639186 },
 ];
+
+function saveTestLocalStorage()
+{
+  var item = JSON.parse(localStorage.getItem('report')) || [];
+  data2.forEach(location => {
+    item.push({id: 'RP',location: location})
+  })
+  localStorage.setItem('report', JSON.stringify(item))
+}
+saveTestLocalStorage()
+var report = JSON.parse(localStorage.getItem('report'))
 export default getAdvertisementBoards;
