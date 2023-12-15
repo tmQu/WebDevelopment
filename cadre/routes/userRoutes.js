@@ -1,5 +1,7 @@
 import express from 'express';
-import userController, {uploadUserPhoto} from '../controllers/userController.js';
+import userController, {
+  uploadUserPhoto,
+} from '../controllers/userController.js';
 import authController from '../controllers/authController.js';
 
 const router = express.Router();
@@ -7,7 +9,7 @@ const router = express.Router();
 router.post('/signup', authController.signup);
 router.post('/login', authController.login);
 router.post('/forgotPassword', authController.forgotPassword);
-router.patch('/resetPassword/:token', authController.resetPassword);
+router.patch('/resetPassword', authController.resetPassword);
 router.patch(
   '/updatePassword',
   authController.protect,
