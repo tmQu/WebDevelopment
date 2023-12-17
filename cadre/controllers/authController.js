@@ -15,10 +15,9 @@ const signToken = (id) => {
 const createSendToken = (user, statusCode, res) => {
   const token = signToken(user._id);
   const cookieOptions = {
-    expires: new Date(
-      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
-    ),
+    expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
     httpOnly: true, // prevent cross site scripting attacks
+    path: '/',
   };
 
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
@@ -68,51 +67,38 @@ const authController = {
       });
     }
 
-    // 3. If everything ok, send token to client
+    // 3. If everything ok, send token to client and render home page
     createSendToken(user, 200, res);
   },
   protect: async (req, res, next) => {
     // 1. Getting token and check if it's there
     let token;
-    if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith('Bearer')
-    ) {
+    if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
       token = req.headers.authorization.split(' ')[1];
+    } else if (req.cookies.jwt) {
+      token = req.cookies.jwt;
     }
 
     if (!token) {
-      return res.status(401).json({
-        status: 'fail',
-        message: 'You are not logged in! Please log in to get access.',
-      });
+      return new AppError('You are not logged in! Please log in to get access.', 401);
     }
     // 2. Verification token
     let decoded;
     try {
       decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
     } catch (err) {
-      return res.status(401).json({
-        status: 'fail',
-        message: err,
-      });
+      return new AppError('Invalid token! Please log in again.', 401);
     }
 
     // 3. Check if user still exists
     const freshUser = await User.findById(decoded.id);
     if (!freshUser) {
-      return res.status(401).json({
-        status: 'fail',
-        message: 'The user belonging to this token does no longer exist.',
-      });
+      return new AppError('The user belonging to this token does no longer exist.', 401);
     }
 
     // 4. Check if user changed password after the token was issued
     if (freshUser.changedPasswordAfter(decoded.iat)) {
-      return res.status(401).json({
-        status: 'fail',
-        message: 'User recently changed password! Please log in again.',
-      });
+      return new AppError('User recently changed password! Please log in again.', 401);
     }
 
     // GRANT ACCESS TO PROTECTED ROUTE
@@ -124,10 +110,7 @@ const authController = {
     return (req, res, next) => {
       // roles ['admin', 'super-admin']. role='user'
       if (!roles.includes(req.user.role)) {
-        return res.status(403).json({
-          status: 'fail',
-          message: 'You do not have permission to perform this action',
-        });
+        return new AppError('You do not have permission to perform this action', 403);
       }
       next();
     };
@@ -138,7 +121,7 @@ const authController = {
     if (!user) {
       return res.status(404).json({
         status: 'fail',
-        message: 'There is no user with that email address.',
+        message: 'There is no user with this email address',
       });
     }
     // 2. Generate the OTP
@@ -162,13 +145,10 @@ const authController = {
       user.passwordResetToken = undefined;
       user.passwordResetExpires = undefined;
       await user.save({ validateBeforeSave: false });
-      next(
-        new AppError('There was an error sending the email. Try again later!'),
-        500
-      );
+      next(new AppError('There was an error sending the email. Try again later!'), 500);
     }
   },
-  resetPassword: catchAsync(async (req, res, next) => {
+  verifyOTP: catchAsync(async (req, res, next) => {
     // 1. Hash the provided OTP
     const hashedOtp = crypto
       .createHash('sha256')
@@ -185,6 +165,24 @@ const authController = {
     if (!user) {
       return next(new AppError('OTP is invalid or has expired', 400));
     }
+    createSendToken(user, 200, res);
+  }),
+  resetPassword: catchAsync(async (req, res, next) => {
+    let token;
+    if (req.cookies.jwt) token = req.cookies.jwt;
+    if (!token) {
+      return new AppError('Cannot authorize you', 401);
+    }
+    console.log(token);
+    let decoded;
+    try {
+      decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+    } catch (err) {
+      return new AppError('Invalid token! Please log in again.', 401);
+    }
+
+    // Fetch user from database
+    const user = await User.findById(decoded.id);
     user.password = req.body.password;
     user.passwordConfirm = req.body.passwordConfirm;
     user.passwordResetToken = undefined;
@@ -192,8 +190,8 @@ const authController = {
 
     // 4. Update changedPasswordAt property for the user
     user.passwordChangedAt = Date.now();
-    await user.save();
 
+    await user.save({validateBeforeSave: false});
     // 5. Log the user in, send JWT
     createSendToken(user, 200, res);
   }),
@@ -202,16 +200,14 @@ const authController = {
     const user = await User.findById(req.user._id).select('+password');
 
     // 2. Check if POSTed current password is correct
-    if (
-      !(await user.correctPassword(req.body.passwordCurrent, user.password))
-    ) {
+    if (!(await user.correctPassword(req.body.passwordCurrent, user.password))) {
       return next(new AppError('Your current password is wrong.', 401));
     }
     // 3. If so, update password
     user.password = req.body.password;
     user.passwordConfirm = req.body.passwordConfirm;
     await user.save();
-    // User.findByIdAndUpdate will NOT work as intended!
+
 
     // 4. Log user in, send JWT
     createSendToken(user, 200, res);
