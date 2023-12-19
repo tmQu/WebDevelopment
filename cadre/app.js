@@ -15,7 +15,7 @@ import xss from 'xss-clean';
 import boardRouter from './routes/boardRoutes.js';
 import accountRouter from './routes/accountRoutes.js';
 import userRouter from './routes/userRoutes.js';
-import globalErrorHandler from './controllers/errorController.js';
+// import globalErrorHandler from './controllers/errorController.js';
 
 import cookieParser from 'cookie-parser';
 
@@ -89,6 +89,10 @@ app.use((req, res, next) => {
 app.use('/api/v1/boards', boardRouter);
 app.use('/api/v1/account', accountRouter);
 app.use('/api/v1/users', userRouter);
+
+app.get('/', (req, res) => {
+  res.render('navBar/navBar');
+});
 
 app.get('/login', (req, res) => {
   res.render('vwAccount/login');

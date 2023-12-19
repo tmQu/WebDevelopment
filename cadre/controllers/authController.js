@@ -146,26 +146,35 @@ const authController = {
       user.passwordResetExpires = undefined;
       await user.save({ validateBeforeSave: false });
       next(new AppError('There was an error sending the email. Try again later!'), 500);
+      // return res.status(500).json({
+      //   status: 'fail',
+      //   message: err,
+      // });
     }
   },
   verifyOTP: catchAsync(async (req, res, next) => {
-    // 1. Hash the provided OTP
-    const hashedOtp = crypto
-      .createHash('sha256')
-      .update(req.body.otp) // Assuming OTP is sent in the body of the request
-      .digest('hex');
+    try {
+      // 1. Hash the provided OTP
+      const hashedOtp = crypto
+        .createHash('sha256')
+        .update(req.body.otp) // Assuming OTP is sent in the body of the request
+        .digest('hex');
 
-    // 2. Find user based on the hashed OTP and check if it hasn't expired
-    const user = await User.findOne({
-      passwordResetToken: hashedOtp,
-      passwordResetExpires: { $gt: Date.now() },
-    });
-
-    // 3. If OTP is valid and there is a user, set the new password
-    if (!user) {
-      return next(new AppError('OTP is invalid or has expired', 400));
+      // 2. Find user based on the hashed OTP and check if it hasn't expired
+      const user = await User.findOne({
+        passwordResetToken: hashedOtp,
+        passwordResetExpires: { $gt: Date.now() },
+      });
+      console.log("Ok");
+      // 3. If OTP is valid and there is a user, set the new password
+      createSendToken(user, 200, res);
+    } catch (err) {
+      // return next(new AppError('OTP is invalid or has expired', 400));
+      return res.status(400).json({
+        status: 'fail',
+        message: 'OTP is invalid or has expired',
+      });
     }
-    createSendToken(user, 200, res);
   }),
   resetPassword: catchAsync(async (req, res, next) => {
     let token;
@@ -191,7 +200,7 @@ const authController = {
     // 4. Update changedPasswordAt property for the user
     user.passwordChangedAt = Date.now();
 
-    await user.save({validateBeforeSave: false});
+    await user.save({ validateBeforeSave: false });
     // 5. Log the user in, send JWT
     createSendToken(user, 200, res);
   }),
@@ -207,7 +216,6 @@ const authController = {
     user.password = req.body.password;
     user.passwordConfirm = req.body.passwordConfirm;
     await user.save();
-
 
     // 4. Log user in, send JWT
     createSendToken(user, 200, res);

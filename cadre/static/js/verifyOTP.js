@@ -72,18 +72,20 @@ const verifyOTP = async (otp) => {
       },
     });
     console.log(response);
-    if (response.data.status === 'success') {
+    if (response.data.status == 'success') {
       alert('Reset password');
       window.setTimeout(() => {
         location.assign('/resetPassword');
-      }, 1000);
+      }, 1500);
     }
   } catch (err) {
     alert(err.response.data.message);
   }
 };
 
-button.addEventListener('click', () => {
+button.addEventListener('click', (event) => {
+  event.preventDefault();
+
   let otp = '';
   inputs.forEach((input) => {
     otp += input.value;

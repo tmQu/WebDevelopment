@@ -1,5 +1,3 @@
-// import handleFactory from './handlerFactory.js';
-
 const forgotPassword = async (email) => {
   try {
     const response = await axios({
@@ -15,7 +13,7 @@ const forgotPassword = async (email) => {
       alert('OTP has been sent to your email');
       window.setTimeout(() => {
         location.assign('/verifyOTP');
-      }, 1000);
+      }, 1500);
     }
   } catch (err) {
     alert(err.response.data.message);
