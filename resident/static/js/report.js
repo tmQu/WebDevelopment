@@ -105,71 +105,24 @@ const uploadFile = function () {
   const warn = 'Vui lòng chọn tối đa 2 file';
   const warnEmpty = 'Vui lòng không bỏ trống file';
 
-  if (fileInput.files.length === 0) {
-    document.querySelector('#formFile').classList.add('is-invalid');
-    document.querySelector('#requiredFile').innerHTML = warnEmpty;
-  }
+    if (fileInput.files.length === 0) {
+        document.querySelector('#formFile').classList.add('is-invalid');
+        document.querySelector('#requiredFile').innerHTML = warnEmpty;
+    }
+    
+    if (fileInput.files.length > 2) {
+        document.querySelector('#formFile').classList.add('is-invalid');
+        document.querySelector('#requiredFile').innerHTML = warn;
+        //disable submit button
+        document.querySelector('#submit').classList.add('disabled');
+    }
 
-  if (fileInput.files.length > 2) {
-    document.querySelector('#formFile').classList.add('is-invalid');
-    document.querySelector('#requiredFile').innerHTML = warn;
-    //disable submit button
-    document.querySelector('#submit').classList.add('disabled');
-  } else {
-    document.querySelector('#submit').classList.remove('disabled');
-    document.querySelector('#formFile').classList.remove('is-invalid');
-    document.querySelector('#requiredFile').innerHTML = 'File đính kèm';
-  }
-};
-
-// const handlingSubmit = function() {
-//     const reportForm = document.querySelector('#report-form');
-//     document.getElementById('report-form').addEventListener('Submit', event => {
-//         event.preventDefault();
-
-//         const method = document.querySelector('#method').value;
-//         const name = document.querySelector('#name').value;
-//         const email = document.querySelector('#email').value;
-//         const phone = document.querySelector('#phone').value;
-//         const content = JSON.stringify(delta);
-//         const captcha = document.querySelector('#g-recaptcha').value;
-
-//         document.querySelector('#method').addEventListener('focusout', checkMethod);
-//         document.querySelector('#name').addEventListener('focusout', checkName);
-//         document.querySelector('#email').addEventListener('focusout', checkEmail);
-//         document.querySelector('#phone').addEventListener('focusout', checkPhone);
-
-//         const data = {
-//             method: method,
-//             name: name,
-//             email: email,
-//             phone: phone,
-//             content: content,
-//             captcha: captcha
-//         }
-
-//         // fetch('/report', {
-//         //     method: 'POST',
-//         //     body: JSON.stringify(data),
-//         //     headers: {
-//         //         'Content-Type': 'application/json',
-//         //         'X-CSRFToken': csrftoken,
-//         //     }
-//         // })
-//         // .then(response => response.json())
-
-//         console.log(data);
-//     })
-// }
-// function setReport(map) {
-//   const reportCover = document.getElementById('report');
-//   map.controls[google.maps.ControlPosition.TOP_LEFT].push(reportCover);
-
-//   // fileInput.addEventListener("change", event => {
-//   //     const files = event.target.files;
-//   //     uploadFile(files);
-//   // });
-// }
+    else {
+        document.querySelector('#submit').classList.remove('disabled');
+        document.querySelector('#formFile').classList.remove('is-invalid');
+        document.querySelector('#requiredFile').innerHTML = 'File đính kèm';
+    }
+}
 
 var quill = new Quill('#editor', {
   modules: {

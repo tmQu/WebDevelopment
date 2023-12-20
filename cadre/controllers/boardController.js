@@ -1,9 +1,20 @@
 import boardModel from '../models/boardModel.js';
+import accountModel from '../models/accountModel.js';
 
 const boardController = {
   getAllBoards: async (req, res) => {
     try {
-      const boards = await boardModel.find();
+      let query = boardModel.find();
+
+      if (req.query.district) {
+        query = query.where('addr.district').equals(req.query.district);
+      }
+
+      if (req.query.ward) {
+        query = query.where('addr.ward').equals(req.query.ward);
+      }
+
+      const boards = await query;
 
       res.status(200).json({
         status: 'success',
@@ -21,7 +32,7 @@ const boardController = {
   },
   getById: async (req, res) => {
     try {
-      const board = await boardModel.find({id: req.params.id});
+      const board = await boardModel.find({_id: req.params.id});
       console.log(board[0])
       res.status(200).json({
         status: 'success',
@@ -34,10 +45,28 @@ const boardController = {
       });
     }
   },
+  getByAccount: async (req, res) => {
+    try {
+      const account = await accountModel.findById(req.params.id);
+      const boards = await boardModel.find({ 'addr.district': account.role });
+
+      res.status(200).json({
+        status: 'success',
+        results: boards.length,
+        data: {
+          boards,
+        },
+      });
+    } catch (err) {
+      res.status(404).json({
+        status: 'fail',
+        message: err,
+      });
+    }
+  },
   createBoard: async (req, res) => {
     try {
       const newBoard = await boardModel.create(req.body);
-      console.log(req.body);
       res.status(201).json({
         status: 'success',
         data: {
@@ -93,7 +122,7 @@ const boardController = {
   },
   deleteBoard: async (req, res) => {
     try {
-      const board = await boardModel.findByIdAndDelete({id: req.params.id});
+      const board = await boardModel.findByIdAndDelete({_id: req.params.id});
       if (!board) {
         return res.status(404).json({
           status: 'fail',

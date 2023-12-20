@@ -3,7 +3,6 @@ import search from './search.js';
 import btnCurrentPosition from './btnCurrentPosition.js';
 import popUpLocationInfo from './popUpLocationInfo.js';
 import getAdvertisementBoards from './clusterMarker.js';
-// import billboard from './billboard.js'
 import filter from './filter.js';
 
 async function initMap() {

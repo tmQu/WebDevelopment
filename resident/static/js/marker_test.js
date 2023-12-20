@@ -202,7 +202,7 @@ function parseBillBoardContent(billboardLocation, billboard, id){
 //     })
 // }
 
-function setMarker(location, marker,infowindow)
+function setMarkerBillBoard(location, marker,infowindow)
 {
         
     marker.addListener('click', () => {
@@ -276,6 +276,17 @@ function setMarker(location, marker,infowindow)
     
         });
 
+    })
+}
+
+function setMarkerReport(location, marker, infowindow)
+{
+    marker.addListener('click', () => {
+        infowindow.setContent(parseContentMarker(location));
+        infowindow.open({
+            anchor: marker,
+            map
+        })
     })
 }
 
