@@ -1,0 +1,18 @@
+[{
+  "_id": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "advertisementForm": "Cổ động chính trị"
+},
+{
+  "_id": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "advertisementForm": "Quảng cáo thương mại"
+},
+{
+  "_id": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "advertisementForm": "Xã hội hóa"
+}]

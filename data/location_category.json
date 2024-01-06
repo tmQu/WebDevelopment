@@ -1,0 +1,54 @@
+[{
+  "_id": {
+    "$oid": "6592852960292ab573f7641d"
+  },
+  "locationCategory": "Đất công"
+},
+{
+  "_id": {
+    "$oid": "6592852960292ab573f7641e"
+  },
+  "locationCategory": "Công viên"
+},
+{
+  "_id": {
+    "$oid": "6592852960292ab573f7641f"
+  },
+  "locationCategory": "Hành lang an toàn giao thông"
+},
+{
+  "_id": {
+    "$oid": "6592852960292ab573f76420"
+  },
+  "locationCategory": "Đất tư nhân"
+},
+{
+  "_id": {
+    "$oid": "6592852960292ab573f76421"
+  },
+  "locationCategory": "Nhà ở riêng lẻ"
+},
+{
+  "_id": {
+    "$oid": "6592852960292ab573f76422"
+  },
+  "locationCategory": "Trung tâm thương mại"
+},
+{
+  "_id": {
+    "$oid": "6592852960292ab573f76423"
+  },
+  "locationCategory": "Chợ"
+},
+{
+  "_id": {
+    "$oid": "6592852960292ab573f76424"
+  },
+  "locationCategory": "Cây xăng"
+},
+{
+  "_id": {
+    "$oid": "6592852960292ab573f76425"
+  },
+  "locationCategory": "Nhà chờ xe buýt"
+}]

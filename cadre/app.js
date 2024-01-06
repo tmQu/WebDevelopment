@@ -75,6 +75,28 @@ app.use(mongoSanitize());
 
 app.use(xss());
 
+import boardLocation from './models/boardLocationModel.js';
+
+app.get('/test', async (req, res) => {
+  try{
+    const board = await boardLocation.find().populate('advertisementForm').populate('locationCategory').populate('addr.district').populate('addr.ward');
+
+    res.json(board);
+  }
+  catch(err){
+    console.log(err);
+  }
+})
+import ward from './models/wardModel.js';
+app.get('/test2', async (req, res) => {
+  try{
+    const board = await ward.find().populate('district');
+    res.json(board);
+  }
+  catch(err){
+    console.log(err);
+  }
+})
 // Serving static files
 app.use('/static', express.static('static'));
 // app.use(express.static(`/static`));

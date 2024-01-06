@@ -279,15 +279,15 @@ function setMarkerBillBoard(location, marker,infowindow)
     })
 }
 
-function setMarkerReport(location, marker, infowindow)
+function setMarkerReport(report, marker)
 {
     marker.addListener('click', () => {
-        infowindow.setContent(parseContentMarker(location));
-        infowindow.open({
-            anchor: marker,
-            map
+        $.get('url_api_report/' + report.id, (data, status) => {
+            let content = data.data;
+            
         })
     })
 }
 
-export default setMarker
+
+export default setMarkerBillBoard

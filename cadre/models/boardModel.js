@@ -1,94 +1,34 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-let BillboardLocationSchema = new mongoose.Schema({
-  id: {
-    type: String,
-    require: true,
-    unique: true,
-  },
-  location: {
-    lat: {
-      type: Number,
-      require: true,
-    },
-    lng: {
-      type: Number,
-      require: true,
-    },
-  },
+const billboardSchema = new mongoose.Schema({
 
-  addr: {
-    street_number: {
-      type: String,
-      require: true,
-    },
-    route: {
-      type: String,
-      require: true,
-    },
-    ward: {
-      type: String,
-      require: true,
-    },
-    district: {
-      type: String,
-      require: true,
-    },
-    city: {
-      type: String,
-      require: true,
-    },
-  },
 
-  isPlan: {
-    type: Boolean,
-    require: true,
-  },
-
-  advertisementForm: {
-    type: String,
-    require: true,
-  },
-
-  locationCategory: {
-    type: Array,
-    require: true,
-  },
-
-  billboards: [
-    {
-      idBillboard: {
+    boardLocation:{
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'board_locations', 
+        required: true
+    },
+    imgBoard: {
         type: String,
         require: true,
-      },
-      imgBillboard: {
+    },
+    size: {
         type: String,
         require: true,
-      },
-      size: {
-        type: String,
-        require: true,
-      },
-      billboardType: {
-        type: String,
-        require: true,
-      },
-      expireDate: {
-        // date with iso8601 format
+    },
+    boardType: {
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'billboard_types', 
+        required: true
+    },
+    expireDate: {
+    // date with iso8601 format
         type: Date,
         require: true,
         default: Date.now,
-      },
-    },
-  ],
-
-  imgBillboardLocation: {
-    type: String,
-    require: true,
-  },
+    }
 });
 
 
-const boardModel = mongoose.model("boards", BillboardLocationSchema);
-
-export default boardModel;
+const billboardModel = mongoose.model("boards", billboardSchema);  
+export default billboardModel;

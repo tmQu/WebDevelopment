@@ -9,9 +9,12 @@ const apiUrl = 'localhost:4000'
 function getAllLocation(callback){
   var url = 'http://'+ apiUrl + '/api/v1/boards/';
   var xhr = new XMLHttpRequest();
+  console.log('test1')
+
   xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE)
       {
+          console.log('test')
           callback(JSON.parse(xhr.responseText));
       }
   }
@@ -37,6 +40,7 @@ const getAdvertisementBoards = (map) => {
   // Event listener for the first switch
   getAllLocation((data) => {
     data = data.data;
+    console.log(data);
     var report = JSON.parse(localStorage.getItem('report'))
 
     document.getElementById('btnAds').addEventListener('change', function () {
@@ -135,8 +139,7 @@ const clusterMarker = async (map, data) => {
     // open info window when marker is clicked
     if (markerInfo.id.includes('BL'))
       setMarker(markerInfo, marker, infoWindow);
-    if (markerInfo.id.includes('RP'))
-      s
+    // if (markerInfo.id.includes('RP'))
     markers.push(marker)
   });
 

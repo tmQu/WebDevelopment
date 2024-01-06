@@ -1,7 +1,15 @@
 import boardModel from '../models/boardModel.js';
+import boardLocationModel from '../models/boardLocationModel.js';
+import wardModel from '../models/wardModel.js';
+import districtModel from '../models/districtModel.js';
+import locationCategoryModel from '../models/locationCategoryModel.js';
+import advertisementFormModel from '../models/advtFormModel.js';
+import boardTypeModel from '../models/boardTypeModel.js';
+
 import accountModel from '../models/accountModel.js';
 
 const boardController = {
+  
   getAllBoards: async (req, res) => {
     try {
       let query = boardModel.find();
