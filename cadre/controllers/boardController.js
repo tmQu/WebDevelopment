@@ -1,35 +1,25 @@
-import boardModel from '../models/boardModel.js';
-import boardLocationModel from '../models/boardLocationModel.js';
-import wardModel from '../models/wardModel.js';
-import districtModel from '../models/districtModel.js';
-import locationCategoryModel from '../models/locationCategoryModel.js';
-import advertisementFormModel from '../models/advtFormModel.js';
-import boardTypeModel from '../models/boardTypeModel.js';
-
+import boardModel from '../models/boardLocationModel.js';
 import accountModel from '../models/accountModel.js';
 
 const boardController = {
-  
   getAllBoards: async (req, res) => {
     try {
       let query = boardModel.find();
 
-      if (req.query.district) {
-        query = query.where('addr.district').equals(req.query.district);
-      }
-
-      if (req.query.ward) {
-        query = query.where('addr.ward').equals(req.query.ward);
-      }
-
       const boards = await query;
+
+      if (boards.length === 0 || !boards) {
+        return res.status(404).json({
+          status: 'fail',
+          message: 'No boards found',
+        });
+      }
 
       res.status(200).json({
         status: 'success',
         results: boards.length,
         data: 
           boards,
-        
       });
     } catch (err) {
       res.status(404).json({
