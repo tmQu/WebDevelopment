@@ -1,0 +1,181 @@
+<!-- Search bar -->
+<input
+  id="pac-input"
+  class="controls"
+  type="text"
+  placeholder="&#xF002; Search Address" />
+
+<div id="sub-window">
+  <div class="carousel slide mt-4">
+    <div class="carousel-inner" id="carousel-location">
+      <img
+        src="../img/test_billboard.jpg"
+        class="d-block w-100"
+        style="max-height: 240px; object-fit: cover" />
+    </div>
+
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExample"
+      data-bs-slide="prev">
+      <span
+        class="carousel-control-prev-icon shadow"
+        aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExample"
+      data-bs-slide="next">
+      <span
+        class="carousel-control-next-icon shadow"
+        aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <div class="of-scroll">
+    <div class="overflow-content"></div>
+  </div>
+
+  <!-- <div id = 'detail-infor'>
+        <button type="button" class="btn-close" aria-label="Close"></button>
+
+      </div> -->
+
+  <button id="btn-collapse" class="btn btn-light"></button>
+  <script>
+        document.querySelector('#btn-collapse').onclick = () => {
+          var subwindow = document.getElementById('sub-window');
+          if (subwindow.style.width == '0px') subwindow.style.width = '35%';
+          else {
+            subwindow.style.width = '0';
+          }
+        };
+      </script>
+</div>
+
+<!-- Current location button -->
+<div class="location-button" id="btnCurPosition">
+  <div class="location-icon">
+    <i class="bi bi-crosshair"></i>
+  </div>
+</div>
+
+<!-- Hiển thị thông tin vị trí khi nhấn -->
+<div id="info">
+  <span id="close-button">&times;</span>
+  <h2>Thông tin vị trí</h2>
+  <p id="location-info"></p>
+</div>
+
+<!-- Map -->
+<div id="map"></div>
+<div id="infowindow-content">
+  <span id="place-name" class="title"></span>
+  <br />
+  <span id="place-address"></span>
+</div>
+
+<!-- Filter -->
+<div id="Filter">
+  <div class="form-check form-switch" id="switch">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      role="switch"
+      id="btnAds" />
+    <label class="form-check-label" for="btnAds">Bảng QC</label>
+  </div>
+  <div class="form-check form-switch" id="switch">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      role="switch"
+      id="flexSwitchCheckDefault" />
+    <label class="form-check-label" for="flexSwitchCheckDefault">
+      Báo cáo vi phạm
+    </label>
+  </div>
+</div>
+
+<!--  -->
+<div id="report">
+  <!-- Report form -->
+  <form method="post" action="http://localhost:4000/test" id="report-form">
+    <div class="mb-3">
+      <label for="method" class="form-label" id="requiredMethod">
+        Hình thức báo cáo
+      </label>
+      <select id="method" class="form-control" name="method">
+        <option value="0">Chọn hình thức báo cáo</option>
+        <option value="1">Tố giác sai phạm</option>
+        <option value="2">Đăng ký nội dung</option>
+        <option value="3">Đóng góp ý kiến</option>
+        <option value="4">Giải đáp thắc mắc</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label" id="requiredName">
+        Họ tên người gửi báo cáo
+      </label>
+      <input
+        type="name"
+        id="name"
+        name="name"
+        class="form-control"
+        placeholder="Nguyễn Văn A"
+        required />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label" id="requiredEmail">Email</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        name="email"
+        placeholder="name@example.com"
+        required />
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label" id="requiredPhone">
+        Điện thoại liên lạc
+      </label>
+      <input
+        type="phone"
+        id="phone"
+        class="form-control"
+        name="phone"
+        placeholder="0945.xxx.xxx"
+        required />
+    </div>
+    <div class="mb-3">
+      <label
+        for="content"
+        class="form-label"
+        id="requiredContent"
+        name="content">
+        Nội dung báo cáo
+      </label>
+      <div id="editor"></div>
+    </div>
+    <div class="mb-3">
+      <label for="formFile" class="form-label" name="file">
+        Hình ảnh minh hoạ
+      </label>
+      <input
+        class="form-control"
+        type="file"
+        id="formFile"
+        multiple
+        required />
+    </div>
+    <div
+      class="g-recaptcha"
+      data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
+    <button type="submit" class="btn btn-primary" id="submit">
+      Gửi báo cáo
+    </button>
+  </form>
+</div>
