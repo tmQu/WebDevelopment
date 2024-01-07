@@ -10,9 +10,9 @@ import accountModel from '../models/accountModel.js';
 
 const boardController = {
   
-  getAllBoards: async (req, res) => {
+  getAllBoardLocation: async (req, res) => {
     try {
-      let query = boardModel.find();
+      let query = boardLocationModel.find().populate('addr.ward').populate('addr.district').populate('advertisementForm').populate('locationCategory');
 
       if (req.query.district) {
         query = query.where('addr.district').equals(req.query.district);
@@ -38,13 +38,12 @@ const boardController = {
       });
     }
   },
-  getById: async (req, res) => {
+  getBoardInLocation: async (req, res) => {
     try {
-      const board = await boardModel.find({_id: req.params.id});
-      console.log(board[0])
+      const board = await boardModel.find({boardLocation: req.params.id});
       res.status(200).json({
         status: 'success',
-        data: board[0],
+        data: board,
       });
     } catch (err) {
       res.status(404).json({

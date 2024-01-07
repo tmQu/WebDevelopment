@@ -14,7 +14,6 @@ function getAllLocation(callback){
   xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE)
       {
-          console.log('test')
           callback(JSON.parse(xhr.responseText));
       }
   }
