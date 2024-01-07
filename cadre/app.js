@@ -15,7 +15,7 @@ import xss from 'xss-clean';
 import boardRouter from './routes/boardRoutes.js';
 import accountRouter from './routes/accountRoutes.js';
 import userRouter from './routes/userRoutes.js';
-//import globalErrorHandler from './controllers/errorController.js';
+// import globalErrorHandler from './controllers/errorController.js';
 import reportRouter from './routes/reportRoutes.js';
 import reportController from './controllers/reportController.js';
 import reportMethodController from './controllers/reportMethodController.js';
@@ -49,7 +49,11 @@ const corsOptions = {
   credentials: true,
 };
 app.use(cors(corsOptions));
-
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 // 1) GLOBAL MIDDLEWARES
 app.use(
   helmet({

@@ -3,13 +3,11 @@ import setMarker from "./marker_test.js";
 var advertisementBoards = new Array();
 var mc = null;
 
-
 const apiUrl = 'localhost:4000'
 
 function getAllLocation(callback){
   var url = 'http://'+ apiUrl + '/api/v1/boards/';
   var xhr = new XMLHttpRequest();
-  console.log('test1')
 
   xhr.onreadystatechange = () => {
       if (xhr.readyState === XMLHttpRequest.DONE)
@@ -64,10 +62,7 @@ const getAdvertisementBoards = (map) => {
           handleMarkersRemoval(report, map, advertisementBoards);
         }
       });
-  
   })
-
-  
 };
 
 const addMarker = (newMarkers, currentMarkers) => {
@@ -88,7 +83,6 @@ const removeMarker = (removeMarker, currentMarkers) => {
         removeMarker[i].id === currentMarkers[j].id
       ) {
         currentMarkers.splice(j, 1);
-        
         break;
       }
     }
@@ -118,26 +112,26 @@ const clusterMarker = async (map, data) => {
   const markers = []
   
   data.forEach((markerInfo) => {
-    const iconImage = document.createElement('img');
-    iconImage.style.width = '25px'
-    console.log(markerInfo.id)
-    if (markerInfo.id.includes('BL'))
-    {
-      iconImage.src = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+    // const iconImage = document.createElement('img');
+    // iconImage.style.width = '25px'
+    // console.log(markerInfo.id)
+    // if (markerInfo.id.includes('BL'))
+    // {
+    //   iconImage.src = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
 
-    }
-    else {
-      iconImage.src = "../img/ad.256x256.png"
-    }
+    // }
+    // else {
+    //   iconImage.src = "../img/ad.256x256.png"
+    // }
     const marker = new AdvancedMarkerElement({
       position: markerInfo.location,
-      content: iconImage,
+      // content: iconImage,
     });
 
     // markers can only be keyboard focusable when they have click listeners
     // open info window when marker is clicked
-    if (markerInfo.id.includes('BL'))
-      setMarker(markerInfo, marker, infoWindow);
+    // if (markerInfo.id.includes('BL'))
+    //   setMarker(markerInfo, marker, infoWindow);
     // if (markerInfo.id.includes('RP'))
     markers.push(marker)
   });
@@ -148,8 +142,6 @@ const clusterMarker = async (map, data) => {
     map,
     markers,
   });
-
-
 };
 
 

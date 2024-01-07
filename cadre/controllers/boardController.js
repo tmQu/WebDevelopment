@@ -1,35 +1,31 @@
-import boardModel from '../models/boardModel.js';
 import boardLocationModel from '../models/boardLocationModel.js';
-import wardModel from '../models/wardModel.js';
-import districtModel from '../models/districtModel.js';
-import locationCategoryModel from '../models/locationCategoryModel.js';
-import advertisementFormModel from '../models/advtFormModel.js';
-import boardTypeModel from '../models/boardTypeModel.js';
-
+import boardModel from '../models/boardModel.js';
 import accountModel from '../models/accountModel.js';
 
 const boardController = {
-  
   getAllBoardLocation: async (req, res) => {
     try {
-      let query = boardLocationModel.find().populate('addr.ward').populate('addr.district').populate('advertisementForm').populate('locationCategory');
-
-      if (req.query.district) {
-        query = query.where('addr.district').equals(req.query.district);
-      }
-
-      if (req.query.ward) {
-        query = query.where('addr.ward').equals(req.query.ward);
-      }
+      console.log('get all board location');
+      let query = boardLocationModel.find()
+                        .populate('advertisementForm')
+                        .populate('locationCategory')
+                        .populate('addr.district')
+                        .populate('addr.ward');
 
       const boards = await query;
+      console.log(boards);
+      if (boards.length === 0 || !boards) {
+        return res.status(404).json({
+          status: 'fail',
+          message: 'No boards found',
+        });
+      }
 
       res.status(200).json({
         status: 'success',
         results: boards.length,
         data: 
           boards,
-        
       });
     } catch (err) {
       res.status(404).json({
