@@ -2,24 +2,21 @@ import reportMethodModel from "../models/reportMethodModel.js";
 
 const reportMethodController = {
     getAllMethods: async (req, res) => {
-        const methods = await reportMethodModel.find();
-        //console.log(methods);
-        return methods;
-        // try {
-        //     const methods = await reportMethodModel.find();
-        //     res.status(200).json({
-        //         success: true,
-        //         results: methods.length,
-        //         data: {
-        //             methods,
-        //         },
-        //     });
-        // } catch (error) {
-        //     res.status(500).json({
-        //         success: false,
-        //         message: error.message
-        //     });
-        // }
+        try {
+            const methods = await reportMethodModel.find();
+            res.status(200).json({
+                success: true,
+                results: methods.length,
+                data: {
+                    methods,
+                },
+            });
+        } catch (error) {
+            res.status(500).json({
+                success: false,
+                message: error.message
+            });
+        }
     },
     getByID: async (req, res) => {
         try {
