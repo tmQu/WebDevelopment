@@ -18,7 +18,7 @@ const billboardSchema = new mongoose.Schema({
     },
     boardType: {
         type: mongoose.Schema.Types.ObjectId, 
-        ref: 'billboard_types', 
+        ref: 'board_types', 
         required: true
     },
     expireDate: {

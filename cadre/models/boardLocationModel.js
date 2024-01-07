@@ -55,7 +55,7 @@ let BillboardLocationSchema = new mongoose.Schema({
 
 
   imgBillboardLocation: {
-    type: String,
+    type: Array,
     require: true,
   }
 });

@@ -1,11 +1,12 @@
 import boardLocationModel from '../models/boardLocationModel.js';
 import boardModel from '../models/boardModel.js';
 import accountModel from '../models/accountModel.js';
+import  mongoose from 'mongoose';
 
 const boardController = {
   getAllBoardLocation: async (req, res) => {
     try {
-      console.log('get all board location');
+
       let query = boardLocationModel.find()
                         .populate('advertisementForm')
                         .populate('locationCategory')
@@ -13,7 +14,7 @@ const boardController = {
                         .populate('addr.ward');
 
       const boards = await query;
-      console.log(boards);
+
       if (boards.length === 0 || !boards) {
         return res.status(404).json({
           status: 'fail',
@@ -34,12 +35,52 @@ const boardController = {
       });
     }
   },
-  getBoardInLocation: async (req, res) => {
+  getBoardLocationWithId: async (req, res) => {
     try {
-      const board = await boardModel.find({boardLocation: req.params.id});
+
+      const board = await boardLocationModel.findById(req.params.id)
+                        .populate('advertisementForm')
+                        .populate('locationCategory')
+                        .populate('addr.district')
+                        .populate('addr.ward');
+      if (!board) {
+        return res.status(404).json({
+          status: 'fail',
+          message: 'No board found',
+        });
+      }
+
       res.status(200).json({
         status: 'success',
-        data: board,
+        data: {
+          board,
+        },
+      });
+    } catch (err) {
+      res.status(404).json({
+        status: 'fail',
+        message: err,
+      });
+    }
+  },
+  getBoardInLocation: async (req, res) => {
+    try {
+
+
+      var boards = await boardModel.find({boardLocation: mongoose.Types.ObjectId(req.params.id)}).populate('boardType');
+      var boardLocation = await boardLocationModel.findById(req.params.id)
+                        .populate('advertisementForm')
+                        .populate('locationCategory')
+                        .populate('addr.district')
+                        .populate('addr.ward');
+
+
+      res.status(200).json({
+        status: 'success',
+        data: {
+          boards: boards,
+          boardLocation: boardLocation
+        }
       });
     } catch (err) {
       res.status(404).json({

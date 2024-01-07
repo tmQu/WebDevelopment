@@ -10,8 +10,11 @@ router
   .post(boardController.createBoard);
 
 router
-  .route('/:id')
+  .route('/detail/:id')
   .get(boardController.getBoardInLocation)
+router
+  .route('/:id')
+  .get(boardController.getBoardLocationWithId)
   .patch(boardController.updateBoard)
   .delete(
     authController.protect,

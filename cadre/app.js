@@ -23,6 +23,16 @@ import reportMethodRoutes from './routes/reportMethodRoutes.js';
 
 import cookieParser from 'cookie-parser';
 
+// import model
+import boardLocation from './models/boardLocationModel.js';
+import advtFormModel from './models/advtFormModel.js';
+import locationCategoryModel from './models/locationCategoryModel.js';
+import districtModel from './models/districtModel.js';
+import wardModel from './models/wardModel.js';
+import mongoose from 'mongoose';
+import boardModel from './models/boardModel.js';
+import boardTypeModel from './models/boardTypeModel.js';
+
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -45,7 +55,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('trust proxy', 1);
 
 const corsOptions = {
-  origin: 'http://localhost:4000',
+  origin: ['http://localhost:4000', 'http://localhost:3000'],
   credentials: true,
 };
 app.use(cors(corsOptions));
@@ -58,6 +68,7 @@ app.use((req, res, next) => {
 app.use(
   helmet({
     contentSecurityPolicy: false,
+    crossOriginResourcePolicy: false
   })
 );
 
@@ -83,22 +94,18 @@ app.use(mongoSanitize());
 
 app.use(xss());
 
-import boardLocation from './models/boardLocationModel.js';
+// app.get('/test', async (req, res) => {
+//   try {
+//     const boards = await boardModel.find().populate('boardType');
+    
 
-app.get('/test', async (req, res) => {
-  try {
-    const board = await boardLocation
-      .find()
-      .populate('advertisementForm')
-      .populate('locationCategory')
-      .populate('addr.district')
-      .populate('addr.ward');
 
-    res.json(board);
-  } catch (err) {
-    console.log(err);
-  }
-});
+  
+//     res.json(boards);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 import ward from './models/wardModel.js';
 app.get('/test2', async (req, res) => {
   try {

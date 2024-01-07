@@ -112,8 +112,8 @@ const clusterMarker = async (map, data) => {
   const markers = []
   
   data.forEach((markerInfo) => {
-    // const iconImage = document.createElement('img');
-    // iconImage.style.width = '25px'
+    const iconImage = document.createElement('img');
+    iconImage.style.width = '50px'
     // console.log(markerInfo.id)
     // if (markerInfo.id.includes('BL'))
     // {
@@ -123,9 +123,24 @@ const clusterMarker = async (map, data) => {
     // else {
     //   iconImage.src = "../img/ad.256x256.png"
     // }
+
+
+    if (markerInfo.id)
+    {
+      iconImage.src = "../img/icon/Repot.png"
+    }
+    else{
+      if (markerInfo.isPlan == false)
+      {
+        iconImage.src = "../img/icon/ad_not_plan.png"
+      }
+      else{
+        iconImage.src = "../img/icon/ad_planned.png"
+      }
+    }
     const marker = new AdvancedMarkerElement({
       position: markerInfo.location,
-      // content: iconImage,
+      content: iconImage,
     });
 
     // markers can only be keyboard focusable when they have click listeners
@@ -133,6 +148,14 @@ const clusterMarker = async (map, data) => {
     // if (markerInfo.id.includes('BL'))
     //   setMarker(markerInfo, marker, infoWindow);
     // if (markerInfo.id.includes('RP'))
+
+    if (markerInfo.id)
+    {
+
+    }
+    else{
+      setMarker(markerInfo, marker, infoWindow);
+    }
     markers.push(marker)
   });
 
