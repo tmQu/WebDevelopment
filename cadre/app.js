@@ -157,22 +157,22 @@ app.get('/reports/:id', (req, res) => {
 //   res.render('vwReport/report', { method, layout: 'report' });
 // });
 
-app.get('/viewReports', async (req, res) => {
-  let reports = await reportController.getAllReports();
-  //console.log(reports);
-  reports = reports.map(report => report.toObject());
-  res.render('vwReport/listReports', { reports });
-});
+// app.get('/viewReports', async (req, res) => {
+//   let reports = await reportController.getAllReports();
+//   //console.log(reports);
+//   reports = reports.map(report => report.toObject());
+//   res.render('vwReport/listReports', { reports });
+// });
 
-app.get('/viewDetail/:id', async (req, res) => {
-  let report = await reportController.getByID(req.params.id);
-  //console.log(report.method);
-  report = report.toObject();
-  //show image from report
-  res.contentType(report.image.contentType);
+// app.get('/viewDetail/:id', async (req, res) => {
+//   let report = await reportController.getByID(req.params.id);
+//   //console.log(report.method);
+//   report = report.toObject();
+//   //show image from report
+//   res.contentType(report.image.contentType);
   
-  res.render('vwReport/detailReport', { report });
-});
+//   res.render('vwReport/detailReport', { report });
+// });
 
 
 // app.use(globalErrorHandler);
