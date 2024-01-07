@@ -1,0 +1,103 @@
+/* 
+ * Always set the map height explicitly to define the size of the div element
+ * that contains the map. 
+ */
+* {
+  font-family: sans-serif;
+}
+
+#map {
+  height: 100%;
+}
+
+/* 
+ * Optional: Makes the sample page fill the window. 
+ */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#description {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+#infowindow-content .title {
+  font-weight: bold;
+}
+
+#infowindow-content {
+  display: none;
+}
+
+#map #infowindow-content {
+  display: inline;
+}
+
+/* Search bar */
+
+.pac-card {
+  position: absolute;
+  background-color: #fff;
+  border: 0;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+  margin: 10px;
+  padding: 0 0.5em;
+  font: 400 18px;
+  overflow: hidden;
+  padding: 0;
+}
+
+#pac-container {
+  padding-bottom: 12px;
+  margin-right: 12px;
+}
+
+.pac-controls {
+  display: inline-block;
+  padding: 5px 11px;
+}
+
+.pac-controls label {
+  font-size: 13px;
+  font-weight: 300;
+}
+
+#pac-input {
+  background-color: #fff;
+  font: 300 15px FontAwesome;
+  margin: 5px 0 0 10px;
+  padding: 0 13px;
+  text-overflow: ellipsis;
+  width: 70%;
+  height: 40px;
+  border: 0.5px solid whitesmoke;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+#pac-input:focus,
+#pac-input:hover {
+  border: 0.5px solid rgb(184, 187, 192);
+  cursor: pointer;
+}
+
+#pac-input:focus::placeholder {
+  color: transparent;
+}
+
+#title {
+  color: #fff;
+  background-color: #4d90fe;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 6px 12px;
+}
+
+#target {
+  width: 345px;
+}

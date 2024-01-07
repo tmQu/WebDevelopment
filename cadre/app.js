@@ -126,6 +126,12 @@ app.use('/api/v1/reportMethods', reportMethodRoutes);
 // });
 
 app.get('/', (req, res) => {
+  res.render('vwHome/index', {
+    layout: 'main',
+  });
+});
+
+app.get('/login', (req, res) => {
   res.render('vwAccount/login');
 });
 

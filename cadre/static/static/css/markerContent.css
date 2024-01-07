@@ -1,0 +1,17 @@
+.marker-content .advt-form {
+    margin-top: 0px;
+}
+
+.location-category, .addr{
+    margin: 5px 0px;
+    line-height: 1.6;
+}
+
+.marker-content .planning {
+    margin-top: 0px;
+}
+
+.marker-content img {
+    width: 15px;
+    margin-right: 10px
+}
