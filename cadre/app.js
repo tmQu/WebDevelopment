@@ -24,7 +24,7 @@ import reportMethodRoutes from './routes/reportMethodRoutes.js';
 import cookieParser from 'cookie-parser';
 
 // import model
-import boardLocation from './models/boardLocationModel.js';
+import boardLocationModel from './models/boardLocationModel.js';
 import advtFormModel from './models/advtFormModel.js';
 import locationCategoryModel from './models/locationCategoryModel.js';
 import districtModel from './models/districtModel.js';
@@ -136,10 +136,18 @@ app.use('/api/v1/reportMethods', reportMethodRoutes);
 //   res.render('navBar/navBar');
 // });
 
-app.get('/', (req, res) => {
+
+app.get('/', async (req, res) => {
+  var boardLocation = await boardLocationModel.find().populate('advertisementForm').populate('locationCategory').populate('addr.district').populate('addr.ward');
+  var boards = await boardModel.find().populate('boardType');
+  console.log(boardLocation);
+  console.log(boards);
   res.render('vwHome/index', {
     layout: 'main',
+    boardLocation: JSON.stringify(boardLocation),
+    boards: JSON.stringify(boards)
   });
+
 });
 
 app.get('/login', (req, res) => {

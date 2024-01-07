@@ -4,6 +4,15 @@ import accountModel from '../models/accountModel.js';
 import  mongoose from 'mongoose';
 
 const boardController = {
+  test: async (req, res) => {
+    try {
+      const boardLocation = await boardLocationModel.find().populate('advertisementForm').populate('locationCategory').populate('addr.district').populate('addr.ward');
+      const boards = await boardModel.find()
+      
+    } catch (err) {
+      console.log(err);
+    }
+  },
   getAllBoardLocation: async (req, res) => {
     try {
 
