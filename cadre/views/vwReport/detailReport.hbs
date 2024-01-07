@@ -1,0 +1,34 @@
+{{#with report}}
+  <div class="col-sm-4">
+    <div class="card" style="padding: 10px 10px;">
+      <h5 class="card-title">
+        {{! return to viewReports page }}
+        <a href="/viewReports"><i class="bi bi-arrow-return-left"></i></a>
+
+        {{#unless status}}
+          <span class="badge badge-danger">Chưa xử lý</span>
+        {{else}}
+          <span class="badge badge-success">Đã xử lý</span>
+        {{/unless}}
+      </h5>
+      {{!-- <img class="card-img-top" src="{{image}}" /> --}}
+      <p class="card-text">
+        <strong>Mô tả:</strong> {{description}}
+        {{!-- {{#scripTags description}}
+        {{/scripTags}} --}}
+      </p>
+
+      <div>
+
+        {{! switch from "chưa xử lý" to "đã xử lý" and reload }}
+        <form action="">
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="status" />
+            <label class="form-check-label" for="status">Đã xử lý</label>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+{{/with}}

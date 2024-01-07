@@ -1,7 +1,7 @@
 import express from 'express';
 import morgan from 'morgan';
 import { fileURLToPath } from 'url';
-import { dirname } from 'path';
+import path, { dirname } from 'path';
 
 import { engine } from 'express-handlebars';
 import hbs_sections from 'express-handlebars-sections';
@@ -15,7 +15,11 @@ import xss from 'xss-clean';
 import boardRouter from './routes/boardRoutes.js';
 import accountRouter from './routes/accountRoutes.js';
 import userRouter from './routes/userRoutes.js';
-// import globalErrorHandler from './controllers/errorController.js';
+//import globalErrorHandler from './controllers/errorController.js';
+import reportRouter from './routes/reportRoutes.js';
+import reportController from './controllers/reportController.js';
+import reportMethodController from './controllers/reportMethodController.js';
+import reportMethodRoutes from './routes/reportMethodRoutes.js';
 
 import cookieParser from 'cookie-parser';
 
@@ -36,7 +40,7 @@ app.engine(
 );
 
 app.set('view engine', 'hbs');
-app.set('views', `${__dirname}/views`);
+app.set('views', path.join(__dirname, 'views'));
 
 app.set('trust proxy', 1);
 
@@ -111,12 +115,14 @@ app.use((req, res, next) => {
 app.use('/api/v1/boards', boardRouter);
 app.use('/api/v1/account', accountRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/reports', reportRouter);
+app.use('/api/v1/reportMethods', reportMethodRoutes);
+
+// app.get('/', (req, res) => {
+//   res.render('navBar/navBar');
+// });
 
 app.get('/', (req, res) => {
-  res.render('navBar/navBar');
-});
-
-app.get('/login', (req, res) => {
   res.render('vwAccount/login');
 });
 
@@ -131,6 +137,32 @@ app.get('/verifyOTP', (req, res) => {
 app.get('/resetPassword', (req, res) => {
   res.render('vwAccount/resetPassword');
 });
+
+app.get('/sendReport', async (req, res) => {
+  let method = await reportMethodController.getAllMethods();
+  //console.log(method);
+  method = method.map(method => method.toObject());
+  //res.render('vwReport/report', { layout: 'report'});
+  res.render('vwReport/report', { method, layout: 'report' });
+});
+
+app.get('/viewReports', async (req, res) => {
+  let reports = await reportController.getAllReports();
+  //console.log(reports);
+  reports = reports.map(report => report.toObject());
+  res.render('vwReport/listReports', { reports });
+});
+
+app.get('/viewDetail/:id', async (req, res) => {
+  let report = await reportController.getByID(req.params.id);
+  //console.log(report.method);
+  report = report.toObject();
+  //show image from report
+  res.contentType(report.image.contentType);
+  
+  res.render('vwReport/detailReport', { report });
+});
+
 
 // app.use(globalErrorHandler);
 

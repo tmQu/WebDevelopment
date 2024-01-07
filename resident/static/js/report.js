@@ -137,20 +137,39 @@ document.querySelector('#email').addEventListener('focusout', checkEmail);
 document.querySelector('#phone').addEventListener('focusout', checkPhone);
 document.querySelector('#formFile').addEventListener('focusout', uploadFile);
 
-function getData() {
-  const method = document.querySelector('#method').value;
-  const name = document.querySelector('#name').value;
-  const email = document.querySelector('#email').value;
-  const phone = document.querySelector('#phone').value;
-  const content = quill.root.innerHTML;
-  const file = document.querySelector('#formFile').files;
+//reportForm = document.getElementById('report-form');
+//reportForm.addEventListener('submit', getData);
 
-  //alert(content);
-  //this.submit();
-}
+const reportForm = document.getElementById('report-form');
+reportForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const senderName = document.getElementById('name').value;
+  const senderEmail = document.getElementById('email').value;
+  const senderPhone = document.getElementById('phone').value;
 
-reportForm = document.getElementById('report-form');
-reportForm.addEventListener('submit', getData);
-console.log('Helo');
+  const method = document.getElementById('method').value;
 
-// export default setReport
+  // console.log(senderName);
+  // console.log(senderEmail);
+  // console.log(senderPhone);
+  // console.log(method);
+
+  try {
+    const res = await axios({
+      method: 'POST',
+      url: 'http://localhost:4000/api/v1/reports',
+      data: {
+        senderName,
+        senderEmail,
+        senderPhone,
+        method,
+      },
+    });
+    console.log(res);
+    if (res.data.status === 'success') {
+      alert('Report sent successfully!');
+    }
+  } catch (err) {
+    alert('Report sent failed!');
+  }
+})

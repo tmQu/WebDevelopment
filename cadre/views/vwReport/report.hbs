@@ -1,0 +1,125 @@
+{{#section "js"}}
+  <script src="../../static/js/reports.js"></script>
+{{/section}}
+
+<style>
+  .container { margin-top: -60px; } 
+  
+  #editor { background-color: #ffffff; margin:
+  10px; }
+
+  .editor-container {
+    height: fit-content;
+  }
+</style>
+
+<div class="container">
+  <div class="col-md-6 col-lg-12 d-flex align-items-center" id="form-bg">
+    <div class="card-body p-4 p-lg-5 text-black" id="form-text">
+      <form id="reportForm" action="" enctype="multipart/form-data">
+        <div class="d-flex align-items-center mb-3 pb-1">
+        </div>
+
+        <h1 class="fw-normal mb-3 pb-3" style="text-align: center;">
+          Report Board
+        </h1>
+        <div class="row">
+          <div class="col-5">
+            <div class="form-outline mb-3">
+              <label class="form-label" for="method" id="requiredMethod">
+                Hình thức báo cáo
+              </label>
+              <select id="method" class="form-control" name="method">
+                <option value="0">Chọn hình thức báo cáo</option>
+                {{#each method}}
+                  <option value="{{this.reportMethod}}">{{this.reportMethod}}</option>
+                {{/each}}
+              </select>
+            </div>
+
+            <div class="form-outline mb-3">
+              <label class="form-label" for="txtName" id="requiredName">
+                Họ tên người gửi báo cáo
+              </label>
+              <input
+                type="name"
+                id="txtName"
+                class="form-control form-control-md"
+                name="name"
+              />
+            </div>
+
+            <div class="form-outline mb-3">
+              <label class="form-label" for="txtEmail" id="requiredEmail">
+                Email
+              </label>
+              <input
+                type="email"
+                id="txtEmail"
+                class="form-control form-control-md"
+                name="email"
+                placeholder="name@example.com"
+              />
+            </div>
+
+            <div class="form-outline mb-3">
+              <label class="form-label" for="txtPhone" id="requiredPhone">
+                Điện thoại liên lạc
+              </label>
+              <input
+                type="phone"
+                id="txtPhone"
+                class="form-control form-control-md"
+                name="phone"
+              />
+            </div>
+          </div>
+
+          <div class="col-7">
+            <div class="form-outline mb-4">
+              <label
+                class="form-label"
+                for="editor"
+                id="requiredContent"
+                name="content"
+              >
+                Nội dung báo cáo
+              </label>
+              <div class="editor-container">
+              <div id="editor"></div>
+              </div>
+            </div>
+            
+            <div class="form-outline mb-4">
+              <label
+                for="formFile"
+                class="form-label"
+                name="file"
+                id="requiredFile"
+              >Hình ảnh minh hoạ</label>
+              <input
+                class="form-control form-control-lg"
+                type="file"
+                id="formFile"
+                multiple
+                required
+                accept="image/jpg, image/jpeg, image/png"
+                name="image"
+              />
+            </div>
+
+            <div
+              class="g-recaptcha"
+              data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+            ></div>
+          </div>
+        </div>
+        <div class="pt-1 mb-4">
+          <button class="btn btn-dark btn-lg btn-block" type="submit">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
