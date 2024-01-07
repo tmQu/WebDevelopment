@@ -47,49 +47,30 @@ const reportController = {
     getAllReports: async (req, res) => {
         try {
             const reports = await Report.find();
-            // res.status(200).json({
-            //     status: 'success',
-            //     results: reports.length,
-            //     data: {
-            //       reports,
-            //     },
-            // });
-            return reports;
-            // const reports = await reportModel.find();
-            // return reports;
+            res.status(200).json({
+                status: 'success',
+                results: reports.length,
+                data: {
+                  reports,
+                },
+            });
         } catch (error) {
             console.log(error);
         }
-        //     console.log('helo?');
-        //     res.status(200).json({
-        //         status: 'success',
-        //         results: reports.length,
-        //         data: {
-        //           reports,
-        //         },
-        //     });
-        // } catch (error) {
-        //     res.status(500).json({
-        //         success: false,
-        //         message: error.message
-        //     });
-        // }
     },
 
     // Get a report
     getByID: async (req, res) => {
         try {
             const report = await Report.findById(req);
-            //res.send(report.image.data);
 
-            // res.status(200).json({
-            //     status: 'success',
-            //     results: report.length,
-            //     data: {
-            //       report, 
-            //     },
-            // });
-            return report;
+            res.status(200).json({
+                status: 'success',
+                results: report.length,
+                data: {
+                  report, 
+                },
+            });
         } catch (error) {
             console.log(error);
         }

@@ -82,25 +82,28 @@ app.use(xss());
 import boardLocation from './models/boardLocationModel.js';
 
 app.get('/test', async (req, res) => {
-  try{
-    const board = await boardLocation.find().populate('advertisementForm').populate('locationCategory').populate('addr.district').populate('addr.ward');
+  try {
+    const board = await boardLocation
+      .find()
+      .populate('advertisementForm')
+      .populate('locationCategory')
+      .populate('addr.district')
+      .populate('addr.ward');
 
     res.json(board);
-  }
-  catch(err){
+  } catch (err) {
     console.log(err);
   }
-})
+});
 import ward from './models/wardModel.js';
 app.get('/test2', async (req, res) => {
-  try{
+  try {
     const board = await ward.find().populate('district');
     res.json(board);
-  }
-  catch(err){
+  } catch (err) {
     console.log(err);
   }
-})
+});
 // Serving static files
 app.use('/static', express.static('static'));
 // app.use(express.static(`/static`));
@@ -138,13 +141,21 @@ app.get('/resetPassword', (req, res) => {
   res.render('vwAccount/resetPassword');
 });
 
-app.get('/sendReport', async (req, res) => {
-  let method = await reportMethodController.getAllMethods();
-  //console.log(method);
-  method = method.map(method => method.toObject());
-  //res.render('vwReport/report', { layout: 'report'});
-  res.render('vwReport/report', { method, layout: 'report' });
+app.get('/reports', (req, res) => {
+  res.render('vwReport/reports', { layout: 'login' });
 });
+
+app.get('/reports/:id', (req, res) => {
+  res.render('vwReport/reportDetails', { layout: 'login' });
+});
+
+// app.get('/sendReport', async (req, res) => {
+//   let method = await reportMethodController.getAllMethods();
+//   //console.log(method);
+//   method = method.map(method => method.toObject());
+//   //res.render('vwReport/report', { layout: 'report'});
+//   res.render('vwReport/report', { method, layout: 'report' });
+// });
 
 app.get('/viewReports', async (req, res) => {
   let reports = await reportController.getAllReports();
