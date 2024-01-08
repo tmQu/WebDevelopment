@@ -1,5 +1,3 @@
-import sendEmail from "../../../utils/email.js";
-
 const deleteBoard = async (id) => {
   try {
     const res = await axios({
@@ -36,70 +34,90 @@ const updateBoard = async (id, status) => {
   }
 };
 
-const sendEmailToReporter = async (user) => {
-
+const sendEmailToReporter = async (email, subject, html) => {
+  try {
+    const res = await axios({
+      method: 'POST',
+      url: '/api/v1/reports/sendEmail',
+      data: {
+        email,
+        subject,
+        html,
+      },
+    });
+    if (res.data.status === 'success') {
+      alert('Gửi email thành công!');
+    }
+  } catch (error) {
+    alert("Gửi email thất bại");
+    console.log(error);
+  }
 };
 
-const message = `
-Kính gửi ${user.name},
-
-Thân ái chào bạn,
-
-Chúng tôi muốn thông báo về quyết định xử lý liên quan đến báo cáo của bạn. Sau khi xem xét kỹ lưỡng, chúng tôi đã thực hiện các bước sau để đảm bảo rằng tất cả các vấn đề được nêu trong báo cáo của bạn được xử lý một cách hiệu quả và công bằng:
-
-[Cách Thức Xử Lý]
-
-Lý do chính cho quyết định này là:
-
-[Lý Do Xử Lý]
-
-Chúng tôi chân thành cảm ơn bạn đã báo cáo vấn đề này. Sự tham gia của bạn là quan trọng đối với chúng tôi và giúp cải thiện môi trường làm việc của chúng tôi.
-
-Nếu bạn có bất kỳ câu hỏi hoặc cần thêm thông tin, xin vui lòng liên hệ với chúng tôi qua [Địa chỉ Email hoặc Số Điện Thoại].
-
-Trân trọng,
-
-[Tên của Cán Bộ]
-[Chức Vụ]
-[Tên Tổ Chức/Đơn Vị]
-`;
-
-try {
-  await sendEmail({
-    email: user.email,
-    subject: 'Thông Báo Về Quyết Định Xử Lý Báo Cáo',
-    message,
-  });
-
-  res.status(200.0).json({
-    status: 'success',
-    message: 'Email đã được gửi thành công!',
-  });
-} catch(error) {
-  // Xử lý lỗi gửi email tại đây
-  console.error(error);
-  res.status(500.0).json({
-    status: 'error',
-    message: 'Đã có lỗi xảy ra trong quá trình gửi email.',
-  });
-}
-
-
-document.addEventListener('submit', function (e) {
+document.getElementById('prvModal').addEventListener('click', function (e) {
   e.preventDefault();
-
-  // Get current state of 2 switches
   const adBoardSwitch = document.getElementById('adBoardSwitch');
   const deleteBoardSwitch = document.getElementById('deleteBoard');
 
-  var boardId = adBoardSwitch.getAttribute('data-board');
-  var displayStatus = adBoardSwitch.checked ? 'active' : 'inactive';
-  var deleteStatus = deleteBoardSwitch.checked ? true : false;
-
-  if (deleteStatus) {
-    deleteBoard(boardId);
-    return;
+  let handleMethod = '';
+  switch (true) {
+    case !adBoardSwitch.checked && !deleteBoardSwitch.checked:
+      handleMethod = 'Ẩn bảng quảng cáo và gửi thông báo chỉnh sửa lên cấp sở';
+      break;
+    case deleteBoardSwitch.checked:
+      handleMethod = 'Xóa bảng quảng cáo';
+      break;
+    default:
+      handleMethod = 'Không thay đổi';
   }
+  document.getElementById('handleMethod').innerHTML = handleMethod;
 
-  updateBoard(boardId, displayStatus);
+  const reason = document.getElementById('reasonDetail').value;
+  document.getElementById('reasonContent').innerHTML = reason;
 });
+
+const createEmailHtml = (message) => {
+  let html = `<!doctype html>
+  <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta name="viewport" content="width=device-width" />
+      <style>
+        .font-weight-bold { font-weight: bold; }
+      </style>
+    </head>
+  <body>`;
+
+  html += message;
+  html += ` </body>
+  </html>`;
+
+  return html;
+};
+
+const confirmSendEmail = async (email) => {
+  const subject = 'Thông Báo Về Quyết Định Xử Lý Báo Cáo';
+  let message = document.querySelector('.modal-body').innerHTML;
+
+  message = createEmailHtml(message);
+
+  console.log(email, subject, message);
+  await sendEmailToReporter(email, subject, message);
+
+  const adBoardSwitch = document.getElementById('adBoardSwitch');
+  const deleteBoardSwitch = document.getElementById('deleteBoard');
+
+  const boardId = adBoardSwitch.getAttribute('data-board');
+  console.log(boardId);
+  switch (true) {
+    case !adBoardSwitch.checked && !deleteBoardSwitch.checked:
+      await updateBoard(boardId, 'inactive');
+      break;
+    case deleteBoardSwitch.checked:
+      // deleteBoard(boardId);
+      break;
+    default:
+      break;
+  }
+  $('#previewModal').modal('hide');
+};

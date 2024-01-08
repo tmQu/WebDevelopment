@@ -203,12 +203,12 @@
                 <div class='row d-flex align-items-center'>
                   <div class='col'>
                     <strong class='mb-2'>Xoá bảng quảng cáo</strong>
-                    <p class='text-muted mb-0'>Nếu chọn, bảng quảng cáo sẽ được xoá khỏi bản đồ</p>
+                    <p class='text-muted mb-0'>Nếu bật, bảng quảng cáo sẽ được xoá khỏi bản đồ</p>
                   </div>
                   <div class='col-auto d-flex align-items-center'>
                     <div class='custom-control custom-switch'>
-                      <input type='checkbox' class='custom-control-input' id='deleteBoardSwitch' data-board="{{report.board}}"/>
-                      <label class='custom-control-label' for='deleteBoardSwitch'></label>
+                      <input type='checkbox' class='custom-control-input' id='deleteBoard'/>
+                      <label class='custom-control-label' for='deleteBoard'></label>
                     </div>
                   </div>
                 </div>
@@ -228,52 +228,50 @@
                   <div class='row d-flex align-items-center'>
                     <div class='col'>
                       <strong class='mb-2'>Thông tin chi tiết</strong>
-                      <input type="text" class="form-control" id="boardDetail" placeholder="Thông tin chi tiết về cách thức xử lý">
+                      <input type="text" class="form-control" id="reasonDetail" placeholder="Thông tin chi tiết về cách thức xử lý">
                     </div>
                   </div>
                 </div>
                 <div class="list-group-item">
-                  <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel"   aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <h5 class="modal-title" id="previewModalLabel">Xem Trước Email</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <!-- Nội dung email được xử lý bởi Handlebars sẽ được đặt ở đây -->
-                          <p>Kính gửi {{report.sender.fullname}},</p>
-                          <p>Thân ái chào bạn,</p>
-                          <p>Chúng tôi muốn thông báo về quyết định xử lý liên quan đến báo cáo của bạn. Sau khi xem xét kỹ lưỡng, chúng tôi đã thực hiện các bước sau để đảm bảo rằng tất cả các vấn đề được nêu trong báo cáo của bạn được xử lý một cách hiệu quả và công bằng:</p>
-                          
-                          <p class="bold">Cách Thức Xử Lý:</p>
-                          <p id="test"></p>
-
-                          <p class="bold">Lý Do Xử Lý:</p>
-                          <p>[Nội dung lý do xử lý]</p>
-
-                          <p>Chúng tôi chân thành cảm ơn bạn đã báo cáo vấn đề này. Sự tham gia của bạn là quan trọng đối với chúng tôi và giúp cải thiện môi trường làm việc của chúng tôi.</p>
-                          
-                          <p>Nếu bạn có bất kỳ câu hỏi hoặc cần thêm thông tin, xin vui lòng liên hệ với chúng tôi qua [Địa chỉ Email hoặc Số Điện Thoại].</p>
-
-                          <p>Trân trọng,</p>
-                          <p>[Tên của Cán Bộ]<br>
-                            [Chức Vụ]<br>
-                            [Tên Tổ Chức/Đơn Vị]</p>
-                          <!-- Tiếp tục thêm nội dung email theo mẫu của bạn -->
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                          <button type="button" class="btn btn-primary" onclick="confirmSendEmail()">Xác Nhận Gửi</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                   <div class='row d-flex align-items-center'>
                     <div class='col'>
-                      <button class='btn btn-primary btn-sm' id="sendEmail" type="submit">Cập nhật và gửi email</button>
+                      {{!-- <button class='btn btn-primary btn-sm' id="sendEmail" type="submit">Cập nhật và gửi email</button> --}}
+                      <button class="btn btn-primary" data-toggle="modal" data-target="#previewModal" id="prvModal">Xem Trước Email</button>
+                      
+                      <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel"   aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="previewModalLabel">Xem Trước Email</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <p>Kính gửi {{report.sender.fullname}},</p>
+                              <p>Thân ái chào bạn,</p>
+                              <p>Chúng tôi muốn thông báo về quyết định xử lý liên quan đến báo cáo của bạn. Sau khi xem xét kỹ lưỡng, chúng tôi đã thực hiện các bước sau để đảm bảo rằng tất cả các vấn đề được nêu trong báo cáo của bạn được xử lý một cách hiệu quả và công bằng:</p>
+                              
+                              <p class="font-weight-bold">Cách Thức Xử Lý:</p>
+                              <p id="handleMethod"></p>
+
+                              <p class="font-weight-bold">Lý Do Xử Lý:</p>
+                              <p id="reasonContent"></p>
+
+                              <p><br>Chúng tôi chân thành cảm ơn bạn đã báo cáo vấn đề này. Sự tham gia của bạn là quan trọng đối với chúng tôi và giúp cải thiện môi trường làm việc của chúng tôi.</p>                        
+
+                              <p>Trân trọng,</p>
+                              <p>{{officer.name}} <br>
+                                {{officer.role}}
+                              </p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                              <button type="button" class="btn btn-primary" onclick="confirmSendEmail('{{report.sender.email}}')">Xác Nhận Gửi</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>

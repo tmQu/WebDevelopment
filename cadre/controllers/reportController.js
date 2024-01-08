@@ -1,6 +1,7 @@
 import Report from '../models/reportModel.js';
 import Board from '../models/boardModel.js';
 import BoardLocation from '../models/boardLocationModel.js';
+import sendEmail from '../utils/email.js';
 import multer from 'multer';
 import path from 'path';
 
@@ -169,6 +170,28 @@ const reportController = {
     } catch (error) {
       res.status(500).json({
         success: false,
+        message: error.message,
+      });
+    }
+  },
+
+  // Send email to reporter
+  sendEmailToReporter: async (req, res) => {
+    try {
+      const { email, subject, html } = req.body;
+      await sendEmail({
+        email,
+        subject,
+        html,
+      });
+
+      res.status(200).json({
+        status: 'success',
+        message: 'Email sent successfully',
+      });
+    } catch (error) {
+      res.status(500).json({
+        status: 'fail',
         message: error.message,
       });
     }
