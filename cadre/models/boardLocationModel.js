@@ -65,7 +65,16 @@ BillboardLocationSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'addr.ward',
     select: 'ward',
-  })
+  }).populate({
+    path: 'addr.district',
+    select: 'district',
+  }).populate({
+    path: 'advertisementForm',
+    select: 'advertisementForm',
+  }).populate({
+    path: 'locationCategory',
+    select: 'locationCategory',
+  });
   next();
 });
 

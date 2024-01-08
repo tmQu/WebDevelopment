@@ -119,8 +119,7 @@ const reportController = {
       report = report.toObject();
       board = board.toObject();
       boardLocation = boardLocation.toObject();
-      console.log(boardLocation);
-      
+
       res.render('vwReport/reportDetails', {
         layout: 'report',
         report: {

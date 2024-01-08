@@ -2,7 +2,7 @@
   <link rel='stylesheet' href='../../static/css/reportDetails.css' />
 {{/section}}
 {{#section 'js'}}
-  {{! <script src='../../static/js/reportDetails.js'></script> }}
+  <script src='../../static/js/reports/reportDetails.js'></script>
   <script src="../../static/js/handlebarsHelpers.js"></script>
   <link
     rel='stylesheet'
@@ -53,9 +53,9 @@
         <div class='tab-content'>
           <div class='tab-pane active' id='profile' role='tabpanel' aria-labelledby='profile-tab'>
             <div class='container-fluid mt-2'>
-              <div class='card'>
-                <div class="card-header">
-                  <h4 class='card-title'>
+              <div class='card shadow'>
+                <div class="card-header text-body-emphasis">
+                  <h4>
                     {{report.method}}
                   </h4>
                 </div>
@@ -88,15 +88,20 @@
                     </div>
                     <div class='col-lg-7 col-md-7 col-sm-6'>
                       <h4 class='box-title mt-5'>
-                        {{board.boardType}}
+                        {{board.boardType.boardType}}
                       </h4>
                       <p>
-                        {{boardLocation.addr.street_number}}, {{boardLocation.addr.route}}, {{boardLocation.addr.ward.ward}}, {{boardLocation.addr.district}}, {{boardLocation.addr.city}}
+                        {{boardLocation.addr.street_number}}, {{boardLocation.addr.route}}, {{boardLocation.addr.ward.ward}}, {{boardLocation.addr.district.district}}, {{boardLocation.addr.city}}
                       </p>
                       <p>
                         Kích thước: <strong>{{board.size}}</strong>
                       </p>
-                      <p>Hình thức: <strong>{{boardLocation.advertisementForm}}</strong></p>
+                      <p>Hình thức: <strong>{{boardLocation.advertisementForm.advertisementForm}}</strong></p>
+                      <p>Phân loại: 
+                        {{#each boardLocation.locationCategory}}
+                          <span class='badge badge-pill badge-primary'>{{this.locationCategory}}</span>
+                        {{/each}}
+                      </p>
                     </div>
                   </div>
                   <div class='row d-flex align-items-stretch'>
@@ -177,7 +182,7 @@
               Cách xử lý
             </h5>
             <p>
-              These settings are helps you keep your account secure.
+              Cài đặt cách thức xử lý bảng quảng cáo
             </p>
             <div class='list-group mb-5 shadow'>
               <div class='list-group-item'>
@@ -188,8 +193,8 @@
                   </div>
                   <div class='col-auto d-flex align-items-center'>
                     <div class='custom-control custom-switch'>
-                      <input type='checkbox' class='custom-control-input' id='activityLog' checked='' />
-                      <label class='custom-control-label' for='activityLog'></label>
+                      <input type='checkbox' class='custom-control-input' id='adBoardSwitch' data-board="{{report.board}}" checked/>
+                      <label class='custom-control-label' for='adBoardSwitch'></label>
                     </div>
                   </div>
                 </div>
@@ -198,19 +203,84 @@
                 <div class='row d-flex align-items-center'>
                   <div class='col'>
                     <strong class='mb-2'>Xoá bảng quảng cáo</strong>
-                    <span class='badge badge-pill badge-danger'>disable</span>
                     <p class='text-muted mb-0'>Nếu chọn, bảng quảng cáo sẽ được xoá khỏi bản đồ</p>
                   </div>
                   <div class='col-auto d-flex align-items-center'>
-                    <button class='btn btn-danger btn-sm'>Xoá</button>
+                    <div class='custom-control custom-switch'>
+                      <input type='checkbox' class='custom-control-input' id='deleteBoardSwitch' data-board="{{report.board}}"/>
+                      <label class='custom-control-label' for='deleteBoardSwitch'></label>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+
+            <!-- Thông tin chi tiết -->
+            <h5 class='mb-0 mt-5'>
+              Thông tin chi tiết
+            </h5>
+            <p>
+              Thông tin chi tiết về cách thức xử lý bảng quảng cáo
+            </p>
+            <form>
+              <div class='list-group mb-5 shadow'>
+                <div class="list-group-item">
+                  <div class='row d-flex align-items-center'>
+                    <div class='col'>
+                      <strong class='mb-2'>Thông tin chi tiết</strong>
+                      <input type="text" class="form-control" id="boardDetail" placeholder="Thông tin chi tiết về cách thức xử lý">
+                    </div>
+                  </div>
+                </div>
+                <div class="list-group-item">
+                  <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel"   aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="previewModalLabel">Xem Trước Email</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <!-- Nội dung email được xử lý bởi Handlebars sẽ được đặt ở đây -->
+                          <p>Kính gửi {{report.sender.fullname}},</p>
+                          <p>Thân ái chào bạn,</p>
+                          <p>Chúng tôi muốn thông báo về quyết định xử lý liên quan đến báo cáo của bạn. Sau khi xem xét kỹ lưỡng, chúng tôi đã thực hiện các bước sau để đảm bảo rằng tất cả các vấn đề được nêu trong báo cáo của bạn được xử lý một cách hiệu quả và công bằng:</p>
+                          
+                          <p class="bold">Cách Thức Xử Lý:</p>
+                          <p id="test"></p>
+
+                          <p class="bold">Lý Do Xử Lý:</p>
+                          <p>[Nội dung lý do xử lý]</p>
+
+                          <p>Chúng tôi chân thành cảm ơn bạn đã báo cáo vấn đề này. Sự tham gia của bạn là quan trọng đối với chúng tôi và giúp cải thiện môi trường làm việc của chúng tôi.</p>
+                          
+                          <p>Nếu bạn có bất kỳ câu hỏi hoặc cần thêm thông tin, xin vui lòng liên hệ với chúng tôi qua [Địa chỉ Email hoặc Số Điện Thoại].</p>
+
+                          <p>Trân trọng,</p>
+                          <p>[Tên của Cán Bộ]<br>
+                            [Chức Vụ]<br>
+                            [Tên Tổ Chức/Đơn Vị]</p>
+                          <!-- Tiếp tục thêm nội dung email theo mẫu của bạn -->
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                          <button type="button" class="btn btn-primary" onclick="confirmSendEmail()">Xác Nhận Gửi</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class='row d-flex align-items-center'>
+                    <div class='col'>
+                      <button class='btn btn-primary btn-sm' id="sendEmail" type="submit">Cập nhật và gửi email</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-
-
       </div>
     </div>
   </div>

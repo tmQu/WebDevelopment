@@ -46,7 +46,6 @@ const boardController = {
   },
   getBoardLocationWithId: async (req, res) => {
     try {
-
       const board = await boardLocationModel.findById(req.params.id)
                         .populate('advertisementForm')
                         .populate('locationCategory')
@@ -142,6 +141,7 @@ const boardController = {
         'isPlan',
         'advertisementForm',
         'locationCategory',
+        'status'
       ];
       const isValidOperation = updates.every((update) =>
         allowedUpdates.includes(update)

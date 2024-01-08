@@ -11,7 +11,8 @@ router
 
 router
   .route('/detail/:id')
-  .get(boardController.getBoardInLocation)
+  .get(boardController.getBoardInLocation);
+  
 router
   .route('/:id')
   .get(boardController.getBoardLocationWithId)
