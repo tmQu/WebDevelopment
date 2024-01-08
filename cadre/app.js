@@ -18,8 +18,9 @@ import userRouter from './routes/userRoutes.js';
 //import globalErrorHandler from './controllers/errorController.js';
 import reportRouter from './routes/reportRoutes.js';
 import reportController from './controllers/reportController.js';
-import reportMethodController from './controllers/reportMethodController.js';
 import reportMethodRoutes from './routes/reportMethodRoutes.js';
+
+import hbsHelpers from './static/js/handlebarsHelpers.js'
 
 import cookieParser from 'cookie-parser';
 
@@ -35,6 +36,7 @@ app.engine(
     layoutsDir: `${__dirname}/views/layouts/`,
     helpers: {
       section: hbs_sections(),
+      ...hbsHelpers,
     },
   })
 );
@@ -49,6 +51,12 @@ const corsOptions = {
   credentials: true,
 };
 app.use(cors(corsOptions));
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 // 1) GLOBAL MIDDLEWARES
 app.use(
@@ -96,6 +104,7 @@ app.get('/test', async (req, res) => {
   }
 });
 import ward from './models/wardModel.js';
+import { report } from 'process';
 app.get('/test2', async (req, res) => {
   try {
     const board = await ward.find().populate('district');
@@ -147,39 +156,34 @@ app.get('/resetPassword', (req, res) => {
   res.render('vwAccount/resetPassword');
 });
 
-app.get('/reports', (req, res) => {
-  res.render('vwReport/reports', { layout: 'login' });
+app.get('/reports', async (req, res) => {
+  // try {
+  //   let response = await reportController.getAllReports(req, res, next);
+
+  //   let reports = response.data.reports;
+  //   console.log(reports);
+  //   reports = reports.map((report) => {
+  //     report = report.toObject();
+  //     return {
+  //       ...report,
+  //       createdAt: new Date(report.createdAt).toLocaleString(),
+  //     };
+  //   });
+
+  //   res.render('vwReport/reports', { layout: 'report', reports });
+
+  // } catch (error) {
+  //   console.error('Error in /reports route:', error);
+  //   // res.status(500).send('Server error');
+  // }
+  reportController.getAllReports(req, res);
 });
 
-app.get('/reports/:id', (req, res) => {
-  res.render('vwReport/reportDetails', { layout: 'login' });
+
+app.get('/reports/:id', async (req, res) => {
+  // res.render('vwReport/reportDetails', { layout: 'report' });
+  reportController.getByID(req, res);
 });
-
-// app.get('/sendReport', async (req, res) => {
-//   let method = await reportMethodController.getAllMethods();
-//   //console.log(method);
-//   method = method.map(method => method.toObject());
-//   //res.render('vwReport/report', { layout: 'report'});
-//   res.render('vwReport/report', { method, layout: 'report' });
-// });
-
-// app.get('/viewReports', async (req, res) => {
-//   let reports = await reportController.getAllReports();
-//   //console.log(reports);
-//   reports = reports.map(report => report.toObject());
-//   res.render('vwReport/listReports', { reports });
-// });
-
-// app.get('/viewDetail/:id', async (req, res) => {
-//   let report = await reportController.getByID(req.params.id);
-//   //console.log(report.method);
-//   report = report.toObject();
-//   //show image from report
-//   res.contentType(report.image.contentType);
-  
-//   res.render('vwReport/detailReport', { report });
-// });
-
 
 // app.use(globalErrorHandler);
 

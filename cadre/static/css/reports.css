@@ -173,3 +173,16 @@ body {
 .table-stats .table-line-plus .status-social-icon {
   color: #a75d54;
 }
+
+.carousel-container {
+  width: 512px;
+  height: 512px;
+  margin: auto; /* Căn giữa carousel */
+  overflow: hidden; /* Ẩn phần dư của ảnh nếu lớn hơn khung */
+}
+
+.carousel-img {
+  width: 512px;
+  height: 512px;
+  object-fit: cover; /* Đảm bảo ảnh phủ kín khung mà không bị méo */
+}

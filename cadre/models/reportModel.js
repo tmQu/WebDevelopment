@@ -34,18 +34,12 @@ const reportModel = mongoose.Schema(
       ref: 'report_method',
       //required: true
     },
-
-    image: {
-      name: {
+    images: [
+      {
         type: String,
         required: true,
       },
-      content: {
-        data: Buffer,
-        contentType: String,
-      },
-    },
-
+    ],
     description: {
       type: String,
       required: true,

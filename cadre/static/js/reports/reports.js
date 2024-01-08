@@ -1,65 +1,91 @@
-const renderReports = (reports) => {
-  const reportsList = document.getElementById('reportsList');
+// Format the date as needed
+const formattedDate = (sentTime) => {
+  return (result =
+    sentTime.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    }) +
+    ' ' +
+    sentTime.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+    }));
+};
 
+const renderReports = (reports) => {
+  const reportsList = document.querySelector('.reports-list');
+  reportsList.innerHTML = '';
+
+  let html = '';
   reports.forEach((report) => {
-    const reportEl = document.createElement('div');
-    reportEl.classList.add('card', 'mb-3');
-    reportEl.innerHTML = `
+    html += `
       <tr>
-      <td>
-        <img src='https://bootdey.com/img/Content/avatar/avatar1.png' alt='' />
-        <a href='#' class='user-link'>
-          Mila Kunis
-        </a>
-        <span class='user-subhead'>
-          Admin
-        </span>
-      </td>
-      <td>
-        ${report.createdAt}
-      </td>
-      <td class='text-center'>
-        <span class='label label-default'>
-          Inactive
-        </span>
-      </td>
-      <td>
-        <a href='#'>
-          mila@kunis.com
-        </a>
-      </td>
-      <td style='width: 20%;'>
-        <a href='#' class='table-link'>
-          <span class='fa-stack'>
-            <i class='fa fa-square fa-stack-2x'></i>
-            <i class='fa fa-search-plus fa-stack-1x fa-inverse'></i>
+        <td>
+          <img src='https://bootdey.com/img/Content/avatar/avatar1.png' alt='' />
+          <a href='#' class='user-link'>
+            ${report.method}
+          </a>
+          <span class='user-subhead'>
+            Board Location Details 
           </span>
-        </a>
-        <a href='#' class='table-link'>
-          <span class='fa-stack'>
-            <i class='fa fa-square fa-stack-2x'></i>
-            <i class='fa fa-pencil fa-stack-1x fa-inverse'></i>
+        </td>
+        <td>
+          ${formattedDate(new Date(report.createdAt))}
+        </td>
+        <td class='text-center'>
+          <span class='label label-default'>
+            Inactive
           </span>
-        </a>
-        <a href='#' class='table-link danger'>
-          <span class='fa-stack'>
-            <i class='fa fa-square fa-stack-2x'></i>
-            <i class='fa fa-trash-o fa-stack-1x fa-inverse'></i>
-          </span>
-        </a>
-      </td>
-    </tr>
+        </td>
+        <td>
+          <div class='d-flex flex-column'>
+            <a class='text-bg-danger'>
+              UserName
+            </a>
+            <span class='user-subhead'>
+              Email
+            </span>
+          </div>
+        </td>
+        <td style='width: 20%;'>
+          <a href='#' class='table-link'>
+            <span class='fa-stack'>
+              <i class='fa fa-square fa-stack-2x'></i>
+              <i class='fa fa-search-plus fa-stack-1x fa-inverse'></i>
+            </span>
+          </a>
+          <a href='#' class='table-link'>
+            <span class='fa-stack'>
+              <i class='fa fa-square fa-stack-2x'></i>
+              <i class='fa fa-pencil fa-stack-1x fa-inverse'></i>
+            </span>
+          </a>
+          <a href='#' class='table-link danger'>
+            <span class='fa-stack'>
+              <i class='fa fa-square fa-stack-2x'></i>
+              <i class='fa fa-trash-o fa-stack-1x fa-inverse'></i>
+            </span>
+          </a>
+        </td>
+      </tr>
     <tr>
     `;
-    reportsList.appendChild(reportEl);
+    reportsList.insertAdjacentHTML('beforeend', html);
   });
-}
-
+};
 
 const fetchReports = async () => {
   try {
-    const res = await axios.get('/api/v1/reports');
-    console.log(res.data);
+    const res = await axios({
+      method: 'GET',
+      url: '/api/v1/reports',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    console.log('Yes');
     const reports = res.data.data.reports;
     console.log(reports);
     renderReports(reports);
@@ -68,6 +94,7 @@ const fetchReports = async () => {
   }
 };
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('Yes');
   fetchReports();
 });

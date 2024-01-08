@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 let BillboardLocationSchema = new mongoose.Schema({
   location: {
@@ -22,14 +22,14 @@ let BillboardLocationSchema = new mongoose.Schema({
       require: true,
     },
     ward: {
-      type: mongoose.Schema.Types.ObjectId, 
-      ref: 'wards', 
-      required: true
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'wards',
+      required: true,
     },
     district: {
-      type: mongoose.Schema.Types.ObjectId, 
-      ref: 'districts', 
-      required: true
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'districts',
+      required: true,
     },
     city: {
       type: String,
@@ -37,9 +37,9 @@ let BillboardLocationSchema = new mongoose.Schema({
     },
   },
   boardLC: {
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: 'location_categories', 
-    required: true
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'location_categories',
+    required: true,
   },
 
   isPlan: {
@@ -48,24 +48,32 @@ let BillboardLocationSchema = new mongoose.Schema({
   },
 
   advertisementForm: {
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: 'advertisement_forms', 
-    required: true
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'advertisement_forms',
+    required: true,
   },
 
-  locationCategory: [{ 
-    type: mongoose.Schema.Types.ObjectId, 
-    ref: 'location_categories' 
-  }],
-
+  locationCategory: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'location_categories',
+    },
+  ],
 
   imgBillboardLocation: {
     type: String,
     require: true,
-  }
+  },
 });
 
+BillboardLocationSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'addr.ward',
+    select: 'ward',
+  })
+  next();
+});
 
-const boardLocationModel = mongoose.model("board_locations", BillboardLocationSchema);
+const boardLocationModel = mongoose.model('board_locations', BillboardLocationSchema);
 
 export default boardLocationModel;

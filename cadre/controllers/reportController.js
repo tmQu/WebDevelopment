@@ -1,118 +1,179 @@
-import Report from "../models/reportModel.js";
-import multer from "multer";
+import Report from '../models/reportModel.js';
+import Board from '../models/boardModel.js';
+import BoardLocation from '../models/boardLocationModel.js';
+import multer from 'multer';
+import path from 'path';
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '../static/img/reports/');
+  },
+  filename: function (req, file, cb) {
+    // Create unique filename (timestamp + ext)
+    cb(null, Date.now() + path.extname(file.originalname));
+  },
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 10000000 },
+  fileFilter: function (req, file, cb) {
+    cb(null, true);
+  },
+}).array('image', 2); // 2 is the max number of files
 
 const reportController = {
-    // Create a new report
-    createReport: async (req, res) => {
-        try {
-            const storage = multer({ dest: 'api/v1/reports/' });
-            const upload = storage.single('image');
-            const report = new Report(
-                {
-                    sender: {
-                        fullname: req.body.sender.fullname,
-                        email: req.body.sender.email,
-                        phone: req.body.sender.phone
-                    },
-                    board: req.body.board,
-                    method: req.body.method,
-                    image: {
-                        data: req.body.image
-                    },
-                    description: req.body.description,
-                    status: req.body.status
-                }
-            );
+  // Create a new report
+  createReport: (req, res) => {
+    upload(req, res, async (error) => {
+      if (error) {
+        // Handle error
+        return res.status(500).json({
+          success: false,
+          message: error.message,
+        });
+      }
 
-            const result = await report.save();
-            //res.redirect('/viewReports');
-            console.log(result);
+      try {
+        // Create new report
+        const report = new Report({
+          sender: {
+            fullname: req.body.sender.fullname,
+            email: req.body.sender.email,
+            phone: req.body.sender.phone,
+          },
+          board: req.body.board,
+          method: req.body.method,
+          images: req.files.map((file) => file.path), // Array of image paths
+          description: req.body.description,
+          status: req.body.status,
+        });
 
-            res.status(200).json({
-                success: true,
-                message: "Report created successfully",
-                data: {
-                    report: result
-                }
-            });
-        } catch (error) {
-            res.status(500).json({
-                success: false,
-                message: error.message
-            });
-        }
-    },
+        const result = await report.save();
+        console.log(result);
 
-    // Get all reports
-    getAllReports: async (req, res) => {
-        try {
-            const reports = await Report.find();
-            res.status(200).json({
-                status: 'success',
-                results: reports.length,
-                data: {
-                  reports,
-                },
-            });
-        } catch (error) {
-            console.log(error);
-        }
-    },
+        res.status(200).json({
+          success: true,
+          message: 'Report created successfully',
+          data: {
+            report: result,
+          },
+        });
+      } catch (error) {
+        res.status(500).json({
+          success: false,
+          message: error.message,
+        });
+      }
+    });
+  },
 
-    // Get a report
-    getByID: async (req, res) => {
-        try {
-            const report = await Report.findById(req);
+  // Get all reports
+  getAllReports: async (req, res) => {
+    try {
+      let reports = await Report.find();
 
-            res.status(200).json({
-                status: 'success',
-                results: report.length,
-                data: {
-                  report, 
-                },
-            });
-        } catch (error) {
-            console.log(error);
-        }
-    },
+      //   return res.json(
+      //     {
+      //       status: 'success',
+      //       results: reports.length,
+      //       data: {
+      //         reports,
+      //       },
+      //     },
+      //   );
+      res.render('vwReport/reports', {
+        layout: 'report',
+        reports: reports.map((report) => {
+          report = report.toObject();
+          return {
+            ...report,
+            createdAt: new Date(report.createdAt).toLocaleString(),
+          };
+        }),
+      });
 
-    // Update a report
-    updateReport: async (req, res) => {
-        try {
-            const { status } = req.body;
-
-            await Report.findOneAndUpdate(
-                { _id: req.params.id, status }
-            );
-
-            res.status(200).json({
-                success: true,
-                message: "Report updated successfully"
-            });
-        } catch (error) {
-            res.status(500).json({
-                success: false,
-                message: error.message
-            });
-        }
-    },
-
-    // Delete a report
-    deleteReport: async (req, res) => {
-        try {
-            await Report.findByIdAndDelete(req.params.id);
-
-            res.status(200).json({
-                success: true,
-                message: "Report deleted successfully"
-            });
-        } catch (error) {
-            res.status(500).json({
-                success: false,
-                message: error.message
-            });
-        }
+      // return reports;
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        status: 'fail',
+        message: 'Server error',
+      });
     }
+  },
+
+  // Get a report
+  getByID: async (req, res) => {
+    try {
+      let report = await Report.findById(req.params.id);
+      let board = await Board.findById(report.board);
+      if (board === null) {
+        return res.status(404).json({
+          status: 'fail',
+          message: 'Board not found',
+        });
+      }
+      let boardLocation = await BoardLocation.findById(board.boardLocation);
+
+      report = report.toObject();
+      board = board.toObject();
+      boardLocation = boardLocation.toObject();
+      console.log(boardLocation);
+      
+      res.render('vwReport/reportDetails', {
+        layout: 'report',
+        report: {
+          ...report,
+          createdAt: new Date(report.createdAt).toLocaleString(),
+        },
+        board,
+        boardLocation,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        status: 'fail',
+        message: error.message,
+      });
+    }
+  },
+
+  // Update a report
+  updateReport: async (req, res) => {
+    try {
+      const { status } = req.body;
+
+      await Report.findOneAndUpdate({ _id: req.params.id, status });
+
+      res.status(200).json({
+        success: true,
+        message: 'Report updated successfully',
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  },
+
+  // Delete a report
+  deleteReport: async (req, res) => {
+    try {
+      await Report.findByIdAndDelete(req.params.id);
+
+      res.status(200).json({
+        success: true,
+        message: 'Report deleted successfully',
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  },
 };
 
 export default reportController;

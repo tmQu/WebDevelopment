@@ -2,666 +2,216 @@
   <link rel='stylesheet' href='../../static/css/reportDetails.css' />
 {{/section}}
 {{#section 'js'}}
-  <script src='../../static/js/reportDetails.js'></script>
+  {{! <script src='../../static/js/reportDetails.js'></script> }}
+  <script src="../../static/js/handlebarsHelpers.js"></script>
+  <link
+    rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css'
+    integrity='sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA='
+    crossorigin='anonymous'
+  />
 {{/section}}
 
-
-
-<link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet' />
-<div class='container primary-content'>
-  <!-- PRIMARY CONTENT HEADING -->
-  <div class='primary-content-heading clearfix'>
-    <h2>
-      PROJECT TITLE
-    </h2>
-    <hr style='border:1px solid #fff' />
-    <div class='sticky-content pull-right'>
-      <div class='btn-group btn-dropdown'>
-        <button type='button' class='btn btn-default btn-sm btn-favorites' data-toggle='dropdown'>
-          <i class='fa fa-android-star'></i>
-          Favorites
-        </button>
-        <ul class='dropdown-menu dropdown-menu-right list-inline'>
-          <li>
-            <a href='#'>
-              <i class='fa fa-pie-graph'></i>
-
-              <span>
-                Statistics
-              </span>
+<div class='container-fluid'>
+  <div class='row justify-content-center'>
+    <div class='col-12 col-lg-10 col-xl-8 mx-auto'>
+      <h2 class='h3 mb-4 page-title'>
+        Settings
+      </h2>
+      <div class='my-4'>
+        <!-- Nav tabs -->
+        <ul class='nav nav-tabs' id='myTab' role='tablist'>
+          <li class='nav-item'>
+            <a
+              class='nav-link active'
+              id='profile-tab'
+              data-toggle='tab'
+              href='#profile'
+              role='tab'
+              aria-controls='profile'
+              aria-selected='true'
+            >
+              Profile
             </a>
           </li>
-          <li>
-            <a href='#'>
-              <i class='fa fa-email'></i>
-
-              <span>
-                Inbox
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              <i class='fa fa-chatboxes'></i>
-
-              <span>
-                Chat
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              <i class='fa fa-help-circled'></i>
-
-              <span>
-                Help
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              <i class='fa fa-gear-a'></i>
-
-              <span>
-                Settings
-              </span>
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              <i class='fa fa-help-buoy'></i>
-
-              <span>
-                Support
-              </span>
+          <li class='nav-item'>
+            <a
+              class='nav-link'
+              id='security-tab'
+              data-toggle='tab'
+              href='#security'
+              role='tab'
+              aria-controls='security'
+              aria-selected='false'
+            >
+              Security
             </a>
           </li>
         </ul>
-      </div>
-      <button
-        type='button'
-        class='btn btn-default btn-sm btn-quick-task'
-        data-toggle='modal'
-        data-target='#quick-task-modal'
-      >
-        <i class='fa fa-edit'></i>
-        Quick Task
-      </button>
-      <br />
-      <br />
-    </div>
-    <!-- quick task modal -->
-    <div class='modal fade' id='quick-task-modal' tabindex='-1' role='dialog' aria-hidden='true'>
-      <div class='modal-dialog'>
-        <div class='modal-content'>
-          <div class='modal-header'>
-            <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>
-              x
-            </button>
-            <h4 class='modal-title' id='myModalLabel'>
-              Quick Task
-            </h4>
-          </div>
-          <div class='modal-body'>
-            <form class='form-horizontal' role='form'>
-              <div class='form-group'>
-                <label for='task-title' class='control-label sr-only'>
-                  Title
-                </label>
-                <div class='col-sm-12'>
-                  <input type='text' class='form-control' id='task-title' placeholder='Title' />
+
+        <!-- Tab panes -->
+        <div class='tab-content'>
+          <div class='tab-pane active' id='profile' role='tabpanel' aria-labelledby='profile-tab'>
+            <div class='container-fluid mt-2'>
+              <div class='card'>
+                <div class="card-header">
+                  <h4 class='card-title'>
+                    {{report.method}}
+                  </h4>
                 </div>
-              </div>
-              <div class='form-group'>
-                <label class='control-label sr-only'>
-                  Description
-                </label>
-                <div class='col-sm-12'>
-                  <textarea
-                    class='form-control'
-                    name='task-description'
-                    rows='5'
-                    cols='30'
-                    placeholder='Description'
-                  ></textarea>
-                </div>
-              </div>
-              <button type='button' class='btn btn-default' data-dismiss='modal'>
-                Close
-              </button>
-              <button type='button' class='btn btn-primary'>
-                Save Task
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- end quick task modal -->
-  </div>
-  <!-- END PRIMARY CONTENT HEADING -->
-  <div class='row'>
-    <div class='col-md-8'>
-      <div class='project-section general-info'>
-        <h3>
-          General Info
-        </h3>
-        <button type='button' class='btn btn-sm btn-default pull-right'>
-          <i class='fa fa-compose'></i>
-          Edit Project
-        </button>
-        <p>
-          Rapidiously monetize orthogonal platforms with 24/7 convergence. Uniquely create error-free alignments for
-          customized users. Credibly facilitate just in time benefits rather than user friendly imperatives. Continually
-          promote extensible process improvements whereas virtual. Enthusiastically pontificate proactive
-          infrastructures vis-a-vis value-added products. Enthusiastically coordinate pandemic platforms rather than
-          team building best practices. Globally facilitate plug-and-play materials and interoperable interfaces.
-          Enthusiastically.
-        </p>
-        <div class='row'>
-          <div class='col-sm-9'>
-            <dl class='dl-horizontal'>
-              <dt>
-                Date:
-              </dt>
-              <dd>
-                20-09-2014 - 20-12-2014
-              </dd>
-              <dt>
-                Duration:
-              </dt>
-              <dd>
-                90 days
-                <span class='text-muted'>
-                  <small>
-                    (50 days remaining)
-                  </small>
-                </span>
-              </dd>
-              <dt>
-                Client:
-              </dt>
-              <dd>
-                <a href='#'>
-                  ZenArt
-                </a>
-              </dd>
-              <dt>
-                Priority:
-              </dt>
-              <dd>
-                <span class='label label-danger'>
-                  HIGH
-                </span>
-              </dd>
-              <dt>
-                Status:
-              </dt>
-              <dd>
-                <span class='label label-success'>
-                  ACTIVE
-                </span>
-              </dd>
-              <dt>
-                Team:
-              </dt>
-              <dd>
-                <ul class='list-inline team-list'>
-                  <li>
-                    <img src='https://bootdey.com/img/Content/avatar/avatar1.png' class='img-circle' alt='Avatar' />
-                    <p>
-                      <a href='#'>
-                        <strong>
-                          Antonius
-                        </strong>
-                      </a>
-                    </p>
-                    <span class='text-muted'>
-                      Project Leader
-                    </span>
-                  </li>
-                  <li>
-                    <img src='https://bootdey.com/img/Content/avatar/avatar2.png' class='img-circle' alt='Avatar' />
-                    <p>
-                      <a href='#'>
-                        <strong>
-                          Michael
-                        </strong>
-                      </a>
-                    </p>
-                    <span class='text-muted'>
-                      Art Director
-                    </span>
-                  </li>
-                  <li>
-                    <img src='https://bootdey.com/img/Content/avatar/avatar3.png' class='img-circle' alt='Avatar' />
-                    <p>
-                      <a href='#'>
-                        <strong>
-                          Stella Ray
-                        </strong>
-                      </a>
-                    </p>
-                    <span class='text-muted'>
-                      Account Executive
-                    </span>
-                  </li>
-                  <li>
-                    <img src='https://bootdey.com/img/Content/avatar/avatar4.png' class='img-circle' alt='Avatar' />
-                    <p>
-                      <a href='#'>
-                        <strong>
-                          Jane Doe
-                        </strong>
-                      </a>
-                    </p>
-                    <span class='text-muted'>
-                      Marketing
-                    </span>
-                  </li>
-                  <li>
-                    <img src='https://bootdey.com/img/Content/avatar/avatar5.png' class='img-circle' alt='Avatar' />
-                    <p>
-                      <a href='#'>
-                        <strong>
-                          Jason
-                        </strong>
-                      </a>
-                    </p>
-                    <span class='text-muted'>
-                      Operational
-                    </span>
-                  </li>
-                  <li class='team-add'>
-                    <i class='fa fa-person'></i>
-                    <button type='button' class='btn btn-sm btn-default'>
-                      <i class='fa fa-plus-circled'></i>
-                      Add
-                    </button>
-                  </li>
-                </ul>
-              </dd>
-            </dl>
-          </div>
-          <div class='col-sm-3'>
-            <div class='status-chart project-progress bottom-30px'>
-              <div class='pie-chart' data-percent='60'>
-                <span class='percent'>
-                  60%
-                </span>
-                <canvas height='100' width='100'></canvas>
-              </div>
-              <span class='chart-title'>
-                OVERALL PROGRESS
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class='project-section activity'>
-        <h3>
-          Activity
-        </h3>
-        <ul class='list-unstyled project-activity-list'>
-          <li>
-            <div class='media activity-item'>
-              <i class='fa fa-checkmark-circled pull-left text-success'></i>
-              <div class='media-body'>
-                <p class='activity-title'>
-                  All project tasks are on schedule
-                </p>
-                <small class='text-muted'>
-                  2m ago
-                </small>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class='media activity-item'>
-              <a href='#' class='pull-left'>
-                <img
-                  src='https://bootdey.com/img/Content/avatar/avatar1.png'
-                  alt='Avatar'
-                  class='media-object avatar'
-                />
-              </a>
-              <div class='media-body'>
-                <p class='activity-title'>
-                  <a href='#'>
-                    Michael
-                  </a>
-                  has achieved 80% of his completed tasks
-                </p>
-                <small class='text-muted'>
-                  36m ago
-                </small>
-              </div>
-              <div class='btn-group pull-right activity-actions'>
-                <button type='button' class='btn btn-xs btn-default dropdown-toggle' data-toggle='dropdown'>
-                  <i class='fa fa-ios-arrow-down'></i>
-                  <span class='sr-only'>
-                    Toggle Dropdown
-                  </span>
-                </button>
-                <ul class='dropdown-menu dropdown-menu-right' role='menu'>
-                  <li>
-                    <a href='#'>
-                      Message Michael
-                    </a>
-                  </li>
-                  <li>
-                    <a href='#'>
-                      Assign Task
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class='media activity-item'>
-              <i class='fa fa-unlocked pull-left text-danger'></i>
-              <div class='media-body'>
-                <p class='activity-title'>
-                  You have unsecure file permission on this project. Go to
-                  <a href=''>
-                    File Manager
-                  </a>
-                  to fix it
-                </p>
-                <small class='text-muted'>
-                  1h ago
-                </small>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class='media activity-item'>
-              <a href='#' class='pull-left'>
-                <img
-                  src='https://bootdey.com/img/Content/avatar/avatar2.png'
-                  alt='Avatar'
-                  class='media-object avatar'
-                />
-              </a>
-              <div class='media-body'>
-                <p class='activity-title'>
-                  <a href='#'>
-                    Jason
-                  </a>
-                  has been added to the team
-                </p>
-                <small class='text-muted'>
-                  2h ago
-                </small>
-              </div>
-              <div class='btn-group pull-right activity-actions'>
-                <button type='button' class='btn btn-xs btn-default dropdown-toggle' data-toggle='dropdown'>
-                  <i class='fa fa-ios-arrow-down'></i>
-                  <span class='sr-only'>
-                    Toggle Dropdown
-                  </span>
-                </button>
-                <ul class='dropdown-menu dropdown-menu-right' role='menu'>
-                  <li>
-                    <a href='#'>
-                      Message Jason
-                    </a>
-                  </li>
-                  <li>
-                    <a href='#'>
-                      Assign Task
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class='media activity-item'>
-              <i class='fa fa-file-word-o pull-left'></i>
-              <div class='media-body'>
-                <p class='activity-title'>
-                  New file
-                  <a href='#'>
-                    Project Proposalv2.docx
-                  </a>
-                  has been uploaded by
-                  <a href='#'>
-                    Antonius
-                  </a>
-                </p>
-                <small class='text-muted'>
-                  3h ago
-                </small>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class='media activity-item'>
-              <i class='fa fa-printer pull-left text-warning'></i>
-              <div class='media-body'>
-                <p class='activity-title'>
-                  You have
-                  <a href='#'>
-                    pending documents
-                  </a>
-                  on the printer server
-                </p>
-                <small class='text-muted'>
-                  23h ago
-                </small>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class='media activity-item'>
-              <i class='fa fa-flag pull-left text-success'></i>
-              <div class='media-body'>
-                <p class='activity-title'>
-                  Project:
-                  <a href='#'>
-                    Phase 1
-                  </a>
-                  has been flagged as completed by
-                  <a href='#'>
-                    Antonius
-                  </a>
-                </p>
-                <small class='text-muted'>
-                  Yesterday
-                </small>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class='media activity-item'>
-              <a href='#' class='pull-left'>
-                <img
-                  src='https://bootdey.com/img/Content/avatar/avatar3.png'
-                  alt='Avatar'
-                  class='media-object avatar'
-                />
-              </a>
-              <div class='media-body'>
-                <p class='activity-title'>
-                  <a href='#'>
-                    Jane Doe
-                  </a>
-                  has updated file
-                  <a href='#'>
-                    Marketing Campaign.docx
-                  </a>
-                </p>
-                <small class='text-muted'>
-                  Yesterday
-                </small>
-                <div class='activity-attachment'>
-                  <div class='well well-sm'>
-                    <strong>
-                      Revision Note:
-                    </strong>
-                    <p>
-                      Professionally evolve corporate services without ethical leadership. Proactively re-engineer
-                      client-focused infrastructures before alternative potentialities. Competently predominate just in
-                      time e-tailers for leveraged solutions.
-                    </p>
+                <div class='card-body'>
+                  <div class='row d-flex align-items-stretch'>
+                    <div class='col-lg-5 col-md-5 col-sm-6'>
+                      <div class='white-box text-center carousel-container'>
+                        {{#if report.images}}
+                          <div id="reportImageCarousel" class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner">
+                              {{#each report.images}}
+                                <div class="carousel-item {{#if @first}} active {{/if}}">
+                                  <img src="{{this}}" class="d-block carousel-img" alt="Image {{@index}}">
+                                </div>
+                              {{/each}}
+                            </div>
+                            <a class="carousel-control-prev" href="#reportImageCarousel" role="button" data-slide="prev">
+                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#reportImageCarousel" role="button" data-slide="next">
+                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                          </div>
+                        {{else}}
+                          <img src='/static/img/adboard.png' class='img-fluid' alt='user'/>
+                        {{/if}}
+                      </div>
+                    </div>
+                    <div class='col-lg-7 col-md-7 col-sm-6'>
+                      <h4 class='box-title mt-5'>
+                        {{board.boardType}}
+                      </h4>
+                      <p>
+                        {{boardLocation.addr.street_number}}, {{boardLocation.addr.route}}, {{boardLocation.addr.ward.ward}}, {{boardLocation.addr.district}}, {{boardLocation.addr.city}}
+                      </p>
+                      <p>
+                        Kích thước: <strong>{{board.size}}</strong>
+                      </p>
+                      <p>Hình thức: <strong>{{boardLocation.advertisementForm}}</strong></p>
+                    </div>
+                  </div>
+                  <div class='row d-flex align-items-stretch'>
+                    <div class='col-lg-12 col-md-12 col-sm-12'>
+                      <h3 class='box-title mt-5'>
+                        Chi tiết báo cáo
+                      </h3>
+                      <div class='table-responsive'>
+                        <table class='table table-striped table-product'>
+                          <tbody>
+                            <tr>
+                              <td width='390'>
+                                Họ và tên người báo cáo
+                              </td>
+                              <td>
+                                {{report.sender.fullname}}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Email
+                              </td>
+                              <td>
+                                {{report.sender.email}}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Điện thoại liên lạc
+                              </td>
+                              <td>
+                                {{report.sender.phone}}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Thời gian báo cáo
+                              </td>
+                              <td>
+                                {{report.createdAt}}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Trạng thái
+                              </td>
+                              <td>
+                                {{#compare report.status '===' false}}
+                                  <span class='badge badge-pill badge-warning'>Đang chờ xử lý</span>
+                                {{else compare report.status '===' true}}
+                                  <span class='badge badge-pill badge-success'>Đã xử lý</span>
+                                {{/compare}}
+                                {{#compare report.status '===' 'null'}}
+                                  <span class='badge badge-pill badge-danger'>Đã xóa</span>
+                                {{/compare}}
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Nội dung báo cáo
+                              </td>
+                              <td>
+                                {{report.description}}
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class='btn-group pull-right activity-actions'>
-                <button type='button' class='btn btn-xs btn-default dropdown-toggle' data-toggle='dropdown'>
-                  <i class='fa fa-ios-arrow-down'></i>
-                  <span class='sr-only'>
-                    Toggle Dropdown
-                  </span>
-                </button>
-                <ul class='dropdown-menu dropdown-menu-right' role='menu'>
-                  <li>
-                    <a href='#'>
-                      Message Jane Doe
-                    </a>
-                  </li>
-                  <li>
-                    <a href='#'>
-                      Assign Task
-                    </a>
-                  </li>
-                </ul>
+            </div>
+          </div>
+          <div class='tab-pane' id='security' role='tabpanel' aria-labelledby='security-tab'>
+            <!-- Security settings here -->
+            <h5 class='mb-0 mt-5'>
+              Cách xử lý
+            </h5>
+            <p>
+              These settings are helps you keep your account secure.
+            </p>
+            <div class='list-group mb-5 shadow'>
+              <div class='list-group-item'>
+                <div class='row d-flex align-items-center'>
+                  <div class='col'>
+                    <strong class='mb-2'>Hiển thị bảng quảng cáo</strong>
+                    <p class='text-muted mb-0'>Nếu bật, bảng quảng cáo sẽ được hiển thị với người dân</p>
+                  </div>
+                  <div class='col-auto d-flex align-items-center'>
+                    <div class='custom-control custom-switch'>
+                      <input type='checkbox' class='custom-control-input' id='activityLog' checked='' />
+                      <label class='custom-control-label' for='activityLog'></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='list-group-item'>
+                <div class='row d-flex align-items-center'>
+                  <div class='col'>
+                    <strong class='mb-2'>Xoá bảng quảng cáo</strong>
+                    <span class='badge badge-pill badge-danger'>disable</span>
+                    <p class='text-muted mb-0'>Nếu chọn, bảng quảng cáo sẽ được xoá khỏi bản đồ</p>
+                  </div>
+                  <div class='col-auto d-flex align-items-center'>
+                    <button class='btn btn-danger btn-sm'>Xoá</button>
+                  </div>
+                </div>
               </div>
             </div>
-          </li>
-        </ul>
-        <button type='button' class='btn btn-default center-block'>
-          <i class='fa fa-ios-refresh'></i>
-          Load more
-        </button>
-      </div>
-    </div>
-    <div class='col-md-4'>
-      <!-- MY TODO LIST -->
-      <div class='widget'>
-        <div class='widget-header clearfix'>
-          <h3>
-            <i class='fa fa-calendar'></i>
-
-            <span>
-              MY TODO LIST
-            </span>
-          </h3>
-          <div class='btn-group widget-header-toolbar'>
-            <a href='#' title='Expand/Collapse' class='btn btn-link btn-toggle-expand'>
-              <i class='fa fa-ios-arrow-up'></i>
-            </a>
-            <a href='#' title='Remove' class='btn btn-link btn-remove'>
-              <i class='fa fa-ios-close-empty'></i>
-            </a>
           </div>
         </div>
-        <div class='widget-content'>
-          <ul class='list-unstyled simple-todo-list'>
-            <li>
-              <label class='fancy-checkbox'>
-                <input type='checkbox' checked='checked' />
-                <span class='todo-text'>
-                  Upload new revision
-                </span>
-              </label>
-            </li>
-            <li>
-              <label class='fancy-checkbox'>
-                <input type='checkbox' />
-                <span class='todo-text'>
-                  Responsive test
-                </span>
-              </label>
-            </li>
-            <li>
-              <label class='fancy-checkbox'>
-                <input type='checkbox' checked='checked' />
-                <span class='todo-text'>
-                  Cross-browser check
-                </span>
-              </label>
-            </li>
-            <li>
-              <label class='fancy-checkbox'>
-                <input type='checkbox' />
-                <span class='todo-text'>
-                  Social media research
-                </span>
-              </label>
-            </li>
-            <li>
-              <label class='fancy-checkbox'>
-                <input type='checkbox' />
-                <span class='todo-text'>
-                  Conduct A/B test
-                </span>
-              </label>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- END MY TODO LIST -->
-      <!-- RECENT FILES -->
-      <div class='widget'>
-        <div class='widget-header clearfix'>
-          <h3>
-            <i class='fa fa-document'></i>
 
-            <span>
-              RECENT FILES
-            </span>
-          </h3>
-          <div class='btn-group widget-header-toolbar'>
-            <a href='#' title='Expand/Collapse' class='btn btn-link btn-toggle-expand'>
-              <i class='fa fa-ios-arrow-up'></i>
-            </a>
-            <a href='#' title='Remove' class='btn btn-link btn-remove'>
-              <i class='fa fa-ios-close-empty'></i>
-            </a>
-          </div>
-        </div>
-        <div class='widget-content'>
-          <ul class='fa-ul recent-file-list bottom-30px'>
-            <li>
-              <i class='fa-li fa fa-file-pdf-o'></i>
-              <a href='#'>
-                Project Requirements.pdf
-              </a>
-            </li>
-            <li>
-              <i class='fa-li fa fa-file-word-o'></i>
-              <a href='#'>
-                [DRAFT] System Specifications.docx
-              </a>
-            </li>
-            <li>
-              <i class='fa-li fa fa-file-picture-o'></i>
-              <a href='#'>
-                Marketing Content-v2.jpg
-              </a>
-            </li>
-            <li>
-              <i class='fa-li fa fa-file-zip-o'></i>
-              <a href='#'>
-                All-files-backup.zip
-              </a>
-            </li>
-          </ul>
-          <button type='button' class='btn btn-sm btn-primary'>
-            <i class='fa fa-upload'></i>
-            Upload
-          </button>
 
-          <a href='#' class='btn btn-sm btn-default'>
-            <i class='fa fa-folder'></i>
-            See all files
-          </a>
-        </div>
       </div>
-      <!-- END RECENT FILES -->
     </div>
   </div>
 </div>

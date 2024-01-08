@@ -3,8 +3,7 @@ import express from "express";
 
 const router = express.Router();
 
-router.route("/").get(reportController.getAllReports);
-router.route("/").post(reportController.createReport);
+router.route("/").get(reportController.getAllReports).post(reportController.createReport);
 
 router
     .route("/:id")
