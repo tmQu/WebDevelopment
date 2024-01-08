@@ -48,7 +48,6 @@ function addCarousel(images)
 function parseContentMarker(content)
 {
 
-    content.advertisementForm = content.advertisementForm.advertisementForm;
 
     var locationCategory = [];
     content.locationCategory.forEach(category => {
@@ -60,7 +59,7 @@ function parseContentMarker(content)
     var addr = `${content.addr.street_number} ${content.addr.route}, ${content.addr.ward.ward}, ${content.addr.district.district}, ${content.addr.city}`;
 
     return `<div class="marker-content">\n
-    <h3 class="advt-form">${content.advertisementForm}</h3>\n
+    <h3 class="advt-form">${content.advertisementForm.advertisementForm}</h3>\n
     <div class="location-category">${locationCategory}</div>\n
     <div class="addr">${addr}</div>\n
     <h3 class="planning">${content.isPlanning == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'}</h3>\n
@@ -97,6 +96,7 @@ function parseBillBoardContent(boardLocation, board){
        ${addr}
     </div>
     <div class="billboard-size"><strong>Kích thước</strong> ${size}</div>
+    <div class="billboard-size"><strong>Số lượng</strong> ${board.quantity}</div>
     <div class="billboard-form"><strong>Hình thức</strong> ${boardLocation.advertisementForm.advertisementForm}</div>
     <div class="billboard-category"><strong>Phân loại</strong> ${locationCategory}</div> 
     <div class="d-flex justify-content-between mt-4 mb-1"><button class="btn btn-outline-primary circle-btn"><i class="bi bi-info-lg"></i></button>

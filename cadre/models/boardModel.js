@@ -21,6 +21,10 @@ const billboardSchema = new mongoose.Schema({
         ref: 'board_types', 
         required: true
     },
+    quantity: {
+        type: String,
+        require: true
+    },
     expireDate: {
     // date with iso8601 format
         type: Date,

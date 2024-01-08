@@ -20,6 +20,7 @@ import reportRouter from './routes/reportRoutes.js';
 import reportController from './controllers/reportController.js';
 import reportMethodController from './controllers/reportMethodController.js';
 import reportMethodRoutes from './routes/reportMethodRoutes.js';
+import licenseRouter from './routes/licenseRoutes.js';
 
 import cookieParser from 'cookie-parser';
 
@@ -94,18 +95,24 @@ app.use(mongoSanitize());
 
 app.use(xss());
 
-// app.get('/test', async (req, res) => {
-//   try {
-//     const boards = await boardModel.find().populate('boardType');
+app.get('/test', async (req, res) => {
+  try {
+    const boards = await boardModel.find();
+    for (let i = 0; i < boards.length; i++) {
+      var board = boards[i];
+      board.quantity = '1 trụ/bảng';
+      await board.save();
+    }
+    console.log(boards[0]);
     
 
 
   
-//     res.json(boards);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
+    res.json(boards);
+  } catch (err) {
+    console.log(err);
+  }
+});
 import ward from './models/wardModel.js';
 app.get('/test2', async (req, res) => {
   try {
@@ -131,7 +138,7 @@ app.use('/api/v1/account', accountRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reports', reportRouter);
 app.use('/api/v1/reportMethods', reportMethodRoutes);
-
+app.use('/license', licenseRouter);
 // app.get('/', (req, res) => {
 //   res.render('navBar/navBar');
 // });
@@ -149,6 +156,11 @@ app.get('/', async (req, res) => {
   });
 
 });
+
+app.get('/liscense', (req, res) => {
+  console.log('lis')
+  res.render('vwForm/liscense', { layout: 'main' });
+})
 
 app.get('/login', (req, res) => {
   res.render('vwAccount/login');
