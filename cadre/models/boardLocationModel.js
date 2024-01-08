@@ -36,11 +36,6 @@ let BillboardLocationSchema = new mongoose.Schema({
       require: true,
     },
   },
-  boardLC: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'location_categories',
-    required: true,
-  },
 
   isPlan: {
     type: Boolean,
@@ -61,7 +56,7 @@ let BillboardLocationSchema = new mongoose.Schema({
   ],
 
   imgBillboardLocation: {
-    type: String,
+    type: Array,
     require: true,
   },
 });

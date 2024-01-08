@@ -1,29 +1,41 @@
-// import boardModel from '../models/boardModel.js';
-import boardModel from '../models/boardLocationModel.js';
-
+import boardLocationModel from '../models/boardLocationModel.js';
+import boardModel from '../models/boardModel.js';
 import accountModel from '../models/accountModel.js';
+import  mongoose from 'mongoose';
 
 const boardController = {
-  
-  getAllBoards: async (req, res) => {
+  test: async (req, res) => {
     try {
-      let query = boardModel.find();
-      if (req.query.district) {
-        query = query.where('addr.district').equals(req.query.district);
-      }
+      const boardLocation = await boardLocationModel.find().populate('advertisementForm').populate('locationCategory').populate('addr.district').populate('addr.ward');
+      const boards = await boardModel.find()
+      
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  getAllBoardLocation: async (req, res) => {
+    try {
 
-      if (req.query.ward) {
-        query = query.where('addr.ward').equals(req.query.ward);
-      }
+      let query = boardLocationModel.find()
+                        .populate('advertisementForm')
+                        .populate('locationCategory')
+                        .populate('addr.district')
+                        .populate('addr.ward');
 
       const boards = await query;
+
+      if (boards.length === 0 || !boards) {
+        return res.status(404).json({
+          status: 'fail',
+          message: 'No boards found',
+        });
+      }
 
       res.status(200).json({
         status: 'success',
         results: boards.length,
         data: 
           boards,
-        
       });
     } catch (err) {
       res.status(404).json({
@@ -32,13 +44,52 @@ const boardController = {
       });
     }
   },
-  getById: async (req, res) => {
+  getBoardLocationWithId: async (req, res) => {
     try {
-      const board = await boardModel.find({_id: req.params.id});
-      console.log(board[0])
+
+      const board = await boardLocationModel.findById(req.params.id)
+                        .populate('advertisementForm')
+                        .populate('locationCategory')
+                        .populate('addr.district')
+                        .populate('addr.ward');
+      if (!board) {
+        return res.status(404).json({
+          status: 'fail',
+          message: 'No board found',
+        });
+      }
+
       res.status(200).json({
         status: 'success',
-        data: board[0],
+        data: {
+          board,
+        },
+      });
+    } catch (err) {
+      res.status(404).json({
+        status: 'fail',
+        message: err,
+      });
+    }
+  },
+  getBoardInLocation: async (req, res) => {
+    try {
+
+
+      var boards = await boardModel.find({boardLocation: mongoose.Types.ObjectId(req.params.id)}).populate('boardType');
+      var boardLocation = await boardLocationModel.findById(req.params.id)
+                        .populate('advertisementForm')
+                        .populate('locationCategory')
+                        .populate('addr.district')
+                        .populate('addr.ward');
+
+
+      res.status(200).json({
+        status: 'success',
+        data: {
+          boards: boards,
+          boardLocation: boardLocation
+        }
       });
     } catch (err) {
       res.status(404).json({

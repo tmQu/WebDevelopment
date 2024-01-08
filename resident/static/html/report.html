@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Report</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
@@ -14,8 +14,11 @@
     <link rel="stylesheet" href="../css/popupLocationInfo.css" />
     <link rel="stylesheet" href="../css/filter.css" /> -->
     <link rel="stylesheet" href="../css/report.css" />
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/css/fileinput.min.css">
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/css/fileinput.min.css"
+    />
     <!-- <script type="module" src="../js/map.js"></script> -->
     <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
     <!-- <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" -->
@@ -26,7 +29,10 @@
     <!-- <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script> -->
 
     <!-- Theme included stylesheets -->
-    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+    <link
+      href="https://cdn.quilljs.com/1.3.7/quill.snow.css"
+      rel="stylesheet"
+    />
     <!-- <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet"> -->
 
     <!-- Core build with no theme, formatting, non-essential modules -->
@@ -35,90 +41,229 @@
 
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet" />
+      rel="stylesheet"
+    />
 
     <!-- Boostrap5 -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-      crossorigin="anonymous" />
+      crossorigin="anonymous"
+    />
 
     <!-- Boostrap5 icon -->
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"
+    />
   </head>
 
   <body>
     <!-- <div id="report"> -->
-      <!-- Report form -->
-      <!-- <form method="post" action="http://localhost:4000/test" id="report-form"> -->
-      <!-- console log data of the form -->
-      <form id="report-form" action="">
-          <div class="mb-3">
-            <label for="method" class="form-label" id="requiredMethod">Hình thức báo cáo</label>
-                <select id="method" class="form-control" name="method">
-                  <option value="0">Chọn hình thức báo cáo</option>
-                  <option value="1">Tố giác sai phạm</option>
-                  <option value="2">Đăng ký nội dung</option>
-                  <option value="3">Đóng góp ý kiến</option>
-                  <option value="4">Giải đáp thắc mắc</option>
-                </select>
+    <!-- Report form -->
+    <!-- <form method="post" action="http://localhost:4000/test" id="report-form"> -->
+    <!-- console log data of the form -->
+    <div class="container py-5">
+      <!-- For demo purpose -->
+      <div class="row mb-4" id="header">
+        <div class="col-lg-8 mx-auto text-center">
+          <h1>Report Advertisment Board</h1>
+          <p class="lead mb-0">
+            Chúng tôi sẽ xem xét và xử lý thông tin của bạn trong thời gian sớm
+            nhất
+          </p>
+        </div>
+      </div>
+      <!-- End -->
+
+      <div class="row">
+        <div class="col-lg-7 mx-auto">
+          <div class="bg-white rounded-lg shadow-sm p-5">
+            <!-- Info form tabs -->
+            <ul
+              role="tablist"
+              class="nav bg-light nav-pills rounded-pill nav-fill mb-3"
+            >
+              <li class="nav-item" id="info-tab">
+                <a data-toggle="pill" class="nav-link active rounded-pill" id="personal-info" href="#nav-tab-info">
+                  <i class="bi bi-person"></i>
+                  Thông tin cá nhân
+                </a>
+              </li>
+              <li class="nav-item" id="report-tab">
+                <a data-toggle="pill" class="nav-link rounded-pill" id="report-info" href="#nav-tav-board">
+                  <i class="bi bi-clipboard2"></i>
+                  Thông tin báo cáo
+                </a>
+              </li>
+            </ul>
+            <!-- End -->
+
+            <!-- Info form content -->
+            <div class="tab-content">
+              <!-- personal info -->
+              <div id="nav-tab-info" class="tab-pane fade show active">
+                <form role="form">
+                  <div class="form-group mb-3">
+                    <label for="fullname" id="requiredName">Họ và tên</label>
+                    <input
+                      type="text"
+                      name="fullname"
+                      placeholder="Nguyễn Văn A"
+                      required
+                      class="form-control"
+                      id="txtName"
+                    />
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="email" id="requiredEmail">Email</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        name="email"
+                        placeholder="abc@example.com"
+                        class="form-control"
+                        id="txtEmail"
+                        required
+                      />
+                      <div class="input-group-append">
+                        <span class="input-group-text text-muted">
+                          <i class="bi bi-envelope-at"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form mb-3">
+                    <label for="phone" id="requiredPhone">Số điện thoại</label>
+                    <input
+                      type="text"
+                      placeholder="0123xxxxxx"
+                      name="phone"
+                      class="form-control"
+                      id="txtPhone"
+                      required
+                    />
+                  </div>
+                  <!-- <button
+                    type="button"
+                    class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"
+                  >
+                    Xác nhận
+                  </button> -->
+                  <a
+                    class="btn btn-primary rounded-pill float-end"
+                    href="#"
+                    id="confirmPersonalInfoBtn"
+                  >
+                  <i class="bi bi-arrow-right"></i>
+                    Tiếp theo
+                  </a>
+                </form>
+              </div>
+              <!-- End -->
+
+              <!-- Report info -->
+              <div id="nav-tab-report" class="visually-hidden">
+                <form role="form">
+                  <div class="form-group mb-3">
+                    <label for="method">Hình thức báo cáo</label>
+                    <select name="method" id="method">
+                      <option value="0">Chọn hình thức báo cáo</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-3">
+                    <label for="content">Nội dung báo cáo</label>
+                    <div id="editor"></div>
+                  </div>
+
+                  <!-- <button
+                    type="button"
+                    class="subscribe btn btn-primary btn-block rounded-pill shadow-sm"
+                  >
+                    Xác nhận
+                  </button> -->
+                  <div>
+                  <a
+                    class="btn btn-primary rounded-pill float-end"
+                    href="#"
+                    id="sendReport"
+                  >
+                    <i class="bi bi-check-circle"></i>
+                    Gửi báo cáo
+                  </a>
+                  </div>
+                </form>
+              </div>
+              <!-- End -->
+            </div>
+            <!-- End -->
           </div>
-          <div class="mb-3">
-            <label for="name" class="form-label" id="requiredName">Họ tên người gửi báo cáo</label>
-            <input type="name" id="name" name="name" class="form-control" placeholder="Nguyễn Văn A" required>
-          </div>
-          <div class="mb-3">
-            <label for="email" class="form-label" id="requiredEmail">Email</label>
-            <input type="txtemail" id="email" class="form-control" name="email" placeholder="name@example.com" required>
-          </div>
-          <div class="mb-3">
-            <label for="phone" class="form-label" id="requiredPhone">Điện thoại liên lạc</label>
-            <input type="phone" id="phone" class="form-control" name="phone" placeholder="0945.xxx.xxx" required>
-          </div>
-          <div class="mb-3">
-            <label for="editor" class="form-label" id="requiredContent" name="content">Nội dung báo cáo</label>
-            <div id="editor"></div>
-          </div>
-          <div class="mb-3">
-              <label for="formFile" class="form-label" name="file" id="requiredFile">Hình ảnh minh hoạ</label>
-              <input class="form-control" type="file" id="formFile" multiple required accept="image/jpg, image/jpeg, image/png" name="files">
-          </div>
-          <!-- <div class="g-recaptcha" data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div> -->
-          <button type="submit" class="btn btn-primary" id="submit">Gửi báo cáo</button>
-      </form>
-        
+        </div>
+      </div>
+    </div>
+
     <!-- </div> -->
 
     <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzxW5txxZHhPZCjPrOvrjCE8awoF3IP50&callback=initMap&libraries=places,marker&v=weekly"
-    defer></script>
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzxW5txxZHhPZCjPrOvrjCE8awoF3IP50&callback=initMap&libraries=places,marker&v=weekly"
+      defer
+    ></script>
     <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
-    
-    
-    <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
 
-        <!-- import jquery -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- import jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/fileinput.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/locales/vi.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/buffer.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/filetype.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/piexif.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/sortable.min.js"></script>
-<script>
-  $('#formFile').fileinput({
-    dropZoneEnabled: false,
-    maxFileCount: 3,
-    showUpload: false,
-    allowedFileExtensions: ['jpg', 'png', 'gif'],
-    // language: 'vi',
-  });
-  </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/locales/vi.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/buffer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/filetype.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/piexif.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/sortable.min.js"></script>
+    <script>
+      $("#formFile").fileinput({
+        dropZoneEnabled: false,
+        maxFileCount: 3,
+        showUpload: false,
+        allowedFileExtensions: ["jpg", "png", "gif"],
+        // language: 'vi',
+      });
+      $(document).ready(function () {
+        // Add a click event listener to the "Xác nhận" button
+        $("#confirmPersonalInfoBtn").click(function (e) {
+          e.preventDefault(); // Prevent the default behavior of the anchor link
+          $("#nav-tab-report").removeClass("visually-hidden"); // Show the "Thông tin báo cáo" tab
+          $("#nav-tab-info").addClass("visually-hidden"); // Hide the "Thông tin cá nhân" tab
+          $("#personal-info").removeClass("active");
+          $("#report-info").addClass("active");
+        });
+      });
+      $(document).ready(function () {
+        // Add a click event listener to the "Xác nhận" button
+        $("#personal-info").click(function (e) {
+          e.preventDefault(); // Prevent the default behavior of the anchor link
+          $("#nav-tab-report").addClass("visually-hidden"); // Show the "Thông tin báo cáo" tab
+          $("#nav-tab-info").removeClass("visually-hidden"); // Hide the "Thông tin cá nhân" tab
+          $("#personal-info").addClass("active");
+          $("#report-info").removeClass("active");
+        });
+      });
+      $(document).ready(function () {
+        // Add a click event listener to the "Xác nhận" button
+        $("#report-info").click(function (e) {
+          e.preventDefault(); // Prevent the default behavior of the anchor link
+          $("#nav-tab-report").removeClass("visually-hidden"); // Show the "Thông tin báo cáo" tab
+          $("#nav-tab-info").addClass("visually-hidden"); // Hide the "Thông tin cá nhân" tab
+          $("#personal-info").removeClass("active");
+          $("#report-info").addClass("active");
+        });
+      });
+    </script>
+    <script src="../js/report.js"></script>
   </body>
 </html>

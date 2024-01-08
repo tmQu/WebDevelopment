@@ -1,17 +1,20 @@
 import boardController from '../controllers/boardController.js';
-import express from 'express';
 import authController from '../controllers/authController.js';
+import express from 'express';
 
 const router = express.Router();
 
 router
   .route('/')
-  .get(boardController.getAllBoards)
+  .get(boardController.getAllBoardLocation)
   .post(boardController.createBoard);
 
 router
+  .route('/detail/:id')
+  .get(boardController.getBoardInLocation)
+router
   .route('/:id')
-  .get(boardController.getById)
+  .get(boardController.getBoardLocationWithId)
   .patch(boardController.updateBoard)
   .delete(
     authController.protect,

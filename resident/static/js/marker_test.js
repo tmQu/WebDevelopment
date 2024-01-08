@@ -1,19 +1,6 @@
 const apiUrl = 'localhost:4000'
 
-function getAllLocation(callback){
-    var url = 'http://'+ apiUrl + '/api/v1/boards/';
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-        if (xhr.readyState === XMLHttpRequest.DONE)
-        {
-            callback(JSON.parse(xhr.responseText));
-        }
-    }
-    xhr.open('GET', url);
-    xhr.send();
-}
-
-function getDetailBillboardLocation(id, callback) {
+function getBoardLocationInfor(id, callback) {
     var url = 'http://'+ apiUrl + '/api/v1/boards/' + id;
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
@@ -26,70 +13,98 @@ function getDetailBillboardLocation(id, callback) {
     xhr.send();
 }
 
+function getDetailBoard(id, callback)
+{
+    var url = 'http://'+ apiUrl + '/api/v1/boards/detail/' + id;
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState === XMLHttpRequest.DONE)
+        {
+            callback(JSON.parse(xhr.responseText));
+        }
+    }
+    xhr.open('GET', url);
+    xhr.send();
+
+}
 
 
-function addCarousel(images, location=true)
+function addCarousel(images)
 {
     var imgSlider = '';
-    images.forEach(img => {
-       imgSlider += `<img src="${img}" class="d-block w-100" style="max-height: 240px; object-fit: cover">`
-    });
-    var carousel = 
-    `<div class="carousel slide ${location == true ? 'mt-4': 'm-1 w-100'}">
-    <div class="carousel-inner" id = 'carousel-location'>
-        ${imgSlider}
-    </div>
-    `
-    +
-    `
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon shadow" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-      <span class="carousel-control-next-icon shadow" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>`
-  return carousel;
+    console.log(images)
+    for (var i = 0; i < images.length; i++) {
+        var img = images[i];
+       imgSlider += `
+       <div class="carousel-item ${i == 0 ? 'active': ''}">
+       <img crossorigin="anonymous" src="${img}" class="d-block w-100" style="max-height: 240px; object-fit: cover">
+       </div>
+       `
+       console.log(imgSlider)
+    };
+    
+    document.querySelector('#carousel-location').innerHTML = imgSlider;
 }
 function parseContentMarker(content)
 {
-    console.log(content.addr)
-    var addr = `${content.addr.street_number} ${content.addr.route}, ${content.addr.ward}, ${content.addr.district}, ${content.addr.city}`;
-    var locationCategory = "";
-    content.locationCategory.forEach(category => {locationCategory += category});
+
+
+    var locationCategory = [];
+    content.locationCategory.forEach(category => {
+        locationCategory.push(category.locationCategory);
+    })
+    locationCategory = locationCategory.join(', ');
+
+
+    var addr = `${content.addr.street_number} ${content.addr.route}, ${content.addr.ward.ward}, ${content.addr.district.district}, ${content.addr.city}`;
+
     return `<div class="marker-content">\n
-    <h3 class="advt-form">${content.advertisementForm}</h3>\n
+    <h3 class="advt-form">${content.advertisementForm.advertisementForm}</h3>\n
     <div class="location-category">${locationCategory}</div>\n
     <div class="addr">${addr}</div>\n
     <h3 class="planning">${content.isPlanning == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'}</h3>\n
     </div>`;
 }
 
-function parseBillBoardContent(billboardLocation, billboard, id){
-    var addr = `${billboardLocation.addr.street_number} ${billboardLocation.addr.route}, ${billboardLocation.addr.ward}, ${billboardLocation.addr.district}, ${billboardLocation.addr.city}`;
-    var size = `${billboard.size}`
+function parseBillBoardContent(boardLocation, board){
+    var addr = `${boardLocation.addr.street_number} ${boardLocation.addr.route}, ${boardLocation.addr.ward.ward}, ${boardLocation.addr.district.district}, ${boardLocation.addr.city}`;
+    var size = `${board.size}`
     var locationCategory = "";
-    billboardLocation.locationCategory.forEach(category => {locationCategory += category});
 
-    return `<div class="billboard" id = "${id}">
+    var locationCategory = [];
+    boardLocation.locationCategory.forEach(category => {
+        locationCategory.push(category.locationCategory);
+    })
+    locationCategory = locationCategory.join(', ');
+
+
+    // Thêm offset 7 giờ để chuyển múi giờ hiện tại thành múi giờ Việt Nam
+    const vietnamTime = new Date(new Date(board.expireDate).getTime() + 7 * 60 * 60 * 1000);
+
+    const year = vietnamTime.getFullYear();
+    const month = vietnamTime.getMonth() + 1; // Tháng bắt đầu từ 0, cần cộng thêm 1
+    const day = vietnamTime.getDate();
+
+    const dateString = `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`;
+
+    return `<div class="billboard" id = "${board.id}">
     <h3 class="billboard-type">
-        ${billboard.billboardType}
+        ${board.boardType.boardType}
     </h3>
     <div class="billboard-addr">
         <img src="../img/icon/icons8-maps.svg" alt="" style="height: 1em;">
        ${addr}
     </div>
-    <div class="billboard-size">${size}</div>
-    <div class="billboard-form">${billboardLocation.advertisementForm}</div>
-    <div class="billboard-category">${locationCategory}</div> 
+    <div class="billboard-size"><strong>Kích thước</strong> ${size}</div>
+    <div class="billboard-size"><strong>Số lượng</strong> ${board.quantity}</div>
+    <div class="billboard-form"><strong>Hình thức</strong> ${boardLocation.advertisementForm.advertisementForm}</div>
+    <div class="billboard-category"><strong>Phân loại</strong> ${locationCategory}</div> 
     <div class="d-flex justify-content-between mt-4 mb-1"><button class="btn btn-outline-primary circle-btn"><i class="bi bi-info-lg"></i></button>
     <button class="btn btn-outline-danger"><i class="bi bi-exclamation-octagon"></i> Báo cáo cáo vi phạm</button></div>
     <div class="detail-infor">
         <button type="button" class="btn-close" aria-label="Close"></button>
-        ${addCarousel([billboard.imgBillboard], false)}
-        <div>expired date: ${billboard.expireDate.toString()}</div>
+        <img crossorigin="anonymous" src="${board.imgBillboard}" class="d-block w-100" style="max-height: 240px; object-fit: cover">
+        <div class="mt-3"><strong>Ngày hết hạn hộp đồng</strong>: ${dateString}</div>
     </div>
     </div>
     `
@@ -206,12 +221,11 @@ function setMarkerBillBoard(location, marker,infowindow)
 {
         
     marker.addListener('click', () => {
-        console.log('ok')
-        getDetailBillboardLocation(location.id, (detailInfor) => {
+        getBoardLocationInfor(location._id, (detailInfor) => {
             console.log(detailInfor);
             detailInfor = detailInfor.data;
             console.log(detailInfor)
-            infowindow.setContent(parseContentMarker(detailInfor));
+            infowindow.setContent(parseContentMarker(detailInfor.board));
             infowindow.open({
                 anchor: marker,
                 map
@@ -222,44 +236,58 @@ function setMarkerBillBoard(location, marker,infowindow)
 
 
     marker.addListener('click', (event) => {
-        getDetailBillboardLocation(location.id, (detailInfor) => {
-            console.log(detailInfor)
-            detailInfor = detailInfor.data
+        getDetailBoard(location._id, (detailInfor) => {
+
+            var boardLocation = detailInfor.data.boardLocation;
+            var boards = detailInfor.data.boards;
+
             var subWindow = document.getElementById('sub-window');
-            //subWindow.innerHTML =  addCarousel(['../img/test_billboard.jpg']) + subWindow.innerHTML;
             var content = document.querySelector('#sub-window .overflow-content')
+
+            addCarousel(boardLocation.imgBillboardLocation);
             content.innerHTML = "";
-            console.log(detailInfor)
-            var idTest = [];
-            detailInfor.billboards.forEach(id => idTest.push(id.idBillboard))
-            detailInfor.billboards.forEach(billboard => {
-                content.innerHTML += parseBillBoardContent(detailInfor, billboard, billboard.idBillboard);
-            
+            var idTemp = []
+            for (var i = 0; i < boards.length; i++) {
+
+                var billboard = boards[i];
+                billboard.id = 'board-' + (i +1).toString();
+                content.innerHTML += parseBillBoardContent(boardLocation, billboard);
                 subWindow.classList.add('show-up');
 
-            })
-            idTest.forEach(id => {   
-            document.querySelector(`#${id} button.circle-btn`).addEventListener('click', () => {
-                document.querySelector(`#${id}`).classList.add('active');
-                var detailInfor = document.querySelector(`#${id} .detail-infor`);
-                detailInfor.classList.add('show-up');
-                document.querySelector(`#${id} .btn-close`).onclick = () =>{
-                    document.querySelector(`#${id} .detail-infor`).classList.remove('show-up');
-                }
-            });
+                //idTemp board
+                idTemp.push(billboard.id);
 
-            document.querySelector(`#${id} button.btn-outline-danger`).addEventListener('click', () => {
-                
-                document.querySelector(`#report`).classList.add('show-up');
+            }
 
-                document.getElementById('submit').addEventListener('click',()=> {
-                    var item = JSON.parse(localStorage.getItem('report')) || [];
-                    item.push(detailInfor.location)
-                    console.log(item)
-                    localStorage.setItem('report', JSON.stringify(item))
+            idTemp.forEach(idBB => {
+                console.log(`#${idBB} button.circle-btn`)
+
+                // detail infor button
+                document.querySelector(`#${idBB} button.circle-btn`).addEventListener('click', () => {
+                    document.querySelector(`#${idBB}`).classList.add('active');
+                    var detailInfor = document.querySelector(`#${idBB} .detail-infor`);
+                    console.log(`#${idBB} .detail-infor`);
+                    detailInfor.classList.add('show-up');
+                    document.querySelector(`#${idBB} .btn-close`).onclick = () =>{
+                        document.querySelector(`#${idBB} .detail-infor`).classList.remove('show-up');
+                    }
                 });
-            })
-        });
+                
+                // report button
+                document.querySelector(`#${idBB} button.btn-outline-danger`).addEventListener('click', () => {
+                    
+                    document.querySelector(`#report`).classList.add('show-up');
+    
+                    document.getElementById('submit').addEventListener('click',()=> {
+                        var item = JSON.parse(localStorage.getItem('report')) || [];
+                        item.push(detailInfor.location)
+                        console.log(item)
+                        localStorage.setItem('report', JSON.stringify(item))
+                    });
+                })
+            }); 
+
+
             // var btnInfors = document.querySelectorAll('button.circle-btn');
             // btnInfors.forEach(btn => {
             //     btn.addEventListener('click', (event) => {
