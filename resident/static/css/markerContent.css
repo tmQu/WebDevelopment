@@ -15,3 +15,8 @@
     width: 15px;
     margin-right: 10px
 }
+
+.marker-content .planning {
+    margin-top: 0px;
+    color: brown;
+}

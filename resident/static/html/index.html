@@ -80,8 +80,7 @@
         <div class="overflow-content"></div>
       </div>
 
-      <!-- <div id = 'detail-infor'>
-        <button type="button" class="btn-close" aria-label="Close"></button>
+      <!-- <div class = 'detail-infor'>
 
       </div> -->
 
@@ -106,8 +105,7 @@
 
     <!-- Hiển thị thông tin vị trí khi nhấn -->
     <div id="info">
-      <span id="close-button">&times;</span>
-      <h2>Thông tin vị trí</h2>
+      <span id="close-button"></span>
       <p id="location-info"></p>
     </div>
 
@@ -141,117 +139,6 @@
       </div>
     </div>
 
-
-    <div id="report">
-      <!-- Report form -->
-      <form method="post" action="http://localhost:4000/test" id="report-form">
-        <div class="mb-3">
-          <label for="method" class="form-label" id="requiredMethod">
-            Hình thức báo cáo
-          </label>
-          <select id="method" class="form-control" name="method">
-            <option value="0">Chọn hình thức báo cáo</option>
-            <option value="1">Tố giác sai phạm</option>
-            <option value="2">Đăng ký nội dung</option>
-            <option value="3">Đóng góp ý kiến</option>
-            <option value="4">Giải đáp thắc mắc</option>
-          </select>
-        </div>
-        <div class="mb-3">
-          <label for="name" class="form-label" id="requiredName">
-            Họ tên người gửi báo cáo
-          </label>
-          <input
-            type="name"
-            id="name"
-            name="name"
-            class="form-control"
-            placeholder="Nguyễn Văn A"
-            required />
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label" id="requiredEmail">Email</label>
-          <input
-            type="email"
-            id="email"
-            class="form-control"
-            name="email"
-            placeholder="name@example.com"
-            required />
-        </div>
-        <div class="mb-3">
-          <label for="phone" class="form-label" id="requiredPhone">
-            Điện thoại liên lạc
-          </label>
-          <input
-            type="phone"
-            id="phone"
-            class="form-control"
-            name="phone"
-            placeholder="0945.xxx.xxx"
-            required />
-        </div>
-        <div class="mb-3">
-          <label
-            for="content"
-            class="form-label"
-            id="requiredContent"
-            name="content">
-            Nội dung báo cáo
-          </label>
-          <div id="editor"></div>
-        </div>
-        <div class="mb-3">
-          <label for="formFile" class="form-label" name="file">
-            Hình ảnh minh hoạ
-          </label>
-          <input
-            class="form-control"
-            type="file"
-            id="formFile"
-            multiple
-            required />
-        </div>
-        <div
-          class="g-recaptcha"
-          data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></div>
-        <button type="submit" class="btn btn-primary" id="submit">
-          Gửi báo cáo
-        </button>
-      </form>
-    </div>
-
-    <!-- <div id="show-report">
-
-        <div class="mb-3">
-            Hình thức báo cáo <span class="repor-method"></span>
-        </div>
-        <div class="mb-3">
-            Họ tên người gửi báo cáo
-            <span class="reporter-name"></span>
-        </div>
-        <div class="mb-3">
-          Email
-          <span class="reporter-email"></span>
-        </div>
-        <div class="mb-3">
-          Điện thoại liên lạc
-          <span class="reporter-phone"></span>
-        </div>
-        <div class="mb-3">
-            Nội dung báo cáo
-            <div class="reporter-content"></div>
-        </div>
-        <div class="mb-3">
-
-          Hình ảnh minh hoạ
-          <div class="reporter-image">
-
-            
-          </div>
-        </div>
-
-    </div> -->
 
     <!-- <script
       async

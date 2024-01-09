@@ -1,8 +1,8 @@
-const upReports = async (name, email, phone, board, method, image, description, status) => {
+const upReports = async (name, email, phone, board, method, image, description) => {
   try {
     const response = await axios({
       method: "POST",
-      url: "/api/v1/reports",
+      url: "http://localhost:4000/api/v1/reports",
       data: {
         sender: {
           fullname: name,
@@ -12,21 +12,37 @@ const upReports = async (name, email, phone, board, method, image, description, 
         board,
         method,
         image,
-        description,
-        status
+        description
       },
     });
     console.log(response.data);
     if (response.data.success === true) {
       alert("Báo cáo đã được gửi thành công");
-      window.setTimeout(() => {
-        location.assign("/sendReport");
-      }, 1500);
     }
   } catch (err) {
     alert(err.response.data.message);
   }
 };
+
+//get method from database
+const getMethod = async () => {
+  try {
+    const res = await axios({
+      method: "GET",
+      url: "http://localhost:4000/api/v1/reportMethods",
+    });
+    if (res.data.success === true) {
+      const methods = res.data.data.methods;
+      const html = methods.map((method) => {
+        return `<option value="${method._id}">${method.reportMethod}</option>`;
+      }).join("");
+      document.querySelector("#method").innerHTML = html;
+    }
+  }
+  catch (err) {
+    console.log(err);
+  }
+}
 
 // Quill
 //customize toolbar
@@ -51,7 +67,7 @@ const checkMethod = function () {
     document.querySelector("#method").classList.add("is-invalid");
     document.querySelector("#requiredMethod").innerHTML = warn;
     document
-      .querySelector("#report-form")
+      .querySelector("#reportForm")
       .addEventListener("submit", (event) => {
         event.preventDefault();
       });
@@ -74,7 +90,7 @@ const checkName = function () {
     document.querySelector("#txtName").classList.add("is-invalid");
     document.querySelector("#requiredName").innerHTML = warn;
     document
-      .querySelector("#report-form")
+      .querySelector("#reportForm")
       .addEventListener("submit", (event) => {
         event.preventDefault();
       });
@@ -97,7 +113,7 @@ const checkEmail = function () {
     document.querySelector("#txtEmail").classList.add("is-invalid");
     document.querySelector("#requiredEmail").innerHTML = warn;
     document
-      .querySelector("#report-form")
+      .querySelector("#reportForm")
       .addEventListener("submit", (event) => {
         event.preventDefault();
       });
@@ -120,7 +136,7 @@ const checkPhone = function () {
     document.querySelector("#txtPhone").classList.add("is-invalid");
     document.querySelector("#requiredPhone").innerHTML = warn;
     document
-      .querySelector("#report-form")
+      .querySelector("#reportForm")
       .addEventListener("submit", (event) => {
         event.preventDefault();
       });
@@ -177,6 +193,7 @@ const checkContent = function () {
   }
 }
 
+//check if all fields are valid
 document.querySelector("#method").addEventListener("focusout", checkMethod);
 document.querySelector("#txtName").addEventListener("focusout", checkName);
 document.querySelector("#txtEmail").addEventListener("focusout", checkEmail);
@@ -191,17 +208,19 @@ document.querySelector("#reportForm").addEventListener("submit", (event) => {
   const phone = document.querySelector("#txtPhone").value;
   //const board = document.querySelector("#board").value;
   const board = null;
-  //const method = document.querySelector("#method").value;
+  const method = document.querySelector("#method").value;
   //get the value attribute of option tag
-  const method = document.querySelector("#method").options[
-    document.querySelector("#method").selectedIndex
-  ].value;
+  // const method = document.querySelector("#method").options[
+  //   document.querySelector("#method").selectedIndex
+  // ].value;
   const image = document.querySelector("#formFile").value;
   const description = quill.getText();
 
-  upReports(name, email, phone, board, method, image, description, 0);
+  upReports(name, email, phone, board, method, image, description);
 });
 
 $(function() {
   $('[data-toggle="tooltip"]').tooltip()
 })
+
+getMethod();

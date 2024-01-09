@@ -58,11 +58,11 @@ function parseContentMarker(content)
 
     var addr = `${content.addr.street_number} ${content.addr.route}, ${content.addr.ward.ward}, ${content.addr.district.district}, ${content.addr.city}`;
 
-    return `<div class="marker-content">\n
-    <h3 class="advt-form">${content.advertisementForm.advertisementForm}</h3>\n
+    return `<div class="marker-content" style="padding-right: 10px">\n
+    <h5 class="advt-form" style="font-weight: bold;">${content.advertisementForm.advertisementForm}</h5>\n
     <div class="location-category">${locationCategory}</div>\n
     <div class="addr">${addr}</div>\n
-    <h3 class="planning">${content.isPlanning == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'}</h3>\n
+    <h6 class="planning" style="font-weight: bold;">${content.isPlan == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'}</h6>\n
     </div>`;
 }
 
@@ -87,10 +87,11 @@ function parseBillBoardContent(boardLocation, board){
 
     const dateString = `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`;
 
-    return `<div class="billboard" id = "${board.id}">
-    <h3 class="billboard-type">
+    return `
+    <div class="billboard" id = "${board.id}">
+    <div class="billboard-type" style="font-weight: bold; font-size:15pt">
         ${board.boardType.boardType}
-    </h3>
+    </div>
     <div class="billboard-addr">
         <img src="../img/icon/icons8-maps.svg" alt="" style="height: 1em;">
        ${addr}
@@ -100,7 +101,7 @@ function parseBillBoardContent(boardLocation, board){
     <div class="billboard-form"><strong>Hình thức</strong> ${boardLocation.advertisementForm.advertisementForm}</div>
     <div class="billboard-category"><strong>Phân loại</strong> ${locationCategory}</div> 
     <div class="d-flex justify-content-between mt-4 mb-1"><button class="btn btn-outline-primary circle-btn"><i class="bi bi-info-lg"></i></button>
-    <button class="btn btn-outline-danger"><i class="bi bi-exclamation-octagon"></i> Báo cáo cáo vi phạm</button></div>
+    <a class="btn btn-outline-danger" href="http://localhost:3000/static/html/report.html"><i class="bi bi-exclamation-octagon"></i> Báo cáo vi phạm</a></div>
     <div class="detail-infor">
         <button type="button" class="btn-close" aria-label="Close"></button>
         <img crossorigin="anonymous" src="${board.imgBillboard}" class="d-block w-100" style="max-height: 240px; object-fit: cover">
