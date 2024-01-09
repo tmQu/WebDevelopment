@@ -4,6 +4,7 @@ import BoardLocation from '../models/boardLocationModel.js';
 import sendEmail from '../utils/email.js';
 import multer from 'multer';
 import path from 'path';
+import he from 'he';
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -178,7 +179,9 @@ const reportController = {
   // Send email to reporter
   sendEmailToReporter: async (req, res) => {
     try {
-      const { email, subject, html } = req.body;
+      let { email, subject, html } = req.body;
+      html = he.decode(html);
+
       await sendEmail({
         email,
         subject,

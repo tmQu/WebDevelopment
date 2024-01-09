@@ -49,7 +49,7 @@ const sendEmailToReporter = async (email, subject, html) => {
       alert('Gửi email thành công!');
     }
   } catch (error) {
-    alert("Gửi email thất bại");
+    alert('Gửi email thất bại');
     console.log(error);
   }
 };
@@ -77,20 +77,17 @@ document.getElementById('prvModal').addEventListener('click', function (e) {
 });
 
 const createEmailHtml = (message) => {
-  let html = `<!doctype html>
-  <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
-    <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-      <meta name="viewport" content="width=device-width" />
-      <style>
-        .font-weight-bold { font-weight: bold; }
-      </style>
-    </head>
-  <body>`;
+  let html = '';
 
+  html += `
+  <head>
+    <style>
+      .font-weight-bold { font-weight: bold; }
+    </style>
+  </head>
+  <body>`;
   html += message;
-  html += ` </body>
-  </html>`;
+  html += `</body>`;
 
   return html;
 };
@@ -101,14 +98,13 @@ const confirmSendEmail = async (email) => {
 
   message = createEmailHtml(message);
 
-  console.log(email, subject, message);
   await sendEmailToReporter(email, subject, message);
 
   const adBoardSwitch = document.getElementById('adBoardSwitch');
   const deleteBoardSwitch = document.getElementById('deleteBoard');
 
   const boardId = adBoardSwitch.getAttribute('data-board');
-  console.log(boardId);
+
   switch (true) {
     case !adBoardSwitch.checked && !deleteBoardSwitch.checked:
       await updateBoard(boardId, 'inactive');

@@ -16,7 +16,6 @@ const sendEmail = async (options) => {
     from: 'MaAdsBrd <webGroup09@fit.io>',
     to: options.email,
     subject: options.subject,
-    text: options.message,
     html: options.html,
   };
 
