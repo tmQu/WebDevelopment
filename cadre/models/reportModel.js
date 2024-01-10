@@ -54,6 +54,14 @@ const reportModel = mongoose.Schema(
   }
 );
 
+reportModel.pre(/^find/, function (next) {
+  this.populate({
+    path: 'method',
+    select: 'reportMethod',
+  })
+  next();
+});
+
 const Report = mongoose.model('reports', reportModel);
 
 export default Report;

@@ -41,62 +41,13 @@
               </tr>
             </thead>
             <tbody class='reports-list'>
-              <tr>
-                <td>
-                  <img src='https://bootdey.com/img/Content/avatar/avatar1.png' alt='' />
-                  <a href='#' class='user-link'>
-                    Loai To Giac
-                  </a>
-                  <span class='user-subhead'>
-                    Board Location Details
-                  </span>
-                </td>
-                <td>
-                  2013/08/08
-                </td>
-                <td class='text-center'>
-                  <span class='label label-default'>
-                    Inactive
-                  </span>
-                </td>
-                <td>
-                  <div class='d-flex flex-column'>
-                    <a class='text-bg-danger'>
-                      UserName
-                    </a>
-                    <span class='user-subhead'>
-                      Email
-                    </span>
-                  </div>
-                </td>
-                <td style='width: 20%;'>
-                  <a href='#' class='table-link'>
-                    <span class='fa-stack'>
-                      <i class='fa fa-square fa-stack-2x'></i>
-                      <i class='fa fa-search-plus fa-stack-1x fa-inverse'></i>
-                    </span>
-                  </a>
-                  <a href='#' class='table-link'>
-                    <span class='fa-stack'>
-                      <i class='fa fa-square fa-stack-2x'></i>
-                      <i class='fa fa-pencil fa-stack-1x fa-inverse'></i>
-                    </span>
-                  </a>
-                  <a href='#' class='table-link danger'>
-                    <span class='fa-stack'>
-                      <i class='fa fa-square fa-stack-2x'></i>
-                      <i class='fa fa-trash-o fa-stack-1x fa-inverse'></i>
-                    </span>
-                  </a>
-                </td>
-              </tr>
               {{#if reports}}
                 {{#each reports}}
                   <tr>
                     <td>
-                      <img src="{{this.images.[0]}}" alt='' />
+                      <img src='{{this.images.[0]}}' alt='' />
                       <a href='#' class='user-link'>
-                        {{this.method}}
+                        {{this.method.reportMethod}}
                       </a>
                       <span class='user-subhead'>
                         Board Location Details
@@ -106,9 +57,15 @@
                       {{this.createdAt}}
                     </td>
                     <td class='text-center'>
-                      <span class='label label-default'>
-                        {{this.status}}
-                      </span>
+                      {{#compare this.status '===' false}}
+                        <span class='badge badge-pill badge-warning'>
+                          Chờ xử lý
+                        </span>
+                      {{else compare this.status '===' true}}
+                        <span class='badge badge-pill badge-success'>
+                          Đã xử lý
+                        </span>
+                      {{/compare}}
                     </td>
                     <td>
                       <div class='d-flex flex-column'>

@@ -15,7 +15,7 @@ const reportController = {
           },
           board: req.body.board,
           method: req.body.method,
-          images: req.files.map((file) => file.path),
+          images: req.files.map((file) => '/' + file.path),
           description: req.body.description,
         });
         const result = await report.save();
@@ -39,7 +39,7 @@ const reportController = {
   getAllReports: async (req, res) => {
     try {
       let reports = await Report.find();
-
+      // console.log(reports);
       res.render('vwReport/reports', {
         layout: 'report',
         reports: reports.map((report) => {
