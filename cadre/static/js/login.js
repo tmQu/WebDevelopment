@@ -13,7 +13,7 @@ const authenticationUser = async function (email, password) {
     if (response.data.status === 'success') {
       alert('Login successfully');
       window.setTimeout(() => {
-        location.assign('http://localhost:3000/static/html/index.html'); 
+        location.assign('http://localhost:4000/'); 
       }, 1000);
     }
   } catch (err) {

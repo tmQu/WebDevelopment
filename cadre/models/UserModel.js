@@ -30,9 +30,14 @@ const userSchema = new mongoose.Schema({
     default: 'default.jpg',
   },
   role: {
-    type: String,
-    enum: ['admin', 'super-admin'],
-    default: 'admin',
+    level: {
+      type: String,
+      enum: ['wards', 'districts', 'departmental'],
+    },
+    detail: {
+      type: mongoose.Schema.Types.ObjectId,
+      refPath: 'role.level',
+    },
   },
   password: {
     type: String,

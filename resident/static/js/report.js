@@ -215,7 +215,7 @@ document.querySelector("#reportForm").addEventListener("submit", (event) => {
   const phone = document.querySelector("#txtPhone").value;
 
   const urlParams = new URLSearchParams(window.location.search);
-  const board = urlParams.get('board_id');
+  const board = urlParams.get('id');
   
   const method = document.querySelector("#method").value;
   const images = document.querySelector("#formFile").files;
