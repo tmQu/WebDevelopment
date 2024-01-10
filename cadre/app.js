@@ -13,7 +13,6 @@ import mongoSanitize from 'express-mongo-sanitize';
 import xss from 'xss-clean';
 
 import boardRouter from './routes/boardRoutes.js';
-import accountRouter from './routes/accountRoutes.js';
 import userRouter from './routes/userRoutes.js';
 // import globalErrorHandler from './controllers/errorController.js';
 import reportRouter from './routes/reportRoutes.js';
@@ -99,67 +98,29 @@ app.use(mongoSanitize());
 
 app.use(xss());
 
-app.get('/test', async (req, res) => {
-  try {
-    const boards = await boardModel.find();
-    for (let i = 0; i < boards.length; i++) {
-      var board = boards[i];
-      board.quantity = '1 trụ/bảng';
-      await board.save();
-    }
-    console.log(boards[0]);
-    
-
-
-  
-    res.json(boards);
-  } catch (err) {
-    console.log(err);
-  }
-});
-import ward from './models/wardModel.js';
-import { report } from 'process';
-app.get('/test2', async (req, res) => {
-  try {
-    const board = await ward.find().populate('district');
-    res.json(board);
-  } catch (err) {
-    console.log(err);
-  }
-});
 // Serving static files
 app.use('/static', express.static('static'));
 // app.use(express.static(`/static`));
 
-// Test middleware
-app.use((req, res, next) => {
-  req.requestTime = new Date().toISOString();
-  next();
-});
-
 // 3) ROUTES
 app.use('/api/v1/boards', boardRouter);
-app.use('/api/v1/account', accountRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reports', reportRouter);
 app.use('/api/v1/reportMethods', reportMethodRoutes);
 app.use('/license', licenseRouter);
-// app.get('/', (req, res) => {
-//   res.render('navBar/navBar');
-// });
-
 
 app.get('/', async (req, res) => {
   var boardLocation = await boardLocationModel.find().populate('advertisementForm').populate('locationCategory').populate('addr.district').populate('addr.ward');
   var boards = await boardModel.find().populate('boardType');
+
   console.log(boardLocation);
   console.log(boards);
+
   res.render('vwHome/index', {
     layout: 'main',
     boardLocation: JSON.stringify(boardLocation),
     boards: JSON.stringify(boards)
   });
-
 });
 
 app.get('/liscense', (req, res) => {
