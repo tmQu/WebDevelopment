@@ -25,15 +25,13 @@ const reportModel = mongoose.Schema(
     board: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'boards',
-      //required: true
     },
 
     method: {
-      //get reportMethod value, not id from reportMethodModel
-      type: String,
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'report_method',
-      //required: true
     },
+
     images: [
       {
         type: String,
