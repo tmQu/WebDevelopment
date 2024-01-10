@@ -1,163 +1,81 @@
-{{#section 'js'}}
-<script src='../../static/js/forgotPassword.js'></script>
-
-{{/section}}
-
 <section class='vh-100' style='background-color: #9A616D;'>
     <div class='container py-5 h-100'>
         <div class='row d-flex justify-content-center align-items-center h-100'>
             <div class='col col-xl-10'>
                 <div class='card' style='border-radius: 1rem;'>
                     <div class='row'>
-                        <div
-                            class='border-end border-info col-md-6 col-lg-5 d-none d-md-flex flex-column  align-items-center'>
-                            <!-- Điểm đặt bảng quảng cáo -->
-                            <div class="card mt-5" style="width: 18rem;">
-                                <img src="{{imgBoardLocation}}"
-                                    class="card-img-top">
-                                <div class="card-body">
-                                    <h5 class="card-title">Điểm đặt quảng
-                                        cáo</h5>
-                                    <div class='mt-3'><strong>Địa chỉ: </strong>
-                                        {{boardLocation.addr}}</div>
-                                    <div class='mt-1'><strong>Loại vị trí:
-                                        </strong>
-                                        {{boardLocation.locationCategory}}</div>
-                                    <div class='mt-1'><strong>Hình thức quảng
-                                            cáo: </strong>
-                                        {{boardLocation.advertisementForm}}</div>
-                                    <div
-                                        class='mt-1'><strong>{{plan}}</strong></div>
-
+                        <div class='card-body p-4 p-lg-5 text-black'>
+                            <form
+                                action='http://localhost:4000/api/v1/users/signup'
+                                method="post">
+                                <div class='d-flex align-items-center mb-3 pb-1'>
+                                    <span class='h1 fw-bold mb-0'>
+                                        Cấp phép tài khoản
+                                    </span>
                                 </div>
-                            </div>
 
-                            <!-- Bảng quảng cáo -->
-                            <div class="card mt-5" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title">Bảng quảng cáo</h5>
-                                    <div><strong>Kích thước: </strong>
-                                        {{board.size}}</div>
-                                    <div><strong>Loại bảng quảng cáo: </strong>
-                                        {{board.boardType}}</div>
+                                <div class='form-outline mb-2'>
+                                    <label class='form-label' for='email'>
+                                        Email
+                                    </label>
+                                    <input type="email" id='email'
+                                        class='form-control' name='email'
+                                        autofocus />
                                 </div>
-                            </div>
-                        </div>
-                        <!-- img -->
-                        <div
-                            class='col-md-6 col-lg-7 d-flex align-items-center'>
-                            <div class='card-body p-4 p-lg-5 text-black'>
-                                <form id='loginForm'
-                                    action='http://localhost:4000/license/{{{board._id}}}'
-                                    method="post" enctype="multipart/form-data">
-                                    <div
-                                        class='d-flex align-items-center mb-3 pb-1'>
-                                        <i class='fas fa-cubes fa-2x me-3'
-                                            style='color: #ff6219;'></i>
-                                        <span class='h1 fw-bold mb-0'>
-                                            Cấp phép quảng cáo
-                                        </span>
-                                    </div>
 
-                                    <h5 class='fw-normal mb-3 pb-3'
-                                        style='letter-spacing: 1px;'>
-                                        Điểm đặt quảng cáo
+                                <div class='form-outline mb-2'>
+                                    <label class='form-label' for='password'>
+                                        Mật khẩu
+                                    </label>
+                                    <input type="password" id='password'
+                                        class='form-control' name='password'
+                                        autofocus />
+                                </div>
 
-                                    </h5>
-                                    <h5 class='fw-normal mb-3 pb-3'
-                                        style='letter-spacing: 1px;'>
-                                        Bảng quảng cáo
-                                    </h5>
-                                    <div class="mb-3">
-                                        <label for="formFile" class="form-label"
-                                            name="file" id="requiredFile">Hình
-                                            ảnh minh hoạ</label>
-                                        <input class="form-control" type="file"
-                                            id="formFile" required
-                                            accept="image/jpg, image/jpeg, image/png"
-                                            name="imgBoard">
-                                    </div>
+                                <div class='form-outline mb-4'>
+                                    <label class='form-label'
+                                        for='passwordConfirm'>
+                                        Xác nhận mật khẩu
+                                    </label>
+                                    <input type="password" id='passwordConfirm'
+                                        class='form-control'
+                                        name='passwordConfirm'
+                                        autofocus />
+                                </div>
 
-                                    <div class='form-outline mb-4'>
-                                        <label class='form-label' for='content'>
-                                            Nội dung quảng cáo
-                                        </label>
-                                        <textarea id='content' type='txt'
-                                            class='form-control ' name='content'
-                                            autofocus></textarea>
-                                    </div>
+                                <div class='form-outline mb-4 border border-info p-3'>
+                                    <h4>Thông tin cá nhân</h4>
 
-                                    <div class='form-outline mb-4'>
-                                        <label class='form-label' for='infor'>
-                                            Thông tin công ty đặt bảng quảng cáo
-                                        </label>
-                                        <input type='txt' id='infor'
-                                            class='form-control' name='infor'
-                                            autofocus />
-                                    </div>
-                                    <div
-                                        class='form-outline mb-4 border border-info p-3'>
-                                        <h6>Thông tin liên lạc công ty</h6>
-                                        <label class='form-label' for='email'>
-                                            Email
-                                        </label>
-                                        <input type='txt' id='email'
-                                            class='form-control' name='email'
-                                            autofocus />
-                                        <label class='form-label' for='phone'>
-                                            Điện thoại
-                                        </label>
-                                        <input type='txt' id='phone'
-                                            class='form-control' name='phone'
-                                            autofocus />
-                                        <label class='form-label' for='addr'>
-                                            Địa chỉ
-                                        </label>
-                                        <input type='txt' id='addr'
-                                            class='form-control' name='addr'
-                                            autofocus />
-                                    </div>
+                                    <label class='form-label' for='name'>
+                                        Họ tên
+                                    </label>
+                                    <input type="text" id='name'
+                                        class='form-control' name='name'
+                                        autofocus />
 
-                                    <div
-                                        class='form-outline mb-4 border  border-info p-3'>
-                                        <h6>Thời hạn hợp đồng</h6>
-                                        <div class="row">
-                                            <div class=" col-sm-6 mb-2">
-                                                <label for="startDate"
-                                                    class="form-label">Ngày bắt
-                                                    đầu</label>
-                                                <input id="startDate"
-                                                    class="form-control"
-                                                    type="date"
-                                                    name="start_date" />
+                                    <label class='form-label' for='phoneNumber'>
+                                        Điện thoại
+                                    </label>
+                                    <input type="number" id='phoneNumber'
+                                        class='form-control' name='phoneNumber'
+                                        autofocus />
 
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <label for="endDate"
-                                                    class="form-label">Ngày kêt
-                                                    thúc</label>
-                                                <input id="endDate"
-                                                    class="form-control"
-                                                    type="date"
-                                                    name="end_date" />
-                                            </div>
-                                        </div>
+                                    <label class='form-label' for='dateOfBirth'>
+                                        Ngày sinh
+                                    </label>
+                                    <input type="date" id='dateOfBirth'
+                                        class='form-control' name='dateOfBirth'
+                                        autofocus />
+                                </div>
 
-                                    </div>
+                                <div class='pt-1 mb-4'>
+                                    <button class='col-12 btn btn-dark btn-lg btn-block'
+                                        type='submit'>
+                                        Đăng ký
+                                    </button>
+                                </div>
 
-                                    <div class='pt-1 mb-4'>
-                                        <button
-                                            class='col-12 btn btn-dark btn-lg btn-block'
-                                            type='submit'>
-                                            Đăng ký
-                                        </button>
-                                    </div>
-
-                                    <footer>
-                                        <!-- footer -->
-                                    </footer>
-                                </form>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -165,17 +83,3 @@
         </div>
     </div>
 </section>
-<script>
-    let startDate = document.getElementById('startDate')
-    let endDate = document.getElementById('endDate')
-
-    startDate.addEventListener('change',(e)=>{
-        let startDateVal = e.target.value
-        document.getElementById('startDateSelected').innerText = startDateVal
-    })
-
-    endDate.addEventListener('change',(e)=>{
-        let endDateVal = e.target.value
-        document.getElementById('endDateSelected').innerText = endDateVal
-    })  
-</script>

@@ -37,6 +37,7 @@ const userSchema = new mongoose.Schema({
     detail: {
       type: mongoose.Schema.Types.ObjectId,
       refPath: 'role.level',
+      default: null,
     },
   },
   password: {

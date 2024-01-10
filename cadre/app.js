@@ -76,6 +76,8 @@ app.use(
   })
 );
 
+app.use(express.urlencoded({ extended: true }));
+
 // Development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -128,7 +130,7 @@ import authController from './controllers/authController.js';
 
 app.get('/licenseAccount', 
   authController.protect, 
-  authController.restrictTo('super-admin'), 
+  authController.restrictTo('departmental'), 
   (req, res) => {
     res.render('vwForm/licenseAccount', { layout: 'main' });
   }
