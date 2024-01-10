@@ -34,23 +34,6 @@ const updateBoard = async (id, status) => {
   }
 };
 
-// Update report status
-const updateReport = async (id, status) => {
-  try {
-    const res = await axios({
-      method: 'PATCH',
-      url: `/api/v1/reports/${id}`,
-      data: {
-        status,
-      },
-    });
-    alert('Cập nhật trạng thái báo cáo!');
-  } catch (error) {
-    alert(error);
-    console.log(error);
-  }
-}
-
 const sendEmailToReporter = async (email, subject, html) => {
   try {
     const res = await axios({
@@ -109,7 +92,7 @@ const createEmailHtml = (message) => {
   return html;
 };
 
-const confirmSendEmail = async (email, reportId) => {
+const confirmSendEmail = async (email) => {
   const subject = 'Thông Báo Về Quyết Định Xử Lý Báo Cáo';
   let message = document.querySelector('.modal-body').innerHTML;
 
@@ -132,8 +115,5 @@ const confirmSendEmail = async (email, reportId) => {
     default:
       break;
   }
-
-  updateReport(reportId, 'Đã xử lý');
-
   $('#previewModal').modal('hide');
 };

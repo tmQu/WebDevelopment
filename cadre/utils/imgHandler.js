@@ -8,9 +8,6 @@ const upload = multer({
             {
                 cb(null, './static/db/license');
             }
-            else{
-                cb(null, './static/img/reports');
-            }
             
         },
         filename: function (req, file, cb) {
