@@ -206,8 +206,10 @@ document.querySelector("#reportForm").addEventListener("submit", (event) => {
   const name = document.querySelector("#txtName").value;
   const email = document.querySelector("#txtEmail").value;
   const phone = document.querySelector("#txtPhone").value;
-  //const board = document.querySelector("#board").value;
-  const board = null;
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const board = urlParams.get('id');
+  
   const method = document.querySelector("#method").value;
   //get the value attribute of option tag
   // const method = document.querySelector("#method").options[

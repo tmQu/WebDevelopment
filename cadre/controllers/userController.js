@@ -41,7 +41,7 @@ const filterObj = (obj, ...allowedFields) => {
 const userController = {
   getAllUsers: async (req, res) => {
     try {
-      const users = await User.find();
+      const users = await User.find().populate('role.detail');
       res.status(200).json({
         status: 'success',
         results: users.length,
@@ -58,12 +58,10 @@ const userController = {
   },
   getUser: async (req, res) => {
     try {
-      const user = await User.findById(req.params.id);
+      const user = await User.findById(req.params.id).populate('role.detail');
       res.status(200).json({
         status: 'success',
-        data: {
-          user,
-        },
+        data: user,
       });
     } catch (err) {
       res.status(404).json({

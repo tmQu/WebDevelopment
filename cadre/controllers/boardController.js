@@ -1,6 +1,5 @@
 import boardLocationModel from '../models/boardLocationModel.js';
 import boardModel from '../models/boardModel.js';
-import accountModel from '../models/accountModel.js';
 import  mongoose from 'mongoose';
 
 const boardController = {
@@ -25,7 +24,7 @@ const boardController = {
       const boards = await query;
 
       if (boards.length === 0 || !boards) {
-        return res.status(404).json({
+        res.status(404).json({
           status: 'fail',
           message: 'No boards found',
         });

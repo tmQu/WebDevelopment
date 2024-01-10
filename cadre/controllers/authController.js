@@ -71,6 +71,7 @@ const authController = {
     createSendToken(user, 200, res);
   },
   protect: async (req, res, next) => {
+    req.isAuthorized = false;
     // 1. Getting token and check if it's there
     let token;
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
@@ -80,38 +81,41 @@ const authController = {
     }
 
     if (!token) {
-      return new AppError('You are not logged in! Please log in to get access.', 401);
+      return next(new AppError('You are not logged in! Please log in to get access.', 401, 'Unauthorized'));
     }
     // 2. Verification token
     let decoded;
     try {
       decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
     } catch (err) {
-      return new AppError('Invalid token! Please log in again.', 401);
+      return next(new AppError('Invalid token! Please log in again.', 401, 'Unauthorized'));
     }
 
-    // 3. Check if user still exists
+    // 3. Check if user still ex ists
     const freshUser = await User.findById(decoded.id);
     if (!freshUser) {
-      return new AppError('The user belonging to this token does no longer exist.', 401);
+      return next(new AppError('The user belonging to this token does no longer exist.', 401, 'Unauthorized'));
     }
 
     // 4. Check if user changed password after the token was issued
     if (freshUser.changedPasswordAfter(decoded.iat)) {
-      return new AppError('User recently changed password! Please log in again.', 401);
+      return next(new AppError('User recently changed password! Please log in again.', 401, 'Unauthorized'));
     }
 
     // GRANT ACCESS TO PROTECTED ROUTE
     req.user = freshUser;
+    req.isAuthorized = true;
     next();
   },
 
   restrictTo: (...roles) => {
     return (req, res, next) => {
-      // roles ['admin', 'super-admin']. role='user'
+      req.isAuthorized = false;
+
       if (!roles.includes(req.user.role)) {
-        return new AppError('You do not have permission to perform this action', 403);
+        return next(new AppError('You do not have permission to perform this action', 403, 'Forbidden'));
       }
+      req.isAuthorized = true;
       next();
     };
   },
@@ -146,10 +150,6 @@ const authController = {
       user.passwordResetExpires = undefined;
       await user.save({ validateBeforeSave: false });
       next(new AppError('There was an error sending the email. Try again later!'), 500);
-      // return res.status(500).json({
-      //   status: 'fail',
-      //   message: err,
-      // });
     }
   },
   verifyOTP: catchAsync(async (req, res, next) => {
