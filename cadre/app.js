@@ -35,7 +35,19 @@ import mongoose from 'mongoose';
 import boardModel from './models/boardModel.js';
 import boardTypeModel from './models/boardTypeModel.js';
 
+import { Server } from "socket.io";
+import { createServer } from 'http';
+
+
+
+
+
+
 const app = express();
+const server = createServer(app);
+const io = new Server(server);
+
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 // Handlebars
@@ -119,6 +131,7 @@ app.get('/test', async (req, res) => {
 });
 import ward from './models/wardModel.js';
 import { report } from 'process';
+import { create } from 'domain';
 app.get('/test2', async (req, res) => {
   try {
     const board = await ward.find().populate('district');
@@ -213,5 +226,9 @@ app.get('/reports/:id', async (req, res) => {
 });
 
 // app.use(globalErrorHandler);
-
-export default app;
+io.on('connection', function(socket){
+  socket.on('update status', function(msg){
+    io.emit('update status', msg);
+  });
+})
+export default server;

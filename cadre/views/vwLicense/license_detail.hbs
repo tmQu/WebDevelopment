@@ -1,0 +1,135 @@
+{{#section 'js'}}
+
+  
+{{/section}}
+
+
+<section class='vh-100' style='background-color: #9A616D;'>
+        <div class='container py-5 h-100'>
+          <div class='row d-flex justify-content-center align-items-center h-100'>
+            <div class='col col-xl-12'>
+              <div class='card' style='border-radius: 1rem;'>
+                <div class='row'>
+                  <div class='border-end border-info col-md-5 col-lg-4 d-none d-md-flex flex-column  align-items-center'>
+                    <!-- Điểm đặt bảng quảng cáo -->
+                    <div style="position:sticky;top:0px;">
+                      <div class="card mt-3" style="width: 18rem;" >
+                        <img src="{{imgBoardLocation}}" class="card-img-top">
+                        <div class="card-body">
+                          <h5 class="card-title">Điểm đặt quảng cáo</h5>
+                          <div class = 'mt-3'><strong>Địa chỉ: </strong> {{boardLocation.addr}}</div>
+                          <div class = 'mt-1'><strong>Loại vị trí: </strong> {{boardLocation.locationCategory}}</div>
+                          <div class = 'mt-1'><strong>Hình thức quảng cáo: </strong> {{boardLocation.advertisementForm}}</div>
+                          <div class = 'mt-1'><strong>{{plan}}</strong></div>
+
+
+
+                        </div>
+                      </div>
+
+                      <!-- Bảng quảng cáo -->
+                    
+                      <div class="card mt-3" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">Bảng quảng cáo</h5>
+                          <div><strong>Kích thước: </strong> {{board.size}}</div>
+                          <div><strong>Loại bảng quảng cáo: </strong> {{board.boardType.boardType}}</div>
+                        </div>
+                      </div>
+                    </div>
+
+                  
+                  </div>
+                  <!-- img -->
+                  <div class='col-md-7 col-lg-8 d-flex align-items-center'>
+                    <div class='card-body p-4 p-lg-5 text-black'>
+                      <form id='form' action='' method="post" enctype="multipart/form-data">
+                        <div class='d-flex align-items-center mb-3 pb-1'>
+                          <span class='h1 fw-bold mb-0'>
+                            Cấp phép quảng cáo
+                          </span>
+                        </div>
+                        <h5 class='fw-normal mb-3 pb-3' style='letter-spacing: 1px;'>
+                              Bảng quảng cáo
+                        </h5>
+
+                        <div class="mb-3">
+                            <h3>Hình ảnh minh hoạ</h3>
+                            <img src="{{license.imgBoard}}">
+                        </div>
+      
+                        <div class='form-outline mb-4'>
+                          <h3>
+                            Nội dung quảng cáo
+                          </h3>
+                          <div class="form-control">
+                            {{license.content}}
+                          </div>
+                        </div>
+
+                        <div class='form-outline mb-4'>
+                            <h3>
+                              Thông tin công ty đặt bảng quảng cáo
+                            </h3>
+                            <div class="form-control">{{license.company.infor}}</div>
+                        </div>
+                        <div class='form-outline mb-4 border border-info p-3'>
+                            <h6>Thông tin liên lạc công ty</h6>
+                            <h4>
+                              Email
+                            </h4>
+                            <div class="form-control">{{license.company.email}}</div>
+                            <h4>
+                                Điện thoại
+                            </h4>
+                            <div class="form-control">{{license.company.phone}}</div>
+                            <h4>
+
+                                Địa chỉ
+                            </h4>
+                              </label>
+                              <div class="form-control">{{license.company.addr}}</div>
+                        </div>
+                        
+
+                        <div class='form-outline mb-4 border  border-info p-3'>
+                            <h6>Thời hạn hợp đồng: {{license.period.start_date}} - {{license.period.end_date}}</h6>
+                 
+                        </div>
+
+                        <div class='pt-1 mb-4'>
+                          <button class='col-12 btn btn-dark btn-lg btn-block' type='submit'>
+                            Xét duyệt
+                          </button>
+                        </div>
+      
+                        <footer>
+                          <!-- footer -->
+                        </footer>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+{{#section 'footer'}}
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script>
+        const socket = io('http://localhost:4000')
+        document.querySelector('#form').addEventListener('submit', (e) =>{
+            e.preventDefault()
+        
+            const data = {
+                id: '{{license._id}}',
+                status: true
+            }
+            socket.emit('update status', data)
+        })
+    </script>
+{{/section}}
+
+ {{#section 'footer'}}
+ {{/section}}

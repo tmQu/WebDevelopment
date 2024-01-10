@@ -58,7 +58,7 @@ function parseContentMarker(content)
     <h3 class="advt-form">${content.advertisementForm.advertisementForm}</h3>\n
     <div class="location-category">${locationCategory}</div>\n
     <div class="addr">${addr}</div>\n
-    <h3 class="planning">${content.isPlanning == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'}</h3>\n
+    <h3 class="planning">${content.isPlan == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'}</h3>\n
     </div>`;
 }
 

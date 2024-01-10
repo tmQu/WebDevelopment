@@ -127,7 +127,8 @@ const clusterMarker = async (map, data) => {
 
     if (markerInfo.id)
     {
-      iconImage.src = "../img/icon/Repot.png"
+      iconImage.src = "../img/icon/Report.png"
+      console.log(markerInfo.id)
     }
     else{
       if (markerInfo.isPlan == false)
@@ -169,30 +170,30 @@ const clusterMarker = async (map, data) => {
 
 
 
-// var data2 = [
-//   { lat: 10.778515490199908, lng: 106.69397771139802 },
-//   { lat: 10.778511065772506, lng: 106.6939101530919 },
-//   { lat: 10.778433638289044, lng: 106.6938943894886 },
-//   { lat: 10.778595129871675, lng: 106.69382007535302 },
-//   { lat: 10.778880505200917, lng: 106.69352056686552 },
-//   { lat: 10.778712629289927, lng: 106.69412769829682 },
-//   { lat: 10.779549144915222, lng: 106.69501626249468 },
-//   { lat: 10.779564299162885, lng: 106.69489285079953 },
-//   { lat: 10.779491558767873, lng: 106.69506562717413 },
-//   { lat: 10.777778877164792, lng: 106.6932435413031 },
-//   { lat: 10.777674895082527, lng: 106.6931603740245 },
-//   { lat: 10.777065856453092, lng: 106.69067291639186 },
-// ];
+var data2 = [
+  { lat: 10.778515490199908, lng: 106.69397771139802 },
+  { lat: 10.778511065772506, lng: 106.6939101530919 },
+  { lat: 10.778433638289044, lng: 106.6938943894886 },
+  { lat: 10.778595129871675, lng: 106.69382007535302 },
+  { lat: 10.778880505200917, lng: 106.69352056686552 },
+  { lat: 10.778712629289927, lng: 106.69412769829682 },
+  { lat: 10.779549144915222, lng: 106.69501626249468 },
+  { lat: 10.779564299162885, lng: 106.69489285079953 },
+  { lat: 10.779491558767873, lng: 106.69506562717413 },
+  { lat: 10.777778877164792, lng: 106.6932435413031 },
+  { lat: 10.777674895082527, lng: 106.6931603740245 },
+  { lat: 10.777065856453092, lng: 106.69067291639186 },
+];
 
-// function saveTestLocalStorage()
-// {
-//   var item = JSON.parse(localStorage.getItem('report')) || [];
-//   data2.forEach(location => {
-//     item.push({id: 'RP',location: location})
-//   })
-//   localStorage.setItem('report', JSON.stringify(item))
-// }
-// saveTestLocalStorage()
+function saveTestLocalStorage()
+{
+  var item = JSON.parse(localStorage.getItem('report')) || [];
+  data2.forEach(location => {
+    item.push({id: 'RP',location: location})
+  })
+  localStorage.setItem('report', JSON.stringify(item))
+}
+saveTestLocalStorage()
 // -> test data
 
 export default getAdvertisementBoards;

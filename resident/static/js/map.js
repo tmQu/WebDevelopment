@@ -14,6 +14,10 @@ async function initMap() {
     mapTypeControl: false,
     gestureHandling: "greedy", // fix for smartphone -> cannot drag the map
   });
+  const legend = document.getElementById("legend");
+  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+}
+
 
   search(map);
   const subWindow = document.getElementById('sub-window')

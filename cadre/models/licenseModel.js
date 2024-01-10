@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 const licenseSchema = new mongoose.Schema({
     board: {
         type: mongoose.Schema.Types.ObjectId,
+        ref: 'boards',
         required: true,
     },
     imgBoard: {
@@ -42,9 +43,15 @@ const licenseSchema = new mongoose.Schema({
             required: true
         }
     },
-    status: {
-        type: String,
+    createAt: {
+        type: Date,
         required: true,
+        default: Date.now
+    },
+    status: {
+        type: Boolean,
+        required: true,
+        default: false
     }
 });
 

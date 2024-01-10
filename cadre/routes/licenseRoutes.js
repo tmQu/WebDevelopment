@@ -4,7 +4,12 @@ import { upload } from '../utils/imgHandler.js';
 
 const router = express.Router();
 
-router.route('/:id')
+router.route('/list')
+    .get(licenseController.renderLicenseList)
+
+router.route('/')
+    .get(licenseController.renderDetailForm)
+router.route('/form/:id')
     .get(licenseController.renderLicenseForm)
     .post(upload.single('imgBoard'),licenseController.createLicense);
 
