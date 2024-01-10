@@ -113,8 +113,8 @@ app.get('/', async (req, res) => {
   var boardLocation = await boardLocationModel.find().populate('advertisementForm').populate('locationCategory').populate('addr.district').populate('addr.ward');
   var boards = await boardModel.find().populate('boardType');
 
-  console.log(boardLocation);
-  console.log(boards);
+  // console.log(boardLocation);
+  // console.log(boards);
 
   res.render('vwHome/index', {
     layout: 'main',
@@ -123,9 +123,18 @@ app.get('/', async (req, res) => {
   });
 });
 
-app.get('/liscense', (req, res) => {
-  console.log('lis')
-  res.render('vwForm/liscense', { layout: 'main' });
+import authController from './controllers/authController.js';
+
+app.get('/licenseAccount', 
+  authController.protect, 
+  authController.restrictTo('super-admin'), 
+  (req, res) => {
+    res.render('vwForm/licenseAccount', { layout: 'main' });
+  }
+);
+
+app.get('/license', (req, res) => {
+  res.render('vwForm/license', { layout: 'main' });
 })
 
 app.get('/login', (req, res) => {
@@ -172,6 +181,20 @@ app.get('/reports/:id', async (req, res) => {
   // res.render('vwReport/reportDetails', { layout: 'report' });
   reportController.getByID(req, res);
 });
+
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  const status = err.status || 'error';
+  const message = err.message || 'Something went wrong!';
+
+  res.status(statusCode).render('vwError/error', {
+    statusCode: statusCode,
+    status: status,
+    message: message,
+    layout: 'main',
+  });
+});
+
 
 // app.use(globalErrorHandler);
 
