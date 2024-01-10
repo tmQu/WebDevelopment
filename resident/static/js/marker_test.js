@@ -101,7 +101,7 @@ function parseBillBoardContent(boardLocation, board){
     <div class="billboard-form"><strong>Hình thức</strong> ${boardLocation.advertisementForm.advertisementForm}</div>
     <div class="billboard-category"><strong>Phân loại</strong> ${locationCategory}</div> 
     <div class="d-flex justify-content-between mt-4 mb-1"><button class="btn btn-outline-primary circle-btn"><i class="bi bi-info-lg"></i></button>
-    <a class="btn btn-outline-danger" href="http://localhost:3000/static/html/report.html"><i class="bi bi-exclamation-octagon"></i> Báo cáo vi phạm</a></div>
+    <a class="btn btn-outline-danger" href="http://localhost:3000/static/html/report.html?board_id=${board._id}"><i class="bi bi-exclamation-octagon"></i> Báo cáo vi phạm</a></div>
     <div class="detail-infor">
         <button type="button" class="btn-close" aria-label="Close"></button>
         <img crossorigin="anonymous" src="${board.imgBillboard}" class="d-block w-100" style="max-height: 240px; object-fit: cover">

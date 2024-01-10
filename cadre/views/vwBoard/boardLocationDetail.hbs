@@ -1,0 +1,286 @@
+{{#section 'css'}}
+  <link rel='stylesheet' href='../../static/css/boardLocationDetail.css' />
+{{/section}}
+{{#section 'js'}}
+  <script src='../../static/js/boards/boardLocationDetail.js'></script>
+  <link
+    rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css'
+    integrity='sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA='
+    crossorigin='anonymous'
+  />
+{{/section}}
+
+<div class='container-fluid'>
+  <div class='row justify-content-center'>
+    <div class='col-12 col-lg-10 col-xl-8 mx-auto'>
+      <h2 class='h3 mb-4 page-title'>
+        Settings
+      </h2>
+      <div class='my-4'>
+        <!-- Nav tabs -->
+        <ul class='nav nav-tabs' id='myTab' role='tablist'>
+          <li class='nav-item'>
+            <a
+              class='nav-link active'
+              id='profile-tab'
+              data-toggle='tab'
+              href='#profile'
+              role='tab'
+              aria-controls='profile'
+              aria-selected='true'
+            >
+              Profile
+            </a>
+          </li>
+          <li class='nav-item'>
+            <a
+              class='nav-link'
+              id='security-tab'
+              data-toggle='tab'
+              href='#security'
+              role='tab'
+              aria-controls='security'
+              aria-selected='false'
+            >
+              Security
+            </a>
+          </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class='tab-content'>
+          <div class='tab-pane active' id='profile' role='tabpanel' aria-labelledby='profile-tab'>
+            <div class='container-fluid mt-2'>
+              <!-- Thông tin bảng quảng cáo -->
+              {{#if boards}}
+                {{#each boards}}
+                  <div class='card shadow mb-2'>
+                    <div class='card-header text-body-emphasis d-flex justify-content-between'>
+                      <h4>
+                        {{this.boardType}}
+                      </h4>
+                      <a class='badge badge-pill badge-primary square-button' href="#security" role="tab" data-toggle="tab">
+                        <i class="bi bi-gear"></i> Yêu cầu chỉnh sửa
+                      </a>
+                    </div>
+                    <div class='card-body'>
+                      <div class='row d-flex align-items-stretch'>
+                        <div class='col-lg-5 col-md-5 col-sm-6'>
+                          <div class='white-box text-center'>
+                            {{#if this.imgBillboard}}
+                              <img src='{{this.imgBillboard}}' class='img-fluid' alt='Board image' />
+                            {{else}}
+                              <img src='/static/img/adboard.png' class='img-fluid' alt='user' />
+                            {{/if}}
+                          </div>
+                        </div>
+                        <!-- Thông tin điểm đặt quảng cáo -->
+                        <div class='col-lg-7 col-md-7 col-sm-6'>
+                          <h4 class='box-title mt-5'>
+                            {{this.boardType}}
+                          </h4>
+                          <p>
+                            {{../boardLocation.addr.street_number}}, {{../boardLocation.addr.route}}, {{../boardLocation.addr.ward}},
+                            {{../boardLocation.addr.district}}, {{../boardLocation.addr.city}}
+                          </p>
+                          <p>
+                            Kích thước:
+                            <strong>
+                              {{this.size}}
+                            </strong>
+                          </p>
+                          <p>
+                            Hình thức:
+                            <strong>
+                              {{../boardLocation.advertisementForm}}
+                            </strong>
+                          </p>
+                          <p>
+                            Phân loại:
+                            {{#each ../boardLocation.locationCategory}}
+                              <span class='badge badge-pill badge-primary'>
+                                {{this.locationCategory}}
+                              </span>
+                            {{/each}}
+                          </p>
+                          <p>
+                            Số lượng:
+                            <strong>
+                              {{this.quantity}}
+                            </strong>
+                          </p>
+                          <p>
+                            Ngày hết hạn hợp đồng:
+                            <strong>
+                              {{this.expireDate}}
+                            </strong>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {{/each}}
+              {{else}}
+                <div class='alert alert-warning' role='alert'>
+                  <strong>
+                    Không tìm thấy bảng quảng cáo
+                  </strong>
+                </div>
+              {{/if}}
+            </div>
+          </div>
+          <div class='tab-pane' id='security' role='tabpanel' aria-labelledby='security-tab'>
+            <!-- Security settings here -->
+            <h5 class='mb-0 mt-5'>
+              Cách xử lý
+            </h5>
+            <p>
+              Cài đặt cách thức xử lý bảng quảng cáo
+            </p>
+            <div class='list-group mb-5 shadow'>
+              <div class='list-group-item'>
+                <div class='row d-flex align-items-center'>
+                  <div class='col'>
+                    <strong class='mb-2'>
+                      Hiển thị bảng quảng cáo
+                    </strong>
+                    <p class='text-muted mb-0'>
+                      Nếu bật, bảng quảng cáo sẽ được hiển thị với người dân
+                    </p>
+                  </div>
+                  <div class='col-auto d-flex align-items-center'>
+                    <div class='custom-control custom-switch'>
+                      <input
+                        type='checkbox'
+                        class='custom-control-input'
+                        id='adBoardSwitch'
+                        data-board='{{report.board}}'
+                        checked
+                      />
+                      <label class='custom-control-label' for='adBoardSwitch'></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='list-group-item'>
+                <div class='row d-flex align-items-center'>
+                  <div class='col'>
+                    <strong class='mb-2'>
+                      Xoá bảng quảng cáo
+                    </strong>
+                    <p class='text-muted mb-0'>
+                      Nếu bật, bảng quảng cáo sẽ được xoá khỏi bản đồ
+                    </p>
+                  </div>
+                  <div class='col-auto d-flex align-items-center'>
+                    <div class='custom-control custom-switch'>
+                      <input type='checkbox' class='custom-control-input' id='deleteBoard' />
+                      <label class='custom-control-label' for='deleteBoard'></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class='list-group-item'>
+                <div class='row d-flex align-items-center'>
+                  <div class='col'>
+                    <strong class='mb-2'>
+                      Thay đổi thông tin
+                    </strong>
+                    <p class='text-muted mb-0'>
+                      Thay đổi các thông tin chi tiết của điểm đặt quảng cáo, bảng quảng cáo
+                    </p>
+                  </div>
+                  <div class='col-auto d-flex align-items-center'>
+                    <div class='custom-control custom-switch'>
+                      <input type='checkbox' class='custom-control-input' id='changeInfor' />
+                      <label class='custom-control-label' for='changeInfor'></label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Thông tin chi tiết -->
+            <h5 class='mb-0 mt-5'>
+              Thông tin chi tiết
+            </h5>
+            <p>
+              Thông tin chi tiết về cách thức xử lý bảng quảng cáo
+            </p>
+            <!-- Form ẩn -->
+            <div id="infoForm" class="mt-4" style="display: none;">
+              <div class='card border-info'>
+                <div class='card-header bg-info text-white'>
+                  <h5 class='card-title'>Bảng quảng cáo</h5>
+                </div>
+                <div class='card-body'>
+                  <form enctype="multipart/form-data">
+                    <!-- Trường Kích thước -->
+                    <div class="form-group row mb-3">
+                      <label class="col-sm-4 col-form-label">Kích thước (m)</label>
+                      <div class="col-sm-8">
+                        <div class="input-group">
+                          <input type="number" class="form-control" id="boardWidth" placeholder="Chiều rộng">
+                          <div class="input-group-append">
+                            <span class="input-group-text">x</span>
+                          </div>
+                          <input type="number" class="form-control" id="boardHeight" placeholder="Chiều cao">
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Trường Loại Bảng Quảng Cáo -->
+                    <div class="form-group row mb-3">
+                      <label for="board-type" class="col-sm-4 col-form-label">Loại bảng quảng cáo</label>
+                      <div class="col-sm-8">
+                        <select id='board-type' class="form-select">
+                          {{#each boardType}}
+                            <option value="{{this._id}}">{{this.boardType}}</option>
+                          {{/each}}
+                        </select>
+                      </div>
+                    </div>
+
+                    <!-- Trường Số Lượng -->
+                    <div class="form-group row mb-3">
+                      <label for="quantity" class="col-sm-4 col-form-label">Số lượng</label>
+                      <div class="col-sm-8">
+                        <input type="number" class="form-control" id="quantity" placeholder="Số lượng">
+                      </div>
+                    </div>
+
+                    <!-- Trường tải ảnh -->
+                    <div class="row mb-3">
+                      <label for="uploadImage" class="col-sm-4 col-form-label">Tải ảnh lên</label>
+                      <div class="col-sm-8">
+                        <input type="file" class="form-control" id="uploadImage">
+                      </div>
+                    </div>
+
+                    <!-- Trường lý do chỉnh sửa -->
+                    <div class="row mb-3">
+                      <label for="editReason" class="col-sm-4 col-form-label">Lý do chỉnh sửa</label>
+                      <div class="col-sm-8">
+                        <textarea class="form-control" id="editReason" rows="3" placeholder="Nhập lý do chỉnh sửa"></textarea>
+                      </div>
+                    </div>
+
+                    <!-- Nút gửi và hủy -->
+                    <div class="row mb-3">
+                      <div class="col-sm-8 offset-sm-4">
+                        <button type="submit" class="btn btn-primary">Gửi</button>
+                        <button type="button" class="btn btn-secondary">Hủy bỏ</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

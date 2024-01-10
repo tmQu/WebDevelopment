@@ -15,12 +15,13 @@ import xss from 'xss-clean';
 import boardRouter from './routes/boardRoutes.js';
 import accountRouter from './routes/accountRoutes.js';
 import userRouter from './routes/userRoutes.js';
-// import globalErrorHandler from './controllers/errorController.js';
 import reportRouter from './routes/reportRoutes.js';
 import reportController from './controllers/reportController.js';
 import reportMethodRoutes from './routes/reportMethodRoutes.js';
+import boardLocationController from './controllers/boardLocationController.js';
+import boardController from './controllers/boardController.js';
 
-import hbsHelpers from './static/js/handlebarsHelpers.js'
+import hbsHelpers from './utils/handlebarsHelpers.js';
 import licenseRouter from './routes/licenseRoutes.js';
 
 import cookieParser from 'cookie-parser';
@@ -73,7 +74,7 @@ app.use((req, res, next) => {
 app.use(
   helmet({
     contentSecurityPolicy: false,
-    crossOriginResourcePolicy: false
+    crossOriginResourcePolicy: false,
   })
 );
 
@@ -108,10 +109,7 @@ app.get('/test', async (req, res) => {
       await board.save();
     }
     console.log(boards[0]);
-    
 
-
-  
     res.json(boards);
   } catch (err) {
     console.log(err);
@@ -148,24 +146,27 @@ app.use('/license', licenseRouter);
 //   res.render('navBar/navBar');
 // });
 
-
 app.get('/', async (req, res) => {
-  var boardLocation = await boardLocationModel.find().populate('advertisementForm').populate('locationCategory').populate('addr.district').populate('addr.ward');
+  var boardLocation = await boardLocationModel
+    .find()
+    .populate('advertisementForm')
+    .populate('locationCategory')
+    .populate('addr.district')
+    .populate('addr.ward');
   var boards = await boardModel.find().populate('boardType');
   console.log(boardLocation);
   console.log(boards);
   res.render('vwHome/index', {
     layout: 'main',
     boardLocation: JSON.stringify(boardLocation),
-    boards: JSON.stringify(boards)
+    boards: JSON.stringify(boards),
   });
-
 });
 
 app.get('/liscense', (req, res) => {
-  console.log('lis')
+  console.log('lis');
   res.render('vwForm/liscense', { layout: 'main' });
-})
+});
 
 app.get('/login', (req, res) => {
   res.render('vwAccount/login');
@@ -184,32 +185,23 @@ app.get('/resetPassword', (req, res) => {
 });
 
 app.get('/reports', async (req, res) => {
-  // try {
-  //   let response = await reportController.getAllReports(req, res, next);
-
-  //   let reports = response.data.reports;
-  //   console.log(reports);
-  //   reports = reports.map((report) => {
-  //     report = report.toObject();
-  //     return {
-  //       ...report,
-  //       createdAt: new Date(report.createdAt).toLocaleString(),
-  //     };
-  //   });
-
-  //   res.render('vwReport/reports', { layout: 'report', reports });
-
-  // } catch (error) {
-  //   console.error('Error in /reports route:', error);
-  //   // res.status(500).send('Server error');
-  // }
   reportController.getAllReports(req, res);
 });
 
-
 app.get('/reports/:id', async (req, res) => {
-  // res.render('vwReport/reportDetails', { layout: 'report' });
   reportController.getByID(req, res);
+});
+
+app.get('/boardsLocation', (req, res) => {
+  boardLocationController.viewAllBoardsLocation(req, res);
+});
+
+app.get('/boardsLocation/:id', (req, res) => {
+  boardLocationController.viewBoardLocation(req, res);
+});
+
+app.get('/boardsLocation/:id/board/:boardID', (req, res) => {
+  boardController.viewBoard(req, res);
 });
 
 // app.use(globalErrorHandler);

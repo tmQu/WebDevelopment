@@ -29,7 +29,6 @@ const reportModel = mongoose.Schema(
     },
 
     method: {
-      //get reportMethod value, not id from reportMethodModel
       type: String,
       ref: 'report_method',
       //required: true
@@ -46,8 +45,8 @@ const reportModel = mongoose.Schema(
     },
 
     status: {
-      type: Boolean,
-      default: 0, //0: processing, 1: done
+      type: String,
+      enum: ['Đang xử lý', 'Đã xử lý'],
     },
   },
   {
