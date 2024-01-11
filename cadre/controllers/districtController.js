@@ -24,6 +24,7 @@ const districtController = {
             });
         }
     }
+    
 }
 
 export default districtController;

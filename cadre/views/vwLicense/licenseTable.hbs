@@ -84,9 +84,18 @@
                     {{/if}}
                 </td>
                 <td>
-                    <a href="/license?id={{_id}}" class="table-link btn btn-primary">
+                    <a href="/license?id={{_id}}&action=view" class="table-link btn btn-primary">
                         <i class="bi bi-search"></i>
                     </a>
+                    {{#if license.status}}
+                        <a class="btn btn-danger" disabled>
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    {{else}}
+                        <a class="table-link btn btn-danger" href="/license?id={{_id}}&action=delete">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    {{/if}
                 </td>
             </tr>
             {{/each}}
@@ -105,6 +114,7 @@
                 {
                     console.log(tr);
                     tr.querySelector('td:nth-child(6)').innerHTML = '<span class="badge bg-success">Đã duyệt</span>'
+                    tr.querySelector('td:nth-child(7) a.btn-danger').disabled = true
                 }
             })
         })

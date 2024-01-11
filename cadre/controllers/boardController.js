@@ -1,6 +1,5 @@
 import boardLocationModel from '../models/boardLocationModel.js';
 import boardModel from '../models/boardModel.js';
-import accountModel from '../models/accountModel.js';
 import  mongoose from 'mongoose';
 
 const boardController = {
@@ -16,16 +15,15 @@ const boardController = {
   getAllBoardLocation: async (req, res) => {
     try {
 
-      let query = boardLocationModel.find()
-                        .populate('advertisementForm')
-                        .populate('locationCategory')
-                        .populate('addr.district')
-                        .populate('addr.ward');
-
-      const boards = await query;
-
-      if (boards.length === 0 || !boards) {
-        return res.status(404).json({
+      var boardLocations = await  boardLocationModel.find()
+                                                .populate('advertisementForm')
+                                                .populate('locationCategory')
+                                                .populate('addr.district')
+                                                .populate('addr.ward')
+                                            
+    
+      if (boardLocations.length === 0 || !boardLocations) {
+        res.status(404).json({
           status: 'fail',
           message: 'No boards found',
         });
@@ -33,9 +31,9 @@ const boardController = {
 
       res.status(200).json({
         status: 'success',
-        results: boards.length,
+        results: boardLocations.length,
         data: 
-          boards,
+          boardLocations
       });
     } catch (err) {
       res.status(404).json({

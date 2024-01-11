@@ -13,7 +13,6 @@ import mongoSanitize from 'express-mongo-sanitize';
 import xss from 'xss-clean';
 
 import boardRouter from './routes/boardRoutes.js';
-import accountRouter from './routes/accountRoutes.js';
 import userRouter from './routes/userRoutes.js';
 // import globalErrorHandler from './controllers/errorController.js';
 import reportRouter from './routes/reportRoutes.js';
@@ -111,62 +110,24 @@ app.use(mongoSanitize());
 
 app.use(xss());
 
-app.get('/test', async (req, res) => {
-  try {
-    const boards = await boardModel.find();
-    for (let i = 0; i < boards.length; i++) {
-      var board = boards[i];
-      board.quantity = '1 trụ/bảng';
-      await board.save();
-    }
-    console.log(boards[0]);
-    
-
-
-  
-    res.json(boards);
-  } catch (err) {
-    console.log(err);
-  }
-});
-import ward from './models/wardModel.js';
-import { report } from 'process';
-import { create } from 'domain';
-app.get('/test2', async (req, res) => {
-  try {
-    const board = await ward.find().populate('district');
-    res.json(board);
-  } catch (err) {
-    console.log(err);
-  }
-});
 // Serving static files
 app.use('/static', express.static('static'));
 // app.use(express.static(`/static`));
 
-// Test middleware
-app.use((req, res, next) => {
-  req.requestTime = new Date().toISOString();
-  next();
-});
-
 // 3) ROUTES
 app.use('/api/v1/boards', boardRouter);
-app.use('/api/v1/account', accountRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reports', reportRouter);
 app.use('/api/v1/reportMethods', reportMethodRoutes);
 app.use('/license', licenseRouter);
-// app.get('/', (req, res) => {
-//   res.render('navBar/navBar');
-// });
-
 
 app.get('/', async (req, res) => {
   var boardLocation = await boardLocationModel.find().populate('advertisementForm').populate('locationCategory').populate('addr.district').populate('addr.ward');
   var boards = await boardModel.find().populate('boardType');
-  console.log(boardLocation);
-  console.log(boards);
+
+  // console.log(boardLocation);
+  // console.log(boards);
+
   res.render('vwHome/index', {
     layout: 'main',
     boardLocation: JSON.stringify(boardLocation),
@@ -175,9 +136,42 @@ app.get('/', async (req, res) => {
 
 });
 
-app.get('/liscense', (req, res) => {
-  console.log('lis')
-  res.render('vwForm/liscense', { layout: 'main' });
+import authController from './controllers/authController.js';
+
+app.get('/test', async(req, res) => {
+  // res.render('vwlicense/test', { layout: 'main' });
+  var boardLocations = await boardLocationModel.find();
+
+  for (var i = 0; i < boardLocations.length; i++) {
+    var boardLocation = boardLocations[i];
+    if (i > 2 && i < 30)
+    {
+      if (Math.floor(Math.random() + 1) === 1)
+      {
+        await boardModel.deleteMany({boardLocation: boardLocation._id});
+      }
+
+    }
+
+      var boards = await boardModel.find({boardLocation: boardLocation._id});
+
+      boardLocation.num_board = boards.length;
+      await boardLocation.save();
+
+
+    }
+    res.send('success');
+});
+app.get('/licenseAccount', 
+  authController.protect, 
+  authController.restrictTo('super-admin'), 
+  (req, res) => {
+    res.render('vwForm/licenseAccount', { layout: 'main' });
+  }
+);
+
+app.get('/license', (req, res) => {
+  res.render('vwForm/license', { layout: 'main' });
 })
 
 app.get('/login', (req, res) => {
@@ -223,6 +217,32 @@ app.get('/reports', async (req, res) => {
 app.get('/reports/:id', async (req, res) => {
   // res.render('vwReport/reportDetails', { layout: 'report' });
   reportController.getByID(req, res);
+});
+
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  const status = err.status || 'error';
+  const message = err.message || 'Something went wrong!';
+
+  res.status(statusCode).render('vwError/error', {
+    statusCode: statusCode,
+    status: status,
+    message: message,
+    layout: 'main',
+  });
+});
+
+
+app.get('/boardsLocation', (req, res) => {
+  boardLocationController.viewAllBoardsLocation(req, res);
+});
+
+app.get('/boardsLocation/:id', (req, res) => {
+  boardLocationController.viewBoardLocation(req, res);
+});
+
+app.get('/boardsLocation/:id/board/:boardID', (req, res) => {
+  boardController.viewBoard(req, res);
 });
 
 // app.use(globalErrorHandler);

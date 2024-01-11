@@ -58,11 +58,11 @@ function parseContentMarker(content)
 
     var addr = `${content.addr.street_number} ${content.addr.route}, ${content.addr.ward.ward}, ${content.addr.district.district}, ${content.addr.city}`;
 
-    return `<div class="marker-content">\n
-    <h3 class="advt-form">${content.advertisementForm.advertisementForm}</h3>\n
+    return `<div class="marker-content" style="padding-right: 10px">\n
+    <h5 class="advt-form" style="font-weight: bold;">${content.advertisementForm.advertisementForm}</h5>\n
     <div class="location-category">${locationCategory}</div>\n
     <div class="addr">${addr}</div>\n
-    <h3 class="planning">${content.isPlan == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'}</h3>\n
+    <h6 class="planning" style="font-weight: bold;">${content.isPlan == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'}</h6>\n
     </div>`;
 }
 
@@ -87,10 +87,11 @@ function parseBillBoardContent(boardLocation, board){
 
     const dateString = `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`;
 
-    return `<div class="billboard" id = "${board.id}">
-    <h3 class="billboard-type">
+    return `
+    <div class="billboard" id = "${board.id}">
+    <div class="billboard-type" style="font-weight: bold; font-size:15pt">
         ${board.boardType.boardType}
-    </h3>
+    </div>
     <div class="billboard-addr">
         <img src="../img/icon/icons8-maps.svg" alt="" style="height: 1em;">
        ${addr}
@@ -100,7 +101,40 @@ function parseBillBoardContent(boardLocation, board){
     <div class="billboard-form"><strong>Hình thức</strong> ${boardLocation.advertisementForm.advertisementForm}</div>
     <div class="billboard-category"><strong>Phân loại</strong> ${locationCategory}</div> 
     <div class="d-flex justify-content-between mt-4 mb-1"><button class="btn btn-outline-primary circle-btn"><i class="bi bi-info-lg"></i></button>
-    <button class="btn btn-outline-danger"><i class="bi bi-exclamation-octagon"></i> Báo cáo cáo vi phạm</button></div>
+    <a class="btn btn-outline-danger" data-toggle="modal" data-target="#report" href="http://localhost:3000/static/html/report.html?id=${board._id}"><i class="bi bi-exclamation-octagon"></i> Báo cáo vi phạm</a></div>
+    
+    <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <i class="fas fa-envelope prefix grey-text"></i>
+          <input type="email" id="defaultForm-email" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
+        </div>
+
+        <div class="md-form mb-4">
+          <i class="fas fa-lock prefix grey-text"></i>
+          <input type="password" id="defaultForm-pass" class="form-control validate">
+          <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-default">Login</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
     <div class="detail-infor">
         <button type="button" class="btn-close" aria-label="Close"></button>
         <img crossorigin="anonymous" src="${board.imgBillboard}" class="d-block w-100" style="max-height: 240px; object-fit: cover">
@@ -112,127 +146,21 @@ function parseBillBoardContent(boardLocation, board){
 }
 
 
-// function setMarker(map)
-// {
-//     const subWindow = document.getElementById('sub-window')
-//     map.controls[google.maps.ControlPosition.TOP_LEFT].push(subWindow);
-
-//     getAllLocation((locations) => {
-//         locations = locations.data
-//         console.log(locations)
-//         const iconMarker = {
-//             url: "../img/ad.256x256.png",
-//             scaledSize: new google.maps.Size(25, 25)
-//         };
-
-//         const infowindow = new google.maps.InfoWindow({
-//             maxWidth: 250
-//         });
-
-//         locations.forEach(location => {
-//             var marker = new google.maps.Marker({
-//                 position: location.location,
-//                 map, 
-//                 icon: iconMarker, 
-//                 title: location.id
-//             })
-
-//             marker.addListener('click', () => {
-//                 getDetailBillboardLocation(location.id, (detailInfor) => {
-//                     console.log(detailInfor);
-//                     detailInfor = detailInfor.data;
-//                     console.log(detailInfor)
-//                     infowindow.setContent(parseContentMarker(detailInfor));
-//                     infowindow.open({
-//                         anchor: marker,
-//                         map
-//                     })
-//                 });
-
-//             })
 
 
-//             marker.addListener('click', (event) => {
-//                 getDetailBillboardLocation(location.id, (detailInfor) => {
-//                     console.log(detailInfor)
-//                     detailInfor = detailInfor.data
-//                     var subWindow = document.getElementById('sub-window');
-//                     //subWindow.innerHTML =  addCarousel(['../img/test_billboard.jpg']) + subWindow.innerHTML;
-//                     var content = document.querySelector('#sub-window .overflow-content')
-//                     content.innerHTML = "";
-//                     console.log(detailInfor)
-//                     var idTest = [];
-//                     detailInfor.billboards.forEach(id => idTest.push(id.idBillboard))
-//                     detailInfor.billboards.forEach(billboard => {
-//                         content.innerHTML += parseBillBoardContent(detailInfor, billboard, billboard.idBillboard);
-                    
-//                         subWindow.classList.add('show-up');
-
-//                     })
-//                     idTest.forEach(id => {   
-//                     document.querySelector(`#${id} button.circle-btn`).addEventListener('click', () => {
-//                         document.querySelector(`#${id}`).classList.add('active');
-//                         var detailInfor = document.querySelector(`#${id} .detail-infor`);
-//                         detailInfor.classList.add('show-up');
-//                         document.querySelector(`#${id} .btn-close`).onclick = () =>{
-//                             document.querySelector(`#${id} .detail-infor`).classList.remove('show-up');
-//                         }
-//                     });
-
-//                     document.querySelector(`#${id} button.btn-outline-danger`).addEventListener('click', () => {
-                        
-//                         document.querySelector(`#report`).classList.add('show-up');
-
-//                         document.getElementById('submit').addEventListener('click',()=> {
-//                             var item = JSON.parse(localStorage.getItem('report')) || [];
-//                             item.push(detailInfor.location)
-//                             console.log(item)
-//                             localStorage.setItem('report', JSON.stringify(item))
-//                         });
-//                     })
-//                 });
-//                     // var btnInfors = document.querySelectorAll('button.circle-btn');
-//                     // btnInfors.forEach(btn => {
-//                     //     btn.addEventListener('click', (event) => {
-//                     //         var idParent = event.target.parentNode.parentNode.id;
-//                     //         console.log(event.target.parentNode)
-//                     //         console.log(idParent);
-
-
-//                     //         console.log(`#${idParent} .btn-close`   )
-
-                    
-//                     //     })
-//                     // })
-           
-//                 });
-
-//             })
-
-
-   
-
-//         })
-
-//     })
-// }
-
-function setMarkerBillBoard(location, marker,infowindow)
+function setMarkerBillBoard(map, location, marker,infowindow)
 {
         
     marker.addListener('click', () => {
-        getBoardLocationInfor(location._id, (detailInfor) => {
-            console.log(detailInfor);
-            detailInfor = detailInfor.data;
-            console.log(detailInfor)
-            infowindow.setContent(parseContentMarker(detailInfor.board));
-            infowindow.open({
-                anchor: marker,
-                map
-            })
-        });
+        map.panTo(marker.position);
 
+        infowindow.setContent(parseContentMarker(location));
+        infowindow.open({
+            anchor: marker,
+            map
+        })
     })
+
 
 
     marker.addListener('click', (event) => {
@@ -246,18 +174,27 @@ function setMarkerBillBoard(location, marker,infowindow)
 
             addCarousel(boardLocation.imgBillboardLocation);
             content.innerHTML = "";
+            if (boards.length == 0)
+            {
+                content.innerHTML = `
+                <div class ='mt-5'>Không có thông tin về bảng quảng cáo</div>
+                `
+            }
             var idTemp = []
             for (var i = 0; i < boards.length; i++) {
 
                 var billboard = boards[i];
                 billboard.id = 'board-' + (i +1).toString();
                 content.innerHTML += parseBillBoardContent(boardLocation, billboard);
-                subWindow.classList.add('show-up');
+
 
                 //idTemp board
                 idTemp.push(billboard.id);
 
             }
+            subWindow.classList.add('show-up');
+            if (subWindow.classList.contains('narrow'))
+                document.querySelector('#btn-collapse').click();
 
             idTemp.forEach(idBB => {
                 console.log(`#${idBB} button.circle-btn`)
@@ -276,14 +213,14 @@ function setMarkerBillBoard(location, marker,infowindow)
                 // report button
                 document.querySelector(`#${idBB} button.btn-outline-danger`).addEventListener('click', () => {
                     
-                    document.querySelector(`#report`).classList.add('show-up');
+                    // document.querySelector(`#report`).classList.add('show-up');
     
-                    document.getElementById('submit').addEventListener('click',()=> {
-                        var item = JSON.parse(localStorage.getItem('report')) || [];
-                        item.push(detailInfor.location)
-                        console.log(item)
-                        localStorage.setItem('report', JSON.stringify(item))
-                    });
+                    // document.getElementById('submit').addEventListener('click',()=> {
+                    //     var item = JSON.parse(localStorage.getItem('report')) || [];
+                    //     item.push(detailInfor.location)
+                    //     console.log(item)
+                    //     localStorage.setItem('report', JSON.stringify(item))
+                    // });
                 })
             }); 
 

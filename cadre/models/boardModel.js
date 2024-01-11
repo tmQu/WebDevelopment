@@ -32,7 +32,7 @@ const billboardSchema = new mongoose.Schema({
   status: {
     type: String,
     default: 'active',
-  },
+  }
 });
 
 billboardSchema.pre(/^find/, function (next) {

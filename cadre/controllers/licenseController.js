@@ -126,6 +126,15 @@ const licenseController = {
     renderDetailForm: async (req, res) => {
         try {
             var id = req.query.id;
+            var action = req.query.action;
+            var link
+            if (action === 'view')
+            {
+                link = ''
+            }
+            else if (action === 'delete'){
+                link = `/license/delete/${id}`;
+            }
             var license = await licenseModel.findById(id).lean();
             license.period.start_date = convertVNTime(license.period.start_date);
             license.period.end_date = convertVNTime(license.period.end_date);
@@ -143,14 +152,18 @@ const licenseController = {
             board_location.addr = `${board_location.addr.street_number} ${board_location.addr.route}, ${board_location.addr.ward.ward}, ${board_location.addr.district.district}, ${board_location.addr.city}`;
             board_location.locationCategory = board_location.locationCategory.map(category => category.locationCategory).join('/');
             board_location.advertisementForm = board_location.advertisementForm.advertisementForm;
-        
+            
             res.render('vwLicense/license_detail', { 
                 layout: 'datatable' ,
                 imgBoardLocation: board_location.imgBillboardLocation[0],
                 plan: (board_location.isPlanning == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'),
                 boardLocation: board_location,
                 board: board,
-                license: license
+                license: license,
+                action: {
+                    name: action,
+                    link: link
+                }
             });
         }
         catch(err)

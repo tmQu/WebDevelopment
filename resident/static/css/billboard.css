@@ -1,13 +1,7 @@
-/* <div class="billboard">
-<div id="billboard-type">Trụ cụm pano</div>
-<div id="billboard-addr">Đồng khởi nguyễn du bến nghé</div>
-<div id="billboard-size">1.5mm x 2.5 mm</div>
-<div id="billboard-form">Cổ động chính trị</div>
-<div id="billboard-category">Đất công/Công viên/Hành lang an toàn giao thông, Đất tư nhân/Nhà ở riêng lẻ, Trung tâm thương mại, Chợ, Cây xăng, Nhà chờ xe buýt)</div>
-</div> */
 
 
-@keyframes  test{
+
+@keyframes  slide{
     from {
         transform: translateX(-40%);
     }
@@ -21,7 +15,7 @@
     position: absolute;
     display: none;
     max-width: 400px;
-    animation: test 0.4s ease;
+    animation: slide 0.8s ease;
 }
 
 
@@ -31,6 +25,9 @@
     display: block;
     /* flex-direction: row;
     align-items: center; */
+}
+#sub-window.show-up.narrow {
+    width: 0;
 }
 
 
@@ -45,7 +42,7 @@
 
     box-shadow:  0 .5rem 1rem rgba(0, 0, 0, .15);
     overflow-y: scroll ;
-
+    
 
 }
 .of-scroll::-webkit-scrollbar {
@@ -69,7 +66,7 @@
 
 .overflow-content{
     padding: 0px 0px 10px 0px;
-    margin: 0px 5px;
+    margin: 0px 5px 20px 5px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -80,15 +77,24 @@
     position: absolute;
     top: 50%;
     right: -22px;
-    width: 22px;
+    width: 20px;
     height: 48px;
+    border: none;
     border-radius: 0px 15px 15px 0px;
     cursor: pointer;
-    box-shadow:  0 .5rem 1rem rgba(0, 0, 0, .15);
+    box-shadow:  0 .5rem 1rem rgba(0, 0, 0, .35);
 
 }
+#btn-collapse:hover{
+    background-color: #F5F5F5;
+}
+#btn-collapse div{
+    position: absolute;
+    left: 0;
+    top: 17px;
+}
 .billboard{
-    background-color: rgba(65, 234, 212, 0.7);
+    background-color: beige;
     box-sizing: border-box;
     width: 300px;
     border: 1px solid black;
@@ -106,7 +112,7 @@
     align-items: center;
     flex-direction: column;
     position: absolute;
-    background-color: rgba(65, 234, 212);
+    background-color: beige;
     overflow: hidden;
     left: 0;
     right: 0;
@@ -121,8 +127,6 @@
     align-self: flex-end;
 }
 .detail-infor.show-up{
-
-
     height: 100%;
 }
 
@@ -155,4 +159,3 @@
     font-size: 12px;
     padding: 0;
 }
-

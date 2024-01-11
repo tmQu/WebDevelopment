@@ -59,6 +59,10 @@ let BillboardLocationSchema = new mongoose.Schema({
     type: Array,
     require: true,
   },
+  num_board: {
+    type: Number,
+    default: 0
+  }
 });
 
 BillboardLocationSchema.pre(/^find/, function (next) {

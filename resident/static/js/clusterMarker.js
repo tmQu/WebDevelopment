@@ -66,6 +66,7 @@ const getAdvertisementBoards = (map) => {
 };
 
 const addMarker = (newMarkers, currentMarkers) => {
+  console.log(newMarkers)
   for (let i = 0; i < newMarkers.length; i++) {
     currentMarkers.push(newMarkers[i]);
   }
@@ -113,7 +114,7 @@ const clusterMarker = async (map, data) => {
   
   data.forEach((markerInfo) => {
     const iconImage = document.createElement('img');
-    iconImage.style.width = '50px'
+    iconImage.style.width = '35px'
     // console.log(markerInfo.id)
     // if (markerInfo.id.includes('BL'))
     // {
@@ -130,13 +131,27 @@ const clusterMarker = async (map, data) => {
       iconImage.src = "../img/icon/Report.png"
       console.log(markerInfo.id)
     }
+  
     else{
       if (markerInfo.isPlan == false)
       {
-        iconImage.src = "../img/icon/ad_not_plan.png"
+        if (markerInfo.num_board == 0)
+        {
+          console.log(markerInfo.num_board)
+          iconImage.src = '/static/img/icon/no_ad_no_plan.png'
+        }
+        else {
+          iconImage.src = '/static/img/icon/ad_no_plan.png'
+        }
       }
       else{
-        iconImage.src = "../img/icon/ad_planned.png"
+        if (markerInfo.num_board == 0)
+        {
+          iconImage.src = '/static/img/icon/no_ad_plan.png'
+        }
+        else {
+          iconImage.src = '/static/img/icon/ad_plan.png'
+        }
       }
     }
     const marker = new AdvancedMarkerElement({
@@ -155,7 +170,7 @@ const clusterMarker = async (map, data) => {
 
     }
     else{
-      setMarker(markerInfo, marker, infoWindow);
+      setMarker(map, markerInfo, marker, infoWindow);
     }
     markers.push(marker)
   });

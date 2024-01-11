@@ -80,18 +80,25 @@
         <div class="overflow-content"></div>
       </div>
 
-      <!-- <div id = 'detail-infor'>
-        <button type="button" class="btn-close" aria-label="Close"></button>
+      <!-- <div class = 'detail-infor'>
 
       </div> -->
 
-      <button id="btn-collapse" class="btn btn-light"></button>
+      <button id="btn-collapse">
+        <div>
+          <i class="bi bi-arrow-left-short" style="font-size: 15px;"></i>
+        </div>
+      </button>
       <script>
         document.querySelector('#btn-collapse').onclick = () => {
           var subwindow = document.getElementById('sub-window');
-          if (subwindow.style.width == '0px') subwindow.style.width = '35%';
+          if (subwindow.classList.contains('narrow')){
+            subwindow.classList.remove('narrow')
+            document.querySelector('#btn-collapse').innerHTML = '<div><i class="bi bi-arrow-left-short" style="font-size: 15px;"></i></div>'
+          }
           else {
-            subwindow.style.width = '0';
+            subwindow.classList.add('narrow');
+            document.querySelector('#btn-collapse').innerHTML = '<div><i class="bi bi-arrow-right-short" style="font-size: 15px;"></i></div>'
           }
         };
       </script>
@@ -106,8 +113,7 @@
 
     <!-- Hiển thị thông tin vị trí khi nhấn -->
     <div id="info">
-      <span id="close-button">&times;</span>
-      <h2>Thông tin vị trí</h2>
+      <span id="close-button"></span>
       <p id="location-info"></p>
     </div>
 
@@ -118,6 +124,7 @@
       <br />
       <span id="place-address"></span>
     </div>
+    <!--
     <div id="legend">
       <h3>Ký hiệu</h3>
       <div class="">
@@ -155,6 +162,7 @@
         </div>
       </div>
     </div>
+    -->
     <!-- Filter -->
     <div id="Filter">
       <div class="form-check form-switch" id="switch">
@@ -176,46 +184,7 @@
         </label>
       </div>
     </div>
-
-
     
-
-    <!-- <div id="show-report">
-
-        <div class="mb-3">
-            Hình thức báo cáo <span class="repor-method"></span>
-        </div>
-        <div class="mb-3">
-            Họ tên người gửi báo cáo
-            <span class="reporter-name"></span>
-        </div>
-        <div class="mb-3">
-          Email
-          <span class="reporter-email"></span>
-        </div>
-        <div class="mb-3">
-          Điện thoại liên lạc
-          <span class="reporter-phone"></span>
-        </div>
-        <div class="mb-3">
-            Nội dung báo cáo
-            <div class="reporter-content"></div>
-        </div>
-        <div class="mb-3">
-
-          Hình ảnh minh hoạ
-          <div class="reporter-image">
-
-            
-          </div>
-        </div>
-
-    </div> -->
-
-    <!-- <script
-      async
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzxW5txxZHhPZCjPrOvrjCE8awoF3IP50&callback=initMap&libraries=places,marker&v=weekly"
-      defer></script> -->
     <script>
       ((g) => {
         var h,
