@@ -87,6 +87,8 @@ app.use(
   })
 );
 
+app.use(express.urlencoded({ extended: true }));
+
 // Development logging
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
@@ -141,9 +143,13 @@ app.get('/', async (req, res) => {
 
 import authController from './controllers/authController.js';
 
-app.get('/licenseAccount', authController.protect, authController.restrictTo('super-admin'), (req, res) => {
-  res.render('vwForm/licenseAccount', { layout: 'main' });
-});
+app.get('/licenseAccount', 
+  authController.protect, 
+  authController.restrictTo('departmental'), 
+  (req, res) => {
+    res.render('vwForm/licenseAccount', { layout: 'main' });
+  }
+);
 
 app.get('/license', (req, res) => {
   res.render('vwForm/license', { layout: 'main' });

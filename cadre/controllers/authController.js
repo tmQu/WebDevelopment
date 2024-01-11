@@ -39,6 +39,7 @@ const authController = {
   signup: async (req, res, next) => {
     try {
       const newUser = await User.create(req.body);
+
       createSendToken(newUser, 201, res);
     } catch (err) {
       res.status(400).json({
@@ -112,7 +113,7 @@ const authController = {
     return (req, res, next) => {
       req.isAuthorized = false;
 
-      if (!roles.includes(req.user.role)) {
+      if (!roles.includes(req.user.role.level)) {
         return next(new AppError('You do not have permission to perform this action', 403, 'Forbidden'));
       }
       req.isAuthorized = true;
