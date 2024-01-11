@@ -21,7 +21,7 @@ const resetPassword = async (password, passwordConfirm) => {
   }
 };
 
-document.getElementById('resetPasswordForm').addEventListener('submit', (event) => {
+document.getElementById('forgotPasswordForm').addEventListener('submit', (event) => {
   event.preventDefault();
 
   console.log('Reset password form submitted');

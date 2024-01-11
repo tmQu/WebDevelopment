@@ -1,0 +1,13 @@
+.square-button {
+  display: inline-flex;
+  align-items: center; 
+  justify-content: center; 
+  padding: 10px 20px; 
+  border-radius: 8px; 
+  text-decoration: none;
+  white-space: nowrap; 
+}
+
+.square-button .bi {
+  margin-right: 10px;
+}

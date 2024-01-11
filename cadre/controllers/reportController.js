@@ -2,42 +2,11 @@ import Report from '../models/reportModel.js';
 import Board from '../models/boardModel.js';
 import BoardLocation from '../models/boardLocationModel.js';
 import sendEmail from '../utils/email.js';
-import multer from 'multer';
-import path from 'path';
 import he from 'he';
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, '../static/img/reports/');
-  },
-  filename: function (req, file, cb) {
-    // Create unique filename (timestamp + ext)
-    cb(null, Date.now() + path.extname(file.originalname));
-  },
-});
-
-const upload = multer({
-  storage: storage,
-  limits: { fileSize: 10000000 },
-  fileFilter: function (req, file, cb) {
-    cb(null, true);
-  },
-}).array('image', 2); // 2 is the max number of files
-
 const reportController = {
-  // Create a new report
-  createReport: (req, res) => {
-    upload(req, res, async (error) => {
-      if (error) {
-        // Handle error
-        return res.status(500).json({
-          success: false,
-          message: error.message,
-        });
-      }
-
+  createReport: async (req, res) => {
       try {
-        // Create new report
         const report = new Report({
           sender: {
             fullname: req.body.sender.fullname,
@@ -46,13 +15,10 @@ const reportController = {
           },
           board: req.body.board,
           method: req.body.method,
-          images: req.files.map((file) => file.path), // Array of image paths
+          images: req.files.map((file) => '/' + file.path),
           description: req.body.description,
-          status: req.body.status,
         });
-
         const result = await report.save();
-        console.log(result);
 
         res.status(200).json({
           success: true,
@@ -67,23 +33,14 @@ const reportController = {
           message: error.message,
         });
       }
-    });
   },
 
   // Get all reports
   getAllReports: async (req, res) => {
     try {
+      ward = req.user.role;
       let reports = await Report.find();
-
-      //   return res.json(
-      //     {
-      //       status: 'success',
-      //       results: reports.length,
-      //       data: {
-      //         reports,
-      //       },
-      //     },
-      //   );
+      // console.log(reports);
       res.render('vwReport/reports', {
         layout: 'report',
         reports: reports.map((report) => {

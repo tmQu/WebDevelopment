@@ -1,0 +1,134 @@
+{{#section 'css'}}
+  <link rel='stylesheet' href='../../static/css/list.css' />
+{{/section}}
+
+{{#section 'js'}}
+  <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet' />
+{{/section}}
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <div class='main-box clearfix'>
+        <div class='table-responsive'>
+          <table class='table user-list'>
+            <thead>
+              <tr>
+                <th>
+                  <span>
+                    Board Location
+                  </span>
+                </th>
+                <th>
+                  <span>
+                    Created
+                  </span>
+                </th>
+                <th class='text-center'>
+                  <span>
+                    Status
+                  </span>
+                </th>
+                <th>
+                  &nbsp;
+                </th>
+              </tr>
+            </thead>
+            <tbody class='reports-list'>
+              {{#if boardLocation}}
+                {{#each boardLocation}}
+                  <tr>
+                    <td>
+                      <div class='row'>
+                        <!-- Cột cho ảnh -->
+                        <div class='col-md-2'>
+                          <img src='{{this.imgBillboardLocation.[0]}}' alt='' class='img-fluid' />
+                        </div>
+
+                        <!-- Cột cho Advertisement Form và Địa chỉ -->
+                        <div class='col-md-10'>
+                          <a href='#' class='user-link'>
+                            {{this.advertisementForm}}
+                          </a>
+                          <span class='user-subhead d-block mt-2'>
+                            {{this.addr.street_number}}, {{this.addr.route}}, {{this.addr.ward}}, {{this.addr.district}},
+                            {{this.addr.city}}
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      {{#each this.locationCategory}}
+                        {{this.locationCategory}},
+                      {{/each}}
+                    </td>
+                    <td class='text-center'>
+                      {{#compare this.isPlan '===' true}}
+                        <span class='badge badge-pill badge-success'>
+                          Đã quy hoạch
+                        </span>
+                      {{else}}
+                        <span class='badge badge-pill badge-warning'>
+                          Chưa quy hoạch
+                        </span>
+                      {{/compare}}
+                    </td>
+                    <td width='15%'>
+                      <a href='#' class='table-link'>
+                        <span class='fa-stack'>
+                          <i class='fa fa-square fa-stack-2x'></i>
+                          <i class='fa fa-search-plus fa-stack-1x fa-inverse'></i>
+                        </span>
+                      </a>
+                      <a href='http://localhost:4000/boardsLocation/{{this._id}}' class='table-link'>
+                        <span class='fa-stack'>
+                          <i class='fa fa-square fa-stack-2x'></i>
+                          <i class='fa fa-pencil fa-stack-1x fa-inverse'></i>
+                        </span>
+                      </a>
+                    </td>
+                  </tr>
+                {{/each}}
+              {{else}}
+                <tr>
+                  <td colspan='5'>
+                    <div class='alert alert-danger'>
+                      No board location found
+                    </div>
+                  </td>
+                </tr>
+              {{/if}}
+            </tbody>
+          </table>
+        </div>
+        <!-- Pagination.handlebars -->
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center">
+            {{#if hasPreviousPage}}
+              <li class="page-item">
+                <a class="page-link" href="?page={{previousPage}}" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+            {{/if}}
+
+            {{#paginate currentPage lastPage}}
+              <li class="page-item {{#if (eq this.number currentPage)}}active{{/if}}">
+                <a class="page-link" href="?page={{this.number}}">{{this.number}}</a>
+              </li>
+            {{/paginate}}
+
+
+            {{#if hasNextPage}}
+              <li class="page-item">
+                <a class="page-link" href="?page={{nextPage}}" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            {{/if}}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>

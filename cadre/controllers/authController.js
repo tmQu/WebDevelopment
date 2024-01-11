@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 import { promisify } from 'util';
 import sendEmail from '../utils/email.js';
 import crypto from 'crypto';
+import sendOTPemailHTML from '../utils/emailTemplate.js';
 
 const signToken = (id) => {
   return jwt.sign({ id: id }, process.env.JWT_SECRET, {
@@ -39,6 +40,7 @@ const authController = {
   signup: async (req, res, next) => {
     try {
       const newUser = await User.create(req.body);
+
       createSendToken(newUser, 201, res);
     } catch (err) {
       res.status(400).json({
@@ -112,7 +114,7 @@ const authController = {
     return (req, res, next) => {
       req.isAuthorized = false;
 
-      if (!roles.includes(req.user.role)) {
+      if (!roles.includes(req.user.role.level)) {
         return next(new AppError('You do not have permission to perform this action', 403, 'Forbidden'));
       }
       req.isAuthorized = true;
@@ -133,12 +135,12 @@ const authController = {
     await user.save({ validateBeforeSave: false });
 
     // 3. Send OTP to user's email
-    const message = `Your password reset code is: ${otp}\nPlease use this code to reset your password on our site. It's valid for 10 minutes.\nIf you didn't request this, please ignore this email.`;
+    const message = sendOTPemailHTML(otp);
     try {
       await sendEmail({
         email: user.email,
-        subject: 'Your password reset code (valid for 10 min)',
-        message,
+        subject: 'Password Reset OTP',
+        html: message,
       });
 
       res.status(200).json({

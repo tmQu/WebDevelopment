@@ -19,7 +19,7 @@ import reportRouter from './routes/reportRoutes.js';
 import reportController from './controllers/reportController.js';
 import reportMethodRoutes from './routes/reportMethodRoutes.js';
 
-import hbsHelpers from './static/js/handlebarsHelpers.js'
+import hbsHelpers from './static/js/handlebarsHelpers.js';
 import licenseRouter from './routes/licenseRoutes.js';
 
 import cookieParser from 'cookie-parser';
@@ -33,6 +33,7 @@ import wardModel from './models/wardModel.js';
 import mongoose from 'mongoose';
 import boardModel from './models/boardModel.js';
 import boardTypeModel from './models/boardTypeModel.js';
+import boardLocationController from './controllers/boardLocationController.js';
 
 import { Server } from "socket.io";
 import { createServer } from 'http';
@@ -59,6 +60,16 @@ app.engine(
     helpers: {
       section: hbs_sections(),
       ...hbsHelpers,
+      range: function (start, end) {
+        const result = [];
+        for (let i = start; i <= end; i++) {
+          result.push(i);
+        }
+        return result;
+      },
+      eq: function (a, b) {
+        return a === b;
+      },
     },
   })
 );
@@ -84,9 +95,11 @@ app.use((req, res, next) => {
 app.use(
   helmet({
     contentSecurityPolicy: false,
-    crossOriginResourcePolicy: false
+    crossOriginResourcePolicy: false,
   })
 );
+
+app.use(express.urlencoded({ extended: true }));
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {
@@ -122,7 +135,12 @@ app.use('/api/v1/reportMethods', reportMethodRoutes);
 app.use('/license', licenseRouter);
 
 app.get('/', async (req, res) => {
-  var boardLocation = await boardLocationModel.find().populate('advertisementForm').populate('locationCategory').populate('addr.district').populate('addr.ward');
+  var boardLocation = await boardLocationModel
+    .find()
+    .populate('advertisementForm')
+    .populate('locationCategory')
+    .populate('addr.district')
+    .populate('addr.ward');
   var boards = await boardModel.find().populate('boardType');
 
   // console.log(boardLocation);
@@ -131,40 +149,39 @@ app.get('/', async (req, res) => {
   res.render('vwHome/index', {
     layout: 'main',
     boardLocation: JSON.stringify(boardLocation),
-    boards: JSON.stringify(boards)
+    boards: JSON.stringify(boards),
   });
-
 });
 
 import authController from './controllers/authController.js';
 
 app.get('/test', async(req, res) => {
-  // res.render('vwlicense/test', { layout: 'main' });
-  var boardLocations = await boardLocationModel.find();
+  res.render('vwlicense/test', { layout: 'main' });
+  // var boardLocations = await boardLocationModel.find();
 
-  for (var i = 0; i < boardLocations.length; i++) {
-    var boardLocation = boardLocations[i];
-    if (i > 2 && i < 30)
-    {
-      if (Math.floor(Math.random() + 1) === 1)
-      {
-        await boardModel.deleteMany({boardLocation: boardLocation._id});
-      }
+  // for (var i = 0; i < boardLocations.length; i++) {
+  //   var boardLocation = boardLocations[i];
+  //   if (i > 2 && i < 30)
+  //   {
+  //     if (Math.floor(Math.random() + 1) === 1)
+  //     {
+  //       await boardModel.deleteMany({boardLocation: boardLocation._id});
+  //     }
 
-    }
+  //   }
 
-      var boards = await boardModel.find({boardLocation: boardLocation._id});
+  //     var boards = await boardModel.find({boardLocation: boardLocation._id});
 
-      boardLocation.num_board = boards.length;
-      await boardLocation.save();
+  //     boardLocation.num_board = boards.length;
+  //     await boardLocation.save();
 
 
-    }
-    res.send('success');
+    // }
+    // res.send('success');
 });
 app.get('/licenseAccount', 
   authController.protect, 
-  authController.restrictTo('super-admin'), 
+  authController.restrictTo('departmental'), 
   (req, res) => {
     res.render('vwForm/licenseAccount', { layout: 'main' });
   }
@@ -172,7 +189,7 @@ app.get('/licenseAccount',
 
 app.get('/license', (req, res) => {
   res.render('vwForm/license', { layout: 'main' });
-})
+});
 
 app.get('/login', (req, res) => {
   res.render('vwAccount/login');
@@ -213,7 +230,6 @@ app.get('/reports', async (req, res) => {
   reportController.getAllReports(req, res);
 });
 
-
 app.get('/reports/:id', async (req, res) => {
   // res.render('vwReport/reportDetails', { layout: 'report' });
   reportController.getByID(req, res);
@@ -232,9 +248,8 @@ app.use((err, req, res, next) => {
   });
 });
 
-
 app.get('/boardsLocation', (req, res) => {
-  boardLocationController.viewAllBoardsLocation(req, res);
+  boardLocationController.viewAllBoardLocation(req, res);
 });
 
 app.get('/boardsLocation/:id', (req, res) => {

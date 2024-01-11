@@ -1,4 +1,4 @@
-import setMarker from "./marker_test.js";
+import setMarker from "./marker.js";
 
 var advertisementBoards = new Array();
 var mc = null;

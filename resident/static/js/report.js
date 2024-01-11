@@ -1,28 +1,38 @@
-const upReports = async (name, email, phone, board, method, image, description) => {
+const upReports = async (name, email, phone, board, method, images, description) => {
   try {
+    const formData = new FormData();
+    formData.append('sender[fullname]', name);
+    formData.append('sender[email]', email);
+    formData.append('sender[phone]', phone);
+    formData.append('board', board);
+    formData.append('method', method);
+    formData.append('description', description);
+
+    // Assuming 'images' is a FileList or an array of File objects
+    for (let i = 0; i < images.length; i++) {
+      formData.append('images', images[i]);
+    }
+
     const response = await axios({
       method: "POST",
       url: "http://localhost:4000/api/v1/reports",
-      data: {
-        sender: {
-          fullname: name,
-          email: email,
-          phone: phone
-        },
-        board,
-        method,
-        image,
-        description
+      data: formData,
+      headers: {
+        'Content-Type': 'multipart/form-data'
       },
     });
-    console.log(response.data);
+
     if (response.data.success === true) {
       alert("Báo cáo đã được gửi thành công");
+      //redirect to index
+      window.location.href = "http://localhost:3000/static/html/index.html";
     }
   } catch (err) {
-    alert(err.response.data.message);
+    alert(err.response.message);
+    console.log(err.response);
   }
 };
+
 
 //get method from database
 const getMethod = async () => {
@@ -45,7 +55,6 @@ const getMethod = async () => {
 }
 
 // Quill
-//customize toolbar
 
 var toolbarOptions = [
   //text style
@@ -96,7 +105,7 @@ const checkName = function () {
       });
   } else {
     document.querySelector("#txtName").classList.remove("is-invalid");
-    document.querySelector("#requiredName").innerHTML = "Họ tên người báo cáo";
+    document.querySelector("#requiredName").innerHTML = "Họ và tên";
   }
 };
 
@@ -183,11 +192,11 @@ const checkContent = function () {
   if (c.length === 1) {
     document.querySelector("#editor").classList.add("is-invalid");
     document.querySelector("#requiredContent").innerHTML = warnEmpty;
-    document
-      .querySelector("#reportForm")
-      .addEventListener("submit", (event) => {
-        event.preventDefault();
-      });
+    // document
+    //   .querySelector("#reportForm")
+    //   .addEventListener("submit", (event) => {
+    //     event.preventDefault();
+    //   });
   } else {
     document.querySelector("#requiredContent").innerHTML = "Nội dung báo cáo";
   }
@@ -209,16 +218,13 @@ document.querySelector("#reportForm").addEventListener("submit", (event) => {
 
   const urlParams = new URLSearchParams(window.location.search);
   const board = urlParams.get('id');
-  
+  console.log('board: ', board);
   const method = document.querySelector("#method").value;
-  //get the value attribute of option tag
-  // const method = document.querySelector("#method").options[
-  //   document.querySelector("#method").selectedIndex
-  // ].value;
-  const image = document.querySelector("#formFile").value;
+  const images = document.querySelector("#formFile").files;
   const description = quill.getText();
 
-  upReports(name, email, phone, board, method, image, description);
+  console.log(name, email, phone, board, method, images, description);
+  upReports(name, email, phone, board, method, images, description);
 });
 
 $(function() {
