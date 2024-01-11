@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 import { promisify } from 'util';
 import sendEmail from '../utils/email.js';
 import crypto from 'crypto';
+import sendOTPemailHTML from '../utils/emailTemplate.js';
 
 const signToken = (id) => {
   return jwt.sign({ id: id }, process.env.JWT_SECRET, {
@@ -134,12 +135,12 @@ const authController = {
     await user.save({ validateBeforeSave: false });
 
     // 3. Send OTP to user's email
-    const message = `Your password reset code is: ${otp}\nPlease use this code to reset your password on our site. It's valid for 10 minutes.\nIf you didn't request this, please ignore this email.`;
+    const message = sendOTPemailHTML(otp);
     try {
       await sendEmail({
         email: user.email,
-        subject: 'Your password reset code (valid for 10 min)',
-        message,
+        subject: 'Password Reset OTP',
+        html: message,
       });
 
       res.status(200).json({
