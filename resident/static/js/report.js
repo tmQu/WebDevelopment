@@ -19,11 +19,13 @@ const upReports = async (name, email, phone, board, method, images, description)
       data: formData,
       headers: {
         'Content-Type': 'multipart/form-data'
-      }
+      },
     });
 
     if (response.data.success === true) {
       alert("Báo cáo đã được gửi thành công");
+      //redirect to index
+      window.location.href = "http://localhost:3000/static/html/index.html";
     }
   } catch (err) {
     alert(err.response.message);
@@ -103,7 +105,7 @@ const checkName = function () {
       });
   } else {
     document.querySelector("#txtName").classList.remove("is-invalid");
-    document.querySelector("#requiredName").innerHTML = "Họ tên người báo cáo";
+    document.querySelector("#requiredName").innerHTML = "Họ và tên";
   }
 };
 

@@ -134,7 +134,7 @@
                     </div>
                   </div>
                   <div class="form mb-3">
-                    <label for="phone" id="requiredPhone">Số điện thoại</label>
+                    <label for="phone" id="requiredPhone">Điện thoại liên lạc</label>
                     <input
                       type="text"
                       placeholder="0123xxxxxx"
@@ -173,6 +173,23 @@
                   <div class="form-group mb-3">
                     <label for="content" id="requiredContent">Nội dung báo cáo</label>
                     <div id="editor"></div>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label
+                      for="formFile"
+                      class="form-label"
+                      name="file"
+                      id="requiredFile"
+                    >Hình ảnh minh hoạ</label>
+                    <input
+                      class="form-control form-control-lg"
+                      type="file"
+                      id="formFile"
+                      multiple
+                      required 
+                      accept="image/jpg, image/jpeg, image/png"
+                      name="images"
+                    />
                   </div>
 
                   <!-- recaptcha -->

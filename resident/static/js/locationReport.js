@@ -9,9 +9,9 @@ const upReports = async (name, email, phone, board, method, description) => {
       formData.append('description', description);
   
       // Assuming 'images' is a FileList or an array of File objects
-      // for (let i = 0; i < images.length; i++) {
-      //   formData.append('images', images[i]);
-      // }
+      for (let i = 0; i < images.length; i++) {
+        formData.append('images', images[i]);
+      }
   
       const response = await axios({
         method: "POST",
@@ -103,7 +103,7 @@ const upReports = async (name, email, phone, board, method, description) => {
         });
     } else {
       document.querySelector("#txtName").classList.remove("is-invalid");
-      document.querySelector("#requiredName").innerHTML = "Họ tên người báo cáo";
+      document.querySelector("#requiredName").innerHTML = "Họ và tên";
     }
   };
   
@@ -153,27 +153,27 @@ const upReports = async (name, email, phone, board, method, description) => {
     }
   };
   
-  // const uploadFile = function () {
-  //   //maximum number of files is 2
-  //   const fileInput = document.getElementById("formFile");
-  //   const warn = "Vui lòng chọn tối đa 2 file";
-  //   const warnEmpty = "Vui lòng không bỏ trống file";
+  const uploadFile = function () {
+    //maximum number of files is 2
+    const fileInput = document.getElementById("formFile");
+    const warn = "Vui lòng chọn tối đa 2 file";
+    const warnEmpty = "Vui lòng không bỏ trống file";
   
-  //   if (fileInput.files.length === 0) {
-  //     document.querySelector("#formFile").classList.add("is-invalid");
-  //     document.querySelector("#requiredFile").innerHTML = warnEmpty;
-  //   }
-  //   else if (fileInput.files.length > 2) {
-  //     document.querySelector("#formFile").classList.add("is-invalid");
-  //     document.querySelector("#requiredFile").innerHTML = warn;
-  //     //disable submit button
-  //     document.querySelector("#submit").classList.add("disabled");
-  //   } else {
-  //     document.querySelector("#submit").classList.remove("disabled");
-  //     document.querySelector("#formFile").classList.remove("is-invalid");
-  //     document.querySelector("#requiredFile").innerHTML = "File đính kèm";
-  //   }
-  // };
+    if (fileInput.files.length === 0) {
+      document.querySelector("#formFile").classList.add("is-invalid");
+      document.querySelector("#requiredFile").innerHTML = warnEmpty;
+    }
+    else if (fileInput.files.length > 2) {
+      document.querySelector("#formFile").classList.add("is-invalid");
+      document.querySelector("#requiredFile").innerHTML = warn;
+      //disable submit button
+      document.querySelector("#submit").classList.add("disabled");
+    } else {
+      document.querySelector("#submit").classList.remove("disabled");
+      document.querySelector("#formFile").classList.remove("is-invalid");
+      document.querySelector("#requiredFile").innerHTML = "File đính kèm";
+    }
+  };
   
   var quill = new Quill("#editor", {
     modules: {
@@ -218,7 +218,7 @@ const upReports = async (name, email, phone, board, method, description) => {
     const board = urlParams.get('id');
     console.log('board: ', board);
     const method = document.querySelector("#method").value;
-    //const images = document.querySelector("#formFile").files;
+    const images = document.querySelector("#formFile").files;
     const description = quill.getText();
   
     console.log(name, email, phone, board, method, description);
