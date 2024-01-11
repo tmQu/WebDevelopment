@@ -58,8 +58,23 @@ function parseContentMarker(content)
 
     var addr = `${content.addr.street_number} ${content.addr.route}, ${content.addr.ward.ward}, ${content.addr.district.district}, ${content.addr.city}`;
 
-    return `<div class="marker-content" style="padding-right: 10px">\n
-    <h5 class="advt-form" style="font-weight: bold;">${content.advertisementForm.advertisementForm}</h5>\n
+//     return `<div class="card" style="background: linear-gradient(90deg, #c8e0f8, #e4f8f0); border: none">
+//     <div class="card-body pb-0">
+//       <div class="d-flex justify-content-between">
+//         <p class="mb-0 h5" style="font-weight: bold;">${title} <a class="btn" href=""><i class="bi bi-exclamation-octagon"></i></a></p>
+        
+//       </div>
+//     </div>
+//     <hr>
+//     <div class="card-body pt-0">
+//       <h6 class="font-weight-bold mb-1">${address}</h6>
+
+//     </div>
+//   </div>
+// </div>`
+
+    return `<div class="marker-content" style="background: linear-gradient(90deg, #c8e0f8, #e4f8f0); border: none; padding: 10px">\n
+    <h5 class="advt-form mb-0" style="font-weight: bold;">${content.advertisementForm.advertisementForm}</h5>\n
     <div class="location-category">${locationCategory}</div>\n
     <div class="addr">${addr}</div>\n
     <h6 class="planning" style="font-weight: bold;">${content.isPlan == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'}</h6>\n
@@ -87,8 +102,24 @@ function parseBillBoardContent(boardLocation, board){
 
     const dateString = `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`;
 
+    // return `
+    // <div class="card" style="background: linear-gradient(90deg, #c8e0f8, #e4f8f0); border: none">
+    //       <div class="card-body pb-0">
+    //         <div class="d-flex justify-content-between">
+    //           <p class="mb-0 h5" style="font-weight: bold;">${title} <a class="btn" href=""><i class="bi bi-exclamation-octagon"></i></a></p>
+              
+    //         </div>
+    //       </div>
+    //       <hr>
+    //       <div class="card-body pt-0">
+    //         <h6 class="font-weight-bold mb-1">${address}</h6>
+
+    //       </div>
+    //     </div>
+    //   </div>`
+
     return `
-    <div class="billboard" id = "${board.id}">
+    <div class="billboard" id = "${board.id}" style="background: linear-gradient(90deg, #c8e0f8, #e4f8f0);">
     <div class="billboard-type" style="font-weight: bold; font-size:15pt">
         ${board.boardType.boardType}
     </div>
@@ -101,39 +132,7 @@ function parseBillBoardContent(boardLocation, board){
     <div class="billboard-form"><strong>Hình thức</strong> ${boardLocation.advertisementForm.advertisementForm}</div>
     <div class="billboard-category"><strong>Phân loại</strong> ${locationCategory}</div> 
     <div class="d-flex justify-content-between mt-4 mb-1"><button class="btn btn-outline-primary circle-btn"><i class="bi bi-info-lg"></i></button>
-    <a class="btn btn-outline-danger" data-toggle="modal" data-target="#report" href="http://localhost:3000/static/html/report.html?id=${board._id}"><i class="bi bi-exclamation-octagon"></i> Báo cáo vi phạm</a></div>
-    
-    <div class="modal fade" id="report" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Sign in</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <i class="fas fa-envelope prefix grey-text"></i>
-          <input type="email" id="defaultForm-email" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="defaultForm-email">Your email</label>
-        </div>
-
-        <div class="md-form mb-4">
-          <i class="fas fa-lock prefix grey-text"></i>
-          <input type="password" id="defaultForm-pass" class="form-control validate">
-          <label data-error="wrong" data-success="right" for="defaultForm-pass">Your password</label>
-        </div>
-
-      </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <button class="btn btn-default">Login</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+    <a class="btn btn-outline-danger" href="http://localhost:3000/static/html/report.html?id=${board._id}"><i class="bi bi-exclamation-octagon"></i> Báo cáo vi phạm</a></div>
 
     <div class="detail-infor">
         <button type="button" class="btn-close" aria-label="Close"></button>

@@ -35,18 +35,33 @@ function displayLocationInfo(latitude, longitude, map) {
         //var types = results[0].types;
 
         var contentString =
-          '<div class="container">' +
-            '<div class="title">' +
-              '<h5>' +
-              title +
-              '</h5>' +
-            '</div>' +
-            '<div class="address">' +
-              '<p><span style="font-weight: bold;">Địa chỉ: </span>' +
-              address +
-              '</p>' +
-            '</div>'+
-          '</div>';
+          // `<div class="container"> 
+          //   <div class="title">
+          //     <h5>
+          //     ${title}
+          //     <a class="btn" href=""><i class="bi bi-exclamation-octagon"></i></a>
+          //     </h5>
+          //   </div>
+          //   <div class="address">
+          //     <p><span style="font-weight: bold;">Địa chỉ: </span>
+          //     ${address}
+          //     </p>
+          //   </div>
+          // </div>`
+          `<div class="card" style="background: linear-gradient(90deg, #c8e0f8, #e4f8f0); border: none;">
+          <div class="card-body pb-0">
+            <div class="d-flex justify-content-between">
+              <p class="mb-0 h5" style="font-weight: bold;">${title} <a class="btn btn-report" href="http://localhost:3000/static/html/locationReport.html"><i class="bi bi-exclamation-octagon"></i></a></p>
+              
+            </div>
+          </div>
+          <hr>
+          <div class="card-body pt-0">
+            <h6 class="font-weight-bold mb-1">${address}</h6>
+
+          </div>
+        </div>
+      </div>`
         
           var iwOuter = $('.gm-style-iw');
           //Remove background and pointer

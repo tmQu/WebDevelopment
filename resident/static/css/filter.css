@@ -1,11 +1,11 @@
-#Filter {
-    width: 99%;
+#filter {
+    width: 100%;
     height: 25px;
     line-height: 25px;
     border-radius: 3px;
     margin: auto;
     padding-left: 70px;
-    background-color: beige;
+    background-color: white;
     position: absolute;
 }
 
