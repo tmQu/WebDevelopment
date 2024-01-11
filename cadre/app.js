@@ -260,6 +260,10 @@ app.get('/boardsLocation/:id/board/:boardID', (req, res) => {
   boardController.viewBoard(req, res);
 });
 
+app.get('/', (req, res) => {
+  res.render('vwAdmin/wardAdmin');
+});
+
 // app.use(globalErrorHandler);
 io.on('connection', function(socket){
   socket.on('update status', function(msg){

@@ -24,6 +24,7 @@ const upReports = async (name, email, phone, board, method, description) => {
   
       if (response.data.success === true) {
         alert("Báo cáo đã được gửi thành công");
+        window.location.href = "http://localhost:3000/static/html/index.html";
       }
     } catch (err) {
       alert(err.response.message);

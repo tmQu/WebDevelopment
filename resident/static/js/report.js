@@ -173,7 +173,7 @@ const uploadFile = function () {
   } else {
     document.querySelector("#submit").classList.remove("disabled");
     document.querySelector("#formFile").classList.remove("is-invalid");
-    document.querySelector("#requiredFile").innerHTML = "File đính kèm";
+    document.querySelector("#requiredFile").innerHTML = "Hình ảnh minh hoạ";
   }
 };
 
