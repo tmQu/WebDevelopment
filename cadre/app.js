@@ -19,7 +19,7 @@ import reportRouter from './routes/reportRoutes.js';
 import reportController from './controllers/reportController.js';
 import reportMethodRoutes from './routes/reportMethodRoutes.js';
 
-import hbsHelpers from './static/js/handlebarsHelpers.js'
+import hbsHelpers from './static/js/handlebarsHelpers.js';
 import licenseRouter from './routes/licenseRoutes.js';
 
 import cookieParser from 'cookie-parser';
@@ -33,6 +33,7 @@ import wardModel from './models/wardModel.js';
 import mongoose from 'mongoose';
 import boardModel from './models/boardModel.js';
 import boardTypeModel from './models/boardTypeModel.js';
+import boardLocationController from './controllers/boardLocationController.js';
 
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -47,6 +48,16 @@ app.engine(
     helpers: {
       section: hbs_sections(),
       ...hbsHelpers,
+      range: function (start, end) {
+        const result = [];
+        for (let i = start; i <= end; i++) {
+          result.push(i);
+        }
+        return result;
+      },
+      eq: function (a, b) {
+        return a === b;
+      },
     },
   })
 );
@@ -72,7 +83,7 @@ app.use((req, res, next) => {
 app.use(
   helmet({
     contentSecurityPolicy: false,
-    crossOriginResourcePolicy: false
+    crossOriginResourcePolicy: false,
   })
 );
 
@@ -110,7 +121,12 @@ app.use('/api/v1/reportMethods', reportMethodRoutes);
 app.use('/license', licenseRouter);
 
 app.get('/', async (req, res) => {
-  var boardLocation = await boardLocationModel.find().populate('advertisementForm').populate('locationCategory').populate('addr.district').populate('addr.ward');
+  var boardLocation = await boardLocationModel
+    .find()
+    .populate('advertisementForm')
+    .populate('locationCategory')
+    .populate('addr.district')
+    .populate('addr.ward');
   var boards = await boardModel.find().populate('boardType');
 
   // console.log(boardLocation);
@@ -119,24 +135,19 @@ app.get('/', async (req, res) => {
   res.render('vwHome/index', {
     layout: 'main',
     boardLocation: JSON.stringify(boardLocation),
-    boards: JSON.stringify(boards)
+    boards: JSON.stringify(boards),
   });
-
 });
 
 import authController from './controllers/authController.js';
 
-app.get('/licenseAccount', 
-  authController.protect, 
-  authController.restrictTo('super-admin'), 
-  (req, res) => {
-    res.render('vwForm/licenseAccount', { layout: 'main' });
-  }
-);
+app.get('/licenseAccount', authController.protect, authController.restrictTo('super-admin'), (req, res) => {
+  res.render('vwForm/licenseAccount', { layout: 'main' });
+});
 
 app.get('/license', (req, res) => {
   res.render('vwForm/license', { layout: 'main' });
-})
+});
 
 app.get('/login', (req, res) => {
   res.render('vwAccount/login');
@@ -177,7 +188,6 @@ app.get('/reports', async (req, res) => {
   reportController.getAllReports(req, res);
 });
 
-
 app.get('/reports/:id', async (req, res) => {
   // res.render('vwReport/reportDetails', { layout: 'report' });
   reportController.getByID(req, res);
@@ -196,9 +206,8 @@ app.use((err, req, res, next) => {
   });
 });
 
-
 app.get('/boardsLocation', (req, res) => {
-  boardLocationController.viewAllBoardsLocation(req, res);
+  boardLocationController.viewAllBoardLocation(req, res);
 });
 
 app.get('/boardsLocation/:id', (req, res) => {

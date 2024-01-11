@@ -100,7 +100,7 @@
                             Phân loại:
                             {{#each ../boardLocation.locationCategory}}
                               <span class='badge badge-pill badge-primary'>
-                                {{this.locationCategory}}
+                                {{this}}
                               </span>
                             {{/each}}
                           </p>
@@ -215,7 +215,7 @@
                   <h5 class='card-title'>Bảng quảng cáo</h5>
                 </div>
                 <div class='card-body'>
-                  <form enctype="multipart/form-data">
+                  <form enctype="multipart/form-data" method="POST" action="/changeInfoRequest">
                     <!-- Trường Kích thước -->
                     <div class="form-group row mb-3">
                       <label class="col-sm-4 col-form-label">Kích thước (m)</label>
