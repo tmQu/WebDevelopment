@@ -57,12 +57,91 @@
                 {{#each boards}}
                   <div class='card shadow mb-2'>
                     <div class='card-header text-body-emphasis d-flex justify-content-between'>
-                      <h4>
+                      <h4 id="boardType">
                         {{this.boardType}}
                       </h4>
-                      <a class='badge badge-pill badge-primary square-button' href="#security" role="tab" data-toggle="tab">
-                        <i class="bi bi-gear"></i> Yêu cầu chỉnh sửa
-                      </a>
+                      <div class="d-flex">
+                        <a class='badge badge-pill badge-primary square-button' id="editButton">
+                          <i class="bi bi-gear"></i> Yêu cầu chỉnh sửa
+                        </a>
+                        <a class='badge badge-pill badge-success square-button ml-2' id="licenseButton">
+                          <i class="bi bi-check-circle"></i> Yêu cầu cấp phép
+                        </a>
+                      </div>
+                      <!-- Modal -->
+                      <div class="modal fade" id="editBoardModal" tabindex="-1" aria-labelledby="editBoardModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="editBoardModalLabel">Chỉnh sửa thông tin bảng quảng cáo</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form enctype="multipart/form-data" method="POST" action="/changeInfoRequest">
+                                <!-- Trường Kích thước -->
+                                <div class="form-group row mb-3">
+                                  <label class="col-sm-4 col-form-label">Kích thước (m)</label>
+                                  <div class="col-sm-8">
+                                    <div class="input-group">
+                                      <input type="number" class="form-control" id="editBoardWidth" placeholder="Chiều rộng">
+                                      <div class="input-group-append">
+                                        <span class="input-group-text">x</span>
+                                      </div>
+                                      <input type="number" class="form-control" id="editBoardHeight" placeholder="Chiều cao">
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <!-- Trường Loại Bảng Quảng Cáo -->
+                                <div class="form-group row mb-3">
+                                  <label for="editBoardType" class="col-sm-4 col-form-label">Loại bảng quảng cáo</label>
+                                  <div class="col-sm-8">
+                                    <select id='editBoardType' class="form-select">
+                                      {{#each ../boardType}}
+                                        <option value="{{this._id}}">{{this.boardType}}</option>
+                                      {{/each}}
+                                    </select>
+                                  </div>
+                                </div>
+
+                                <!-- Trường Số Lượng -->
+                                <div class="form-group row mb-3">
+                                  <label for="editQuantity" class="col-sm-4 col-form-label">Số lượng</label>
+                                  <div class="col-sm-8">
+                                    <input type="number" class="form-control" id="editQuantity" placeholder="Số lượng">
+                                  </div>
+                                </div>
+
+                                <!-- Trường tải ảnh -->
+                                <div class="row mb-3">
+                                  <label for="editUploadImage" class="col-sm-4 col-form-label">Tải ảnh lên</label>
+                                  <div class="col-sm-8">
+                                    <input type="file" class="form-control" id="editUploadImage" multiple required accept="image.jpg image.png image.jpeg">
+                                  </div>
+                                </div>
+
+                                <!-- Trường lý do chỉnh sửa -->
+                                <div class="row mb-3">
+                                  <label for="editReason" class="col-sm-4 col-form-label">Lý do chỉnh sửa</label>
+                                  <div class="col-sm-8">
+                                    <textarea class="form-control" id="editReason" rows="3" placeholder="Nhập lý do chỉnh sửa"></textarea>
+                                  </div>
+                                </div>
+
+                                <!-- Nút gửi và hủy -->
+                                <div class="row mb-3">
+                                  <div class="col-sm-8 offset-sm-4">
+                                    <button type="submit" class="btn btn-primary">Gửi</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                     <div class='card-body'>
                       <div class='row d-flex align-items-stretch'>
@@ -87,7 +166,7 @@
                           <p>
                             Kích thước:
                             <strong>
-                              {{this.size}}
+                              <span id="boardSize">{{this.size}}</span>
                             </strong>
                           </p>
                           <p>
@@ -208,75 +287,6 @@
             <p>
               Thông tin chi tiết về cách thức xử lý bảng quảng cáo
             </p>
-            <!-- Form ẩn -->
-            <div id="infoForm" class="mt-4" style="display: none;">
-              <div class='card border-info'>
-                <div class='card-header bg-info text-white'>
-                  <h5 class='card-title'>Bảng quảng cáo</h5>
-                </div>
-                <div class='card-body'>
-                  <form enctype="multipart/form-data" method="POST" action="/changeInfoRequest">
-                    <!-- Trường Kích thước -->
-                    <div class="form-group row mb-3">
-                      <label class="col-sm-4 col-form-label">Kích thước (m)</label>
-                      <div class="col-sm-8">
-                        <div class="input-group">
-                          <input type="number" class="form-control" id="boardWidth" placeholder="Chiều rộng">
-                          <div class="input-group-append">
-                            <span class="input-group-text">x</span>
-                          </div>
-                          <input type="number" class="form-control" id="boardHeight" placeholder="Chiều cao">
-                        </div>
-                      </div>
-                    </div>
-
-                    <!-- Trường Loại Bảng Quảng Cáo -->
-                    <div class="form-group row mb-3">
-                      <label for="board-type" class="col-sm-4 col-form-label">Loại bảng quảng cáo</label>
-                      <div class="col-sm-8">
-                        <select id='board-type' class="form-select">
-                          {{#each boardType}}
-                            <option value="{{this._id}}">{{this.boardType}}</option>
-                          {{/each}}
-                        </select>
-                      </div>
-                    </div>
-
-                    <!-- Trường Số Lượng -->
-                    <div class="form-group row mb-3">
-                      <label for="quantity" class="col-sm-4 col-form-label">Số lượng</label>
-                      <div class="col-sm-8">
-                        <input type="number" class="form-control" id="quantity" placeholder="Số lượng">
-                      </div>
-                    </div>
-
-                    <!-- Trường tải ảnh -->
-                    <div class="row mb-3">
-                      <label for="uploadImage" class="col-sm-4 col-form-label">Tải ảnh lên</label>
-                      <div class="col-sm-8">
-                        <input type="file" class="form-control" id="uploadImage">
-                      </div>
-                    </div>
-
-                    <!-- Trường lý do chỉnh sửa -->
-                    <div class="row mb-3">
-                      <label for="editReason" class="col-sm-4 col-form-label">Lý do chỉnh sửa</label>
-                      <div class="col-sm-8">
-                        <textarea class="form-control" id="editReason" rows="3" placeholder="Nhập lý do chỉnh sửa"></textarea>
-                      </div>
-                    </div>
-
-                    <!-- Nút gửi và hủy -->
-                    <div class="row mb-3">
-                      <div class="col-sm-8 offset-sm-4">
-                        <button type="submit" class="btn btn-primary">Gửi</button>
-                        <button type="button" class="btn btn-secondary">Hủy bỏ</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
