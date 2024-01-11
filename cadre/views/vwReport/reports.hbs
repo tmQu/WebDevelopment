@@ -45,13 +45,20 @@
                 {{#each reports}}
                   <tr>
                     <td>
-                      <img src='{{this.images.[0]}}' alt='' />
-                      <a href='#' class='user-link'>
-                        {{this.method.reportMethod}}
-                      </a>
-                      <span class='user-subhead'>
-                        Board Location Details
-                      </span>
+                      <div class="row" style="width: 500px; height: 60px;">
+                        <div class="col-md-2">
+                          <img src='{{this.images.[0]}}' alt='' class='img-fluid' style="width: 100%; height: 100%;"/>
+                        </div>
+                        <div class="col-md-10 align-content-start">
+                          <a href='#' class='user-link'>
+                            {{this.method.reportMethod}}
+                          </a>
+                          <span class='user-subhead d-block mt-2'>
+                            {{this.boardLocation.addr.street_number}}, {{this.boardLocation.addr.route}}, {{this.boardLocation.addr.ward.ward}},
+                            {{this.boardLocation.addr.district.district}}, {{this.boardLocation.addr.city}}
+                          </span>
+                      </div>
+              
                     </td>
                     <td>
                       {{this.createdAt}}

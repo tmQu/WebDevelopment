@@ -1,9 +1,9 @@
-import changeInfoReqModel from "../models/changeInfoReqModel.js";
+import changeBoardModel from "../models/changeBoardModel.js";
 
-const changeInfoReqController = {
+const changeBoardController = {
   createChangeInfoReq: async (req, res) => {
     try {
-      const newChangeInfoReq = await changeInfoReqModel.create({
+      const newChangeInfoReq = await changeBoardModel.create({
         ...req.body,
         creator: req.user._id,
       });

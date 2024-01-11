@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const changeInfoReqSchema = new mongoose.Schema({
+const changeBoardSchema = new mongoose.Schema({
   creator: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users',
@@ -58,6 +58,6 @@ const changeInfoReqSchema = new mongoose.Schema({
   ],
 });
 
-const changeInfoReqModel = mongoose.model('change_info_reqs', changeInfoReqSchema);
+const changeBoardModel = mongoose.model('change_board', changeBoardSchema);
 
-export default changeInfoReqModel;
+export default changeBoardModel;

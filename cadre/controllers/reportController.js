@@ -6,50 +6,61 @@ import he from 'he';
 
 const reportController = {
   createReport: async (req, res) => {
-      try {
-        const report = new Report({
-          sender: {
-            fullname: req.body.sender.fullname,
-            email: req.body.sender.email,
-            phone: req.body.sender.phone,
-          },
-          board: req.body.board,
-          method: req.body.method,
-          images: req.files.map((file) => '/' + file.path),
-          description: req.body.description,
-        });
-        const result = await report.save();
+    try {
+      const report = new Report({
+        sender: {
+          fullname: req.body.sender.fullname,
+          email: req.body.sender.email,
+          phone: req.body.sender.phone,
+        },
+        board: req.body.board,
+        method: req.body.method,
+        images: req.files.map((file) => '/' + file.path),
+        description: req.body.description,
+      });
+      const result = await report.save();
 
-        res.status(200).json({
-          success: true,
-          message: 'Report created successfully',
-          data: {
-            report: result,
-          },
-        });
-      } catch (error) {
-        res.status(500).json({
-          success: false,
-          message: error.message,
-        });
-      }
+      res.status(200).json({
+        success: true,
+        message: 'Report created successfully',
+        data: {
+          report: result,
+        },
+      });
+    } catch (error) {
+      res.status(500).json({
+        success: false,
+        message: error.message,
+      });
+    }
   },
 
   // Get all reports
   getAllReports: async (req, res) => {
     try {
-      ward = req.user.role;
-      let reports = await Report.find();
-      // console.log(reports);
-      res.render('vwReport/reports', {
-        layout: 'report',
-        reports: reports.map((report) => {
+      let reports = await Report.find().populate({
+        path: 'board',
+        select: 'boardLocation',
+      });
+
+      // Get boardLocation of each board
+      reports = await Promise.all(
+        reports.map(async (report) => {
+          let boardLocation = await BoardLocation.findById(report.board.boardLocation);
+          boardLocation = boardLocation.toObject();
+
           report = report.toObject();
           return {
             ...report,
+            boardLocation,
             createdAt: new Date(report.createdAt).toLocaleString(),
           };
-        }),
+        })
+      );
+
+      res.render('vwReport/reports', {
+        layout: 'report',
+        reports: reports,
       });
 
       // return reports;

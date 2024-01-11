@@ -83,7 +83,7 @@ const boardLocationController = {
           boardType: boardType.boardType,
         };
       });
-      console.log(boardType);
+    
       res.render('vwBoard/boardLocationDetail', {
         layout: 'list',
         boards: boards,
