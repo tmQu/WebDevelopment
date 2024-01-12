@@ -18,6 +18,7 @@ import userRouter from './routes/userRoutes.js';
 import reportRouter from './routes/reportRoutes.js';
 import reportController from './controllers/reportController.js';
 import reportMethodRoutes from './routes/reportMethodRoutes.js';
+import changeBoardRoutes from './routes/changeBoardRoutes.js';
 
 import hbsHelpers from './static/js/handlebarsHelpers.js';
 import licenseRouter from './routes/licenseRoutes.js';
@@ -35,18 +36,12 @@ import boardModel from './models/boardModel.js';
 import boardTypeModel from './models/boardTypeModel.js';
 import boardLocationController from './controllers/boardLocationController.js';
 
-import { Server } from "socket.io";
+import { Server } from 'socket.io';
 import { createServer } from 'http';
-
-
-
-
-
 
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
-
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -133,6 +128,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reports', reportRouter);
 app.use('/api/v1/reportMethods', reportMethodRoutes);
 app.use('/license', licenseRouter);
+app.use('/api/v1/changeBoard', changeBoardRoutes);
 
 app.get('/', async (req, res) => {
   var boardLocation = await boardLocationModel
@@ -155,7 +151,7 @@ app.get('/', async (req, res) => {
 
 import authController from './controllers/authController.js';
 
-app.get('/test', async(req, res) => {
+app.get('/test', async (req, res) => {
   res.render('vwlicense/test', { layout: 'main' });
   // var boardLocations = await boardLocationModel.find();
 
@@ -175,17 +171,12 @@ app.get('/test', async(req, res) => {
   //     boardLocation.num_board = boards.length;
   //     await boardLocation.save();
 
-
-    // }
-    // res.send('success');
+  // }
+  // res.send('success');
 });
-app.get('/licenseAccount', 
-  authController.protect, 
-  authController.restrictTo('departmental'), 
-  (req, res) => {
-    res.render('vwForm/licenseAccount', { layout: 'main' });
-  }
-);
+app.get('/licenseAccount', authController.protect, authController.restrictTo('departmental'), (req, res) => {
+  res.render('vwForm/licenseAccount', { layout: 'main' });
+});
 
 app.get('/license', (req, res) => {
   res.render('vwForm/license', { layout: 'main' });
@@ -208,30 +199,10 @@ app.get('/resetPassword', (req, res) => {
 });
 
 app.get('/reports', async (req, res) => {
-  // try {
-  //   let response = await reportController.getAllReports(req, res, next);
-
-  //   let reports = response.data.reports;
-  //   console.log(reports);
-  //   reports = reports.map((report) => {
-  //     report = report.toObject();
-  //     return {
-  //       ...report,
-  //       createdAt: new Date(report.createdAt).toLocaleString(),
-  //     };
-  //   });
-
-  //   res.render('vwReport/reports', { layout: 'report', reports });
-
-  // } catch (error) {
-  //   console.error('Error in /reports route:', error);
-  //   // res.status(500).send('Server error');
-  // }
   reportController.getAllReports(req, res);
 });
 
 app.get('/reports/:id', async (req, res) => {
-  // res.render('vwReport/reportDetails', { layout: 'report' });
   reportController.getByID(req, res);
 });
 
@@ -252,7 +223,7 @@ app.get('/boardsLocation', (req, res) => {
   boardLocationController.viewAllBoardLocation(req, res);
 });
 
-app.get('/boardsLocation/:id', (req, res) => {
+app.get('/boardsLocation/:id', authController.protect, (req, res) => {
   boardLocationController.viewBoardLocation(req, res);
 });
 
@@ -265,9 +236,9 @@ app.get('/', (req, res) => {
 });
 
 // app.use(globalErrorHandler);
-io.on('connection', function(socket){
-  socket.on('update status', function(msg){
+io.on('connection', function (socket) {
+  socket.on('update status', function (msg) {
     io.emit('update status', msg);
   });
-})
+});
 export default server;
