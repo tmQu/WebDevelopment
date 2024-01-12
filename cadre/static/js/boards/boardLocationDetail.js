@@ -1,4 +1,3 @@
-
 // Xác định khi nào modal sẽ được hiển thị
 $('#editButton').on('click', function () {
   // Lấy thông tin bảng quảng cáo từ data attributes hoặc từ DOM tương ứng
@@ -13,9 +12,8 @@ $('#editButton').on('click', function () {
   // Lấy giá trị chiều cao
   var boardHeight = boardSize.slice(xIndex + 1, boardSize.length);
 
+  var boardQuantity = $(this).closest('.card').find('#quantity').text();
 
-  var boardQuantity = $(this).closest('.card').find('#quantity').text(); 
-  
   // Điền giá trị vào modal
   $('#editBoardType').val(boardType);
   $('#editBoardWidth').val(boardWidth);
@@ -35,7 +33,12 @@ $('#saveChangesButton').on('click', function () {
   var editedQuantity = $('#editQuantity').val();
 
   // Kiểm tra xem các trường đã được điền
-  if (editedBoardType.trim() === '' || editedBoardWidth.trim() === '' || editedBoardHeight.trim() === '' || editedQuantity.trim() === '') {
+  if (
+    editedBoardType.trim() === '' ||
+    editedBoardWidth.trim() === '' ||
+    editedBoardHeight.trim() === '' ||
+    editedQuantity.trim() === ''
+  ) {
     alert('Vui lòng điền đầy đủ thông tin.');
     return;
   }
@@ -51,3 +54,61 @@ $('#saveChangesButton').on('click', function () {
   $('#editBoardModal').modal('hide');
 });
 
+const fetchForm = async (data) => {
+  try {
+    const formData = new FormData();
+
+    formData.append('boardType', data.boardType);
+    formData.append('boardSize', data.boardSize);
+    formData.append('quantity', data.quantity);
+    formData.append('reason', data.reason);
+    formData.append('imgBillboard', data.imgBillboard);
+    formData.append('creator', data.creator);
+    formData.append('board', data.board);
+    formData.append('boardLocation', data.boardLocation);
+
+    const res = await axios({
+      method: 'POST',
+      url: '/api/v1/changeBoard',
+      data: formData,
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+
+    if (res.data.status === 'success') {
+      alert('Đã gửi yêu cầu thành công');
+    }
+  } catch (err) {
+    alert(err.response.data.message);
+    console.log(err);
+  }
+};
+
+document.getElementById('submitReqbtn').addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const boardType = document.getElementById('editBoardType').value;
+  const boardWidth = document.getElementById('editBoardWidth').value;
+  const boardHeight = document.getElementById('editBoardHeight').value;
+  const boardSize = `${boardWidth}x${boardHeight}`;
+  let quantity = document.getElementById('editQuantity').value;
+  quantity = `${quantity} trụ/bảng`;
+  const reason = document.getElementById('editReason').value;
+  const imgBillboard = document.getElementById('editUploadImage').files[0];
+
+  const board = document.getElementById('submitReqbtn').dataset.board;
+  const boardLocation = document.getElementById('submitReqbtn').dataset.location;
+  const creator = document.getElementById('submitReqbtn').dataset.user;
+
+  fetchForm({
+    boardType,
+    boardSize,
+    quantity,
+    reason,
+    imgBillboard,
+    creator,
+    board,
+    boardLocation,
+  });
+});

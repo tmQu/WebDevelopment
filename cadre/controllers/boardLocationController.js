@@ -53,6 +53,7 @@ const boardLocationController = {
       let boardLocation = await boardLocationModel.findById(req.params.id);
       let boards = await boardModel.find({ boardLocation: req.params.id });
       let boardType = await boardTypeModel.find();
+      const user = req.user._id;
 
       boards = boards.map((board) => {
         board = board.toObject();
@@ -65,6 +66,7 @@ const boardLocationController = {
 
       boardLocation = {
         ...boardLocation,
+        _id: boardLocation._id,
         locationCategory: boardLocation.locationCategory.map((locationCategory) => {
           return locationCategory.locationCategory;
         }),
@@ -83,9 +85,10 @@ const boardLocationController = {
           boardType: boardType.boardType,
         };
       });
-    
+
       res.render('vwBoard/boardLocationDetail', {
         layout: 'list',
+        user: user,
         boards: boards,
         boardLocation: boardLocation,
         boardType: boardType,

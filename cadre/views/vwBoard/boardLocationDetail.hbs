@@ -79,7 +79,7 @@
                               </button>
                             </div>
                             <div class="modal-body">
-                              <form enctype="multipart/form-data" method="POST" action="/changeInfoRequest">
+                              <form enctype="multipart/form-data" action="#">
                                 <!-- Trường Kích thước -->
                                 <div class="form-group row mb-3">
                                   <label class="col-sm-4 col-form-label">Kích thước (m)</label>
@@ -118,7 +118,7 @@
                                 <div class="row mb-3">
                                   <label for="editUploadImage" class="col-sm-4 col-form-label">Tải ảnh lên</label>
                                   <div class="col-sm-8">
-                                    <input type="file" class="form-control" id="editUploadImage" multiple required accept="image.jpg image.png image.jpeg">
+                                    <input type="file" class="form-control" id="editUploadImage" required accept="image.jpg image.png image.jpeg" name="imgBillboard">
                                   </div>
                                 </div>
 
@@ -133,7 +133,7 @@
                                 <!-- Nút gửi và hủy -->
                                 <div class="row mb-3">
                                   <div class="col-sm-8 offset-sm-4">
-                                    <button type="submit" class="btn btn-primary">Gửi</button>
+                                    <button type="submit" class="btn btn-primary" id="submitReqbtn" data-user="{{../user}}" data-board="{{this._id}}" data-location="{{../boardLocation._id}}">Gửi</button>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
                                   </div>
                                 </div>
