@@ -13,11 +13,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/css/fileinput.min.css"
     />
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <script
-      src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
-      async
-      defer
-    ></script>
+
 
     <!-- Main Quill library -->
     <script src="https://cdn.quilljs.com/1.3.7/quill.js"></script>
@@ -110,7 +106,6 @@
                       type="text"
                       name="fullname"
                       placeholder="Nguyễn Văn A"
-                      required
                       class="form-control"
                       id="txtName"
                     />
@@ -124,7 +119,7 @@
                         placeholder="abc@example.com"
                         class="form-control"
                         id="txtEmail"
-                        required
+                
                       />
                       <div class="input-group-append">
                         <span class="input-group-text text-muted">
@@ -141,7 +136,7 @@
                       name="phone"
                       class="form-control"
                       id="txtPhone"
-                      required
+                  
                     />
                   </div>
                   <!-- <button
@@ -174,6 +169,7 @@
                     <label for="content" id="requiredContent">Nội dung báo cáo</label>
                     <div id="editor"></div>
                   </div>
+
                   <div class="form-outline mb-4">
                     <label
                       for="formFile"
@@ -193,9 +189,10 @@
                   </div>
 
                   <!-- recaptcha -->
+                  <label id="requiredCaptcha" style="display: none;">Vui long xác nhận captcha</label>
                   <div
                     class="g-recaptcha"
-                    data-sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+                    data-sitekey="6Lebc04pAAAAAG84Gqqx6vTRwIveCf7LxcBHamLG"
                   ></div>
 
                   <!-- <button
@@ -226,7 +223,22 @@
     </div>
 
     <!-- </div> -->
-
+    <div class="modal" tabindex="-1" id = 'report-modal'>
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p></p>
+          </div>
+          <div class="modal-footer">
+            <a id='return-btn' class="btn btn-secondary" href="http://localhost:3000/static/html/index.html" style="display:none;">Quay về trang chủ</a>
+          </div>
+        </div>
+      </div>
+    </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -278,9 +290,15 @@
           $("#nav-tab-info").addClass("visually-hidden"); // Hide the "Thông tin cá nhân" tab
           $("#personal-info").removeClass("active");
           $("#report-info").addClass("active");
+
+
         });
       });
     </script>
     <script src="../js/report.js"></script>
+    <script>
+      
+
+    </script>
   </body>
 </html>

@@ -1,12 +1,33 @@
-const upReports = async (name, email, phone, board, method, images, description) => {
+const upReports = async (name, email, phone, board, method, images, description, lat, lng, ward, district) => {
   try {
+    const captcha = grecaptcha.getResponse();
+    if (!captcha.length > 0)
+    {
+      document.querySelector("#requiredCaptcha").style.display="block";
+      return
+    }
+
+    if (!checkName() || !checkEmail() || !checkPhone() || !checkMethod() || !uploadFile() || !checkContent()) {
+
+      document.querySelector('.modal-title').innerHTML = '<i class="bi bi-ban"></i> Không thể nộp báo cáo';
+      document.querySelector('.modal-body p').innerHTML = "Vui lòng kiểm tra lại các thông tin trong báo cáo"; 
+      $("#report-modal").modal('show');     
+      return;
+    }
     const formData = new FormData();
+
+    formData.append('captcha', captcha);
     formData.append('sender[fullname]', name);
     formData.append('sender[email]', email);
     formData.append('sender[phone]', phone);
     formData.append('board', board);
     formData.append('method', method);
     formData.append('description', description);
+
+    formData.append('location[lat]', lat);
+    formData.append('location[lng]', lng);
+    formData.append('ward', ward);
+    formData.append('district', district);
 
     // Assuming 'images' is a FileList or an array of File objects
     for (let i = 0; i < images.length; i++) {
@@ -23,9 +44,11 @@ const upReports = async (name, email, phone, board, method, images, description)
     });
 
     if (response.data.success === true) {
-      alert("Báo cáo đã được gửi thành công");
-      //redirect to index
-      window.location.href = "http://localhost:3000/static/html/index.html";
+      // alert("Báo cáo đã được gửi thành công");
+      document.querySelector('.modal-title').innerHTML = '<img src= "/static/img/icon/icons8-tick.svg" style="height:30px"\>Báo cáo đã được gửi thành công';
+      document.querySelector('.modal-body p').innerHTML = "Rất vui vì nhận được báo cáo của bạn.<br> Chúng tôi sẽ xem xét và xử lý báo cáo của bạn trong thời gian sớm nhất. Xin cảm ơn!"; 
+      document.querySelector('#return-btn').style.display = "block";
+      $("#report-modal").modal('show'); 
     }
   } catch (err) {
     alert(err.response.message);
@@ -83,7 +106,9 @@ const checkMethod = function () {
   } else {
     document.querySelector("#method").classList.remove("is-invalid");
     document.querySelector("#requiredMethod").innerHTML = "Hình thức báo cáo";
+    return true;
   }
+  return false;
 };
 
 //checkName
@@ -106,7 +131,9 @@ const checkName = function () {
   } else {
     document.querySelector("#txtName").classList.remove("is-invalid");
     document.querySelector("#requiredName").innerHTML = "Họ và tên";
+    return true;
   }
+  return false;
 };
 
 //check email format
@@ -129,7 +156,9 @@ const checkEmail = function () {
   } else {
     document.querySelector("#txtEmail").classList.remove("is-invalid");
     document.querySelector("#requiredEmail").innerHTML = "Email";
+    return true;
   }
+  return false;
 };
 
 //check phone number format
@@ -152,7 +181,9 @@ const checkPhone = function () {
   } else {
     document.querySelector("#txtPhone").classList.remove("is-invalid");
     document.querySelector("#requiredPhone").innerHTML = "Điện thoại liên lạc";
+    return true;
   }
+  return false;
 };
 
 const uploadFile = function () {
@@ -174,7 +205,9 @@ const uploadFile = function () {
     document.querySelector("#submit").classList.remove("disabled");
     document.querySelector("#formFile").classList.remove("is-invalid");
     document.querySelector("#requiredFile").innerHTML = "Hình ảnh minh hoạ";
+    return true;
   }
+  return false;
 };
 
 var quill = new Quill("#editor", {
@@ -197,8 +230,10 @@ const checkContent = function () {
     //   .addEventListener("submit", (event) => {
     //     event.preventDefault();
     //   });
+    return false;
   } else {
     document.querySelector("#requiredContent").innerHTML = "Nội dung báo cáo";
+    return true;
   }
 }
 
@@ -216,15 +251,20 @@ document.querySelector("#reportForm").addEventListener("submit", (event) => {
   const email = document.querySelector("#txtEmail").value;
   const phone = document.querySelector("#txtPhone").value;
 
+
   const urlParams = new URLSearchParams(window.location.search);
   const board = urlParams.get('id');
+  const ward = urlParams.get('ward');
+  const district = urlParams.get('district');
+  const lat = urlParams.get('lat');
+  const lng = urlParams.get('lng');
   console.log('board: ', board);
   const method = document.querySelector("#method").value;
   const images = document.querySelector("#formFile").files;
   const description = quill.getText();
 
   console.log(name, email, phone, board, method, images, description);
-  upReports(name, email, phone, board, method, images, description);
+  upReports(name, email, phone, board, method, images, description, lat, lng, ward, district);
 });
 
 $(function() {
