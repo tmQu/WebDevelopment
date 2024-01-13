@@ -1,21 +1,9 @@
-const apiUrl = 'localhost:4000'
+const apiUrl = 'http://localhost:4000'
 
-function getBoardLocationInfor(id, callback) {
-    var url = 'http://'+ apiUrl + '/api/v1/boards/' + id;
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = () => {
-        if (xhr.readyState === XMLHttpRequest.DONE)
-        {
-            callback(JSON.parse(xhr.responseText));
-        }
-    }
-    xhr.open('GET', url);
-    xhr.send();
-}
 
 function getDetailBoard(id, callback)
 {
-    var url = 'http://'+ apiUrl + '/api/v1/boards/detail/' + id;
+    var url = apiUrl + '/api/v1/boards/detail/' + id;
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE)
@@ -101,22 +89,6 @@ function parseBillBoardContent(boardLocation, board){
 
     const dateString = `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`;
 
-    // return `
-    // <div class="card" style="background: linear-gradient(90deg, #c8e0f8, #e4f8f0); border: none">
-    //       <div class="card-body pb-0">
-    //         <div class="d-flex justify-content-between">
-    //           <p class="mb-0 h5" style="font-weight: bold;">${title} <a class="btn" href=""><i class="bi bi-exclamation-octagon"></i></a></p>
-              
-    //         </div>
-    //       </div>
-    //       <hr>
-    //       <div class="card-body pt-0">
-    //         <h6 class="font-weight-bold mb-1">${address}</h6>
-
-    //       </div>
-    //     </div>
-    //   </div>`
-
     return `
     <div class="billboard" id = "${board.id}" style="background: linear-gradient(90deg, #c8e0f8, #e4f8f0);">
     <div class="billboard-type" style="font-weight: bold; font-size:15pt">
@@ -127,7 +99,7 @@ function parseBillBoardContent(boardLocation, board){
        ${addr}
     </div>
     <div class="billboard-size"><strong>Kích thước</strong> ${size}</div>
-    <div class="billboard-size"><strong>Số lượng</strong> ${board.quantity}</div>
+    <div class="billboard-quantity"><strong>Số lượng</strong> ${board.quantity}</div>
     <div class="billboard-form"><strong>Hình thức</strong> ${boardLocation.advertisementForm.advertisementForm}</div>
     <div class="billboard-category"><strong>Phân loại</strong> ${locationCategory}</div> 
     <div class="d-flex justify-content-between mt-4 mb-1"><button class="btn btn-outline-primary circle-btn"><i class="bi bi-info-lg"></i></button>
@@ -191,6 +163,8 @@ function setMarkerBillBoard(map, location, marker,infowindow)
 
             }
             subWindow.classList.add('show-up');
+            document.querySelector('#img-billboard').style.display = 'block';
+
             if (subWindow.classList.contains('narrow'))
                 document.querySelector('#btn-collapse').click();
             console.log(idTemp)
@@ -217,15 +191,42 @@ function setMarkerBillBoard(map, location, marker,infowindow)
     })
 }
 
-function setMarkerReport(report, marker)
+
+function getReportDetail(rp, rpId)
+{
+    var locationCategory =
+    `
+    <div class="billboard" id = "${rpId}" style="background: linear-gradient(90deg, #c8e0f8, #e4f8f0);">
+    <div class="billboard-type" style="font-weight: bold; font-size:15pt">
+        ${rp.method}
+    </div>
+    <div class="billboard-addr">
+        <img src="../img/icon/icons8-maps.svg" alt="" style="height: 1em;">
+       ${rp.addr}
+    </div>
+    <div><strong>Người báo cáo</strong> ${rp.sender.name}</div> 
+    <div class="d-flex justify-content-between mt-4 mb-1">
+    <a class="btn btn-outline-danger" href="http://localhost:3000/static/html/report_detail.html?id=${rp._id}"><i class="bi bi-exclamation-octagon"></i> xem chi tiết báo cáo vi phạm</a></div>
+    </div>
+    `
+}
+
+function setMarkerReport(reportLocation, marker)
 {
     marker.addListener('click', () => {
-        $.get('url_api_report/' + report.id, (data, status) => {
-            let content = data.data;
-            
-        })
+        document.querySelector('#img-billboard').style.display = 'none';
+        var content = document.querySelector('#sub-window .overflow-content');
+        content = ''
+        var i = 1;
+        reportLocation.report.forEach(rp => {
+            content += parseReportDetail(rp, 'report-' + i.toString());
+            i++;
+        });
     })
 }
 
 
-export default setMarkerBillBoard
+const setMarker = {
+    setMarkerBoard: setMarkerBillBoard
+}
+export default setMarker;

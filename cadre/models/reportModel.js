@@ -17,16 +17,16 @@ const reportModel = mongoose.Schema(
       require: true,
       },
     },
-
+    addr: {
+      type: String
+    },
     ward: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "wards",
-        required: true,
+        ref: "wards"
     },
     district: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "districts",
-        required: true,
+        ref: "districts"
     },
 
     sender: {

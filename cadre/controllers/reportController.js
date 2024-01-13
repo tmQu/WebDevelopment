@@ -25,9 +25,14 @@ const reportController = {
       var ward;
       var district;
       var location;
+      var addr = req.body.addr;
+
       if (req.body.board != 'null')
       {
         var board = await Board.findById(req.body.board).populate('boardLocation')
+                                                        .populate('boardLocation.addr.ward')
+                                                        .populate('boardLocation.addr.district');
+        addr = `${board.boardLocation.addr.street_number} ${board.boardLocation.addr.route}, ${board.boardLocation.addr.ward.ward}, ${board.boardLocation.addr.district.district}, ${board.boardLocation.addr.city}`
         ward = Mongoose.Types.ObjectId(board.boardLocation.addr.ward._id);
         district = Mongoose.Types.ObjectId(board.boardLocation.addr.district._id);
         location = board.boardLocation.location;
@@ -57,9 +62,6 @@ const reportController = {
         }
 
       }
-      console.log(ward);
-      console.log(district);
-      console.log(location);
       
       
       const report = new Report({
@@ -75,15 +77,16 @@ const reportController = {
         method: req.body.method,
         images: req.files.map((file) => '/' + file.path),
         description: req.body.description,
+        addr: addr
       });
       console.log(report);
-      const result = await report.save();
-
+      var result = await report.save();
+      var rp = await Report.findById(result._id).populate('method');
       res.status(200).json({
         success: true,
         message: 'Report created successfully',
         data: {
-          report: result,
+          report: rp,
         },
       });
     } catch (error) {

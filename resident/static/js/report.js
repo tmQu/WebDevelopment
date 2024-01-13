@@ -1,4 +1,4 @@
-const upReports = async (name, email, phone, board, method, images, description, lat, lng, ward, district) => {
+const upReports = async (name, email, phone, board, method, images, description, lat, lng, ward, district, addr) => {
   try {
     const captcha = grecaptcha.getResponse();
     if (!captcha.length > 0)
@@ -28,6 +28,7 @@ const upReports = async (name, email, phone, board, method, images, description,
     formData.append('location[lng]', lng);
     formData.append('ward', ward);
     formData.append('district', district);
+    formData.append('addr', addr);
 
     // Assuming 'images' is a FileList or an array of File objects
     for (let i = 0; i < images.length; i++) {
@@ -44,14 +45,26 @@ const upReports = async (name, email, phone, board, method, images, description,
     });
 
     if (response.data.success === true) {
+      var data = response.data.data;
+      var report = JSON.stringify({
+        _id: data._id,
+        location: data.location,
+        createdAt: data.createdAt,
+        method: data.method,
+        board: data.board
+      });
+      localStorage.setItem('report', report);
       // alert("Báo cáo đã được gửi thành công");
       document.querySelector('.modal-title').innerHTML = '<img src= "/static/img/icon/icons8-tick.svg" style="height:30px"\>Báo cáo đã được gửi thành công';
       document.querySelector('.modal-body p').innerHTML = "Rất vui vì nhận được báo cáo của bạn.<br> Chúng tôi sẽ xem xét và xử lý báo cáo của bạn trong thời gian sớm nhất. Xin cảm ơn!"; 
       document.querySelector('#return-btn').style.display = "block";
       $("#report-modal").modal('show'); 
+
     }
   } catch (err) {
-    alert(err.response.message);
+    document.querySelector('.modal-title').innerHTML = '<i class="bi bi-ban"></i> Không thể nộp báo cáo';
+    document.querySelector('.modal-body p').innerHTML = "Vui lòng kiểm tra lại các thông tin trong báo cáo";
+    $("#report-modal").modal('show');
     console.log(err.response);
   }
 };
@@ -77,18 +90,6 @@ const getMethod = async () => {
   }
 }
 
-// Quill
-
-var toolbarOptions = [
-  //text style
-  ["bold", "italic", "underline"], // toggled buttons
-  //header for text
-  [{ header: [1, 2, 3, 4, false] }], // custom button values
-  //bullet points style
-  [{ list: "ordered" }, { list: "bullet" }],
-  //sub and super script
-  [{ script: "sub" }, { script: "super" }], // superscript/subscript
-];
 
 //check report method
 const checkMethod = function () {
@@ -210,19 +211,19 @@ const uploadFile = function () {
   return false;
 };
 
-var quill = new Quill("#editor", {
-  modules: {
-    toolbar: toolbarOptions,
-  },
-  theme: "snow",
+
+
+tinymce.init({
+  selector: '#editor',
+  statusbar: false
 });
 
 //check if content in editor is empty
 const checkContent = function () {
-  const c = quill.getText();
+  const c = tinymce.get("editor").getContent();
   const warnEmpty = "Vui lòng không bỏ trống nội dung báo cáo";
 
-  if (c.length === 1) {
+  if (c.length === 0) {
     document.querySelector("#editor").classList.add("is-invalid");
     document.querySelector("#requiredContent").innerHTML = warnEmpty;
     // document
@@ -254,21 +255,45 @@ document.querySelector("#reportForm").addEventListener("submit", (event) => {
 
   const urlParams = new URLSearchParams(window.location.search);
   const board = urlParams.get('id');
-  const ward = urlParams.get('ward');
-  const district = urlParams.get('district');
+
+
+
   const lat = urlParams.get('lat');
   const lng = urlParams.get('lng');
+  const addr = urlParams.get('addr');
+
+  var ward = null
+  var district = null
+
+  if (addr != null)
+  {
+    var detailAddress = addr.split(", ");
+
+    var ward;
+    var district;
+    if (detailAddress.length < 4) {
+      ward = '';
+    }
+    else {
+      ward = detailAddress[detailAddress.length - 4];
+    }
+    district = detailAddress[detailAddress.length - 3];
+
+    if (district == 'Quận 2' || district == 'Quận 9') {
+      district = 'Thủ Đức'
+    }
+  }
+
   console.log('board: ', board);
   const method = document.querySelector("#method").value;
   const images = document.querySelector("#formFile").files;
-  const description = quill.getText();
+  const description = tinymce.get("editor").getContent();
+  
 
   console.log(name, email, phone, board, method, images, description);
-  upReports(name, email, phone, board, method, images, description, lat, lng, ward, district);
+  upReports(name, email, phone, board, method, images, description, lat, lng, ward, district, addr);
 });
 
-$(function() {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+
 
 getMethod();
