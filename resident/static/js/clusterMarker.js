@@ -40,6 +40,34 @@ const getAdvertisementBoards = (map) => {
     console.log(data);
     var report = JSON.parse(localStorage.getItem('report'))
 
+    // group report that have the same location
+    var reportLocation =  report.reduce((result, item) => {
+      const { lat, lng } = item.location;
+      const key = `${lat}-${lng}`;
+  
+      // Create a new group for the location if it doesn't exist
+      if (!result[key]) {
+          result[key] = { location: { lat, lng }, data: [] };
+      }
+  
+      // Push the current item to the location group
+      result[key].data.push({
+          _id: item._id,
+          createdAt: item.createdAt,
+          method: item.method,
+          board: item.board,
+      });
+  
+      return result;
+  }, {});
+  
+  // Convert the groupedData object to an array of groups with lat and lng
+  reportLocation = Object.values(reportLocation).map(group => ({
+      location: group.location,
+      report: group.data,
+  }));
+    
+
     document.getElementById('btnAds').addEventListener('change', function () {
       if (this.checked) {
         console.log('First switch is ON');
@@ -56,10 +84,10 @@ const getAdvertisementBoards = (map) => {
       .addEventListener('change', function () {
         if (this.checked) {
           console.log('Second switch is ON');
-          handleMarkersAddition(report, map, advertisementBoards);
+          handleMarkersAddition(reportLocation, map, advertisementBoards);
         } else {
           console.log('Second switch is OFF');
-          handleMarkersRemoval(report, map, advertisementBoards);
+          handleMarkersRemoval(reportLocation, map, advertisementBoards);
         }
       });
   })
@@ -104,9 +132,9 @@ const clusterMarker = async (map, data) => {
   );
 
   // filter the overlapping data
-  const uniqueData = data.filter(
-    (v, i, a) => a.findIndex((t) => t.location.lat === v.location.lat && t.location.lng === v.location.lng) === i
-  );
+  // const uniqueData = data.filter(
+  //   (v, i, a) => a.findIndex((t) => t.location.lat === v.location.lat && t.location.lng === v.location.lng) === i
+  // );
   data = uniqueData;
 
 
@@ -125,13 +153,12 @@ const clusterMarker = async (map, data) => {
     //   iconImage.src = "../img/ad.256x256.png"
     // }
 
-
-    if (markerInfo.id)
+    // only report have method
+    if (markerInfo.method)
     {
       iconImage.src = "../img/icon/Report.png"
-      console.log(markerInfo.id)
+      
     }
-  
     else{
       if (markerInfo.isPlan == false)
       {
@@ -165,12 +192,12 @@ const clusterMarker = async (map, data) => {
     //   setMarker(markerInfo, marker, infoWindow);
     // if (markerInfo.id.includes('RP'))
 
-    if (markerInfo.id)
+    if (markerInfo.method)
     {
-
+      
     }
     else{
-      setMarker(map, markerInfo, marker, infoWindow);
+      setMarker.setMarkerBillBoard(map, markerInfo, marker, infoWindow);
     }
     markers.push(marker)
   });
@@ -185,30 +212,30 @@ const clusterMarker = async (map, data) => {
 
 
 
-var data2 = [
-  { lat: 10.778515490199908, lng: 106.69397771139802 },
-  { lat: 10.778511065772506, lng: 106.6939101530919 },
-  { lat: 10.778433638289044, lng: 106.6938943894886 },
-  { lat: 10.778595129871675, lng: 106.69382007535302 },
-  { lat: 10.778880505200917, lng: 106.69352056686552 },
-  { lat: 10.778712629289927, lng: 106.69412769829682 },
-  { lat: 10.779549144915222, lng: 106.69501626249468 },
-  { lat: 10.779564299162885, lng: 106.69489285079953 },
-  { lat: 10.779491558767873, lng: 106.69506562717413 },
-  { lat: 10.777778877164792, lng: 106.6932435413031 },
-  { lat: 10.777674895082527, lng: 106.6931603740245 },
-  { lat: 10.777065856453092, lng: 106.69067291639186 },
-];
+// var data2 = [
+//   { lat: 10.778515490199908, lng: 106.69397771139802 },
+//   { lat: 10.778511065772506, lng: 106.6939101530919 },
+//   { lat: 10.778433638289044, lng: 106.6938943894886 },
+//   { lat: 10.778595129871675, lng: 106.69382007535302 },
+//   { lat: 10.778880505200917, lng: 106.69352056686552 },
+//   { lat: 10.778712629289927, lng: 106.69412769829682 },
+//   { lat: 10.779549144915222, lng: 106.69501626249468 },
+//   { lat: 10.779564299162885, lng: 106.69489285079953 },
+//   { lat: 10.779491558767873, lng: 106.69506562717413 },
+//   { lat: 10.777778877164792, lng: 106.6932435413031 },
+//   { lat: 10.777674895082527, lng: 106.6931603740245 },
+//   { lat: 10.777065856453092, lng: 106.69067291639186 },
+// ];
 
-function saveTestLocalStorage()
-{
-  var item = JSON.parse(localStorage.getItem('report')) || [];
-  data2.forEach(location => {
-    item.push({id: 'RP',location: location})
-  })
-  localStorage.setItem('report', JSON.stringify(item))
-}
-saveTestLocalStorage()
+// function saveTestLocalStorage()
+// {
+//   var item = JSON.parse(localStorage.getItem('report')) || [];
+//   data2.forEach(location => {
+//     item.push({id: 'RP',location: location})
+//   })
+//   localStorage.setItem('report', JSON.stringify(item))
+// }
+// saveTestLocalStorage()
 // -> test data
 
 export default getAdvertisementBoards;

@@ -30,21 +30,7 @@ function displayLocationInfo(latitude, longitude, map) {
         var title = results[0].address_components[1].long_name;
         var address = results[0].formatted_address;
 
-        var detailAddress = results[0].formatted_address.split(", ");
 
-        var ward;
-        var district;
-        if (detailAddress.length < 4) {
-          ward = '';
-        }
-        else {
-          ward = detailAddress[detailAddress.length - 4];
-        }
-        district = detailAddress[detailAddress.length - 3];
-
-        if (district == 'Quận 2' || district == 'Quận 9') {
-          district = 'Thủ Đức'
-        }
 
         //var types = results[0].types;
         console.log(results[0]);
@@ -65,7 +51,7 @@ function displayLocationInfo(latitude, longitude, map) {
           `<div class="card" style="background: linear-gradient(90deg, #c8e0f8, #e4f8f0); border: none;">
           <div class="card-body pb-0">
             <div class="d-flex justify-content-between">
-              <p class="mb-0 h5" style="font-weight: bold;">${title} <a class="btn btn-report" href="http://localhost:3000/static/html/locationReport.html?lat=${latlng.lat}&lng=${latlng.lng}&ward=${ward}&district=${district}"><i class="bi bi-exclamation-octagon"></i></a></p>
+              <p class="mb-0 h5" style="font-weight: bold;">${title} <a class="btn btn-report" href="http://localhost:3000/static/html/locationReport.html?lat=${latlng.lat}&lng=${latlng.lng}&addr=${address}"><i class="bi bi-exclamation-octagon"></i></a></p>
               
             </div>
           </div>
