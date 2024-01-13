@@ -2,6 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
+import bodyParser from 'body-parser';
 
 import { engine } from 'express-handlebars';
 import hbs_sections from 'express-handlebars-sections';
@@ -14,7 +15,6 @@ import xss from 'xss-clean';
 
 import boardRouter from './routes/boardRoutes.js';
 import userRouter from './routes/userRoutes.js';
-// import globalErrorHandler from './controllers/errorController.js';
 import reportRouter from './routes/reportRoutes.js';
 import reportController from './controllers/reportController.js';
 import reportMethodRoutes from './routes/reportMethodRoutes.js';
@@ -120,7 +120,6 @@ app.use(xss());
 
 // Serving static files
 app.use('/static', express.static('static'));
-// app.use(express.static(`/static`));
 
 // 3) ROUTES
 app.use('/api/v1/boards', boardRouter);

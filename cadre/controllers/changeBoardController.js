@@ -3,29 +3,25 @@ import changeBoardModel from '../models/changeBoardModel.js';
 const changeBoardController = {
   createChangeInfoReq: async (req, res) => {
     try {
-      // console.log(req.body);
       const newChangeInfoReq = await changeBoardModel.create({
         boardType: req.body.boardType,
-        size: req.body.boardSize,
-        quantity: req.body.quantity,
-        reason: req.body.reason,
+        size: `${req.body.boardWidth}x${req.body.boardHeight}`,
+        quantity: req.body.boardQuantity,
+        reason: req.body.boardReason,
         imgBillboard: '/' + req.file.path,
         creator: req.body.creator,
         board: req.body.board,
         boardLocation: req.body.boardLocation,
       });
 
-      res.status(201).json({
-        status: 'success',
-        data: {
-          changeInfoReq: newChangeInfoReq,
-        },
-      });
+      res.redirect('/boardsLocation/' + req.body.boardLocation);
     } catch (err) {
       console.log(err);
-      res.status(400).json({
+      res.render('vwError/error', {
+        statusCode: 500,
         status: 'fail',
-        message: err,
+        message: message,
+        layout: 'main',
       });
     }
   },

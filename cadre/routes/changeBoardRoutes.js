@@ -4,6 +4,6 @@ import { upload } from '../utils/imgHandler.js';
 
 const router = express.Router();
 
-router.post('/', upload.single('imgBillboard'), changeBoardController.createChangeInfoReq);
+router.route('/').post(upload.single('imgBillboard'), changeBoardController.createChangeInfoReq);
 
 export default router;

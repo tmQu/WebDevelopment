@@ -5,15 +5,16 @@ import Board from '../models/boardModel.js';
 import BoardLocation from '../models/boardLocationModel.js';
 import sendEmail from '../utils/email.js';
 import he from 'he';
-import mongoose  from 'mongoose';
+import mongoose from 'mongoose';
 import Mongoose from 'mongoose';
 import axios from 'axios';
 import districtModel from '../models/districtModel.js';
 const reportController = {
   createReport: async (req, res) => {
     try {
-      const secret_key = '6Lebc04pAAAAANGsdaO-Gnq1h90GzWaEVoUGlD6x'
-      const verify_link = 'https://www.google.com/recaptcha/api/siteverify?secret=' + secret_key + '&response=' + req.body.captcha;
+      const secret_key = '6Lebc04pAAAAANGsdaO-Gnq1h90GzWaEVoUGlD6x';
+      const verify_link =
+        'https://www.google.com/recaptcha/api/siteverify?secret=' + secret_key + '&response=' + req.body.captcha;
       var response = await axios.get(verify_link);
       if (response.data.success === false) {
         res.status(500).json({
@@ -27,43 +28,38 @@ const reportController = {
       var location;
       var addr = req.body.addr;
 
-      if (req.body.board != 'null')
-      {
-        var board = await Board.findById(req.body.board).populate('boardLocation')
-                                                        .populate('boardLocation.addr.ward')
-                                                        .populate('boardLocation.addr.district');
-        addr = `${board.boardLocation.addr.street_number} ${board.boardLocation.addr.route}, ${board.boardLocation.addr.ward.ward}, ${board.boardLocation.addr.district.district}, ${board.boardLocation.addr.city}`
+      if (req.body.board != 'null') {
+        var board = await Board.findById(req.body.board)
+          .populate('boardLocation')
+          .populate('boardLocation.addr.ward')
+          .populate('boardLocation.addr.district');
+        addr = `${board.boardLocation.addr.street_number} ${board.boardLocation.addr.route}, ${board.boardLocation.addr.ward.ward}, ${board.boardLocation.addr.district.district}, ${board.boardLocation.addr.city}`;
         ward = Mongoose.Types.ObjectId(board.boardLocation.addr.ward._id);
         district = Mongoose.Types.ObjectId(board.boardLocation.addr.district._id);
         location = board.boardLocation.location;
-      }
-      else {
-        var district_id = await districtModel.find({ "district": { "$regex": req.body.district, "$options": "i" }});
+      } else {
+        var district_id = await districtModel.find({ district: { $regex: req.body.district, $options: 'i' } });
         if (district_id.length == 0) {
           district = null;
           ward = null;
-          
-        }
-        else{
-          
+        } else {
           district_id = district_id[0]._id;
           district = Mongoose.Types.ObjectId(district_id);
-          var ward_id = await wardModel.find({ "ward": { "$regex": req.body.ward, "$options": "i" }, 'district': mongoose.Types.ObjectId(district_id) });
+          var ward_id = await wardModel.find({
+            ward: { $regex: req.body.ward, $options: 'i' },
+            district: mongoose.Types.ObjectId(district_id),
+          });
           if (ward_id.length == 0) {
             ward = null;
-          }
-          else
-            ward = Mongoose.Types.ObjectId(ward_id[0]._id);
+          } else ward = Mongoose.Types.ObjectId(ward_id[0]._id);
 
           location = {
             lat: req.body.location.lat,
             lng: req.body.location.lng,
-          }
+          };
         }
-
       }
-      
-      
+
       const report = new Report({
         ward: ward,
         district: district,
@@ -73,11 +69,11 @@ const reportController = {
           email: req.body.sender.email,
           phone: req.body.sender.phone,
         },
-        board: (req.body.board == 'null' ) ? null : req.body.board,
+        board: req.body.board == 'null' ? null : req.body.board,
         method: req.body.method,
         images: req.files.map((file) => '/' + file.path),
         description: req.body.description,
-        addr: addr
+        addr: addr,
       });
       console.log(report);
       var result = await report.save();
@@ -109,10 +105,14 @@ const reportController = {
       // Get boardLocation of each board
       reports = await Promise.all(
         reports.map(async (report) => {
-          let boardLocation = await BoardLocation.findById(report.board.boardLocation);
-          boardLocation = boardLocation.toObject();
+          let boardLocation = null;
+          if (report.board) {
+            boardLocation = await BoardLocation.findById(report.board.boardLocation);
+            boardLocation = boardLocation.toObject();
 
-          report = report.toObject();
+            report = report.toObject();
+          }
+
           return {
             ...report,
             boardLocation,
