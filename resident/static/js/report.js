@@ -45,15 +45,22 @@ const upReports = async (name, email, phone, board, method, images, description,
     });
 
     if (response.data.success === true) {
-      var data = response.data.data;
-      var report = JSON.stringify({
+      var data = response.data.data.report;
+      console.log(response.data.data)
+
+      var list_rp = JSON.parse(localStorage.getItem('Report_Ads_Management')) || [];
+      var report = {
         _id: data._id,
         location: data.location,
         createdAt: data.createdAt,
-        method: data.method,
-        board: data.board
-      });
-      localStorage.setItem('report', report);
+        method: data.method.reportMethod,
+        sender: data.sender,
+        board: data.board,
+        addr: data.addr
+      };
+      console.log(report)
+      list_rp.push(report);
+      localStorage.setItem('Report_Ads_Management', JSON.stringify(list_rp));
       // alert("Báo cáo đã được gửi thành công");
       document.querySelector('.modal-title').innerHTML = '<img src= "/static/img/icon/icons8-tick.svg" style="height:30px"\>Báo cáo đã được gửi thành công';
       document.querySelector('.modal-body p').innerHTML = "Rất vui vì nhận được báo cáo của bạn.<br> Chúng tôi sẽ xem xét và xử lý báo cáo của bạn trong thời gian sớm nhất. Xin cảm ơn!"; 

@@ -37,36 +37,38 @@ const getAdvertisementBoards = (map) => {
   // Event listener for the first switch
   getAllLocation((data) => {
     data = data.data;
-    console.log(data);
-    var report = JSON.parse(localStorage.getItem('report'))
+
+    var report = JSON.parse(localStorage.getItem('Report_Ads_Management')) || []
 
     // group report that have the same location
-  //   var reportLocation =  report.reduce((result, item) => {
-  //     const { lat, lng } = item.location;
-  //     const key = `${lat}-${lng}`;
+    var reportLocation =  report.reduce((result, item) => {
+      const { lat, lng } = item.location;
+      const key = `${lat}-${lng}`;
   
-  //     // Create a new group for the location if it doesn't exist
-  //     if (!result[key]) {
-  //         result[key] = { location: { lat, lng }, data: [] };
-  //     }
+      // Create a new group for the location if it doesn't exist
+      if (!result[key]) {
+          result[key] = { location: { lat, lng }, data: [] };
+      }
   
-  //     // Push the current item to the location group
-  //     result[key].data.push({
-  //         _id: item._id,
-  //         createdAt: item.createdAt,
-  //         method: item.method,
-  //         board: item.board,
-  //     });
+      // Push the current item to the location group
+      result[key].data.push({
+          _id: item._id,
+          addr: item.addr,
+          createdAt: item.createdAt,
+          method: item.method,
+          board: item.board,
+          sender: item.sender
+      });
   
-  //     return result;
-  // }, {});
+      return result;
+    }, {});
   
-  // // Convert the groupedData object to an array of groups with lat and lng
-  // reportLocation = Object.values(reportLocation).map(group => ({
-  //     location: group.location,
-  //     report: group.data,
-  // }));
-    
+    // Convert the groupedData object to an array of groups with lat and lng
+    reportLocation = Object.values(reportLocation).map(group => ({
+        location: group.location,
+        report: group.data,
+    }));
+      
 
     document.getElementById('btnAds').addEventListener('change', function () {
       if (this.checked) {
@@ -90,6 +92,9 @@ const getAdvertisementBoards = (map) => {
           handleMarkersRemoval(reportLocation, map, advertisementBoards);
         }
       });
+
+    // turn on board
+    document.querySelector('#btnAds').click();
   })
 };
 
@@ -109,7 +114,7 @@ const removeMarker = (removeMarker, currentMarkers) => {
       if (
         removeMarker[i].location.lat === currentMarkers[j].location.lat &&
         removeMarker[i].location.lng === currentMarkers[j].location.lng &&
-        removeMarker[i].id === currentMarkers[j].id
+        removeMarker[i]._id === currentMarkers[j]._id
       ) {
         currentMarkers.splice(j, 1);
         break;
@@ -131,11 +136,40 @@ const clusterMarker = async (map, data) => {
     'marker'
   );
 
-  // filter the overlapping data
-  // const uniqueData = data.filter(
-  //   (v, i, a) => a.findIndex((t) => t.location.lat === v.location.lat && t.location.lng === v.location.lng) === i
-  // );
-  // data = uniqueData;
+  // filter the overlapping data, the report have higher priority than board
+
+  // get report first
+  var uniqueData = [];
+  for (var i = 0; i < data.length; i++) {
+    if(data[i].report)
+    {
+      uniqueData.push(data[i]);
+    }
+  }
+
+  // get board if there is no report on it
+  for (var i = 0; i < data.length; i++) {
+    if(data[i].report)
+    {
+      continue;
+    }
+    else {
+
+      var flag = false;
+      for (var j = 0; j < uniqueData.length; j++) {
+        if (uniqueData[j].location.lat == data[i].location.lat && uniqueData[j].location.lng == data[i].location.lng)
+        {
+          flag = true;
+          break;
+        }
+      }
+      if (flag == false)
+      {
+        uniqueData.push(data[i]);
+      }
+    }
+  }
+  data = uniqueData;
 
 
   const markers = []
@@ -153,8 +187,8 @@ const clusterMarker = async (map, data) => {
     //   iconImage.src = "../img/ad.256x256.png"
     // }
 
-    // only report have method
-    if (markerInfo.method)
+
+    if (markerInfo.report)
     {
       iconImage.src = "../img/icon/Report.png"
       
@@ -191,10 +225,11 @@ const clusterMarker = async (map, data) => {
     // if (markerInfo.id.includes('BL'))
     //   setMarker(markerInfo, marker, infoWindow);
     // if (markerInfo.id.includes('RP'))
-
-    if (markerInfo.method)
+    console.log(markerInfo);
+    if (markerInfo.report)
     {
-      
+
+      setMarker.setMarkerReport(markerInfo, marker);
     }
     else{
       setMarker.setMarkerBillBoard(map, markerInfo, marker, infoWindow);
