@@ -123,3 +123,37 @@ body {
   height: 512px;
   object-fit: cover; /* Đảm bảo ảnh phủ kín khung mà không bị méo */
 }
+
+/* custom-modal.css */
+
+/* Tùy chỉnh màu nền và màu chữ của modal header */
+.modal-header {
+  background-color: #007BFF;
+  color: #fff;
+}
+
+/* Tùy chỉnh màu nền của modal body */
+.modal-body {
+  background-color: #f8f9fa;
+}
+
+/* Tùy chỉnh màu nền của modal footer */
+.modal-footer {
+  background-color: #f8f9fa;
+}
+
+/* Tùy chỉnh màu nền và màu chữ của các button trong modal footer */
+.modal-footer .btn {
+  background-color: #007BFF;
+  color: #fff;
+}
+
+/* Tùy chỉnh màu nền và màu chữ của các button khi hover trong modal footer */
+.modal-footer .btn:hover {
+  background-color: #0056b3;
+}
+
+/* Tùy chỉnh màu nền của modal khi hiển thị */
+.modal.show {
+  background-color: rgba(0, 0, 0, 0.5);
+}
