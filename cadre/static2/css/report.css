@@ -46,3 +46,9 @@ select {
 #submit {
     margin-top: 10px;
 }
+
+.congratulation-icon {
+    background-color: #65c18c;
+    color: #fff;
+    border-radius: 50%;
+}

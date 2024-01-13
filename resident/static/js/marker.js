@@ -211,20 +211,7 @@ function setMarkerBillBoard(map, location, marker,infowindow)
             }); 
 
 
-            // var btnInfors = document.querySelectorAll('button.circle-btn');
-            // btnInfors.forEach(btn => {
-            //     btn.addEventListener('click', (event) => {
-            //         var idParent = event.target.parentNode.parentNode.id;
-            //         console.log(event.target.parentNode)
-            //         console.log(idParent);
 
-
-            //         console.log(`#${idParent} .btn-close`   )
-
-            
-            //     })
-            // })
-    
         });
 
     })

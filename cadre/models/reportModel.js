@@ -7,6 +7,28 @@ const reportModel = mongoose.Schema(
       default: Date.now(),
     },
 
+    location: {
+      lat: {
+      type: Number,
+      require: true,
+      },
+      lng: {
+      type: Number,
+      require: true,
+      },
+    },
+
+    ward: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "wards",
+        required: true,
+    },
+    district: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "districts",
+        required: true,
+    },
+
     sender: {
       fullname: {
         type: String,
