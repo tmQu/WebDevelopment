@@ -2,7 +2,8 @@ const apiUrl = 'http://localhost:4000'
 
 
 function getReportDetail(callback) {
-    var rpId = url.getParam('id');
+    const urlParams = new URLSearchParams(window.location.search)
+    var rpId = urlParams.get('id');
     var url = apiUrl + '/api/v1/reports/' + rpId;
 
     var xhr = new XMLHttpRequest();
@@ -20,60 +21,93 @@ function getReportDetail(callback) {
 
 
 
-function renderReportDetail(report)
+function renderReportDetail(data)
 {
-    var reportDetail = document.querySelector('#report-detail');
-    var html = `
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-3">
-                    <p class="font-weight-bold">Người báo cáo</p>
-                    <p class="font-weight-bold">Ngày báo cáo</p>
-                    <p class="font-weight-bold">Phương thức</p>
-                    <p class="font-weight-bold">Trạng thái</p>
-                </div>
-                <div class="col-9">
-                    <p>${report.user.name}</p>
-                    <p>${report.createdAt}</p>
-                    <p>${report.method}</p>
-                    <p>${report.status}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mt-3">
-        <div class="card-body">
-            <p class="font-weight-bold">Nội dung báo cáo</p>
-            <p>${report.content}</p>
-        </div>
-    </div>
-    <div class="card mt-3">
-        <div class="card-body">
-            <p class="font-weight-bold">Hình ảnh</p>
-            <div class="row">
-                <div class="col-3">
-                    <img src="${report.image[0]}" class="img-fluid" alt="">
-                </div>
-                <div class="col-3">
-                    <img src="${report.image[1]}" class="img-fluid" alt="">
-                </div>
-                <div class="col-3">
-                    <img src="${report.image[2]}" class="img-fluid" alt="">
-                </div>
-                <div class="col-3">
-                    <img src="${report.image[3]}" class="img-fluid" alt="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mt-3">
-        <div class="card-body">
-            <p class="font-weight-bold">Địa điểm</p>
-            <p>${report.location}</p>
-        </div>
-    </div>
-    `;
+    var report = data.data.report;
+    var board = data.data.board;
+    var boardLocation = data.data.boardLocation;
+    document.querySelector('#report-method').innerHTML = report.method.reportMethod;
+    var img_rp = document.querySelector('#report-img')
+    if (report.images)
+    {
+        img_rp = `<div id="reportImageCarousel" class="carousel slide" data-ride="carousel">
+                     <div class="carousel-inner">`
+        report.images.forEach((img, index) => {
+            img_rp += `<div class="carousel-item ${index == 0 ? 'active' : ''}">
+                        <img src="${img}" class="d-block carousel-img" alt="Image ${index}">
+                        </div>`
+        });
+        img_rp += `</div>
+                        <a class="carousel-control-prev" href="#reportImageCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#reportImageCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                        </a>
+                    </div>`
+    }  
+    else
+    {
+        img_rp = `<img src='/static/img/adboard.png' class='img-fluid' alt='user'/>`
+    }
 
-    reportDetail.innerHTML = html;
+    if (report.board)
+    {
+
+        var report_infor = document.querySelector('#report-infor').innerHTML = `
+                    <div class='col-lg-7 col-md-7 col-sm-6'>
+                      <h4 class='box-title mt-5'>
+                        ${board.boardType.boardType}
+                      </h4>
+                      <p>
+                        ${report.addr}
+                      </p>
+                      <p>
+                        Kích thước: <strong>${board.size}</strong>
+                      </p>
+                      <p>Hình thức: <strong>${boardLocation.advertisementForm.advertisementForm}</strong></p>
+                      <p>Phân loại:`
+        boardLocation.locationCategory.forEach((boardLocation) => {
+            report_infor += `<span class='badge badge-pill badge-primary'>${boardLocation.locationCategory}</span>`
+        });
+        report_infor += `</p>
+                        </div>`
+    }
+    else
+    {
+        var report_infor = document.querySelector('#report-infor').innerHTML = `
+                    <div class='col-lg-7 col-md-7 col-sm-6'>
+                      <h4 class='box-title mt-5'>
+                        Địa chỉ điểm báo cáo: <strong>${report.addr}</strong>
+                      </h4>
+                    </div>`
+    }
+
+
+    document.querySelector('#name').innerHTML = report.sender.fullname;
+    document.querySelector('#email').innerHTML = report.sender.email; 
+    document.querySelector('#phone').innerHTML = report.sender.phone;
+
+    document.querySelector('#create-at').innerHTML = report.createdAt;
+    var status;
+    if (report.status === true)
+    {
+        status = `<span class='badge badge-pill badge-success'>Đã xử lý</span>`;
+    }
+    else if (report.status === false)
+    {
+        status = `<span class='badge badge-pill badge-warning'>Đang chờ xử lý</span>`;
+    }
+    else if (report.status === null)
+    {
+        status = `<span class='badge badge-pill badge-danger'>Đã xóa</span>`
+    }
+    document.querySelector('#report-status').innerHTML = status;
+
+    document.querySelector('#report-description').innerHTML = report.description;
 }
+
+
+getReportDetail(renderReportDetail);

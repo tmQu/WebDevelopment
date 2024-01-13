@@ -1,10 +1,4 @@
-{{#section 'css'}}
-  <link rel='stylesheet' href='../../static/css/reportDetails.css' />
-{{/section}}
-{{#section 'js'}}
-  <script src='../../static/js/reports/reportDetails.js'></script>
-  
-  {{/section}}
+
   
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +11,27 @@
     integrity='sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA='
     crossorigin='anonymous'
     />
-    <script src="/static/js/report_detail.js"></script>
+        <!-- Boostrap5 -->
+        <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+        crossorigin="anonymous" />
+  
+      <!-- Boostrap5 icon -->
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
+        <link
+        rel='stylesheet'
+        href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css'
+        integrity='sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N'
+        crossorigin='anonymous'
+      />
+      <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css' />
+      <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
     <title>Report</title>
 </head>
 <body>
@@ -51,54 +65,19 @@
                   <div class='container-fluid mt-2'>
                     <div class='card shadow'>
                       <div class="card-header text-body-emphasis">
-                        <h4 id="report_method">
+                        <h4 id="report-method">
                             <!-- Hình thức báo cáo -->
                         </h4>
                       </div>
                       <div class='card-body'>
                         <div class='row d-flex align-items-stretch'>
                           <div class='col-lg-5 col-md-5 col-sm-6'>
-                            <div class='white-box text-center carousel-container'>
-                              {{#if report.images}}
-                                <div id="reportImageCarousel" class="carousel slide" data-ride="carousel">
-                                  <div class="carousel-inner">
-                                    <!-- {{#each report.images}}
-                                      <div class="carousel-item {{#if @first}} active {{/if}}">
-                                        <img src="{{this}}" class="d-block carousel-img" alt="Image {{@index}}">
-                                      </div>
-                                    {{/each}}
-                                  </div> -->
-
-                                  <a class="carousel-control-prev" href="#reportImageCarousel" role="button" data-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                  </a>
-                                  <a class="carousel-control-next" href="#reportImageCarousel" role="button" data-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                  </a>
-                                </div>
-                              {{else}}
-                                <img src='/static/img/adboard.png' class='img-fluid' alt='user'/>
-                              {{/if}}
+                            <div class='white-box text-center carousel-container' id="report-img">
+                                <!-- image report -->
                             </div>
                           </div>
-                          <div class='col-lg-7 col-md-7 col-sm-6'>
-                            <h4 class='box-title mt-5'>
-                              {{board.boardType.boardType}}
-                            </h4>
-                            <p>
-                              {{boardLocation.addr.street_number}}, {{boardLocation.addr.route}}, {{boardLocation.addr.ward.ward}}, {{boardLocation.addr.district.district}}, {{boardLocation.addr.city}}
-                            </p>
-                            <p>
-                              Kích thước: <strong>{{board.size}}</strong>
-                            </p>
-                            <p>Hình thức: <strong>{{boardLocation.advertisementForm.advertisementForm}}</strong></p>
-                            <p>Phân loại: 
-                              {{#each boardLocation.locationCategory}}
-                                <span class='badge badge-pill badge-primary'>{{this.locationCategory}}</span>
-                              {{/each}}
-                            </p>
+                          <div class='col-lg-7 col-md-7 col-sm-6' id="report-infor">
+                            
                           </div>
                         </div>
                         <div class='row d-flex align-items-stretch'>
@@ -113,55 +92,48 @@
                                     <td width='390'>
                                       Họ và tên người báo cáo
                                     </td>
-                                    <td>
-                                      {{report.sender.fullname}}
+                                    <td id="name">
+                    
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       Email
                                     </td>
-                                    <td>
-                                      {{report.sender.email}}
+                                    <td id="email">
+                 
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       Điện thoại liên lạc
                                     </td>
-                                    <td>
-                                      {{report.sender.phone}}
+                                    <td id="phone">
+
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       Thời gian báo cáo
                                     </td>
-                                    <td>
-                                      {{report.createdAt}}
+                                    <td id="create-at">
+
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       Trạng thái
                                     </td>
-                                    <td>
-                                      {{#compare report.status '===' false}}
-                                        <span class='badge badge-pill badge-warning'>Đang chờ xử lý</span>
-                                      {{else compare report.status '===' true}}
-                                        <span class='badge badge-pill badge-success'>Đã xử lý</span>
-                                      {{/compare}}
-                                      {{#compare report.status '===' 'null'}}
-                                        <span class='badge badge-pill badge-danger'>Đã xóa</span>
-                                      {{/compare}}
+                                    <td id="report-status">
+
                                     </td>
                                   </tr>
                                   <tr>
                                     <td>
                                       Nội dung báo cáo
                                     </td>
-                                    <td>
-                                      {{report.description}}
+                                    <td id="report-description">
+    
                                     </td>
                                   </tr>
                                 </tbody>
@@ -173,112 +145,24 @@
                     </div>
                   </div>
                 </div>
-                <div class='tab-pane' id='security' role='tabpanel' aria-labelledby='security-tab'>
-                  <!-- Security settings here -->
-                  <h5 class='mb-0 mt-5'>
-                    Cách xử lý
-                  </h5>
-                  <p>
-                    Cài đặt cách thức xử lý bảng quảng cáo
-                  </p>
-                  <div class='list-group mb-5 shadow'>
-                    <div class='list-group-item'>
-                      <div class='row d-flex align-items-center'>
-                        <div class='col'>
-                          <strong class='mb-2'>Hiển thị bảng quảng cáo</strong>
-                          <p class='text-muted mb-0'>Nếu bật, bảng quảng cáo sẽ được hiển thị với người dân</p>
-                        </div>
-                        <div class='col-auto d-flex align-items-center'>
-                          <div class='custom-control custom-switch'>
-                            <input type='checkbox' class='custom-control-input' id='adBoardSwitch' data-board="{{report.board}}" checked/>
-                            <label class='custom-control-label' for='adBoardSwitch'></label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class='list-group-item'>
-                      <div class='row d-flex align-items-center'>
-                        <div class='col'>
-                          <strong class='mb-2'>Xoá bảng quảng cáo</strong>
-                          <p class='text-muted mb-0'>Nếu bật, bảng quảng cáo sẽ được xoá khỏi bản đồ</p>
-                        </div>
-                        <div class='col-auto d-flex align-items-center'>
-                          <div class='custom-control custom-switch'>
-                            <input type='checkbox' class='custom-control-input' id='deleteBoard'/>
-                            <label class='custom-control-label' for='deleteBoard'></label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-      
-                  <!-- Thông tin chi tiết -->
-                  <h5 class='mb-0 mt-5'>
-                    Thông tin chi tiết
-                  </h5>
-                  <p>
-                    Thông tin chi tiết về cách thức xử lý bảng quảng cáo
-                  </p>
-                  <form>
-                    <div class='list-group mb-5 shadow'>
-                      <div class="list-group-item">
-                        <div class='row d-flex align-items-center'>
-                          <div class='col'>
-                            <strong class='mb-2'>Thông tin chi tiết</strong>
-                            <input type="text" class="form-control" id="reasonDetail" placeholder="Thông tin chi tiết về cách thức xử lý">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="list-group-item">
-                        <div class='row d-flex align-items-center'>
-                          <div class='col'>
-                            {{!-- <button class='btn btn-primary btn-sm' id="sendEmail" type="submit">Cập nhật và gửi email</button> --}}
-                            <button class="btn btn-primary" data-toggle="modal" data-target="#previewModal" id="prvModal">Xem Trước Email</button>
-                            
-                            <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel"   aria-hidden="true">
-                              <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title" id="previewModalLabel">Xem Trước Email</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                      <span aria-hidden="true">&times;</span>
-                                    </button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <p>Kính gửi {{report.sender.fullname}},</p>
-                                    <p>Thân ái chào bạn,</p>
-                                    <p>Chúng tôi muốn thông báo về quyết định xử lý liên quan đến báo cáo của bạn. Sau khi xem xét kỹ lưỡng, chúng tôi đã thực hiện các bước sau để đảm bảo rằng tất cả các vấn đề được nêu trong báo cáo của bạn được xử lý một cách hiệu quả và công bằng:</p>
-                                    
-                                    <p class="font-weight-bold">Cách Thức Xử Lý:</p>
-                                    <p id="handleMethod"></p>
-      
-                                    <p class="font-weight-bold">Lý Do Xử Lý:</p>
-                                    <p id="reasonContent"></p>
-      
-                                    <p><br>Chúng tôi chân thành cảm ơn bạn đã báo cáo vấn đề này. Sự tham gia của bạn là quan trọng đối với chúng tôi và giúp cải thiện môi trường làm việc của chúng tôi.</p>                        
-      
-                                    <p>Trân trọng,</p>
-                                    <p>{{officer.name}} <br>
-                                      {{officer.role}}
-                                    </p>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                                    <button type="button" class="btn btn-primary" onclick="confirmSendEmail('{{report.sender.email}}')">Xác Nhận Gửi</button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
+    </div>
+
+    <script src='https://code.jquery.com/jquery-3.7.1.slim.min.js' crossorigin='anonymous'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js'></script>
+    <script
+      src='https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js'
+      integrity='sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN'
+      crossorigin='anonymous'
+    ></script>
+    <script
+      src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js'
+      integrity='sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+'
+      crossorigin='anonymous'
+    ></script>
+
+      <script src="/static/js/report_detail.js"></script>
+    
 </body>
 </html>

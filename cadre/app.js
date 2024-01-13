@@ -122,6 +122,8 @@ app.use(xss());
 app.use('/static', express.static('static'));
 
 // 3) ROUTES
+
+// 
 app.use('/api/v1/boards', boardRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reports', reportRouter);

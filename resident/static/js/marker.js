@@ -163,8 +163,10 @@ function setMarkerBillBoard(map, location, marker,infowindow)
 
             }
             subWindow.classList.add('show-up');
+            content.classList.remove('report-content');
             document.querySelector('#img-billboard').style.display = 'block';
-
+            document.querySelector('.of-scroll').classList.remove('report-content')
+            
             if (subWindow.classList.contains('narrow'))
                 document.querySelector('#btn-collapse').click();
             console.log(idTemp)
@@ -192,11 +194,30 @@ function setMarkerBillBoard(map, location, marker,infowindow)
 }
 
 
-function getReportDetail(rp, rpId)
+function parseReportDetail(rp, rpId)
 {
-    var locationCategory =
+    console.log(rp)
+    var createAt = rp.createdAt;
+        // Thêm offset 7 giờ để chuyển múi giờ hiện tại thành múi giờ Việt Nam
+    const vietnamTime = new Date(new Date(createAt).getTime() + 7 * 60 * 60 * 1000);
+
+    const year = vietnamTime.getFullYear();
+    const month = vietnamTime.getMonth() + 1; // Tháng bắt đầu từ 0, cần cộng thêm 1
+    const day = vietnamTime.getDate();
+    
+    var dateString = `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`;
+
+    dateString += ` ${vietnamTime.getHours()}:${vietnamTime.getMinutes()}:${vietnamTime.getSeconds()}`
+
+    var rpType = (rp.board) ? 'Bảng quảng cáo' : 'Địa điểm';
+    var report =
     `
     <div class="billboard" id = "${rpId}" style="background: linear-gradient(90deg, #c8e0f8, #e4f8f0);">
+    <div class = 'd-flex flex-row-reverse'>
+        <h3>
+        <span class="badge bg-secondary">${rpType}</span>
+        </h3>
+    </div>
     <div class="billboard-type" style="font-weight: bold; font-size:15pt">
         ${rp.method}
     </div>
@@ -204,29 +225,52 @@ function getReportDetail(rp, rpId)
         <img src="../img/icon/icons8-maps.svg" alt="" style="height: 1em;">
        ${rp.addr}
     </div>
-    <div><strong>Người báo cáo</strong> ${rp.sender.name}</div> 
+
+    <div>
+    <i class="bi bi-calendar-event"></i> <strong>Ngày gửi</strong>
+    ${dateString}
+    </div>
+
+    <div class='mt-4'>
+    <div class='mt-3'><strong>Người báo cáo</strong> ${rp.sender.fullname}</div> 
+    <div class='mt-3'><strong>Email</strong> ${rp.sender.email}</div>
+    <div class='mt-3'><strong>Điện thoại</strong> ${rp.sender.phone}</div> 
+    </div>
+
+
+
     <div class="d-flex justify-content-between mt-4 mb-1">
     <a class="btn btn-outline-danger" href="http://localhost:3000/static/html/report_detail.html?id=${rp._id}"><i class="bi bi-exclamation-octagon"></i> xem chi tiết báo cáo vi phạm</a></div>
     </div>
     `
+
+    return report
 }
 
 function setMarkerReport(reportLocation, marker)
 {
     marker.addListener('click', () => {
+        document.querySelector('.of-scroll').classList.add('report-content');
+        document.querySelector('#sub-window .overflow-content').classList.add('report-content');
         document.querySelector('#img-billboard').style.display = 'none';
         var content = document.querySelector('#sub-window .overflow-content');
-        content = ''
+        content.innerHTML = ''
         var i = 1;
         reportLocation.report.forEach(rp => {
-            content += parseReportDetail(rp, 'report-' + i.toString());
+            content.innerHTML += parseReportDetail(rp, 'report-' + i.toString());
             i++;
         });
+
+        var subWindow = document.querySelector('#sub-window')
+        subWindow.classList.add('show-up');
+        if (subWindow.classList.contains('narrow'))
+            document.querySelector('#btn-collapse').click();    
     })
 }
 
 
 const setMarker = {
-    setMarkerBoard: setMarkerBillBoard
+    setMarkerBillBoard: setMarkerBillBoard,
+    setMarkerReport: setMarkerReport
 }
 export default setMarker;

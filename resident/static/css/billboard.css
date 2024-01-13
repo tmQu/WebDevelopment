@@ -20,6 +20,7 @@
 
 
 
+
 #sub-window.show-up{
     width: 40%;
     display: block;
@@ -34,15 +35,16 @@
 .of-scroll {
     padding-top: 0px;
     height: calc(100vh - 250px);
-    /* background-image: url('../img/pngegg.png');
-    background-position: center; 
-    background-repeat: no-repeat; 
-    background-size: cover; */
+
     width: 100%;
 
     box-shadow:  0 .5rem 1rem rgba(0, 0, 0, .15);
     overflow-y: scroll ;
     
+
+}
+.of-scroll.report-content {
+    height: calc(100vh - 50px);
 
 }
 .of-scroll::-webkit-scrollbar {
@@ -72,6 +74,10 @@
     flex-direction: column;
 
 }
+.overflow-content.report-content {
+    margin-top: 45px;
+}
+
 
 #btn-collapse{
     position: absolute;
@@ -105,6 +111,7 @@
     margin: 20px 20px;
     position: relative;
 }
+
 
 
 .detail-infor {

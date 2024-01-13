@@ -139,19 +139,27 @@ const reportController = {
   // Get a report
   getByID: async (req, res) => {
     try {
+
       let report = await Report.findById(req.params.id);
-      let board = await Board.findById(report.board);
-      if (board === null) {
-        return res.status(404).json({
-          status: 'fail',
-          message: 'Board not found',
-        });
+      let board;
+      let boardLocation;
+      if (report.board != null)
+      {
+        board = await Board.findById(report.board);
+
+        boardLocation = await BoardLocation.findById(board.boardLocation);
+        board = board.toObject();
+        boardLocation = boardLocation.toObject();
       }
-      let boardLocation = await BoardLocation.findById(board.boardLocation);
+      else {
+        board = null;
+        boardLocation = null;
+
+      }
+
 
       report = report.toObject();
-      board = board.toObject();
-      boardLocation = boardLocation.toObject();
+
 
       res.render('vwReport/reportDetails', {
         layout: 'report',
@@ -162,6 +170,20 @@ const reportController = {
         board,
         boardLocation,
       });
+
+      // res.status(200).json(
+      // {
+      //     success: true,
+      //     message: 'Report created successfully',
+      //     data: {
+      //       report: report,
+      //       board: board,
+      //       boardLocation: boardLocation
+  
+
+      //     }
+      // }
+      // )
     } catch (error) {
       console.log(error);
       res.status(500).json({
