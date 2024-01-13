@@ -227,6 +227,6 @@ function setMarkerReport(reportLocation, marker)
 
 
 const setMarker = {
-    setMarkerBoard: setMarkerBillBoard
+    setMarkerBillBoard: setMarkerBillBoard
 }
 export default setMarker;

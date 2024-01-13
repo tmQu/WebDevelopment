@@ -41,31 +41,31 @@ const getAdvertisementBoards = (map) => {
     var report = JSON.parse(localStorage.getItem('report'))
 
     // group report that have the same location
-    var reportLocation =  report.reduce((result, item) => {
-      const { lat, lng } = item.location;
-      const key = `${lat}-${lng}`;
+  //   var reportLocation =  report.reduce((result, item) => {
+  //     const { lat, lng } = item.location;
+  //     const key = `${lat}-${lng}`;
   
-      // Create a new group for the location if it doesn't exist
-      if (!result[key]) {
-          result[key] = { location: { lat, lng }, data: [] };
-      }
+  //     // Create a new group for the location if it doesn't exist
+  //     if (!result[key]) {
+  //         result[key] = { location: { lat, lng }, data: [] };
+  //     }
   
-      // Push the current item to the location group
-      result[key].data.push({
-          _id: item._id,
-          createdAt: item.createdAt,
-          method: item.method,
-          board: item.board,
-      });
+  //     // Push the current item to the location group
+  //     result[key].data.push({
+  //         _id: item._id,
+  //         createdAt: item.createdAt,
+  //         method: item.method,
+  //         board: item.board,
+  //     });
   
-      return result;
-  }, {});
+  //     return result;
+  // }, {});
   
-  // Convert the groupedData object to an array of groups with lat and lng
-  reportLocation = Object.values(reportLocation).map(group => ({
-      location: group.location,
-      report: group.data,
-  }));
+  // // Convert the groupedData object to an array of groups with lat and lng
+  // reportLocation = Object.values(reportLocation).map(group => ({
+  //     location: group.location,
+  //     report: group.data,
+  // }));
     
 
     document.getElementById('btnAds').addEventListener('change', function () {
@@ -135,7 +135,7 @@ const clusterMarker = async (map, data) => {
   // const uniqueData = data.filter(
   //   (v, i, a) => a.findIndex((t) => t.location.lat === v.location.lat && t.location.lng === v.location.lng) === i
   // );
-  data = uniqueData;
+  // data = uniqueData;
 
 
   const markers = []
