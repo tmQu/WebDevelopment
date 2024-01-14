@@ -31,7 +31,7 @@
               aria-controls='profile'
               aria-selected='true'
             >
-              Profile
+              Chi tiết báo cáo
             </a>
           </li>
           <li class='nav-item'>
@@ -44,7 +44,7 @@
               aria-controls='security'
               aria-selected='false'
             >
-              Security
+              Cập nhật trạng thái
             </a>
           </li>
         </ul>
@@ -149,13 +149,13 @@
                                 Trạng thái
                               </td>
                               <td>
-                                {{#compare report.status '===' false}}
-                                  <span class='badge badge-pill badge-warning'>Đang chờ xử lý</span>
-                                {{else compare report.status '===' true}}
+                                {{#compare report.status '===' -1}}
+                                  <span class='badge badge-pill badge-warning'>Chưa xử lý</span>
+                                {{else compare report.status '===' 1}}
                                   <span class='badge badge-pill badge-success'>Đã xử lý</span>
                                 {{/compare}}
-                                {{#compare report.status '===' 'null'}}
-                                  <span class='badge badge-pill badge-danger'>Đã xóa</span>
+                                {{#compare report.status '===' 0}}
+                                  <span class='badge badge-pill badge-primary'>Đang xử lý</span>
                                 {{/compare}}
                               </td>
                             </tr>
@@ -177,105 +177,74 @@
             </div>
           </div>
           <div class='tab-pane' id='security' role='tabpanel' aria-labelledby='security-tab'>
-            <!-- Security settings here -->
-            <h5 class='mb-0 mt-5'>
-              Cách xử lý
-            </h5>
-            <p>
-              Cài đặt cách thức xử lý bảng quảng cáo
-            </p>
-            <div class='list-group mb-5 shadow'>
-              <div class='list-group-item'>
-                <div class='row d-flex align-items-center'>
-                  <div class='col'>
-                    <strong class='mb-2'>Hiển thị bảng quảng cáo</strong>
-                    <p class='text-muted mb-0'>Nếu bật, bảng quảng cáo sẽ được hiển thị với người dân</p>
-                  </div>
-                  <div class='col-auto d-flex align-items-center'>
-                    <div class='custom-control custom-switch'>
-                      <input type='checkbox' class='custom-control-input' id='adBoardSwitch' data-board="{{report.board}}" checked/>
-                      <label class='custom-control-label' for='adBoardSwitch'></label>
+                       <!-- Cách thức xử lý -->
+            <form action="/api/v1/reports/sendEmail" method="post" id="updateForm">
+              <h5 class='mb-0 mt-5'>
+                Cập nhật trạng thái báo cáo
+              </h5>
+              <p>
+                Cán bộ cập nhật trạng thái xử lý báo cáo
+              </p>
+              <div class='list-group mb-5 shadow'>
+                <div class='list-group-item'>
+                  <div class='row d-flex align-items-center'>
+                    <div class='col'>
+                      <strong class='mb-2'>Tình trạng báo cáo</strong>
+                      <p class='text-muted mb-0'>Chọn tình trạng xử lý</p>
+                    </div>
+                    <div class='col-auto d-flex align-items-center'>
+                      <select class='form-control' id='handleMethodSelect' name="statusDetails">
+                        <option value='pending' {{#compare report.status '===' -1}} selected {{/compare}}>Chưa xử lý</span></option>
+                        <option value='inprogress' {{#compare report.status '===' 0}} selected {{/compare}}>Đang xử lý</option>
+                        <option value='processed' {{#compare report.status '===' 1}} selected {{/compare}}>Đã xử lý</option>
+                      </select>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class='list-group-item'>
-                <div class='row d-flex align-items-center'>
-                  <div class='col'>
-                    <strong class='mb-2'>Xoá bảng quảng cáo</strong>
-                    <p class='text-muted mb-0'>Nếu bật, bảng quảng cáo sẽ được xoá khỏi bản đồ</p>
-                  </div>
-                  <div class='col-auto d-flex align-items-center'>
-                    <div class='custom-control custom-switch'>
-                      <input type='checkbox' class='custom-control-input' id='deleteBoard'/>
-                      <label class='custom-control-label' for='deleteBoard'></label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
-            <!-- Thông tin chi tiết -->
-            <h5 class='mb-0 mt-5'>
-              Thông tin chi tiết
-            </h5>
-            <p>
-              Thông tin chi tiết về cách thức xử lý bảng quảng cáo
-            </p>
-            <form>
+              <!-- Thông tin chi tiết -->
+              <h5 class='mb-0 mt-5'>
+                Thông tin chi tiết
+              </h5>
+              <p>
+                Thông tin chi tiết và trình tự xử lý bảng quảng cáo
+              </p>
               <div class='list-group mb-5 shadow'>
                 <div class="list-group-item">
                   <div class='row d-flex align-items-center'>
                     <div class='col'>
-                      <strong class='mb-2'>Thông tin chi tiết</strong>
-                      <input type="text" class="form-control" id="reasonDetail" placeholder="Thông tin chi tiết về cách thức xử lý">
-                    </div>
-                  </div>
-                </div>
-                <div class="list-group-item">
-                  <div class='row d-flex align-items-center'>
-                    <div class='col'>
-                      {{!-- <button class='btn btn-primary btn-sm' id="sendEmail" type="submit">Cập nhật và gửi email</button> --}}
-                      <button class="btn btn-primary" data-toggle="modal" data-target="#previewModal" id="prvModal">Xem Trước Email</button>
-                      
-                      <div class="modal fade" id="previewModal" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel"   aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="previewModalLabel">Xem Trước Email</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
+                      <strong class='mb-4'>Trình tự xử lý</strong>
+                      <div id="handleMethodDetail" name="handleMethodDetail">
+                        {{#if report.method}}
+                          {{#each report.method.steps}}
+                            <div class="alert alert-info mt-1">
+                              <strong> Bước {{this.index}}:</strong> {{this.step}}
                             </div>
-                            <div class="modal-body">
-                              <p>Kính gửi {{report.sender.fullname}},</p>
-                              <p>Thân ái chào bạn,</p>
-                              <p>Chúng tôi muốn thông báo về quyết định xử lý liên quan đến báo cáo của bạn. Sau khi xem xét kỹ lưỡng, chúng tôi đã thực hiện các bước sau để đảm bảo rằng tất cả các vấn đề được nêu trong báo cáo của bạn được xử lý một cách hiệu quả và công bằng:</p>
-                              
-                              <p class="font-weight-bold">Cách Thức Xử Lý:</p>
-                              <p id="handleMethod"></p>
-
-                              <p class="font-weight-bold">Lý Do Xử Lý:</p>
-                              <p id="reasonContent"></p>
-
-                              <p><br>Chúng tôi chân thành cảm ơn bạn đã báo cáo vấn đề này. Sự tham gia của bạn là quan trọng đối với chúng tôi và giúp cải thiện môi trường làm việc của chúng tôi.</p>                        
-
-                              <p>Trân trọng,</p>
-                              <p>{{officer.name}} <br>
-                                {{officer.role}}
-                              </p>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                              <button type="button" class="btn btn-primary" onclick="confirmSendEmail('{{report.sender.email}}')">Xác Nhận Gửi</button>
-                            </div>
+                          {{/each}}
+                        {{else}}
+                          <div class="alert alert-warning">
+                            Chưa có hướng dẫn xử lý cụ thể cho loại báo cáo này.
                           </div>
-                        </div>
+                        {{/if}}
                       </div>
+                      <div class="form-group mt-3">
+                        <div class="d-flex justify-content-between">
+                          <label for="updateDetails" class="font-weight-bold">Chi tiết cách thức xử lý:</label>
+                          <p id="errorMessage" class="text-danger font-weight-bold"></p>          
+                        </div>            
+                        <textarea class="form-control" id="updateDetails" name="updateDetails" rows="4"></textarea>
+                      </div>
+                      <button type="submit" class="btn btn-primary" id="reportResBtn">Cập nhật</button>
                     </div>
                   </div>
                 </div>
               </div>
+              <!-- Thông tin sender, method và reason -->
+              <input type="hidden" name="sender" value="{{report.sender.fullname}}">
+              <input type="hidden" name="email" value="{{report.sender.email}}">
+              <input type="hidden" name="officer" value="{{user}}">
+              <input type="hidden" name="reportId" value="{{report._id}}">
             </form>
           </div>
         </div>

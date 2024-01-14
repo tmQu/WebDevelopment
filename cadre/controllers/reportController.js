@@ -1,10 +1,12 @@
 import Report from '../models/reportModel.js';
 import distrcitModel from '../models/districtModel.js';
+import userModel from '../models/userModel.js';
 import wardModel from '../models/wardModel.js';
 import Board from '../models/boardModel.js';
 import BoardLocation from '../models/boardLocationModel.js';
 import sendEmail from '../utils/email.js';
-import he from 'he';
+import emailTemplate from '../utils/emailTemplate.js';
+
 import mongoose from 'mongoose';
 import Mongoose from 'mongoose';
 import axios from 'axios';
@@ -139,51 +141,41 @@ const reportController = {
   // Get a report
   getByID: async (req, res) => {
     try {
-
       let report = await Report.findById(req.params.id);
       let board;
       let boardLocation;
-      if (report.board != null)
-      {
+      if (report.board != null) {
         board = await Board.findById(report.board);
 
         boardLocation = await BoardLocation.findById(board.boardLocation);
         board = board.toObject();
         boardLocation = boardLocation.toObject();
-      }
-      else {
+      } else {
         board = null;
         boardLocation = null;
-
       }
 
-
       report = report.toObject();
-
 
       res.render('vwReport/reportDetails', {
         layout: 'report',
         report: {
           ...report,
           createdAt: new Date(report.createdAt).toLocaleString(),
+          method: {
+            ...report.method,
+            steps: report.method.steps.map((step, index) => {
+              return {
+                step: step,
+                index: index + 1,
+              };
+            }),
+          },
         },
         board,
         boardLocation,
+        user: req.user._id,
       });
-
-      // res.status(200).json(
-      // {
-      //     success: true,
-      //     message: 'Report created successfully',
-      //     data: {
-      //       report: report,
-      //       board: board,
-      //       boardLocation: boardLocation
-  
-
-      //     }
-      // }
-      // )
     } catch (error) {
       console.log(error);
       res.status(500).json({
@@ -232,19 +224,28 @@ const reportController = {
   // Send email to reporter
   sendEmailToReporter: async (req, res) => {
     try {
-      let { email, subject, html } = req.body;
-      html = he.decode(html);
+      let subject = 'Thông báo xử lý báo cáo';
+      let { email, updateDetails, statusDetails, sender, officer, reportId } = req.body;
+
+      const user = await userModel.findById(officer);
+      officer = user.role.level;
+
+      let status = '';
+      if (statusDetails === 'pending') status = -1;
+      else if (statusDetails === 'inprogress') status = 0;
+      else status = 1;
+
+      const report = await Report.findByIdAndUpdate(reportId, { status: status });
+
+      let html = emailTemplate.sendEmailReport(sender, statusDetails, updateDetails, officer);
 
       await sendEmail({
         email,
         subject,
-        html,
+        html: html,
       });
 
-      res.status(200).json({
-        status: 'success',
-        message: 'Email sent successfully',
-      });
+      res.redirect(`/reports`);
     } catch (error) {
       res.status(500).json({
         status: 'fail',

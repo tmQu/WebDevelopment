@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 import { promisify } from 'util';
 import sendEmail from '../utils/email.js';
 import crypto from 'crypto';
-import sendOTPemailHTML from '../utils/emailTemplate.js';
+import emailTemplate from '../utils/emailTemplate.js';
 
 const signToken = (id) => {
   return jwt.sign({ id: id }, process.env.JWT_SECRET, {
@@ -135,7 +135,7 @@ const authController = {
     await user.save({ validateBeforeSave: false });
 
     // 3. Send OTP to user's email
-    const message = sendOTPemailHTML(otp);
+    const message = emailTemplate.sendOTPemailHTML(otp);
     try {
       await sendEmail({
         email: user.email,
@@ -167,7 +167,7 @@ const authController = {
         passwordResetToken: hashedOtp,
         passwordResetExpires: { $gt: Date.now() },
       });
-      console.log("Ok");
+      console.log('Ok');
       // 3. If OTP is valid and there is a user, set the new password
       createSendToken(user, 200, res);
     } catch (err) {

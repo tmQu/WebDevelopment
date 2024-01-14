@@ -123,7 +123,7 @@ app.use('/static', express.static('static'));
 
 // 3) ROUTES
 
-// 
+//
 app.use('/api/v1/boards', boardRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reports', reportRouter);
@@ -139,9 +139,6 @@ app.get('/', async (req, res) => {
     .populate('addr.district')
     .populate('addr.ward');
   var boards = await boardModel.find().populate('boardType');
-
-  // console.log(boardLocation);
-  // console.log(boards);
 
   res.render('vwHome/index', {
     layout: 'main',
@@ -175,12 +172,12 @@ app.get('/test', async (req, res) => {
   // }
   // res.send('success');
 });
-app.get('/licenseAccount', authController.protect, authController.restrictTo('departmental'), (req, res) => {
-  res.render('vwForm/licenseAccount', { layout: 'main' });
+app.get('/licenseAccount',authController.protect, authController.restrictTo('departmental'), (req, res) => {
+  res.render('vwLicense/licenseAccount', { layout: 'main' });
 });
 
 app.get('/license', (req, res) => {
-  res.render('vwForm/license', { layout: 'main' });
+  res.render('vwLicense/license', { layout: 'main' });
 });
 
 app.get('/login', (req, res) => {
@@ -203,7 +200,7 @@ app.get('/reports', async (req, res) => {
   reportController.getAllReports(req, res);
 });
 
-app.get('/reports/:id', async (req, res) => {
+app.get('/reports/:id', authController.protect, async (req, res) => {
   reportController.getByID(req, res);
 });
 
