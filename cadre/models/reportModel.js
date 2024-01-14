@@ -80,7 +80,11 @@ reportModel.pre(/^find/, function (next) {
   this.populate({
     path: 'method',
     select: 'reportMethod steps',
+  }).populate({
+    path: 'board',
+    select: 'boardLocation',
   });
+  
   next();
 });
 

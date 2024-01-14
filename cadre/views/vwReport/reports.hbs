@@ -64,11 +64,15 @@
                       {{this.createdAt}}
                     </td>
                     <td class='text-center'>
-                      {{#compare this.status '===' false}}
+                      {{#compare this.status '===' -1}}
                         <span class='badge badge-pill badge-warning'>
-                          Chờ xử lý
+                          Chưa xử lý
                         </span>
-                      {{else compare this.status '===' true}}
+                      {{else compare this.status '===' 0}}
+                        <span class='badge badge-pill badge-primary'>
+                          Đang xử lý
+                        </span>
+                      {{else compare this.status '===' 1}}
                         <span class='badge badge-pill badge-success'>
                           Đã xử lý
                         </span>
@@ -118,43 +122,34 @@
             </tbody>
           </table>
         </div>
-        <ul class='pagination pull-right'>
-          <li>
-            <a href='#'>
-              <i class='fa fa-chevron-left'></i>
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              1
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              2
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              3
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              4
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              5
-            </a>
-          </li>
-          <li>
-            <a href='#'>
-              <i class='fa fa-chevron-right'></i>
-            </a>
-          </li>
-        </ul>
+        
+        <!-- Pagination.handlebars -->
+        <nav aria-label="Page navigation">
+          <ul class="pagination justify-content-center">
+            {{#if hasPreviousPage}}
+              <li class="page-item">
+                <a class="page-link" href="?page={{previousPage}}" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+            {{/if}}
+
+            {{#paginate currentPage lastPage}}
+              <li class="page-item {{#if (eq this.number currentPage)}}active{{/if}}">
+                <a class="page-link" href="?page={{this.number}}">{{this.number}}</a>
+              </li>
+            {{/paginate}}
+
+
+            {{#if hasNextPage}}
+              <li class="page-item">
+                <a class="page-link" href="?page={{nextPage}}" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            {{/if}}
+          </ul>
+        </nav>
       </div>
     </div>
   </div>

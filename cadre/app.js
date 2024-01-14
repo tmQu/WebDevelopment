@@ -196,7 +196,7 @@ app.get('/resetPassword', (req, res) => {
   res.render('vwAccount/resetPassword');
 });
 
-app.get('/reports', async (req, res) => {
+app.get('/reports', authController.protect, async (req, res) => {
   reportController.getAllReports(req, res);
 });
 

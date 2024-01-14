@@ -1,9 +1,9 @@
 import Report from '../models/reportModel.js';
-import distrcitModel from '../models/districtModel.js';
 import userModel from '../models/userModel.js';
 import wardModel from '../models/wardModel.js';
 import Board from '../models/boardModel.js';
 import BoardLocation from '../models/boardLocationModel.js';
+
 import sendEmail from '../utils/email.js';
 import emailTemplate from '../utils/emailTemplate.js';
 
@@ -11,6 +11,9 @@ import mongoose from 'mongoose';
 import Mongoose from 'mongoose';
 import axios from 'axios';
 import districtModel from '../models/districtModel.js';
+
+const ITEMS_PER_PAGE = 5; // Số lượng mục trên mỗi trang
+
 const reportController = {
   createReport: async (req, res) => {
     try {
@@ -99,10 +102,25 @@ const reportController = {
   // Get all reports
   getAllReports: async (req, res) => {
     try {
-      let reports = await Report.find().populate({
-        path: 'board',
-        select: 'boardLocation',
-      });
+      const page = parseInt(req.query.page) || 1; // Trang mặc định là trang 1
+
+      let reports = [];
+      const query = {};
+
+      if (req.user.role.level === 'wards') {
+        query.ward = req.user.role.detail;
+      } else if (req.user.role.level === 'districts') {
+        query.district = req.user.role.detail;
+      }
+
+      const options = {
+        skip: (page - 1) * ITEMS_PER_PAGE,
+        limit: ITEMS_PER_PAGE,
+      };
+
+      reports = await Report.find(query, null, options);
+
+      const totalItems = reports.length;
 
       // Get boardLocation of each board
       reports = await Promise.all(
@@ -126,6 +144,12 @@ const reportController = {
       res.render('vwReport/reports', {
         layout: 'report',
         reports: reports,
+        currentPage: page,
+        hasNextPage: ITEMS_PER_PAGE * page < totalItems, // Kiểm tra trang tiếp theo có tồn tại không
+        hasPreviousPage: page > 1, // Kiểm tra trang trước có tồn tại không
+        nextPage: page + 1,
+        previousPage: page - 1,
+        lastPage: Math.ceil(totalItems / ITEMS_PER_PAGE), // Tính toán trang cuối cùng
       });
 
       // return reports;
@@ -245,7 +269,7 @@ const reportController = {
         html: html,
       });
 
-      res.redirect(`/reports`);
+      res.redirect(`/reports/${reportId}`);
     } catch (error) {
       res.status(500).json({
         status: 'fail',
