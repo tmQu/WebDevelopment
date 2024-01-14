@@ -6,6 +6,7 @@ import districtModel from '../models/districtModel.js'
 import wardModel from '../models/wardModel.js'
 import mongoose from 'mongoose';
 
+const ITEMS_PER_PAGE = 4; // Số lượng mục trên mỗi trang
 const licenseController = { 
     renderLicenseForm: async (req, res) => {
         try {
@@ -47,10 +48,11 @@ const licenseController = {
     },
     createLicense: async (req, res) => {
         try {
+            console.log('test');
             var license = {};
             console.log(req.file);
             console.log(req.body);
-            license.imgBoard = 'http://localhost:4000/'+ req.file.path;
+            license.imgBoard = req.file.path;
             license.imgBoard.replace("\\", "/");
             license.board = req.params.id;
             license.content = req.body.content;
@@ -70,14 +72,21 @@ const licenseController = {
             console.log(license)
 
             const newLicense = await licenseModel.create(license);
-            res.json(newLicense);
+            res.redirect('/api/v1/license/list');
         } catch (err) {
             console.log(err);
         }
     },
     renderLicenseList: async (req, res) => {
         try {
-            var licenses = await licenseModel.find().populate({
+
+            const page = parseInt(req.query.page) || 1;
+            var filter  = {};
+            var total = await licenseModel.countDocuments(filter);
+            
+            
+
+            var licenses = await licenseModel.find(filter).populate({
                 path: 'board', 
                 populate : {
                     path : 'boardLocation',
@@ -88,7 +97,11 @@ const licenseController = {
                         path: 'addr.ward'
                     }
                 }
-            });
+            })
+            .skip((page - 1) * ITEMS_PER_PAGE)
+            .limit(ITEMS_PER_PAGE);
+            
+
 
             var districtId = []
             var wardId = []
@@ -107,13 +120,22 @@ const licenseController = {
             console.log(licenses)
             var districts = await districtModel.find({_id: {$in: districtId}}).lean();
             var wards = await wardModel.find({_id: {$in: wardId}}).lean();
-
+            console.log(districts)
+            console.log(wards)
             res.render('vwLicense/licenseTable', {
                 layout: 'datatable',
                 license: licenses,
                 districts: districts,
-                wards: JSON.stringify(wards)
+                wards: JSON.stringify(wards),
+                SERVER_URL: process.env.SERVER_URL,
+                currentPage: page,
+                hasNextPage: ITEMS_PER_PAGE * page < total,
+                hasNextPage: page > 1,
+                nextPage: page + 1,
+                previousPage: page - 1,
+                lastPage: Math.ceil(total / ITEMS_PER_PAGE)
             });
+            
         }
         catch(err)
         {
@@ -163,7 +185,8 @@ const licenseController = {
                 action: {
                     name: action,
                     link: link
-                }
+                },
+                SERVER_URL: process.env.SERVER_URL
             });
         }
         catch(err)

@@ -9,6 +9,8 @@ import mongoose from 'mongoose';
 import Mongoose from 'mongoose';
 import axios from 'axios';
 import districtModel from '../models/districtModel.js';
+import dotenv from 'dotenv';
+
 const reportController = {
   createReport: async (req, res) => {
     try {
@@ -137,7 +139,7 @@ const reportController = {
   },
 
   // Get a report
-  getByID: async (req, res) => {
+  getByID_v1: async (req, res) => {
     try {
 
       let report = await Report.findById(req.params.id);
@@ -192,7 +194,59 @@ const reportController = {
       });
     }
   },
+  getByID_v2: async (req, res) => {
+    try {
 
+      let report = await Report.findById(req.params.id);
+      let board;
+      let boardLocation;
+      if (report.board != null)
+      {
+        board = await Board.findById(report.board);
+
+        boardLocation = await BoardLocation.findById(board.boardLocation);
+        board = board.toObject();
+        boardLocation = boardLocation.toObject();
+      }
+      else {
+        board = null;
+        boardLocation = null;
+
+      }
+
+
+      report = report.toObject();
+
+      // append server url
+      var newImage = []
+      report.images.forEach((img) => {
+        img = process.env.SERVER_URL + img;
+        newImage.push(img);
+      })
+      report.images = newImage;
+
+
+
+      res.status(200).json(
+      {
+          success: true,
+          message: 'Report created successfully',
+          data: {
+            report: report,
+            board: board,
+            boardLocation: boardLocation
+  
+
+          }
+      })
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        status: 'fail',
+        message: error.message,
+      });
+    }
+  },
   // Update a report
   updateReport: async (req, res) => {
     try {

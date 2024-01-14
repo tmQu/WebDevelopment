@@ -1,10 +1,10 @@
-const apiUrl = 'http://localhost:4000'
+const serverURL = 'http://localhost:4000'
 
 
 function getReportDetail(callback) {
     const urlParams = new URLSearchParams(window.location.search)
     var rpId = urlParams.get('id');
-    var url = apiUrl + '/api/v1/reports/' + rpId;
+    var url = serverURL + '/api/v2/reports/' + rpId;
 
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
@@ -30,14 +30,15 @@ function renderReportDetail(data)
     var img_rp = document.querySelector('#report-img')
     if (report.images)
     {
-        img_rp = `<div id="reportImageCarousel" class="carousel slide" data-ride="carousel">
+        console.log(report.images)
+        img_rp.innerHTML = `<div id="reportImageCarousel" class="carousel slide" data-ride="carousel">
                      <div class="carousel-inner">`
         report.images.forEach((img, index) => {
-            img_rp += `<div class="carousel-item ${index == 0 ? 'active' : ''}">
+            img_rp.innerHTML += `<div class="carousel-item ${index == 0 ? 'active' : ''}">
                         <img src="${img}" class="d-block carousel-img" alt="Image ${index}">
                         </div>`
         });
-        img_rp += `</div>
+        img_rp.innerHTML += `</div>
                         <a class="carousel-control-prev" href="#reportImageCarousel" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
@@ -50,7 +51,7 @@ function renderReportDetail(data)
     }  
     else
     {
-        img_rp = `<img src='/static/img/adboard.png' class='img-fluid' alt='user'/>`
+        img_rp.innerHTML = `<img src='http://localhost:4000/static/img/adboard.png' class='img-fluid' alt='user'/>`
     }
 
     if (report.board)

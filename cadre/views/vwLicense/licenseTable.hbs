@@ -84,7 +84,7 @@
                     {{/if}}
                 </td>
                 <td>
-                    <a href="/license?id={{_id}}&action=view" class="table-link btn btn-primary">
+                    <a href="{{SERVER_URL}}/api/v1/license?id={{_id}}&action=view" class="table-link btn btn-primary">
                         <i class="bi bi-search"></i>
                     </a>
                     {{#if license.status}}
@@ -92,14 +92,44 @@
                             <i class="bi bi-trash"></i>
                         </a>
                     {{else}}
-                        <a class="table-link btn btn-danger" href="/license?id={{_id}}&action=delete">
+                        <a class="table-link btn btn-danger" href="{{SERVER_URL}}/api/v1/license?id={{_id}}&action=delete">
                             <i class="bi bi-trash"></i>
                         </a>
-                    {{/if}
+                    {{/if}}
                 </td>
             </tr>
             {{/each}}
         </tbody>
+        <tfoot>
+            <td>
+            <nav>
+            <ul class="pagination">
+                {{#if hasPreviousPage}}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{previousPage}}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                {{/if}}
+
+                {{#paginate currentPage lastPage}}
+                <li class="page-item {{#if (eq this.number currentPage)}}active{{/if}}">
+                    <a class="page-link" href="?page={{this.number}}">{{this.number}}</a>
+                </li>
+                {{/paginate}}
+
+
+                {{#if hasNextPage}}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{nextPage}}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                {{/if}} 
+            </ul>
+            </nav>
+            </td>
+        </tfoot>
     </table>
 </div>
 

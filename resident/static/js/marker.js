@@ -1,9 +1,9 @@
-const apiUrl = 'http://localhost:4000'
+const serverURL = 'http://localhost:4000'
 
 
 function getDetailBoard(id, callback)
 {
-    var url = apiUrl + '/api/v1/boards/detail/' + id;
+    var url = serverURL + '/api/v2/boards/detail/' + id;
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = () => {
         if (xhr.readyState === XMLHttpRequest.DONE)

@@ -3,10 +3,10 @@ import setMarker from "./marker.js";
 var advertisementBoards = new Array();
 var mc = null;
 
-const apiUrl = 'localhost:4000'
+const serverURL = 'http://localhost:4000'
 
 function getAllLocation(callback){
-  var url = 'http://'+ apiUrl + '/api/v1/boards/';
+  var url = serverURL + '/api/v2/boards';
   var xhr = new XMLHttpRequest();
 
   xhr.onreadystatechange = () => {

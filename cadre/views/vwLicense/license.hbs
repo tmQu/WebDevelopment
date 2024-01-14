@@ -43,7 +43,7 @@
                   <!-- img -->
                   <div class='col-md-7 col-lg-8 d-flex align-items-center'>
                     <div class='card-body p-4 p-lg-5 text-black'>
-                      <form id='form' action='http://localhost:4000/license/{{{board._id}}}' method="post" enctype="multipart/form-data">
+                      <form id='form' action='{{SERVER_URL}}/api/v1/license/form/{{{board._id}}}' method="post" enctype="multipart/form-data">
                         <div class='d-flex align-items-center mb-3 pb-1'>
                           <span class='h1 fw-bold mb-0'>
                             Cấp phép quảng cáo
@@ -52,37 +52,7 @@
                         <h5 class='fw-normal mb-3 pb-3' style='letter-spacing: 1px;'>
                               Bảng quảng cáo
                         </h5>
-                        <!--
-                        <div class='form-outline mb-4 border border-info p-3'>
-                          <h5 class='fw-normal mb-3 pb-3' style='letter-spacing: 1px;'>
-                              Bảng quảng cáo
-                          </h5>
-                          <div>
-                            
-                            <table style="border-spacing:10px 0px;border-collapse : separate;">
-                              <tr>
-                                <td><strong>Kích thước (m)</strong></td>
-                                <td class = 'd-flex'><input class = 'form-control' type="number" name="width"> <div class="d-flex align-items-center">x</div> <input class = 'form-control' type="number" name="height"> <div></div></td>
-                              </tr>
-                              <tr>
-                                <td><strong>Loại bảng quảng cáo</strong></td>
-                                <td>
-                                  <select id ='board-type' class="form-select">
-                                    {{#each boardType}}
-                                      <option value="{{this._id}}">{{this.boardType}}</option>
-                                    {{/each}}
-                                  </select>
-                                </td>
-                              </tr>
-                              <tr >
-                                <td><strong>Số lượng</strong></td>
-                                <td><input class = 'form-control' type = 'number' name="quantity"></td>
-                              </tr>
-                            </table>
-              
-                          </div>
-                        </div>
-                        -->
+                        
                         <div class="mb-3">
                             <label for="formFile" class="form-label" name="file" id="requiredFile">Hình ảnh minh hoạ</label>
                             <input class="form-control" type="file" id="formFile" required accept="image/jpg, image/jpeg, image/png" name="imgBoard">

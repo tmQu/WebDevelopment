@@ -123,13 +123,18 @@ app.use('/static', express.static('static'));
 
 // 3) ROUTES
 
-// 
-app.use('/api/v1/boards', boardRouter);
+// Carde route -> for render
+app.use('/api/v1/boards', boardRouter.router_v1);
 app.use('/api/v1/users', userRouter);
-app.use('/api/v1/reports', reportRouter);
-app.use('/api/v1/reportMethods', reportMethodRoutes);
-app.use('/license', licenseRouter);
+app.use('/api/v1/reports', reportRouter.router_v1);
+app.use('/api/v1/license', licenseRouter);
 app.use('/api/v1/changeBoard', changeBoardRoutes);
+
+
+// Resident Route -> for get json
+app.use('/api/v2/boards', boardRouter.router_v2)
+app.use('/api/v2/reports', reportRouter.router_v2);
+app.use('/api/v2/reportMethods', reportMethodRoutes);
 
 app.get('/', async (req, res) => {
   var boardLocation = await boardLocationModel
@@ -176,12 +181,10 @@ app.get('/test', async (req, res) => {
   // res.send('success');
 });
 app.get('/licenseAccount', authController.protect, authController.restrictTo('departmental'), (req, res) => {
-  res.render('vwForm/licenseAccount', { layout: 'main' });
+  res.render('vwLicense/licenseAccount', { layout: 'main' });
 });
 
-app.get('/license', (req, res) => {
-  res.render('vwForm/license', { layout: 'main' });
-});
+
 
 app.get('/login', (req, res) => {
   res.render('vwAccount/login');

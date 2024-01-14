@@ -1,3 +1,5 @@
+const serverURL = 'http://localhost:4000'
+
 const upReports = async (name, email, phone, board, method, images, description, lat, lng, ward, district, addr) => {
   try {
     const captcha = grecaptcha.getResponse();
@@ -37,7 +39,7 @@ const upReports = async (name, email, phone, board, method, images, description,
 
     const response = await axios({
       method: "POST",
-      url: "http://localhost:4000/api/v1/reports",
+      url: serverURL + "/api/v2/reports",
       data: formData,
       headers: {
         'Content-Type': 'multipart/form-data'
@@ -82,7 +84,7 @@ const getMethod = async () => {
   try {
     const res = await axios({
       method: "GET",
-      url: "http://localhost:4000/api/v1/reportMethods",
+      url:  serverURL + "/api/v2/reportMethods",
     });
     if (res.data.success === true) {
       const methods = res.data.data.methods;
