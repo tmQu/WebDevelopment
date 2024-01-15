@@ -156,7 +156,13 @@ app.get('/', async (req, res) => {
 import authController from './controllers/authController.js';
 
 app.get('/test', async (req, res) => {
-  res.render('vwlicense/test', { layout: 'main' });
+  var board = await boardModel.find();
+  for (var i = 0; i < board.length; i++) {
+    var boardItem = board[i];
+    boardItem.isLicense = (Math.floor(Math.random() * 2) === 1);
+    await boardItem.save();
+  }
+  res.send('success');
   // var boardLocations = await boardLocationModel.find();
 
   // for (var i = 0; i < boardLocations.length; i++) {

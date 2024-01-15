@@ -29,6 +29,10 @@ const billboardSchema = new mongoose.Schema({
     require: true,
     default: Date.now,
   },
+  isLicense: {
+    type: Boolean,
+    default: false,
+  },
   status: {
     type: String,
     default: 'active',

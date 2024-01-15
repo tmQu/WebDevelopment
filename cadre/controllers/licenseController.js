@@ -210,6 +210,8 @@ const licenseController = {
             if (approve == 'true')
             {
                 approve = true;
+                license = await licenseModel.findById(req.params.id);
+                await findByIdAndUpdate(license.board, {isLicense: true});
             }
             else{
                 approve = false;
