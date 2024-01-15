@@ -1,3 +1,7 @@
+{{#section 'js'}}
+<script src="../../static/js/license/licenseAccount.js"></script>
+{{/section}}
+
 <section class='vh-100' style='background-color: #9A616D;'>
     <div class='container py-5 h-100'>
         <div class='row d-flex justify-content-center align-items-center h-100'>
@@ -15,26 +19,26 @@
                                 </div>
 
                                 <div class='form-outline mb-2'>
-                                    <label class='form-label' for='email'>
+                                    <label class='form-label' for='email' id="requiredEmail">
                                         Email
                                     </label>
-                                    <input type="email" id='email'
+                                    <input type="email" id="email"
                                         class='form-control' name='email'
                                         autofocus />
                                 </div>
 
                                 <div class='form-outline mb-2'>
-                                    <label class='form-label' for='password'>
+                                    <label class='form-label' for='password' id="requiredPassword">
                                         Mật khẩu
                                     </label>
-                                    <input type="password" id='password'
+                                    <input type="password" id="password"
                                         class='form-control' name='password'
                                         autofocus />
                                 </div>
 
                                 <div class='form-outline mb-4'>
                                     <label class='form-label'
-                                        for='passwordConfirm'>
+                                        for='passwordConfirm' id="requiredConfirmPassword">
                                         Xác nhận mật khẩu
                                     </label>
                                     <input type="password" id='passwordConfirm'
@@ -46,25 +50,25 @@
                                 <div class='form-outline mb-4 border border-info p-3'>
                                     <h4>Thông tin cá nhân</h4>
 
-                                    <label class='form-label' for='name'>
+                                    <label class='form-label' for='name' id="requiredName">
                                         Họ tên
                                     </label>
                                     <input type="text" id='name'
                                         class='form-control' name='name'
                                         autofocus />
 
-                                    <label class='form-label' for='phoneNumber'>
+                                    <label class='form-label' for='phoneNumber' id="requiredPhone">
                                         Điện thoại
                                     </label>
-                                    <input type="number" id='phoneNumber'
+                                    <input type="text" id='phoneNumber'
                                         class='form-control' name='phoneNumber'
                                         autofocus />
 
-                                    <label class='form-label' for='dateOfBirth'>
+                                    <label class='form-label' for='dateOfBirth' id="requiredDOB">
                                         Ngày sinh
                                     </label>
                                     <input type="date" id='dateOfBirth'
-                                        class='form-control' name='dateOfBirth'
+                                        class='form-control' name='dateOfBirth' value='2000-01-01'
                                         autofocus />
                                 </div>
 

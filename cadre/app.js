@@ -164,6 +164,7 @@ app.get('/test', async (req, res) => {
     await boardItem.save();
   }
   res.send('success');
+  res.render('vwLicense/test', { layout: 'main' });
   // var boardLocations = await boardLocationModel.find();
 
   // for (var i = 0; i < boardLocations.length; i++) {
@@ -186,10 +187,36 @@ app.get('/test', async (req, res) => {
   // res.send('success');
 });
 app.get('/licenseAccount', authController.protect, authController.restrictTo('departmental'), (req, res) => {
-  res.render('vwLicense/licenseAccount', { layout: 'main' });
+  res.render('vwLicense/licenseAccount', { layout: 'list' });
 });
 
+app.get('/license', (req, res) => {
+  res.render('vwLicense/license', { layout: 'main' });
+});
 
+app.get('/wardAdmin', (req, res) => {
+  res.render('vwAdmin/wardAdmin', { layout: 'main' });
+});
+
+app.get('/', async (req, res) => {
+  // var boardLocation = await boardLocationModel
+  //   .find()
+  //   .populate('advertisementForm')
+  //   .populate('locationCategory')
+  //   .populate('addr.district')
+  //   .populate('addr.ward');
+  // var boards = await boardModel.find().populate('boardType');
+
+  // // console.log(boardLocation);
+  // // console.log(boards);
+
+  // res.render('vwHome/index', {
+  //   layout: 'main',
+  //   boardLocation: JSON.stringify(boardLocation),
+  //   boards: JSON.stringify(boards),
+  // });
+  res.render('vwHome/index', { layout: 'main' });
+});
 
 app.get('/login', (req, res) => {
   res.render('vwAccount/login');
@@ -242,10 +269,6 @@ app.get('/boardsLocation/:id/changeInfoRequest', authController.protect, (req, r
 
 app.get('/boardsLocation/:id/board/:boardId',authController.protect, (req, res) => {
   boardController.viewBoard(req, res);
-});
-
-app.get('/', (req, res) => {
-  res.render('vwAdmin/wardAdmin');
 });
 
 

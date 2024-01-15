@@ -11,12 +11,287 @@
   />
 {{/section}}
 
-<div class='container-fluid'>
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul
+    class="navbar-nav sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+    style="background: linear-gradient(45deg, #5c7ea1, #509177);"
+  >
+    <!-- Sidebar - Brand -->
+    <div
+      class="sidebar-brand d-flex align-items-center justify-content-center"
+      href="/"
+    >
+      <div class="sidebar-brand-text mt-5">ADVERTISING BOARDS MANAGEMENT</div>
+    </div>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0" />
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+      <a class="nav-link mt-5" href="/">
+        <i class="bi bi-house"></i>
+        <span>TRANG CHỦ</span></a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      QUẢN LÝ
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="/boardsLocation" id="option">
+        <i class="bi bi-clipboard-data"></i>
+        <span>Xem danh sách</span>
+      </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <!-- Heading -->
+    <div class="sidebar-heading mt-4">
+      Xử lý báo cáo
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="/reports" id="option">
+        <i class="bi bi-clipboard-data"></i>
+        <span>Xem danh sách</span>
+      </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <!-- Heading -->
+    <div class="sidebar-heading mt-4">
+      Cấp phép quảng cáo
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="#" id="option">
+        <i class="bi bi-plus-circle"></i>
+        <span>Tạo yêu cầu</span>
+      </a>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="#" id="option">
+        <i class="bi bi-clipboard-data"></i>
+        <span>Xem danh sách</span>
+      </a>
+    </li>
+
+    <!-- Log out -->
+    <a class="sidebar-heading mt-5 logout" id="logout">
+      ĐĂNG XUẤT
+    </a>
+
+  </ul>
+
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+<div class="container">
+              <div class="row">
+                <div class="col-xs-12 ">
+                  <nav>
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Profile</a>
+                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Security</a>
+                    </div>
+                  </nav>
+                  <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                              <div class='tab-pane active' id='profile' role='tabpanel' aria-labelledby='profile-tab'>
+            <div class='container-fluid mt-2'>
+              <!-- Thông tin bảng quảng cáo -->
+              {{#if boards}}
+                {{#each boards}}
+                  <div class='card shadow mb-2'>
+                    <div class='card-header text-body-emphasis d-flex justify-content-between'>
+                      <h4 id="boardType">
+                        {{this.boardType}}
+                      </h4>
+                      <div class="button">
+                        <a class='badge badge-pill badge-primary square-button' id="editButton">
+                          <i class="bi bi-gear"></i> Yêu cầu chỉnh sửa
+                        </a>
+                        <a class='badge badge-pill badge-success square-button ml-2' id="licenseButton">
+                          <i class="bi bi-check-circle"></i> Yêu cầu cấp phép
+                        </a>
+                      </div>
+                      <!-- Modal -->
+                      <div class="modal fade" id="editBoardModal" tabindex="-1" aria-labelledby="editBoardModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="editBoardModalLabel">Chỉnh sửa thông tin bảng quảng cáo</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              <form enctype="multipart/form-data" action="#">
+                                <!-- Trường Kích thước -->
+                                <div class="form-group row mb-3">
+                                  <label class="col-sm-4 col-form-label">Kích thước (m)</label>
+                                  <div class="col-sm-8">
+                                    <div class="input-group">
+                                      <input type="number" class="form-control" id="editBoardWidth" placeholder="Chiều rộng">
+                                      <div class="input-group-append">
+                                        <span class="input-group-text">x</span>
+                                      </div>
+                                      <input type="number" class="form-control" id="editBoardHeight" placeholder="Chiều cao">
+                                    </div>
+                                  </div>
+                                </div>
+
+                                <!-- Trường Loại Bảng Quảng Cáo -->
+                                <div class="form-group row mb-3">
+                                  <label for="editBoardType" class="col-sm-4 col-form-label">Loại bảng quảng cáo</label>
+                                  <div class="col-sm-8">
+                                    <select id='editBoardType' class="form-select">
+                                      {{#each ../boardType}}
+                                        <option value="{{this._id}}">{{this.boardType}}</option>
+                                      {{/each}}
+                                    </select>
+                                  </div>
+                                </div>
+
+                                <!-- Trường Số Lượng -->
+                                <div class="form-group row mb-3">
+                                  <label for="editQuantity" class="col-sm-4 col-form-label">Số lượng</label>
+                                  <div class="col-sm-8">
+                                    <input type="number" class="form-control" id="editQuantity" placeholder="Số lượng">
+                                  </div>
+                                </div>
+
+                                <!-- Trường tải ảnh -->
+                                <div class="row mb-3">
+                                  <label for="editUploadImage" class="col-sm-4 col-form-label">Tải ảnh lên</label>
+                                  <div class="col-sm-8">
+                                    <input type="file" class="form-control" id="editUploadImage" required accept="image.jpg image.png image.jpeg" name="imgBillboard">
+                                  </div>
+                                </div>
+
+                                <!-- Trường lý do chỉnh sửa -->
+                                <div class="row mb-3">
+                                  <label for="editReason" class="col-sm-4 col-form-label">Lý do chỉnh sửa</label>
+                                  <div class="col-sm-8">
+                                    <textarea class="form-control" id="editReason" rows="3" placeholder="Nhập lý do chỉnh sửa"></textarea>
+                                  </div>
+                                </div>
+
+                                <!-- Nút gửi và hủy -->
+                                <div class="row mb-3">
+                                  <div class="col-sm-8 offset-sm-4">
+                                    <button type="submit" class="btn btn-primary" id="submitReqbtn" data-user="{{../user}}" data-board="{{this._id}}" data-location="{{../boardLocation._id}}">Gửi</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                                  </div>
+                                </div>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class='card-body'>
+                      <div class='row d-flex align-items-stretch'>
+                        <div class='col-lg-5 col-md-5 col-sm-6'>
+                          <div class='white-box text-center'>
+                            {{#if this.imgBillboard}}
+                              <img src='{{this.imgBillboard}}' class='img-fluid' alt='Board image' />
+                            {{else}}
+                              <img src='/static/img/adboard.png' class='img-fluid' alt='user' />
+                            {{/if}}
+                          </div>
+                        </div>
+                        <!-- Thông tin điểm đặt quảng cáo -->
+                        <div class='col-lg-7 col-md-7 col-sm-6'>
+                          <h4 class='box-title mt-5'>
+                            {{this.boardType}}
+                          </h4>
+                          <p>
+                            {{../boardLocation.addr.street_number}}, {{../boardLocation.addr.route}}, {{../boardLocation.addr.ward}},
+                            {{../boardLocation.addr.district}}, {{../boardLocation.addr.city}}
+                          </p>
+                          <p>
+                            Kích thước:
+                            <strong>
+                              <span id="boardSize">{{this.size}}</span>
+                            </strong>
+                          </p>
+                          <p>
+                            Hình thức:
+                            <strong>
+                              {{../boardLocation.advertisementForm}}
+                            </strong>
+                          </p>
+                          <p>
+                            Phân loại:
+                            {{#each ../boardLocation.locationCategory}}
+                              <span class='badge badge-pill badge-primary'>
+                                {{this}}
+                              </span>
+                            {{/each}}
+                          </p>
+                          <p>
+                            Số lượng:
+                            <strong>
+                              {{this.quantity}}
+                            </strong>
+                          </p>
+                          <p>
+                            Ngày hết hạn hợp đồng:
+                            <strong>
+                              {{this.expireDate}}
+                            </strong>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {{/each}}
+              {{else}}
+                <div class='alert alert-warning' role='alert'>
+                  <strong>
+                    Không tìm thấy bảng quảng cáo
+                  </strong>
+                </div>
+              {{/if}}
+            </div>
+          </div>
+                      Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+                    </div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                      Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+                    </div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                      Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+                    </div>
+                    <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+                      Et et consectetur ipsum labore excepteur est proident excepteur ad velit occaecat qui minim occaecat veniam. Fugiat veniam incididunt anim aliqua enim pariatur veniam sunt est aute sit dolor anim. Velit non irure adipisicing aliqua ullamco irure incididunt irure non esse consectetur nostrud minim non minim occaecat. Amet duis do nisi duis veniam non est eiusmod tempor incididunt tempor dolor ipsum in qui sit. Exercitation mollit sit culpa nisi culpa non adipisicing reprehenderit do dolore. Duis reprehenderit occaecat anim ullamco ad duis occaecat ex.
+                    </div>
+                  </div>
+                
+                </div>
+              </div>
+        </div>
+      </div>
+</div>
+    <!-- Main Content -->
+    {{!-- <div class='container-fluid'>
   <div class='row justify-content-center'>
     <div class='col-12 col-lg-10 col-xl-8 mx-auto'>
-      <h2 class='h3 mb-4 page-title'>
-        Settings
-      </h2>
       <div class='my-4'>
         <!-- Nav tabs -->
         <ul class='nav nav-tabs' id='myTab' role='tablist'>
@@ -132,5 +407,39 @@
       </div>
     </div>
   </div>
+</div> --}}
+  </div>
+  <!-- End of Content Wrapper -->
+
 </div>
+<!-- End of Page Wrapper -->
+
+<!-- Logout Modal-->
+<div
+  class="modal fade"
+  id="logoutModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xác nhận đăng xuất</h5>
+        <button class="close" id="cancel">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <i class="bi bi-box-arrow-right"></i>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-danger" href="/login">Đăng xuất</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
