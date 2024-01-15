@@ -1,107 +1,172 @@
-{{#section 'js'}}
-<script src="../../static/js/license/licenseAccount.js"></script>
+{{#section "js"}}
+  <script src="../../static/js/license/licenseAccount.js"></script>
 {{/section}}
 
-<section class='vh-100' style='background-color: #9A616D;'>
-    <div class='container py-5 h-100'>
-        <div class='row d-flex justify-content-center align-items-center h-100'>
-            <div class='col col-xl-10'>
-                <div class='card' style='border-radius: 1rem;'>
-                    <div class='row'>
-                        <div class='card-body p-4 p-lg-5 text-black'>
-                            <form
-                                action='http://localhost:4000/api/v1/users/signup'
-                                method="post">
-                                <div
-                                    class='d-flex align-items-center mb-3 pb-1'>
-                                    <span class='h1 fw-bold mb-0'>
-                                        Cấp phép tài khoản
-                                    </span>
-                                </div>
+{{#section "css"}}
+  <link rel="stylesheet" href="../../static/css/licenseAccount.css" />
+{{/section}}
 
-                                <div class='form-outline mb-2'>
-                                    <label class='form-label' for='email' id="requiredEmail">
-                                        Email
-                                    </label>
-                                    <input type="email" id="email"
-                                        class='form-control' name='email'
-                                        autofocus />
-                                </div>
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col col-xm-10">
+      <div class="card" style="border-radius: 1rem;">
+        <div class="row">
+          <div class="card-body">
+            <form
+              action="http://localhost:4000/api/v1/users/signup"
+              method="post"
+            >
+              <div class="d-flex align-items-center mb-4 pb-1">
+                <span class="h2 fw-bold mb-0">
+                  Cấp phép tài khoản
+                </span>
+              </div>
 
-                                <div class='form-outline mb-2'>
-                                    <label class='form-label' for='password' id="requiredPassword">
-                                        Mật khẩu
-                                    </label>
-                                    <input type="password" id="password"
-                                        class='form-control' name='password'
-                                        autofocus />
-                                </div>
-
-                                <div class='form-outline mb-4'>
-                                    <label class='form-label'
-                                        for='passwordConfirm' id="requiredConfirmPassword">
-                                        Xác nhận mật khẩu
-                                    </label>
-                                    <input type="password" id='passwordConfirm'
-                                        class='form-control'
-                                        name='passwordConfirm'
-                                        autofocus />
-                                </div>
-
-                                <div
-                                    class='form-outline mb-4 border border-info p-3'>
-                                    <h4>Thông tin cá nhân</h4>
-
-                                    <label class='form-label' for='name' id="requiredName">
-                                        Họ tên
-                                    </label>
-                                    <input type="text" id='name'
-                                        class='form-control' name='name'
-                                        autofocus />
-
-                                    <label class='form-label' for='phoneNumber' id="requiredPhone">
-                                        Điện thoại
-                                    </label>
-                                    <input type="text" id='phoneNumber'
-                                        class='form-control' name='phoneNumber'
-                                        autofocus />
-
-                                    <label class='form-label' for='dateOfBirth' id="requiredDOB">
-                                        Ngày sinh
-                                    </label>
-                                    <input type="date" id='dateOfBirth'
-                                        class='form-control' name='dateOfBirth' value='2000-01-01'
-                                        autofocus />
-                                </div>
-
-                                <div class="btn-group" role="group"
-                                    aria-label="Basic radio toggle button group">
-                                    <input type="radio" class="btn-check" value="wards"
-                                        name="btnradio" id="btnradio1"
-                                        autocomplete="off" checked>
-                                    <label class="btn btn-outline-primary"
-                                        for="btnradio1">Ward Official</label>
-
-                                    <input type="radio" class="btn-check" value="districts"
-                                        name="btnradio" id="btnradio2"
-                                        autocomplete="off">
-                                    <label class="btn btn-outline-primary"
-                                        for="btnradio2">District Official</label>
-                                </div>
-
-                                <div class='pt-1 mb-4'>
-                                    <button
-                                        class='col-12 btn btn-dark btn-lg btn-block'
-                                        type='submit'>
-                                        Đăng ký
-                                    </button>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
+              <div class="form-outline mb-2">
+                <label class="form-label" for="email" id="requiredEmail">
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  name="email"
+                  autofocus
+                />
+              </div>
+              <div class="row">
+                <div class="form-outline mb-2 col">
+                  <label
+                    class="form-label"
+                    for="password"
+                    id="requiredPassword"
+                  >
+                    Mật khẩu
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    name="password"
+                    autofocus
+                  />
                 </div>
-            </div>
+
+                <div class="form-outline mb-4 col">
+                  <label
+                    class="form-label"
+                    for="passwordConfirm"
+                    id="requiredConfirmPassword"
+                  >
+                    Xác nhận mật khẩu
+                  </label>
+                  <input
+                    type="password"
+                    id="passwordConfirm"
+                    class="form-control"
+                    name="passwordConfirm"
+                    autofocus
+                  />
+                </div>
+              </div>
+              <div class="form-outline mb-4 border border-info p-3">
+                <h4>Thông tin cá nhân</h4>
+                <div class="row">
+                  <div class="col">
+                    <label class="form-label" for="name" id="requiredName">
+                      Họ tên
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      class="form-control"
+                      name="name"
+                      autofocus
+                    />
+                  </div>
+                  <div class="col">
+                    <label
+                      class="form-label"
+                      for="phoneNumber"
+                      id="requiredPhone"
+                    >
+                      Điện thoại
+                    </label>
+                    <input
+                      type="text"
+                      id="phoneNumber"
+                      class="form-control"
+                      name="phoneNumber"
+                      autofocus
+                    />
+                  </div>
+                  <div class="col">
+                    <label
+                      class="form-label"
+                      for="dateOfBirth"
+                      id="requiredDOB"
+                    >
+                      Ngày sinh
+                    </label>
+                    <input
+                      type="date"
+                      id="dateOfBirth"
+                      class="form-control"
+                      name="dateOfBirth"
+                      value="2000-01-01"
+                      autofocus
+                    />
+                  </div>
+                  <div class="col">
+
+                    <div id="radioBtn" class="btn-group mt-4 ml-5">
+                    <a
+                      class="btn btn-primary btn-sm active"
+                      data-toggle="role"
+                      data-title="W"
+                      value="wards"
+                    >Phường</a>
+                    <a
+                      class="btn btn-primary btn-sm notActive"
+                      data-toggle="role"
+                      data-title="D"
+                      value="districts"
+                    >Quận</a>
+                  </div>
+                  <input type="hidden" name="role" id="role" />
+                  </div>
+                </div>
+
+              </div>
+
+              {{! <div class="btn-group" role="group"
+                                aria-label="Basic radio toggle button group">
+                                <input type="radio" class="btn-check" value="wards"
+                                    name="btnradio" id="btnradio1"
+                                    autocomplete="off" checked>
+                                <label class="btn btn-outline-primary"
+                                    for="btnradio1">Ward Official</label>
+
+                                <input type="radio" class="btn-check" value="districts"
+                                    name="btnradio" id="btnradio2"
+                                    autocomplete="off">
+                                <label class="btn btn-outline-primary"
+                                    for="btnradio2">District Official</label>
+                            </div> }}
+
+              <div class="pt-1 mb-4">
+                <button
+                  class="col-12 btn btn-dark btn-lg btn-block"
+                  type="submit"
+                >
+                  Đăng ký
+                </button>
+              </div>
+
+            </form>
+          </div>
         </div>
+      </div>
     </div>
-</section>
+  </div>
+</div>

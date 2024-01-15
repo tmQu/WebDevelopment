@@ -60,12 +60,11 @@ nav > div a.nav-item.nav-link:focus
 }
 
 .button {
-  display: flex
+  display: flex;
+  justify-content: center;
 }
 
 #editButton, #licenseButton {
   display: flex;
   align-items: center;
 }
-
-
