@@ -3,6 +3,7 @@ import express from 'express';
 import {upload} from '../utils/imgHandler.js';
 
 const router = express.Router();
+const router_v2 = express.Router();
 
 router.route('/').get(reportController.getAllReports).post(upload.array('images', 2), reportController.createReport);
 
@@ -13,4 +14,7 @@ router
   .delete(reportController.deleteReport);
 
 router.route('/sendEmail').post(reportController.sendEmailToReporter);
+
+
+
 export default router;

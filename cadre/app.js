@@ -35,6 +35,7 @@ import mongoose from 'mongoose';
 import boardModel from './models/boardModel.js';
 import boardTypeModel from './models/boardTypeModel.js';
 import boardLocationController from './controllers/boardLocationController.js';
+import boardController from './controllers/boardController.js';
 
 import { Server } from 'socket.io';
 import { createServer } from 'http';
@@ -124,12 +125,13 @@ app.use('/static', express.static('static'));
 // 3) ROUTES
 
 //
-app.use('/api/v1/boards', boardRouter);
+app.use('/api/v1/boards', boardRouter.router_v1);
+app.use('/api/v1/boards', boardRouter.router_v2);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reports', reportRouter);
 app.use('/api/v1/reportMethods', reportMethodRoutes);
 app.use('/license', licenseRouter);
-app.use('/api/v1/changeBoard', changeBoardRoutes);
+app.use('/api/v2/changeBoard', changeBoardRoutes.router_v2);
 
 app.get('/', async (req, res) => {
   var boardLocation = await boardLocationModel
@@ -172,7 +174,7 @@ app.get('/test', async (req, res) => {
   // }
   // res.send('success');
 });
-app.get('/licenseAccount',authController.protect, authController.restrictTo('departmental'), (req, res) => {
+app.get('/licenseAccount', authController.protect, authController.restrictTo('departmental'), (req, res) => {
   res.render('vwLicense/licenseAccount', { layout: 'main' });
 });
 
@@ -217,7 +219,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.get('/boardsLocation', (req, res) => {
+app.get('/boardsLocation', authController.protect, (req, res) => {
   boardLocationController.viewAllBoardLocation(req, res);
 });
 
@@ -225,7 +227,7 @@ app.get('/boardsLocation/:id', authController.protect, (req, res) => {
   boardLocationController.viewBoardLocation(req, res);
 });
 
-app.get('/boardsLocation/:id/board/:boardID', (req, res) => {
+app.get('/boardsLocation/:id/board/:boardId',authController.protect, (req, res) => {
   boardController.viewBoard(req, res);
 });
 

@@ -1,27 +1,31 @@
 import boardLocationModel from '../models/boardLocationModel.js';
 import boardModel from '../models/boardModel.js';
-import  mongoose from 'mongoose';
+import boardTypeModel from '../models/boardTypeModel.js';
+import mongoose from 'mongoose';
 
 const boardController = {
   test: async (req, res) => {
     try {
-      const boardLocation = await boardLocationModel.find().populate('advertisementForm').populate('locationCategory').populate('addr.district').populate('addr.ward');
-      const boards = await boardModel.find()
-      
+      const boardLocation = await boardLocationModel
+        .find()
+        .populate('advertisementForm')
+        .populate('locationCategory')
+        .populate('addr.district')
+        .populate('addr.ward');
+      const boards = await boardModel.find();
     } catch (err) {
       console.log(err);
     }
   },
   getAllBoardLocation: async (req, res) => {
     try {
+      var boardLocations = await boardLocationModel
+        .find()
+        .populate('advertisementForm')
+        .populate('locationCategory')
+        .populate('addr.district')
+        .populate('addr.ward');
 
-      var boardLocations = await  boardLocationModel.find()
-                                                .populate('advertisementForm')
-                                                .populate('locationCategory')
-                                                .populate('addr.district')
-                                                .populate('addr.ward')
-                                            
-    
       if (boardLocations.length === 0 || !boardLocations) {
         res.status(404).json({
           status: 'fail',
@@ -32,8 +36,7 @@ const boardController = {
       res.status(200).json({
         status: 'success',
         results: boardLocations.length,
-        data: 
-          boardLocations
+        data: boardLocations,
       });
     } catch (err) {
       res.status(404).json({
@@ -44,11 +47,12 @@ const boardController = {
   },
   getBoardLocationWithId: async (req, res) => {
     try {
-      const board = await boardLocationModel.findById(req.params.id)
-                        .populate('advertisementForm')
-                        .populate('locationCategory')
-                        .populate('addr.district')
-                        .populate('addr.ward');
+      const board = await boardLocationModel
+        .findById(req.params.id)
+        .populate('advertisementForm')
+        .populate('locationCategory')
+        .populate('addr.district')
+        .populate('addr.ward');
       if (!board) {
         return res.status(404).json({
           status: 'fail',
@@ -71,22 +75,22 @@ const boardController = {
   },
   getBoardInLocation: async (req, res) => {
     try {
-
-
-      var boards = await boardModel.find({boardLocation: mongoose.Types.ObjectId(req.params.id)}).populate('boardType');
-      var boardLocation = await boardLocationModel.findById(req.params.id)
-                        .populate('advertisementForm')
-                        .populate('locationCategory')
-                        .populate('addr.district')
-                        .populate('addr.ward');
-
+      var boards = await boardModel
+        .find({ boardLocation: mongoose.Types.ObjectId(req.params.id) })
+        .populate('boardType');
+      var boardLocation = await boardLocationModel
+        .findById(req.params.id)
+        .populate('advertisementForm')
+        .populate('locationCategory')
+        .populate('addr.district')
+        .populate('addr.ward');
 
       res.status(200).json({
         status: 'success',
         data: {
           boards: boards,
-          boardLocation: boardLocation
-        }
+          boardLocation: boardLocation,
+        },
       });
     } catch (err) {
       res.status(404).json({
@@ -133,30 +137,17 @@ const boardController = {
   updateBoard: async (req, res) => {
     try {
       const updates = Object.keys(req.body);
-      const allowedUpdates = [
-        'addr',
-        'location',
-        'isPlan',
-        'advertisementForm',
-        'locationCategory',
-        'status'
-      ];
-      const isValidOperation = updates.every((update) =>
-        allowedUpdates.includes(update)
-      );
+      const allowedUpdates = ['addr', 'location', 'isPlan', 'advertisementForm', 'locationCategory', 'status'];
+      const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
       if (!isValidOperation) {
         return res.status(404).send({ error: 'Invalid updates!' });
       }
 
-      const board = await boardModel.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        {
-          new: true,
-          runValidators: true,
-        }
-      );
+      const board = await boardModel.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+        runValidators: true,
+      });
 
       res.status(200).json({
         status: 'success',
@@ -173,7 +164,7 @@ const boardController = {
   },
   deleteBoard: async (req, res) => {
     try {
-      const board = await boardModel.findByIdAndDelete({_id: req.params.id});
+      const board = await boardModel.findByIdAndDelete({ _id: req.params.id });
       if (!board) {
         return res.status(404).json({
           status: 'fail',
@@ -190,6 +181,49 @@ const boardController = {
         status: 'fail',
         message: err,
       });
+    }
+  },
+
+  viewBoard: async (req, res) => {
+    try {
+      let board = await boardModel.findById(req.params.boardId);
+      let boardLocation = await boardLocationModel.findById(req.params.id);
+      let boardType = await boardTypeModel.find();
+      const user = req.user;
+
+      const boardWidth = board.size.split('x')[0];
+      const boardHeight = board.size.split('x')[1];
+      const boardQuantity = board.quantity.split(' ')[0];
+
+      board = board.toObject();
+      board = {
+        ...board,
+        width: boardWidth,
+        height: boardHeight,
+        quantity: boardQuantity,
+      };
+      boardLocation = boardLocation.toObject();
+      boardLocation = {
+        ...boardLocation,
+        boardWidth,
+        boardHeight,
+      };
+      boardType = boardType.map((type) => {
+        type = type.toObject();
+        return {
+          ...type,
+        };
+      });
+
+      res.render('vwBoard/boardRequest', {
+        board,
+        boardLocation,
+        boardType,
+        user: user.toObject(),
+        layout: 'report',
+      });
+    } catch (err) {
+      console.log(err);
     }
   },
 };

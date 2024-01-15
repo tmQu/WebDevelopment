@@ -109,6 +109,8 @@ const reportController = {
 
       if (req.user.role.level === 'wards') {
         query.ward = req.user.role.detail;
+        let ward = await wardModel.findById(req.user.role.detail);
+        query.district = ward.district;
       } else if (req.user.role.level === 'districts') {
         query.district = req.user.role.detail;
       }
@@ -118,9 +120,9 @@ const reportController = {
         limit: ITEMS_PER_PAGE,
       };
 
-      reports = await Report.find(query, null, options);
+      const totalItems = await Report.countDocuments(query);
 
-      const totalItems = reports.length;
+      reports = await Report.find(query, null, options);
 
       // Get boardLocation of each board
       reports = await Promise.all(
