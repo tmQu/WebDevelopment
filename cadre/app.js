@@ -235,6 +235,10 @@ app.get('/boardsLocation/:id', authController.protect, (req, res) => {
   boardLocationController.viewBoardLocation(req, res);
 });
 
+app.get('/boardsLocation/:id/changeInfoRequest', authController.protect, (req, res) => {
+  boardLocationController.changeInfoRequest(req, res);
+});
+
 app.get('/boardsLocation/:id/board/:boardId',authController.protect, (req, res) => {
   boardController.viewBoard(req, res);
 });

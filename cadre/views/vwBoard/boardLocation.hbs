@@ -71,7 +71,7 @@ $(document).ready(function() {
 
                         <!-- Cột cho Advertisement Form và Địa chỉ -->
                         <div class='col-md-10'>
-                          <a href='#' class='user-link' id='advertisementForm_{{this._id}}'>
+                          <a href='/boardsLocation/{{this._id}}' class='user-link' id='advertisementForm_{{this._id}}'>
                             {{this.advertisementForm}}
                           </a>
                           <span class='user-subhead d-block mt-2' id='address_{{this._id}}'>
@@ -177,8 +177,6 @@ $(document).ready(function() {
                               <i class='fa fa-trash-o fa-stack-1x fa-inverse'></i>
                             </span>
                           </a>
-
-
                     </td>
                   </tr>
                 {{/each}}

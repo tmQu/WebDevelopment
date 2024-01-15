@@ -48,12 +48,18 @@
                         {{this.boardType}}
                       </h4>
                       <div class="d-flex">
-                        <a class='badge badge-pill badge-primary square-button edit-button' href="/boardsLocation/{{this.boardLocation}}/board/{{this._id}}">
+                        <a class='badge badge-pill badge-primary square-button edit-button' href="/boardsLocation/{{this.boardLocation}}/board/{{this._id}}" aria-disabled="true">
                           <i class="bi bi-gear"></i> Yêu cầu chỉnh sửa
                         </a>
-                        <a class='badge badge-pill badge-success square-button ml-2' id="licenseButton">
-                          <i class="bi bi-check-circle"></i> Yêu cầu cấp phép
-                        </a>
+                        {{#compare this.isLicense '===' true}}
+                          <a href="#" class="btn btn-success badge badge-pill badge-success square-button ml-2 disabled" role="button" aria-disabled="true">
+                            <i class="bi bi-check-circle"></i>Yêu cầu cấp phép
+                          </a>
+                        {{else}}
+                          <a href="/api/v1/license/form/{{this._id}}" class='badge badge-pill badge-success square-button ml-2' id="licenseButton">
+                            <i class="bi bi-check-circle"></i> Yêu cầu cấp phép
+                          </a>
+                        {{/compare}}
                       </div>
                     </div>
                     <div class='card-body'>
