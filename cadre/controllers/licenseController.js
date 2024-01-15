@@ -10,6 +10,7 @@ const ITEMS_PER_PAGE = 4; // Số lượng mục trên mỗi trang
 const licenseController = { 
     renderLicenseForm: async (req, res) => {
         try {
+            console.log('test');
             var boardId = req.params.id;
 
             var board = await boardModel.findById(boardId).populate('boardType');
@@ -26,7 +27,7 @@ const licenseController = {
             board_location.addr = `${board_location.addr.street_number} ${board_location.addr.route}, ${board_location.addr.ward.ward}, ${board_location.addr.district.district}, ${board_location.addr.city}`;
             board_location.locationCategory = board_location.locationCategory.map(category => category.locationCategory).join('/');
             board_location.advertisementForm = board_location.advertisementForm.advertisementForm;
-        
+            console.log(board_location)
             res.render('vwLicense/license', { 
                 layout: 'datatable' ,
                 imgBoardLocation: board_location.imgBillboardLocation[0],
@@ -202,7 +203,6 @@ const licenseController = {
         }
     },
     approveLicense: async (req, res) => {
-        console.log('aprrove')
 
         try {
             console.log('aprrove')
