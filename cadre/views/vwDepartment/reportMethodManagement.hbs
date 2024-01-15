@@ -1,0 +1,154 @@
+{{#section 'css'}}
+<link rel='stylesheet' href='../../static/css/reports.css' />
+{{/section}}
+
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-12'>
+            <div class='main-box clearfix'>
+                <div class='table-responsive'>
+                    <table class='table user-list'>
+                        <thead>
+                            <tr>
+                                <th>
+                                    <span>
+                                        Method
+                                    </span>
+                                </th>
+                                <th class='text-center'>
+                                <th>
+                                    &nbsp;
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class='reports-list'>
+                            {{#if data}}
+                            {{#each data}}
+                            <tr>
+                                <td>
+                                    <div class="row" style="width: 500px; height: 60px;">
+                                        <div
+                                            class="col-md-10 align-content-start">
+                                            <a href='#' class='user-link'>
+                                                {{this.data.reportMethod}}
+                                            </a>
+                                            <span
+                                                class='user-subhead d-block mt-2'>
+                                                {{this.boardLocation.addr.street_number}},
+                                                {{this.boardLocation.addr.route}},
+                                                {{this.boardLocation.addr.ward.ward}},
+                                                {{this.boardLocation.addr.district.district}},
+                                                {{this.boardLocation.addr.city}}
+                                            </span>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        {{this.createdAt}}
+                                    </td>
+                                    <td class='text-center'>
+                                        {{#compare this.status '===' -1}}
+                                        <span
+                                            class='badge badge-pill badge-warning'>
+                                            Chưa xử lý
+                                        </span>
+                                        {{else compare this.status '===' 0}}
+                                        <span
+                                            class='badge badge-pill badge-primary'>
+                                            Đang xử lý
+                                        </span>
+                                        {{else compare this.status '===' 1}}
+                                        <span
+                                            class='badge badge-pill badge-success'>
+                                            Đã xử lý
+                                        </span>
+                                        {{/compare}}
+                                    </td>
+                                    <td>
+                                        <div class='d-flex flex-column'>
+                                            <a class='text-bg-danger'>
+                                                {{this.sender.fullname}}
+                                            </a>
+                                            <span class='user-subhead'>
+                                                {{this.sender.email}}
+                                            </span>
+                                        </div>
+                                    </td>
+                                    <td style='width: 20%;'>
+                                        <a href='#' class='table-link'>
+                                            <span class='fa-stack'>
+                                                <i
+                                                    class='fa fa-square fa-stack-2x'></i>
+                                                <i
+                                                    class='fa fa-search-plus fa-stack-1x fa-inverse'></i>
+                                            </span>
+                                        </a>
+                                        <a
+                                            href='http://localhost:4000/reports/{{this._id}}'
+                                            class='table-link'>
+                                            <span class='fa-stack'>
+                                                <i
+                                                    class='fa fa-square fa-stack-2x'></i>
+                                                <i
+                                                    class='fa fa-pencil fa-stack-1x fa-inverse'></i>
+                                            </span>
+                                        </a>
+                                        <a href='#' class='table-link danger'>
+                                            <span class='fa-stack'>
+                                                <i
+                                                    class='fa fa-square fa-stack-2x'></i>
+                                                <i
+                                                    class='fa fa-trash-o fa-stack-1x fa-inverse'></i>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                                {{else}}
+                                <tr>
+                                    <td colspan='5'>
+                                        <div class='alert alert-danger'>
+                                            No reports found
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{/if}}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination.handlebars -->
+                    <nav aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            {{#if hasPreviousPage}}
+                            <li class="page-item">
+                                <a class="page-link"
+                                    href="?page={{previousPage}}"
+                                    aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            {{/if}}
+
+                            {{#paginate currentPage lastPage}}
+                            <li
+                                class="page-item {{#if (eq this.number currentPage)}}active{{/if}}">
+                                <a class="page-link"
+                                    href="?page={{this.number}}">{{this.number}}</a>
+                            </li>
+                            {{/paginate}}
+
+                            {{#if hasNextPage}}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{nextPage}}"
+                                    aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                            {{/if}}
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>

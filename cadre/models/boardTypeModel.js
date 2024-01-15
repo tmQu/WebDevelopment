@@ -7,7 +7,6 @@ const boardTypeSchema = new mongoose.Schema({
     }
 });
 
-
 const boardTypeModel = mongoose.model("board_types", boardTypeSchema);
 
 export default boardTypeModel;

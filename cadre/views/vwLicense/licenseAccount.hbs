@@ -12,7 +12,8 @@
                             <form
                                 action='http://localhost:4000/api/v1/users/signup'
                                 method="post">
-                                <div class='d-flex align-items-center mb-3 pb-1'>
+                                <div
+                                    class='d-flex align-items-center mb-3 pb-1'>
                                     <span class='h1 fw-bold mb-0'>
                                         Cấp phép tài khoản
                                     </span>
@@ -47,7 +48,8 @@
                                         autofocus />
                                 </div>
 
-                                <div class='form-outline mb-4 border border-info p-3'>
+                                <div
+                                    class='form-outline mb-4 border border-info p-3'>
                                     <h4>Thông tin cá nhân</h4>
 
                                     <label class='form-label' for='name' id="requiredName">
@@ -72,8 +74,24 @@
                                         autofocus />
                                 </div>
 
+                                <div class="btn-group" role="group"
+                                    aria-label="Basic radio toggle button group">
+                                    <input type="radio" class="btn-check" value="wards"
+                                        name="btnradio" id="btnradio1"
+                                        autocomplete="off" checked>
+                                    <label class="btn btn-outline-primary"
+                                        for="btnradio1">Ward Official</label>
+
+                                    <input type="radio" class="btn-check" value="districts"
+                                        name="btnradio" id="btnradio2"
+                                        autocomplete="off">
+                                    <label class="btn btn-outline-primary"
+                                        for="btnradio2">District Official</label>
+                                </div>
+
                                 <div class='pt-1 mb-4'>
-                                    <button class='col-12 btn btn-dark btn-lg btn-block'
+                                    <button
+                                        class='col-12 btn btn-dark btn-lg btn-block'
                                         type='submit'>
                                         Đăng ký
                                     </button>

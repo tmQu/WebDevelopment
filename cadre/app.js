@@ -186,8 +186,9 @@ app.get('/test', async (req, res) => {
   // }
   // res.send('success');
 });
+
 app.get('/licenseAccount', authController.protect, authController.restrictTo('departmental'), (req, res) => {
-  res.render('vwLicense/licenseAccount', { layout: 'list' });
+  res.render('vwLicense/licenseAccount', { layout: 'department' });
 });
 
 app.get('/license', (req, res) => {
@@ -242,19 +243,6 @@ app.get('/reports/:id', authController.protect, async (req, res) => {
   reportController.getByID(req, res);
 });
 
-app.use((err, req, res, next) => {
-  const statusCode = err.statusCode || 500;
-  const status = err.status || 'error';
-  const message = err.message || 'Something went wrong!';
-
-  res.status(statusCode).render('vwError/error', {
-    statusCode: statusCode,
-    status: status,
-    message: message,
-    layout: 'main',
-  });
-});
-
 app.get('/boardsLocation', authController.protect, (req, res) => {
   boardLocationController.viewAllBoardLocation(req, res);
 });
@@ -267,10 +255,31 @@ app.get('/boardsLocation/:id/changeInfoRequest', authController.protect, (req, r
   boardLocationController.changeInfoRequest(req, res);
 });
 
-app.get('/boardsLocation/:id/board/:boardId',authController.protect, (req, res) => {
+app.get('/boardsLocation/:id/board/:boardId', authController.protect, (req, res) => {
   boardController.viewBoard(req, res);
 });
 
+import reportMethodController from './controllers/reportMethodController.js';
 
-export {server,io};
+app.get('/reportMethods', (req, res) => {
+  reportMethodController.getAllMethods_v2(req, res);
+});
 
+app.get('/', (req, res) => {
+  res.render('vwAdmin/wardAdmin');
+});
+
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  const status = err.status || 'error';
+  const message = err.message || 'Something went wrong!';
+
+  res.status(statusCode).render('vwError/error', {
+    statusCode: statusCode,
+    status: status,
+    message: message,
+    layout: 'department',
+  });
+});
+
+export { server, io };

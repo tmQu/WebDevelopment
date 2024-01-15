@@ -18,6 +18,23 @@ const reportMethodController = {
             });
         }
     },
+    getAllMethods_v2: async (req, res) => {
+        try {
+            const methods = await reportMethodModel.find();
+            res.render('vwDepartment/reportMethodManagement', {
+                success: true,
+                results: methods.length,
+                data: methods,
+                layout: 'department'
+            });
+        } catch (error) {
+            res.render('vwDepartment/reportMethodManagement', {
+                success: false,
+                message: error.message,
+                layout: 'department'
+            });
+        }
+    },
     getByID: async (req, res) => {
         try {
             const method = await reportMethodModel.findById(req.params.id);
