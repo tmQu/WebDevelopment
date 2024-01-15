@@ -130,6 +130,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reports', reportRouter.router_v1);
 app.use('/api/v1/reportMethods', reportMethodRoutes);
 app.use('/api/v1/changeBoard', changeBoardRoutes);
+app.use('/api/v1/license', licenseRouter);
 
 
 // Resident Route -> for get json
