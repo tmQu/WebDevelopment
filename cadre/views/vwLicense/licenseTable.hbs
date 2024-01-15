@@ -87,10 +87,8 @@
                     <a href="{{SERVER_URL}}/api/v1/license?id={{_id}}&action=view" class="table-link btn btn-primary">
                         <i class="bi bi-search"></i>
                     </a>
-                    {{#if license.status}}
-                        <a class="btn btn-danger" disabled>
-                            <i class="bi bi-trash"></i>
-                        </a>
+                    {{#if this.status}}
+                    
                     {{else}}
                         <a class="table-link btn btn-danger" href="{{SERVER_URL}}/api/v1/license?id={{_id}}&action=delete">
                             <i class="bi bi-trash"></i>

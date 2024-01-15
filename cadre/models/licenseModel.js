@@ -48,6 +48,9 @@ const licenseSchema = new mongoose.Schema({
         required: true,
         default: Date.now
     },
+    approve: {
+        type: Boolean
+    },
     status: {
         type: Boolean,
         required: true,

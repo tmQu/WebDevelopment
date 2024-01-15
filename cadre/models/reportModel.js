@@ -66,8 +66,8 @@ const reportModel = mongoose.Schema(
     },
 
     status: {
-      type: Boolean,
-      default: 0, //0: processing, 1: done
+      type: Number,
+      default: -1,
     },
   },
   {
@@ -79,7 +79,7 @@ const reportModel = mongoose.Schema(
 reportModel.pre(/^find/, function (next) {
   this.populate({
     path: 'method',
-    select: 'reportMethod',
+    select: 'reportMethod steps',
   });
   next();
 });

@@ -5,7 +5,7 @@ import convertVNTime from "../utils/convertVNTime.js";
 import districtModel from '../models/districtModel.js'
 import wardModel from '../models/wardModel.js'
 import mongoose from 'mongoose';
-
+import {io} from '../app.js';
 const ITEMS_PER_PAGE = 4; // Số lượng mục trên mỗi trang
 const licenseController = { 
     renderLicenseForm: async (req, res) => {
@@ -155,7 +155,10 @@ const licenseController = {
                 link = ''
             }
             else if (action === 'delete'){
-                link = `/license/delete/${id}`;
+                link = process.env.SERVER_URL +  `/api/v1/license/delete/${id}`;
+            }
+            else if(action === 'approve'){
+                link =  process.env.SERVER_URL +  `/api/v1/license/approve/${id}`;
             }
             var license = await licenseModel.findById(id).lean();
             license.period.start_date = convertVNTime(license.period.start_date);
@@ -183,8 +186,9 @@ const licenseController = {
                 board: board,
                 license: license,
                 action: {
-                    name: action,
-                    link: link
+                    link: link,
+                    approve: action === 'approve' ? true : false,
+                    delete: action === 'delete' ? true : false
                 },
                 SERVER_URL: process.env.SERVER_URL
             });
@@ -197,9 +201,21 @@ const licenseController = {
             });
         }
     },
-    updateLicense: async (req, res) => {
+    approveLicense: async (req, res) => {
+        console.log('aprrove')
+
         try {
-            const updateLicense = await licenseModel.findByIdAndUpdate(req.params.id, req.body, { new: true });
+            console.log('aprrove')
+            var approve = req.body.approve;
+            if (approve == 'true')
+            {
+                approve = true;
+            }
+            else{
+                approve = false;
+            }
+            const updateLicense = await licenseModel.findByIdAndUpdate(req.params.id, {status: true, approve: approve});
+            io.emit('update status', {id: req.params.id, status: true, approve: approve});
             res.json(updateLicense);
         } catch (err) {
             console.log(err);
@@ -207,8 +223,16 @@ const licenseController = {
     },
     deleteLicense: async (req, res) => {
         try {
-            const deleteLicense = await licenseModel.findByIdAndDelete(req.params.id);
-            res.json(deleteLicense);
+            var license = await licenseModel.findById(req.params.id)
+            if (license.status === false)
+            {
+                const deleteLicense = await licenseModel.findByIdAndDelete(req.params.id);
+            }
+            else {
+                // render error page
+
+            }
+            res.redirect(process.env.SERVER_URL + '/api/v1/license/list');
         } catch (err) {
             console.log(err);
         }

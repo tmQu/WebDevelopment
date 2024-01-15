@@ -145,9 +145,6 @@ app.get('/', async (req, res) => {
     .populate('addr.ward');
   var boards = await boardModel.find().populate('boardType');
 
-  // console.log(boardLocation);
-  // console.log(boards);
-
   res.render('vwHome/index', {
     layout: 'main',
     boardLocation: JSON.stringify(boardLocation),
@@ -180,6 +177,7 @@ app.get('/test', async (req, res) => {
   // }
   // res.send('success');
 });
+
 app.get('/licenseAccount', authController.protect, authController.restrictTo('departmental'), (req, res) => {
   res.render('vwLicense/licenseAccount', { layout: 'main' });
 });
@@ -206,7 +204,7 @@ app.get('/reports', async (req, res) => {
   reportController.getAllReports(req, res);
 });
 
-app.get('/reports/:id', async (req, res) => {
+app.get('/reports/:id', authController.protect, async (req, res) => {
   reportController.getByID(req, res);
 });
 
@@ -239,10 +237,6 @@ app.get('/', (req, res) => {
   res.render('vwAdmin/wardAdmin');
 });
 
-// app.use(globalErrorHandler);
-io.on('connection', function (socket) {
-  socket.on('update status', function (msg) {
-    io.emit('update status', msg);
-  });
-});
-export default server;
+
+export {server,io};
+
