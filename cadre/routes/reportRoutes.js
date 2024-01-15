@@ -17,6 +17,7 @@ router_v1
 router_v1.route('/sendEmail').post(reportController.sendEmailToReporter);
 
 
+router_v1.route('/sendEmail').post(reportController.sendEmailToReporter);
 
 // resident
 router_v2.route('/')
@@ -27,3 +28,7 @@ router_v2.route('/:id')
   .get(reportController.getByID_v2);
 
 export default {router_v1, router_v2};
+
+
+
+

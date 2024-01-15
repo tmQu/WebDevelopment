@@ -6,4 +6,6 @@ const router = express.Router();
 
 router.route('/').post(upload.single('imgBillboard'), changeBoardController.createChangeInfoReq);
 
+
+
 export default router;

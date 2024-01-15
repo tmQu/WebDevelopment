@@ -24,6 +24,7 @@ router_v1
     boardController.deleteBoard
   );
 
+router_v1.route('/').get(boardController.viewBoard);
 
 // router_v1
 //   .route('/account/:id')

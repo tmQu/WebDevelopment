@@ -6,7 +6,7 @@ const changeBoardController = {
       const newChangeInfoReq = await changeBoardModel.create({
         boardType: req.body.boardType,
         size: `${req.body.boardWidth}x${req.body.boardHeight}`,
-        quantity: req.body.boardQuantity,
+        quantity: `${req.body.boardQuantity} trụ/bảng`,
         reason: req.body.boardReason,
         imgBillboard: '/' + req.file.path,
         creator: req.body.creator,
@@ -20,7 +20,7 @@ const changeBoardController = {
       res.render('vwError/error', {
         statusCode: 500,
         status: 'fail',
-        message: message,
+        message: err.message,
         layout: 'main',
       });
     }

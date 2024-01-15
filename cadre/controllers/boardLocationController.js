@@ -1,6 +1,7 @@
 import boardLocationModel from '../models/boardLocationModel.js';
 import boardModel from '../models/boardModel.js';
 import boardTypeModel from '../models/boardTypeModel.js';
+import wardModel from '../models/wardModel.js';
 
 const ITEMS_PER_PAGE = 5; // Số lượng mục trên mỗi trang
 
@@ -9,12 +10,24 @@ const boardLocationController = {
     try {
       const page = parseInt(req.query.page) || 1; // Trang mặc định là trang 1
 
-      const totalItems = await boardLocationModel.countDocuments(); // Tính tổng số mục
+      let boardLocation = [];
+      const query = {};
 
-      let boardLocation = await boardLocationModel
-        .find()
-        .skip((page - 1) * ITEMS_PER_PAGE) // Bỏ qua mục không cần thiết
-        .limit(ITEMS_PER_PAGE); // Giới hạn số lượng mục trên mỗi trang
+      if (req.user.role.level === 'wards') {
+        query['addr.ward'] = req.user.role.detail;
+        let ward = await wardModel.findById(req.user.role.detail);
+        query['addr.district'] = ward.district;
+      } else if (req.user.role.level === 'districts') {
+        query['addr.district'] = req.user.role.detail;
+      }
+
+      const options = {
+        skip: (page - 1) * ITEMS_PER_PAGE,
+        limit: ITEMS_PER_PAGE,
+      };
+
+      const totalItems = await boardLocationModel.countDocuments(query);
+      boardLocation = await boardLocationModel.find(query, null, options);
 
       boardLocation = boardLocation.map((boardLocation) => {
         boardLocation = boardLocation.toObject();
@@ -34,11 +47,11 @@ const boardLocationController = {
         layout: 'list',
         boardLocation: boardLocation,
         currentPage: page,
-        hasNextPage: ITEMS_PER_PAGE * page < totalItems, // Kiểm tra trang tiếp theo có tồn tại không
-        hasPreviousPage: page > 1, // Kiểm tra trang trước có tồn tại không
+        hasNextPage: ITEMS_PER_PAGE * page < totalItems, 
+        hasPreviousPage: page > 1, 
         nextPage: page + 1,
         previousPage: page - 1,
-        lastPage: Math.ceil(totalItems / ITEMS_PER_PAGE), // Tính toán trang cuối cùng
+        lastPage: Math.ceil(totalItems / ITEMS_PER_PAGE),
       });
     } catch (error) {
       console.log(error);
