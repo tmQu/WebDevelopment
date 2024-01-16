@@ -134,6 +134,10 @@
                                     <a class='badge badge-pill badge-primary square-button edit-button' href="/boardsLocation/{{this.boardLocation}}/board/{{this._id}}?action=update" aria-disabled="true">
                                       <i class="bi bi-gear"></i> Chỉnh sửa bảng quảng cáo
                                     </a>
+                                      <a class='badge badge-pill badge-primary square-button edit-button' href="http://localhost:4000/api/v1/boards/delete/{{this._id}}" aria-disabled="true">
+                                      <i class="bi bi-trash3-fill"></i>Xóa bảng quảng cáo
+                                    </a>
+
                                 {{else}}
                                   <a class='badge badge-pill badge-primary square-button edit-button' href="/boardsLocation/{{this.boardLocation}}/board/{{this._id}}" aria-disabled="true">
                                     <i class="bi bi-gear"></i> Yêu cầu chỉnh sửa
@@ -205,6 +209,14 @@
                       Không tìm thấy bảng quảng cáo
                     </strong>
                   </div>
+                {{/if}}
+
+                {{#if isSuperAdmin}}
+                <div class="d-flex justify-content-center">
+                  <a href="/boardsLocation/{{boardLocation._id}}/board?action=add">
+                    <i class="bi bi-plus-circle-fill"></i>Thêm bảng quảng cáo
+                  </a>
+                </div>
                 {{/if}}
               </div>
             </div>

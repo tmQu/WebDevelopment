@@ -66,9 +66,12 @@ Handlebars.registerHelper('paginate', function (currentPage, pageCount, options)
   });
   
 Handlebars.registerHelper('containsLocationCategory', function(locationCategories, categoryToCheck) {
-  return locationCategories.some(function(locationCategory) {
-    return locationCategory.locationCategory === categoryToCheck;
-  });
+  if (locationCategories)
+    return locationCategories.some(function(locationCategory) {
+      return locationCategory.locationCategory === categoryToCheck;
+    });
+  else
+    return false
 });
   
 

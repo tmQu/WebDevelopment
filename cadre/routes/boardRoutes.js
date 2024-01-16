@@ -28,8 +28,14 @@ router_v1.route('/add')
   upload.single('imgBillboard'),
   boardController.createBoard)
 
+router_v1.route('/delete/:id')
+  .get(
+    authController.protect,
+    authController.restrictTo('departmental'),
+    boardController.deleteBoard
+  )
 
-router_v1.route('/').get(boardController.viewBoard);
+
 
 // router_v1
 //   .route('/account/:id')

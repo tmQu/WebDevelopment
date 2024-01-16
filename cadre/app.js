@@ -14,6 +14,7 @@ import mongoSanitize from 'express-mongo-sanitize';
 import xss from 'xss-clean';
 
 import boardRouter from './routes/boardRoutes.js';
+import boardLocationRouter from './routes/boardLocationRoutes.js'
 import userRouter from './routes/userRoutes.js';
 import reportRouter from './routes/reportRoutes.js';
 import reportController from './controllers/reportController.js';
@@ -127,18 +128,19 @@ app.use('/static', express.static('static'));
 
 // Cadre Route -> for render
 app.use('/api/v1/boards', boardRouter.router_v1);
+app.use('/api/v1/boardLocation', boardLocationRouter.router_v1)
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reports', reportRouter.router_v1);
 app.use('/api/v1/reportMethods', reportMethodRoutes);
 app.use('/api/v1/license', licenseRouter);
-
+app.use('/api/v1/changeBoard', changeBoardRoutes.router_v1);
+app.use('/api/v1/changeBoardLocation', changeBoardLocationRoutes.router_v1);
 
 // Resident Route -> for get json
 app.use('/api/v2/boards', boardRouter.router_v2)
 app.use('/api/v2/reports', reportRouter.router_v2);
 app.use('/api/v2/reportMethods', reportMethodRoutes);
-app.use('/api/v2/changeBoard', changeBoardRoutes.router_v2);
-app.use('/api/v2/changeBoardLocation', changeBoardLocationRoutes.router_v2);
+
 
 app.get('/', async (req, res) => {
   var boardLocation = await boardLocationModel
@@ -262,16 +264,33 @@ app.get('/boardsLocation', authController.protect, (req, res) => {
   boardLocationController.viewAllBoardLocation(req, res);
 });
 
-app.get('/boardsLocation/:id', authController.protect, (req, res) => {
-  boardLocationController.viewBoardLocation(req, res);
+
+
+// for add
+app.get('/boardsLocation/departmental', authController.protect, (req, res) => {
+  boardLocationController.viewBoardLocationForm(req, res);
+});
+
+// for edit action=update
+app.get('/boardsLocation/departmental/:id', authController.protect, (req, res) => {
+  boardLocationController.viewBoardLocationForm(req, res);
 });
 
 app.get('/boardsLocation/:id/changeInfoRequest', authController.protect, (req, res) => {
   boardLocationController.changeInfoRequest(req, res);
 });
 
+
+
+app.get('/boardsLocation/:id/board', authController.protect, (req, res) => {
+  boardController.viewBoard(req, res);
+});
 app.get('/boardsLocation/:id/board/:boardId', authController.protect, (req, res) => {
   boardController.viewBoard(req, res);
+});
+
+app.get('/boardsLocation/:id', authController.protect, (req, res) => {
+  boardLocationController.viewBoardLocation(req, res);
 });
 
 import reportMethodController from './controllers/reportMethodController.js';
@@ -297,4 +316,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-export { server, io };
+export { server, io, __dirname};
