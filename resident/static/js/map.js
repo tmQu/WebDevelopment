@@ -15,9 +15,6 @@ async function initMap() {
     gestureHandling: "greedy", // fix for smartphone -> cannot drag the map
   });
   
-
-  
-
   search(map);
   const subWindow = document.getElementById('sub-window')
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(subWindow);

@@ -39,6 +39,7 @@ const createSendToken = (user, statusCode, res) => {
 const authController = {
   signup: async (req, res, next) => {
     try {
+      req.body.role = { level: req.body.btnradio };
       const newUser = await User.create(req.body);
 
       createSendToken(newUser, 201, res);

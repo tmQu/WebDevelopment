@@ -1,0 +1,48 @@
+#info {
+  display: none;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  position: absolute;
+  z-index: 100;
+}
+
+/* Hide the InfoWindow tail */
+
+.gm-ui-hover-effect {
+  filter: invert(39%) sepia(99%) saturate(7461%) hue-rotate(360deg) brightness(102%) contrast(104%);
+  outline: none !important;
+  margin-top: 15px !important;
+  margin-right: 10px !important;
+}
+
+.gm-style-iw {
+  width: 350px !important;
+  padding: 0 !important;
+  background-color: white !important;
+  box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+  border: 1px solid rgba(72, 181, 233, 0.6);
+  border-radius: 10px;
+}
+
+.gm-style-iw-d {
+  overflow: hidden !important;
+}
+
+.gm-style-iw-tc {
+  display: none !important;
+}
+
+/* .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #69b7eb, #b3dbd3, #f4d6db);
+  border-radius: 10px;
+} */
+
+.btn-report:hover {
+  background-color: red;
+  color: white;
+}

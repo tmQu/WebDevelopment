@@ -11,29 +11,212 @@
   />
 {{/section}}
 
-<div class='container-fluid'>
-  <div class='row justify-content-center'>
-    <div class='col-12 col-lg-10 col-xl-8 mx-auto'>
-      <h2 class='h3 mb-4 page-title'>
-        Settings
-      </h2>
-      <div class='my-4'>
-        <!-- Nav tabs -->
-        <ul class='nav nav-tabs' id='myTab' role='tablist'>
-          <li class='nav-item'>
-            <a
-              class='nav-link active'
-              id='profile-tab'
-              data-toggle='tab'
-              href='#profile'
-              role='tab'
-              aria-controls='profile'
-              aria-selected='true'
-            >
-              Profile
-            </a>
-          </li>
-        </ul>
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul
+    class="navbar-nav sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+    style="background: linear-gradient(45deg, #5c7ea1, #509177);"
+  >
+    <!-- Sidebar - Brand -->
+    <div
+      class="sidebar-brand d-flex align-items-center justify-content-center"
+      href="/"
+    >
+      <div class="sidebar-brand-text mt-5">ADVERTISING BOARDS MANAGEMENT</div>
+    </div>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0" />
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+      <a class="nav-link mt-5" href="/">
+        <i class="bi bi-house"></i>
+        <span>TRANG CHỦ</span></a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      QUẢN LÝ
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="/boardsLocation" id="option">
+        <i class="bi bi-clipboard-data"></i>
+        <span>Xem danh sách</span>
+      </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <!-- Heading -->
+    <div class="sidebar-heading mt-4">
+      Xử lý báo cáo
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="/reports" id="option">
+        <i class="bi bi-clipboard-data"></i>
+        <span>Xem danh sách</span>
+      </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <!-- Heading -->
+    <div class="sidebar-heading mt-4">
+      Cấp phép quảng cáo
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="#" id="option">
+        <i class="bi bi-plus-circle"></i>
+        <span>Tạo yêu cầu</span>
+      </a>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="#" id="option">
+        <i class="bi bi-clipboard-data"></i>
+        <span>Xem danh sách</span>
+      </a>
+    </li>
+
+    <!-- Log out -->
+    <a class="sidebar-heading mt-5 logout" id="logout" href="/login">
+      ĐĂNG XUẤT
+    </a>
+
+  </ul>
+
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 ">
+          <nav>
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-home" aria-selected="true"><b>Profile</b></a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-secure" role="tab" aria-controls="nav-profile" aria-selected="false"><b>Security</b></a>
+            </div>
+          </nav>
+          <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+            <div class='tab-pane active' id='profile' role='tabpanel' aria-labelledby='profile-tab'>
+              <div class='container-fluid mt-2'>
+                <!-- Thông tin bảng quảng cáo -->
+                {{#if boards}}
+                  {{#each boards}}
+                    <div class='card shadow mb-2'>
+
+                      <div class='card-body'>
+                        <div class='row d-flex align-items-stretch'>
+                          <div class='col-lg-5 col-md-5 col-sm-6'>
+                            <div class='white-box text-center'>
+                              {{#if this.imgBillboard}}
+                                <img src='{{this.imgBillboard}}' class='img-fluid' alt='Board image' />
+                              {{else}}
+                                <img src='/static/img/adboard.png' class='img-fluid' alt='user' />
+                              {{/if}}
+                              <div class="button mt-2">
+                          <a class='badge badge-pill badge-primary square-button' id="editButton" href="">
+                            <i class="bi bi-gear"></i> Yêu cầu chỉnh sửa
+                          </a>
+                          <a class='badge badge-pill badge-success square-button ml-2' id="licenseButton" href="">
+                            <i class="bi bi-check-circle"></i> Yêu cầu cấp phép
+                          </a>
+                        </div>
+                            </div>
+                          </div>
+                          <!-- Thông tin điểm đặt quảng cáo -->
+                          <div class='col-lg-7 col-md-7 col-sm-6'>
+                            <h4 class='box-title'>
+                              <strong>{{this.boardType}}</strong>
+                            </h4>
+                            <p>
+                              {{../boardLocation.addr.street_number}}, {{../boardLocation.addr.route}}, {{../boardLocation.addr.ward}},
+                              {{../boardLocation.addr.district}}, {{../boardLocation.addr.city}}
+                            </p>
+                            <p>
+                              Kích thước:
+                              <strong>
+                                <span id="boardSize">{{this.size}}</span>
+                              </strong>
+                            </p>
+                            <p>
+                              Hình thức:
+                              <strong>
+                                {{../boardLocation.advertisementForm}}
+                              </strong>
+                            </p>
+                            <p>
+                              Phân loại:
+                              {{#each ../boardLocation.locationCategory}}
+                                <span class='badge badge-pill badge-primary'>
+                                  {{this}}
+                                </span>
+                              {{/each}}
+                            </p>
+                            <p>
+                              Số lượng:
+                              <strong>
+                                {{this.quantity}}
+                              </strong>
+                            </p>
+                            <p>
+                              Ngày hết hạn hợp đồng:
+                              <strong>
+                                {{this.expireDate}}
+                              </strong>
+                            </p>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {{/each}}
+                {{else}}
+                  <div class='alert alert-warning' role='alert'>
+                    <strong>
+                      Không tìm thấy bảng quảng cáo
+                    </strong>
+                  </div>
+                {{/if}}
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- Main Content -->
+    {{!-- <div class='container-fluid'>
+      <div class='row justify-content-center'>
+        <div class='col-12 col-lg-10 col-xl-8 mx-auto'>
+          <div class='my-4'>
+            <!-- Nav tabs -->
+            <ul class='nav nav-tabs' id='myTab' role='tablist'>
+              <li class='nav-item'>
+                <a
+                  class='nav-link active'
+                  id='profile-tab'
+                  data-toggle='tab'
+                  href='#profile'
+                  role='tab'
+                  aria-controls='profile'
+                  aria-selected='true'
+                >
+                  Profile
+                </a>
+              </li>
+            </ul>
 
         <!-- Tab panes -->
         <div class='tab-content'>
@@ -133,4 +316,6 @@
     </div>
   </div>
 </div>
+
+
 

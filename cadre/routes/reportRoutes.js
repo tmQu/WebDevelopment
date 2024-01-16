@@ -1,11 +1,11 @@
 import reportController from '../controllers/reportController.js';
 import express from 'express';
-import {upload} from '../utils/imgHandler.js';
+import { upload } from '../utils/imgHandler.js';
 
 // router_v1 -> render, cadre
 // router_v2 -> json, resdient
 const router_v1 = express.Router();
-const router_v2 = express.Router();  
+const router_v2 = express.Router();
 
 // cadre
 router_v1
@@ -27,8 +27,4 @@ router_v2.route('/')
 router_v2.route('/:id')
   .get(reportController.getByID_v2);
 
-export default {router_v1, router_v2};
-
-
-
-
+export default { router_v1, router_v2 };

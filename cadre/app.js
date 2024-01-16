@@ -166,6 +166,7 @@ app.get('/test', async (req, res) => {
     await boardItem.save();
   }
   res.send('success');
+  res.render('vwLicense/test', { layout: 'main' });
   // var boardLocations = await boardLocationModel.find();
 
   // for (var i = 0; i < boardLocations.length; i++) {
@@ -187,11 +188,38 @@ app.get('/test', async (req, res) => {
   // }
   // res.send('success');
 });
+
 app.get('/licenseAccount', authController.protect, authController.restrictTo('departmental'), (req, res) => {
-  res.render('vwLicense/licenseAccount', { layout: 'main' });
+  res.render('vwLicense/licenseAccount', { layout: 'department' });
 });
 
+app.get('/license', (req, res) => {
+  res.render('vwLicense/license', { layout: 'main' });
+});
 
+app.get('/wardAdmin', (req, res) => {
+  res.render('vwAdmin/wardAdmin', { layout: 'main' });
+});
+
+app.get('/', async (req, res) => {
+  // var boardLocation = await boardLocationModel
+  //   .find()
+  //   .populate('advertisementForm')
+  //   .populate('locationCategory')
+  //   .populate('addr.district')
+  //   .populate('addr.ward');
+  // var boards = await boardModel.find().populate('boardType');
+
+  // // console.log(boardLocation);
+  // // console.log(boards);
+
+  // res.render('vwHome/index', {
+  //   layout: 'main',
+  //   boardLocation: JSON.stringify(boardLocation),
+  //   boards: JSON.stringify(boards),
+  // });
+  res.render('vwHome/index', { layout: 'main' });
+});
 
 app.get('/login', (req, res) => {
   res.render('vwAccount/login');
@@ -228,7 +256,7 @@ app.use((err, req, res, next) => {
     message: message,
     layout: 'main',
   });
-});
+}); 
 
 app.get('/boardsLocation', authController.protect, (req, res) => {
   boardLocationController.viewAllBoardLocation(req, res);
@@ -242,14 +270,31 @@ app.get('/boardsLocation/:id/changeInfoRequest', authController.protect, (req, r
   boardLocationController.changeInfoRequest(req, res);
 });
 
-app.get('/boardsLocation/:id/board/:boardId',authController.protect, (req, res) => {
+app.get('/boardsLocation/:id/board/:boardId', authController.protect, (req, res) => {
   boardController.viewBoard(req, res);
+});
+
+import reportMethodController from './controllers/reportMethodController.js';
+
+app.get('/reportMethods', (req, res) => {
+  reportMethodController.getAllMethods_v2(req, res);
 });
 
 app.get('/', (req, res) => {
   res.render('vwAdmin/wardAdmin');
 });
 
+app.use((err, req, res, next) => {
+  const statusCode = err.statusCode || 500;
+  const status = err.status || 'error';
+  const message = err.message || 'Something went wrong!';
 
-export {server,io};
+  res.status(statusCode).render('vwError/error', {
+    statusCode: statusCode,
+    status: status,
+    message: message,
+    layout: 'department',
+  });
+});
 
+export { server, io };

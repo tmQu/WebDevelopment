@@ -1,52 +1,233 @@
-<!-- Divider -->
-<hr class="sidebar-divider"/>
-<!-- Heading -->
-<div class="sidebar-heading">
-  QUẢN LÝ
+{{#section css}}
+  <link href="../../static/css/home.css" rel="stylesheet" />
+{{/section}}
+{{#section js}}
+  <script>
+    // Add an event listener to the logout link
+    document.getElementById('logout').addEventListener('click', function () { //
+    Show the logout modal $('#logoutModal').modal('show'); });
+  </script>
+
+  <script>
+    // Add an event listener to the cancel button
+    document.getElementById('cancel').addEventListener('click', function () { //
+    Hide the logout modal $('#logoutModal').modal('hide'); });
+  </script>
+{{/section}}
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul
+    class="navbar-nav sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+    style="background: linear-gradient(45deg, #5c7ea1, #509177);"
+  >
+    <!-- Sidebar - Brand -->
+    <div
+      class="sidebar-brand d-flex align-items-center justify-content-center"
+      href="/"
+    >
+      <div class="sidebar-brand-text mt-5">ADVERTISING BOARDS MANAGEMENT</div>
+    </div>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0" />
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+      <a class="nav-link mt-5" href="/">
+        <i class="bi bi-house"></i>
+        <span>TRANG CHỦ</span></a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      QUẢN LÝ
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="/boardsLocation" id="option">
+        <i class="bi bi-clipboard-data"></i>
+        <span>Xem danh sách</span>
+      </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <!-- Heading -->
+    <div class="sidebar-heading mt-4">
+      Xử lý báo cáo
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="/reports" id="option">
+        <i class="bi bi-clipboard-data"></i>
+        <span>Xem danh sách</span>
+      </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <!-- Heading -->
+    <div class="sidebar-heading mt-4">
+      Cấp phép quảng cáo
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="#" id="option">
+        <i class="bi bi-plus-circle"></i>
+        <span>Tạo yêu cầu</span>
+      </a>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="#" id="option">
+        <i class="bi bi-clipboard-data"></i>
+        <span>Xem danh sách</span>
+      </a>
+    </li>
+
+    <!-- Log out -->
+    <a class="sidebar-heading mt-5 logout" id="logout">
+      ĐĂNG XUẤT
+    </a>
+
+  </ul>
+
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+
+    </div>
+  </div>
+  <!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+<div id="sub-window">
+      <div class="carousel slide mt-4" data-bs-ride="carousel" id="img-billboard" style="height: 240px;">
+        <div class="carousel-inner" id="carousel-location">
+        </div>
+
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#img-billboard"
+          data-bs-slide="prev">
+          <span
+            class="carousel-control-prev-icon shadow"
+            aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#img-billboard"
+          data-bs-slide="next">
+          <span
+            class="carousel-control-next-icon shadow"
+            aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>  
+      <div class="of-scroll">
+        <div class="overflow-content"></div>
+      </div>
+
+      <!-- <div class = 'detail-infor'>
+
+      </div> -->
+
+      <button id="btn-collapse">
+        <div>
+          <i class="bi bi-arrow-left-short" style="font-size: 15px;"></i>
+        </div>
+      </button>
+      <script>
+        document.querySelector('#btn-collapse').onclick = () => {
+          var subwindow = document.getElementById('sub-window');
+          if (subwindow.classList.contains('narrow')){
+            subwindow.classList.remove('narrow')
+            document.querySelector('#btn-collapse').innerHTML = '<div><i class="bi bi-arrow-left-short" style="font-size: 15px;"></i></div>'
+          }
+          else {
+            subwindow.classList.add('narrow');
+            document.querySelector('#btn-collapse').innerHTML = '<div><i class="bi bi-arrow-right-short" style="font-size: 15px;"></i></div>'
+          }
+        };
+      </script>
+    </div>
+
+<!-- Current location button -->
+<div class="location-button" id="btnCurPosition">
+  <div class="location-icon">
+    <i class="bi bi-crosshair"></i>
+  </div>
 </div>
 
-<!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link" href="/boardsLocation" id="option">
-    <i class="bi bi-clipboard-data"></i>
-    <span>Xem danh sách</span>
-  </a>
-</li>
-
-<!-- Divider -->
-<hr class="sidebar-divider" />
-<!-- Heading -->
-<div class="sidebar-heading mt-4">
-  Xử lý báo cáo
+<!-- Hiển thị thông tin vị trí khi nhấn -->
+<div id="info">
+  <span id="close-button">&times;</span>
+  <h2>Thông tin vị trí</h2>
+  <p id="location-info"></p>
 </div>
 
-<!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link" href="/reports" id="option">
-    <i class="bi bi-clipboard-data"></i>
-    <span>Xem danh sách</span>
-  </a>
-</li>
-
-<!-- Divider -->
-<hr class="sidebar-divider" />
-<!-- Heading -->
-<div class="sidebar-heading mt-4">
-  Cấp phép quảng cáo
+<!-- Search box -->
+<input
+  id="pac-input"
+  class="controls"
+  type="text"
+  placeholder="&#xF002; Search Address"
+/>
+<div id="filter">
+  <div class="form-check form-switch" id="switch">
+    <input class="form-check-input" type="checkbox" role="switch" id="btnAds" />
+    <label class="form-check-label" for="btnAds" id="ads">Bảng QC</label>
+  </div>
+  <div class="form-check form-switch" id="switch">
+    <input
+      class="form-check-input"
+      type="checkbox"
+      role="switch"
+      id="flexSwitchCheckDefault"
+    />
+    <label class="form-check-label" for="flexSwitchCheckDefault" id="report">
+      Báo cáo vi phạm
+    </label>
+  </div>
 </div>
 
-<!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link" href="#" id="option">
-    <i class="bi bi-plus-circle"></i>
-    <span>Tạo yêu cầu</span>
-  </a>
-</li>
-
-<!-- Nav Item - Pages Collapse Menu -->
-<li class="nav-item">
-  <a class="nav-link" href="#" id="option">
-    <i class="bi bi-clipboard-data"></i>
-    <span>Xem danh sách</span>
-  </a>
-</li>
+<!-- Logout Modal-->
+<div
+  class="modal fade"
+  id="logoutModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Xác nhận đăng xuất</h5>
+        <button class="close" id="cancel">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <i class="bi bi-box-arrow-right"></i>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-danger" href="/login">Đăng xuất</a>
+      </div>
+    </div>
+  </div>
+</div>

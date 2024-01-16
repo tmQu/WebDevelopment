@@ -157,3 +157,8 @@ body {
 .modal.show {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.badge {
+  display: flex !important;
+  align-items: center !important;
+}
