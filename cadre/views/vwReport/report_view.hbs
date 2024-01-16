@@ -34,7 +34,6 @@
               Chi tiết báo cáo
             </a>
           </li>
-          {{#unless isSuperAdmin}}
           <li class='nav-item'>
             <a
               class='nav-link'
@@ -48,7 +47,6 @@
               Cập nhật trạng thái
             </a>
           </li>
-          {{/unless}}
         </ul>
 
         <!-- Tab panes -->
@@ -171,20 +169,7 @@
                             </tr>
                           </tbody>
                         </table>
-                        {{#if isSuperAdmin}}
-                          <h3 class='box-title mt-5'>
-                          Cách thức xử lý
-                          </h3>
-                          {{#if report.handleDetails}}
-                          <div class="alert alert-warning" role="alert">
-                              {{report.handleDetails}}
-                          </div>
-                          {{else}}
-                            <div class="alert alert-secondary" role="alert">
-                              Chưa cung cấp cách thức xử lý
-                            </div>
-                          {{/if}}
-                        {{/if}}
+                        
                       </div>
                     </div>
                   </div>
@@ -192,7 +177,6 @@
               </div>
             </div>
           </div>
-          {{#unless isSuperAdmin}}
           <div class='tab-pane' id='security' role='tabpanel' aria-labelledby='security-tab'>
                        <!-- Cách thức xử lý -->
             <form action="/api/v1/reports/sendEmail" method="post" id="updateForm">
@@ -264,9 +248,7 @@
               <input type="hidden" name="reportId" value="{{report._id}}">
             </form>
           </div>
-          {{/unless}}
         </div>
-
       </div>
     </div>
   </div>

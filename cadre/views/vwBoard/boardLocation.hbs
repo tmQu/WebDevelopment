@@ -95,6 +95,7 @@
   <!-- End of Sidebar -->
 <div class='container mt-4'>
   <div class='row'>
+    {{#if isSuperAdmin}}
     <div >
       <form action="http://localhost:4000/boardsLocation/departmental" method="get">
       <input type="hidden" name="action" value="add" >
@@ -102,8 +103,8 @@
         <i class="bi bi-plus-square"></i> Thêm điểm đặt mới
       </button>
       </form>
-
     </div>
+    {{/if}}
     <div class='col-lg-12'>
       <div class='main-box clearfix'>
         <div class='table-responsive'>

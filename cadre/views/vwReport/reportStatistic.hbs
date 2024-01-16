@@ -17,17 +17,7 @@
         labels: ['Chưa xử lý', 'Đang xử lý', 'Đã xử lý'],
         datasets: [{
           label: 'Số lượng báo cáo',
-          data: [{{number_statistic.pending}}, {{number_statistic.inprogress}}, {{number_statistic.done}}],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-          ],
-          borderColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)'
-          ],
+          data: [100, 200, 300],
           borderWidth: 1
         }]
       },
@@ -44,15 +34,12 @@
 {{/section}}
 
 <div class='container'>
-    {{#if isSuperAdmin}}
-    <div class="row">
-      <div>
-          <canvas id="myChart"></canvas>
-      </div>
-    </div>
+  {{#if isSuperAdmin}}
+  <div class="row">
+      <canvas id="myChart"></canvas>
+  </div>
   {{/if}}
   <div class='row'>
-
     <div class='col-lg-12'>
       <div class='main-box clearfix'>
         <div class='table-responsive'>
@@ -132,24 +119,25 @@
                         </span>
                       </div>
                     </td>
-                    <td>
-                      {{#if ../isSuperAdmin}}
-                      <a href='http://localhost:4000/reports/{{this._id}}' class='table-link'>
+                    <td style='width: 20%;'>
+                      <a href='#' class='table-link'>
                         <span class='fa-stack'>
                           <i class='fa fa-square fa-stack-2x'></i>
                           <i class='fa fa-search-plus fa-stack-1x fa-inverse'></i>
-                        
                         </span>
-                        Xem cách thức xử lý
                       </a>
-                      {{else}}
                       <a href='http://localhost:4000/reports/{{this._id}}' class='table-link'>
                         <span class='fa-stack'>
                           <i class='fa fa-square fa-stack-2x'></i>
                           <i class='fa fa-pencil fa-stack-1x fa-inverse'></i>
                         </span>
                       </a>
-                      {{/if}}
+                      <a href='#' class='table-link danger'>
+                        <span class='fa-stack'>
+                          <i class='fa fa-square fa-stack-2x'></i>
+                          <i class='fa fa-trash-o fa-stack-1x fa-inverse'></i>
+                        </span>
+                      </a>
                     </td>
                   </tr>
                 {{/each}}
