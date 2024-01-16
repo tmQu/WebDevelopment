@@ -111,9 +111,15 @@
                 {{/if}}
 
                 {{#paginate currentPage lastPage}}
-                <li class="page-item {{#if (eq this.number currentPage)}}active{{/if}}">
-                    <a class="page-link" href="?page={{this.number}}">{{this.number}}</a>
-                </li>
+                    {{#compare this.number '==' ../currentPage}}
+                        <li class="page-item active">
+                            <a class="page-link" href="?page={{this.number}}">{{this.number}}</a>
+                        </li>
+                    {{else}}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{this.number}}">{{this.number}}</a>
+                        </li>
+                    {/compare}}
                 {{/paginate}}
 
 

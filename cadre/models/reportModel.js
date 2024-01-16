@@ -69,6 +69,13 @@ const reportModel = mongoose.Schema(
       type: Number,
       default: -1,
     },
+    officer: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'users',
+    },
+    handleDetails: {
+      type: String,
+    },
   },
   {
     toJSON: { virtuals: true },

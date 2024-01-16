@@ -306,7 +306,7 @@ const reportController = {
       else if (statusDetails === 'inprogress') status = 0;
       else status = 1;
 
-      const report = await Report.findByIdAndUpdate(reportId, { status: status });
+      const report = await Report.findByIdAndUpdate(reportId, { status: status, handleDetails: updateDetails, officer: officer });
 
       let html = emailTemplate.sendEmailReport(sender, statusDetails, updateDetails, officer);
 
