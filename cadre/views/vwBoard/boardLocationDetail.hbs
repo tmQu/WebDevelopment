@@ -19,80 +19,8 @@
     id="accordionSidebar"
     style="background: linear-gradient(45deg, #5c7ea1, #509177);"
   >
-    <!-- Sidebar - Brand -->
-    <div
-      class="sidebar-brand d-flex align-items-center justify-content-center"
-      href="/"
-    >
-      <div class="sidebar-brand-text mt-5">ADVERTISING BOARDS MANAGEMENT</div>
-    </div>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0" />
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-      <a class="nav-link mt-5" href="/">
-        <i class="bi bi-house"></i>
-        <span>TRANG CHỦ</span></a>
-    </li>
-    <!-- Divider -->
-    <hr class="sidebar-divider" />
-    <!-- Heading -->
-    <div class="sidebar-heading">
-      QUẢN LÝ
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link" href="/boardsLocation" id="option">
-        <i class="bi bi-clipboard-data"></i>
-        <span>Xem danh sách</span>
-      </a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider" />
-    <!-- Heading -->
-    <div class="sidebar-heading mt-4">
-      Xử lý báo cáo
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link" href="/reports" id="option">
-        <i class="bi bi-clipboard-data"></i>
-        <span>Xem danh sách</span>
-      </a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider" />
-    <!-- Heading -->
-    <div class="sidebar-heading mt-4">
-      Cấp phép quảng cáo
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link" href="#" id="option">
-        <i class="bi bi-plus-circle"></i>
-        <span>Tạo yêu cầu</span>
-      </a>
-    </li>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link" href="#" id="option">
-        <i class="bi bi-clipboard-data"></i>
-        <span>Xem danh sách</span>
-      </a>
-    </li>
-
-    <!-- Log out -->
-    <a class="sidebar-heading mt-5 logout" id="logout" href="/login">
-      ĐĂNG XUẤT
-    </a>
+    
+    {{> sidebarWard}}
 
   </ul>
 
@@ -107,7 +35,7 @@
           <nav>
             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
               <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-home" aria-selected="true"><b>Profile</b></a>
-              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-secure" role="tab" aria-controls="nav-profile" aria-selected="false"><b>Security</b></a>
+              
             </div>
           </nav>
           <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
@@ -134,7 +62,7 @@
                                     <a class='badge badge-pill badge-primary square-button edit-button' href="/boardsLocation/{{this.boardLocation}}/board/{{this._id}}?action=update" aria-disabled="true">
                                       <i class="bi bi-gear"></i> Chỉnh sửa bảng quảng cáo
                                     </a>
-                                      <a class='badge badge-pill badge-primary square-button edit-button' href="http://localhost:4000/api/v1/boards/delete/{{this._id}}" aria-disabled="true">
+                                      <a class='badge badge-pill badge-danger square-button edit-button' href="http://localhost:4000/api/v1/boards/delete/{{this._id}}" aria-disabled="true">
                                       <i class="bi bi-trash3-fill"></i>Xóa bảng quảng cáo
                                     </a>
 
@@ -223,34 +151,5 @@
         </div>
       </div>
     </div>
-    <!-- Main Content -->
-    {{!-- <div class='container-fluid'>
-      <div class='row justify-content-center'>
-        <div class='col-12 col-lg-10 col-xl-8 mx-auto'>
-          <div class='my-4'>
-            <!-- Nav tabs -->
-            <ul class='nav nav-tabs' id='myTab' role='tablist'>
-              <li class='nav-item'>
-                <a
-                  class='nav-link active'
-                  id='profile-tab'
-                  data-toggle='tab'
-                  href='#profile'
-                  role='tab'
-                  aria-controls='profile'
-                  aria-selected='true'
-                >
-                  Profile
-                </a>
-              </li>
-            </ul>
-
-        <!-- Tab panes -->
-        <div class='tab-content'>
-          <div class='tab-pane active' id='profile' role='tabpanel' aria-labelledby='profile-tab'>
-            <div class='container-fluid mt-2'>
-              <!-- Thông tin bảng quảng cáo -->
-            --}}
-             
   </div>
 </div>

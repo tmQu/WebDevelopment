@@ -73,6 +73,22 @@ Handlebars.registerHelper('containsLocationCategory', function(locationCategorie
   else
     return false
 });
+
+Handlebars.registerHelper('partial', function (name, context) {
+  var partial = Handlebars.partials[name];
+  if (typeof partial === 'undefined') {
+    return 'Partial not found';
+  }
+  return partial(context);
+});
+
+Handlebars.registerHelper('partial', function (name, context) {
+  var partial = Handlebars.partials[name];
+  if (typeof partial === 'undefined') {
+    return 'Partial not found';
+  }
+  return partial(context);
+});
   
 
-export default { compare: Handlebars.helpers.compare, paginate: Handlebars.helpers.paginate, containsLocationCategory: Handlebars.helpers.containsLocationCategory};
+export default { compare: Handlebars.helpers.compare, paginate: Handlebars.helpers.paginate, containsLocationCategory: Handlebars.helpers.containsLocationCategory, partial: Handlebars.helpers.partial};

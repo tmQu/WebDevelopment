@@ -245,6 +245,7 @@ app.get('/boardsLocation/:id', authController.protect, (req, res) => {
 });
 
 
+import handlebarsHelpers from './static/js/handlebarsHelpers.js';
 
 app.get('/reportMethods', (req, res) => {
   reportMethodController.getAllMethods_v2(req, res);

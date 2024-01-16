@@ -22,8 +22,11 @@
     id="accordionSidebar"
     style="background: linear-gradient(45deg, #5c7ea1, #509177);"
   >
+  
+    {{> sidebarWard}}
+
     <!-- Sidebar - Brand -->
-    <div
+    {{!-- <div
       class="sidebar-brand d-flex align-items-center justify-content-center"
       href="/"
     >
@@ -95,7 +98,7 @@
     <!-- Log out -->
     <a class="sidebar-heading mt-5 logout" id="logout">
       ĐĂNG XUẤT
-    </a>
+    </a> --}}
 
   </ul>
 
@@ -202,32 +205,5 @@
     <label class="form-check-label" for="flexSwitchCheckDefault" id="report">
       Báo cáo vi phạm
     </label>
-  </div>
-</div>
-
-<!-- Logout Modal-->
-<div
-  class="modal fade"
-  id="logoutModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Xác nhận đăng xuất</h5>
-        <button class="close" id="cancel">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <i class="bi bi-box-arrow-right"></i>
-      </div>
-      <div class="modal-footer">
-        <a class="btn btn-danger" href="/login">Đăng xuất</a>
-      </div>
-    </div>
   </div>
 </div>

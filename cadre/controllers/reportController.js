@@ -154,7 +154,7 @@ const reportController = {
           inprogress: number_statistic[1],
           done: number_statistic[2]
         },
-        layout: 'report',
+        layout: 'list',
         reports: reports,
         currentPage: page,
         hasNextPage: ITEMS_PER_PAGE * page < totalItems, // Kiểm tra trang tiếp theo có tồn tại không
@@ -317,7 +317,7 @@ const reportController = {
       else if (statusDetails === 'inprogress') status = 0;
       else status = 1;
 
-      const report = await Report.findByIdAndUpdate(reportId, { status: status });
+      const report = await Report.findByIdAndUpdate(reportId, { status: status, handleDetails: updateDetails, officer: officer });
 
       let html = emailTemplate.sendEmailReport(sender, statusDetails, updateDetails, officer);
 
