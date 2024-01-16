@@ -20,16 +20,16 @@ const boardLocationController = {
       let boardLocation = [];
 
       var query = {};
-      if (req.user.role.level === 'ward') {
+      if (req.user.role.level === 'wards') {
         console.log(req.user.role.detail);
         query['addr.ward'] = mongoose.Types.ObjectId(req.user.role.detail);
         let ward = await wardModel.findById(req.user.role.detail);
         query['addr.district'] = mongoose.Types.ObjectId(ward.district);
-      } else if (req.user.role.level === 'district') {
+      } else if (req.user.role.level === 'districts') {
         query['addr.district'] = mongoose.Types.ObjectId(req.user.role.detail);
       }
       
-      
+
       
       const options = {
         skip: (page - 1) * ITEMS_PER_PAGE,
