@@ -1,14 +1,109 @@
 {{#section 'css'}}
 <link rel="stylesheet" href="../../../static/css/boardRequest.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/css/fileinput.min.css"
+    />
 {{/section}}
 
 {{#section 'js'}}
-<script src="../../../static/js/boards/boardRequest.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/fileinput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/locales/vi.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/buffer.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/filetype.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/piexif.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.5.2/js/plugins/sortable.min.js"></script>
+<script>
+    $("#editUploadImage").fileinput({
+    dropZoneEnabled: false,
+    maxFileCount: 1,
+    showUpload: false,
+    allowedFileExtensions: ["jpg", "png", "gif"],
+  });
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+  const editBoardForm = document.getElementById('editBoardForm');
+
+  editBoardForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    if (!validateForm()) {
+      return; 
+    }
+    editBoardForm.submit();
+  });
+
+  function validateForm() {
+    const boardWidth = document.getElementById('editBoardWidth').value;
+    const boardHeight = document.getElementById('editBoardHeight').value;
+    const boardQuantity = document.getElementById('editQuantity').value;
+    const boardType = document.getElementById('editBoardType').value;
+
+    {{#unless isSuperAdmin}}
+    const reason = document.getElementById('editReason').value;
+      {{#if action.add}}
+      const imgBillboard = document.getElementById('editUploadImage').value;
+      
+      if (imgBillboard.files.length === 0) {
+        alert('Vui lòng chọn ảnh đính kèm.');
+        return false;
+      }
+      {{/if}}
+    {{/unless}}
+
+
+    // Kiểm tra các trường nhập liệu ở đây
+    if (!isPositiveInteger(boardWidth)) {
+      alert('Vui lòng nhập số nguyên dương cho chiều rộng.');
+      return false;
+    }
+
+    if (!isPositiveInteger(boardHeight)) {
+      alert('Vui lòng nhập số nguyên dương cho chiều cao.');
+      return false;
+    }
+
+    if (!isPositiveInteger(boardQuantity)) {
+      alert('Vui lòng nhập số nguyên dương cho số lượng.');
+      return false;
+    }
+
+    if (boardType === '') {
+      alert('Vui lòng chọn loại bảng quảng cáo.');
+      return false;
+    }
+    {{#unless isSuperAdmin}}
+    if (reason === '') {
+      alert('Vui lòng nhập lý do chỉnh sửa.');
+      return false;
+    }
+    {{/unless}}
+
+    return true; // Biểu mẫu hợp lệ
+  }
+
+  function isPositiveInteger(value) {
+    return /^[1-9]\d*$/.test(value);
+  }
+});
+
+</script>
 {{/section}}
 
 <div class="formbold-main-wrapper">
   <div class="formbold-form-wrapper">
-    <form action="/api/v2/changeBoard" method="POST" enctype="multipart/form-data" id="editBoardForm">
+    <form action={{#if isSuperAdmin}} 
+                    {{#if action.add}}
+                      '/api/v1/boards/add/{{board._id}}/'
+                    {{else}} 
+                      "/api/v1/boards/update/{{board._id}}/" 
+                    {{/if}}
+                    {{else}} 
+                    "/api/v1/changeBoard" 
+                    {{/if}}
+                     method="POST" enctype="multipart/form-data" id="editBoardForm">
         <div class="formbold-input-flex">
           <div>
               <input
@@ -58,6 +153,7 @@
           </div>
         </div>
 
+        {{#unless isSuperAdmin}}
         <div class="formbold-textarea">
             <textarea
                 rows="6"
@@ -68,6 +164,7 @@
             ></textarea>
             <label for="editReason" class="formbold-form-label"> Lý do </label>
         </div>
+        {{/unless}}
 
         <div class="formbold-input-file">
           <label for="editUploadImage" class="formbold-input-label">
@@ -84,10 +181,18 @@
               Ảnh đính kèm           
           </label>
         </div>
-        <input type="file" name="imgBillboard" id="editUploadImage" class="formbold-form-input" />
+        <input type="file" name="imgBillboard" id="editUploadImage" class="formbold-form-input"/>
 
-        <button class="formbold-btn">
+        <button class="formbold-btn" type="submit">
+          {{#if isSuperAdmin}}
+            {{#if action.add}}
+            Thêm bảng mớ
+            {{else}}
+            Chỉnh sửa
+            {{/if}}
+          {{else}}
             Gửi
+          {{/if}}
         </button>
         <input type="hidden" name="creator" value="{{user._id}}">
         <input type="hidden" name="boardLocation" value="{{boardLocation._id}}">

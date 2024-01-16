@@ -107,13 +107,21 @@ const boardController = {
   },
   createBoard: async (req, res) => {
     try {
-      const newBoard = await boardModel.create(req.body);
-      res.status(201).json({
-        status: 'success',
-        data: {
-          board: newBoard,
-        },
-      });
+      
+      var boardType = await boardTypeModel.findById(req.body.boardType);
+      console.log(boardType);
+      var unit = boardType.boardType.split(' ')[0].toLowerCase() + '/bảng';
+      let data = {
+        size: `${req.body.boardWidth}x${req.body.boardHeight}`,
+        quantity: `${req.body.boardQuantity} ${unit}`,
+        boardType: req.body.boardType,
+        imgBillboard: '/' + req.file.path,
+        boardLocation: req.body.boardLocation
+      }
+      var board = await boardModel.create(data);
+
+
+      res.redirect('/boardsLocation/' + req.body.boardLocation)
     } catch (err) {
       res.status(400).json({
         status: 'fail',
@@ -123,30 +131,38 @@ const boardController = {
   },
   updateBoard: async (req, res) => {
     try {
-      const updates = Object.keys(req.body);
-      const allowedUpdates = ['addr', 'location', 'isPlan', 'advertisementForm', 'locationCategory', 'status'];
-      const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
-
-      if (!isValidOperation) {
-        return res.status(404).send({ error: 'Invalid updates!' });
+      console.log('test')
+      console.log(req.body.boardType)
+      console.log(req.body)
+      var boardType = await boardTypeModel.findById(req.body.boardType);
+      console.log(boardType);
+      var unit = boardType.boardType.split(' ')[0].toLowerCase() + '/bảng';
+      let updateInfor = {
+        size: `${req.body.boardWidth}x${req.body.boardHeight}`,
+        quantity: `${req.body.boardQuantity} ${unit}`,
+        boardType: boardType._id,
       }
 
-      const board = await boardModel.findByIdAndUpdate(req.params.id, req.body, {
+      if (req.file)
+      {
+          updateInfor.imgBillboard = '/' + req.file.path;
+      }
+
+
+
+      const board = await boardModel.findByIdAndUpdate(req.params.id, updateInfor, {
         new: true,
         runValidators: true,
       });
 
-      res.status(200).json({
-        status: 'success',
-        data: {
-          board,
-        },
-      });
+      res.redirect('/boardsLocation/' + board.boardLocation)
     } catch (err) {
-      res.status(400).json({
+      res.render('vwError/error', {
+        statusCode: 500,
         status: 'fail',
-        message: err,
-      });
+        message: err.message,
+        layout: 'main',
+      })
     }
   },
   deleteBoard: async (req, res) => {
@@ -173,6 +189,7 @@ const boardController = {
 
   viewBoard: async (req, res) => {
     try {
+      let action = req.query.action;
       let board = await boardModel.findById(req.params.boardId);
       let boardLocation = await boardLocationModel.findById(req.params.id);
       let boardType = await boardTypeModel.find();
@@ -201,14 +218,31 @@ const boardController = {
           ...type,
         };
       });
+      
+      if ((user.role.level === 'departmental' && action === 'add')) {
+        res.render('vwBoard/boardRequest', {
+          isSuperAdmin: req.user.role.level === 'departmental',
+          action: {
+            add: action === 'add',
+            edit: action === 'edit',
+          },
+          boardType,
+          user: user.toObject(),
+          layout: 'report',
+        });
+      }
 
+      // request change board
       res.render('vwBoard/boardRequest', {
+        isSuperAdmin: req.user.role.level === 'departmental',
         board,
         boardLocation,
         boardType,
         user: user.toObject(),
         layout: 'report',
       });
+
+
     } catch (err) {
       console.log(err);
     }

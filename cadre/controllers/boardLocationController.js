@@ -63,6 +63,7 @@ const boardLocationController = {
   },
   viewBoardLocation: async (req, res) => {
     try {
+    
       let boardLocation = await boardLocationModel.findById(req.params.id);
       let boards = await boardModel.find({ boardLocation: req.params.id });
       let boardType = await boardTypeModel.find();
@@ -98,8 +99,9 @@ const boardLocationController = {
           boardType: boardType.boardType,
         };
       });
-
+      console.log(req.user)
       res.render('vwBoard/boardLocationDetail', {
+        isSuperAdmin: req.user.role.level === 'departmental',
         layout: 'list',
         user: user,
         boards: boards,

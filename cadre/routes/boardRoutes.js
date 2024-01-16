@@ -1,6 +1,7 @@
 import boardController from '../controllers/boardController.js';
 import authController from '../controllers/authController.js';
 import express from 'express';
+import { upload } from '../utils/imgHandler.js';
 
 
 // router_v1 -> render, cadre
@@ -13,16 +14,20 @@ router_v1
   .get(authController.protect,
     boardController.getBoardLocationWithId)
 
-  .patch(    
+router_v1.route('/update/:id')
+    .post(    
     authController.protect,
-    authController.restrictTo('super-admin'),
+    authController.restrictTo('departmental'),
+    upload.single('imgBillboard'),
     boardController.updateBoard)
 
-  .delete(
-    authController.protect,
-    authController.restrictTo('super-admin'),
-    boardController.deleteBoard
-  );
+router_v1.route('/add')
+.post(    
+  authController.protect,
+  authController.restrictTo('departmental'),
+  upload.single('imgBillboard'),
+  boardController.createBoard)
+
 
 router_v1.route('/').get(boardController.viewBoard);
 
@@ -35,6 +40,7 @@ router_v2
   .route('/')
   .get(boardController.getAllBoardLocation)
   .post(boardController.createBoard);
+
 
 router_v2
   .route('/detail/:id')

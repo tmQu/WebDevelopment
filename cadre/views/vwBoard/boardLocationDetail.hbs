@@ -114,6 +114,7 @@
             <div class='tab-pane active' id='profile' role='tabpanel' aria-labelledby='profile-tab'>
               <div class='container-fluid mt-2'>
                 <!-- Thông tin bảng quảng cáo -->
+                <!--Tets-->
                 {{#if boards}}
                   {{#each boards}}
                     <div class='card shadow mb-2'>
@@ -128,13 +129,27 @@
                                 <img src='/static/img/adboard.png' class='img-fluid' alt='user' />
                               {{/if}}
                               <div class="button mt-2">
-                          <a class='badge badge-pill badge-primary square-button' id="editButton" href="">
-                            <i class="bi bi-gear"></i> Yêu cầu chỉnh sửa
-                          </a>
-                          <a class='badge badge-pill badge-success square-button ml-2' id="licenseButton" href="">
-                            <i class="bi bi-check-circle"></i> Yêu cầu cấp phép
-                          </a>
-                        </div>
+                                {{isSuperAdmin}}
+                                {{#if ../isSuperAdmin}}
+                                    <a class='badge badge-pill badge-primary square-button edit-button' href="/boardsLocation/{{this.boardLocation}}/board/{{this._id}}?action=update" aria-disabled="true">
+                                      <i class="bi bi-gear"></i> Chỉnh sửa bảng quảng cáo
+                                    </a>
+                                {{else}}
+                                  <a class='badge badge-pill badge-primary square-button edit-button' href="/boardsLocation/{{this.boardLocation}}/board/{{this._id}}" aria-disabled="true">
+                                    <i class="bi bi-gear"></i> Yêu cầu chỉnh sửa
+                                  </a>
+                                  {{#compare this.isLicense '===' true}}
+                                    <a href="#" class="btn btn-success badge badge-pill badge-success square-button ml-2 disabled" role="button" aria-disabled="true">
+                                      <i class="bi bi-check-circle"></i>Yêu cầu cấp phép
+                                    </a>
+                                  {{else}}
+                                    <a href="/api/v1/license/form/{{this._id}}" class='badge badge-pill badge-success square-button ml-2' id="licenseButton">
+                                      <i class="bi bi-check-circle"></i> Yêu cầu cấp phép
+                                    </a>
+                                  {{/compare}}
+
+                                {{/if}}
+                              </div>
                             </div>
                           </div>
                           <!-- Thông tin điểm đặt quảng cáo -->
@@ -231,18 +246,27 @@
                             {{this.boardType}}
                           </h4>
                           <div class="d-flex">
+                                                            abcd
+                            {{#if ../isSuperAdmin}}
                             <a class='badge badge-pill badge-primary square-button edit-button' href="/boardsLocation/{{this.boardLocation}}/board/{{this._id}}" aria-disabled="true">
-                              <i class="bi bi-gear"></i> Yêu cầu chỉnh sửa
+                              <i class="bi bi-gear"></i> Chỉnh sửa bảng quảng cáo
                             </a>
-                            {{#compare this.isLicense '===' true}}
-                              <a href="#" class="btn btn-success badge badge-pill badge-success square-button ml-2 disabled" role="button" aria-disabled="true">
-                                <i class="bi bi-check-circle"></i>Yêu cầu cấp phép
-                              </a>
                             {{else}}
-                              <a href="/api/v1/license/form/{{this._id}}" class='badge badge-pill badge-success square-button ml-2' id="licenseButton">
-                                <i class="bi bi-check-circle"></i> Yêu cầu cấp phép
+                              <a class='badge badge-pill badge-primary square-button edit-button' href="/boardsLocation/{{this.boardLocation}}/board/{{this._id}}" aria-disabled="true">
+                                <i class="bi bi-gear"></i> Yêu cầu chỉnh sửa
                               </a>
-                            {{/compare}}
+                              {{#compare this.isLicense '===' true}}
+                                <a href="#" class="btn btn-success badge badge-pill badge-success square-button ml-2 disabled" role="button" aria-disabled="true">
+                                  <i class="bi bi-check-circle"></i>Yêu cầu cấp phép
+                                </a>
+                              {{else}}
+                                <a href="/api/v1/license/form/{{this._id}}" class='badge badge-pill badge-success square-button ml-2' id="licenseButton">
+                                  <i class="bi bi-check-circle"></i> Yêu cầu cấp phép
+                                </a>
+                              {{/compare}}
+
+                            {{/if}}
+
                           </div>
                         </div>
                         <div class='card-body'>

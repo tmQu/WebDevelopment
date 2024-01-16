@@ -3,10 +3,14 @@ import changeBoardModel from '../models/changeBoardModel.js';
 const changeBoardController = {
   createChangeInfoReq: async (req, res) => {
     try {
+      var boardType = await boardTypeModel.findById(req.body.boardType);
+      console.log(boardType);
+      var unit = boardType.boardType.split(' ')[0].toLowerCase() + '/bảng';
+
       const newChangeInfoReq = await changeBoardModel.create({
         boardType: req.body.boardType,
         size: `${req.body.boardWidth}x${req.body.boardHeight}`,
-        quantity: `${req.body.boardQuantity} trụ/bảng`,
+        quantity: `${req.body.boardQuantity} ${unit}}`,
         reason: req.body.boardReason,
         imgBillboard: '/' + req.file.path,
         creator: req.body.creator,

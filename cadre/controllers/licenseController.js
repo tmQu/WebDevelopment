@@ -29,7 +29,7 @@ const licenseController = {
             board_location.advertisementForm = board_location.advertisementForm.advertisementForm;
             console.log(board_location)
             res.render('vwLicense/license', { 
-                layout: 'datatable' ,
+                layout: 'license' ,
                 imgBoardLocation: board_location.imgBillboardLocation[0],
                 plan: (board_location.isPlanning == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'),
                 boardLocation: board_location,
@@ -124,7 +124,7 @@ const licenseController = {
             console.log(districts)
             console.log(wards)
             res.render('vwLicense/licenseTable', {
-                layout: 'datatable',
+                layout: 'license',
                 license: licenses,
                 districts: districts,
                 wards: JSON.stringify(wards),
@@ -180,7 +180,7 @@ const licenseController = {
             board_location.advertisementForm = board_location.advertisementForm.advertisementForm;
             
             res.render('vwLicense/license_detail', { 
-                layout: 'datatable' ,
+                layout: 'license' ,
                 imgBoardLocation: board_location.imgBillboardLocation[0],
                 plan: (board_location.isPlanning == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'),
                 boardLocation: board_location,
