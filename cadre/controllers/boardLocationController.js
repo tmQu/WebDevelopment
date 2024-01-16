@@ -19,17 +19,17 @@ const boardLocationController = {
 
       let boardLocation = [];
 
-      const query = {};
-      if (req.user.role.level === 'wards') {
-        query['addr.ward'] = req.user.role.detail;
+      var query = {};
+      if (req.user.role.level === 'ward') {
+        console.log(req.user.role.detail);
+        query['addr.ward'] = mongoose.Types.ObjectId(req.user.role.detail);
         let ward = await wardModel.findById(req.user.role.detail);
-        query['addr.district'] = ward.district;
-      } else if (req.user.role.level === 'districts') {
-        query['addr.district'] = req.user.role.detail;
+        query['addr.district'] = mongoose.Types.ObjectId(ward.district);
+      } else if (req.user.role.level === 'district') {
+        query['addr.district'] = mongoose.Types.ObjectId(req.user.role.detail);
       }
-
-      query['addr.district'] = mongoose.Types.ObjectId('659271d460292ab573f7603c')
-  
+      
+      
       
       const options = {
         skip: (page - 1) * ITEMS_PER_PAGE,

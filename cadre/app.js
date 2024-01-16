@@ -231,7 +231,7 @@ app.get('/boardsLocation/:id', authController.protect, (req, res) => {
   boardLocationController.viewBoardLocation(req, res);
 });
 
-import reportMethodController from './controllers/reportMethodController.js';
+
 
 app.get('/reportMethods', (req, res) => {
   reportMethodController.getAllMethods_v2(req, res);
