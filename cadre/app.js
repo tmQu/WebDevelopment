@@ -269,6 +269,12 @@ app.get('/advForms/edit/:id', (req, res) => {
   });
 });
 
+app.get('/areas', (req, res) => {
+  res.render('vwDepartment/area/areaManagement', {
+    layout: 'department'
+  });
+});
+
 app.get('/', async (req, res) => {
   res.render('vwHome/index', { layout: 'main' });
 });
