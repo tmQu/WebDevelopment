@@ -18,7 +18,7 @@ const boardLocationController = {
       const page = parseInt(req.query.page) || 1; // Trang mặc định là trang 1
 
       let boardLocation = [];
-
+      console.log(req.user)
       var query = {};
       if (req.user.role.level === 'wards') {
         // console.log(req.user.role.detail);
@@ -276,6 +276,7 @@ const boardLocationController = {
           advertisementForm: advertisementForm,
           locationCategory: locationCategory,
         });
+        return;
 
       }
       res.render('vwBoard/boardLocationRequest', {

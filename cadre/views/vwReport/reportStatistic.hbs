@@ -17,17 +17,7 @@
         labels: ['Chưa xử lý', 'Đang xử lý', 'Đã xử lý'],
         datasets: [{
           label: 'Số lượng báo cáo',
-          data: [{{number_statistic.pending}}, {{number_statistic.inprogress}}, {{number_statistic.done}}],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-            'rgba(255, 205, 86, 0.2)',
-          ],
-          borderColor: [
-            'rgb(255, 99, 132)',
-            'rgb(255, 159, 64)',
-            'rgb(255, 205, 86)'
-          ],
+          data: [100, 200, 300],
           borderWidth: 1
         }]
       },
@@ -43,28 +33,13 @@
   {{/if}}
 {{/section}}
 
-
-<div id="wrapper">
-  <!-- Sidebar -->
-  <ul
-    class="navbar-nav sidebar sidebar-dark accordion"
-    id="accordionSidebar"
-    style="background: linear-gradient(45deg, #5c7ea1, #509177);"
-  >
-    <!-- Sidebar - Brand -->
-    {{> sidebarWard}}
-
-  </ul>
-<div class='container mt-2'>
-    {{#if isSuperAdmin}}
-    <div class="row">
-      <div>
-          <canvas id="myChart"></canvas>
-      </div>
-    </div>
+<div class='container'>
+  {{#if isSuperAdmin}}
+  <div class="row">
+      <canvas id="myChart"></canvas>
+  </div>
   {{/if}}
   <div class='row'>
-
     <div class='col-lg-12'>
       <div class='main-box clearfix'>
         <div class='table-responsive'>
@@ -72,22 +47,22 @@
             <thead>
               <tr>
                 <th>
-                  <span class='text-center'>
-                    Bảng quảng cáo
-                  </span>
-                </th>
-                <th>
-                  <span class='text-center'>
-                    Thời gian
-                  </span>
-                </th>
-                <th class='text-center' id="status">
                   <span>
-                    Trạng thái
+                    Boards
                   </span>
                 </th>
                 <th>
-                  <span class='text-center'>
+                  <span>
+                    Created
+                  </span>
+                </th>
+                <th class='text-center'>
+                  <span>
+                    Status
+                  </span>
+                </th>
+                <th>
+                  <span>
                     Email
                   </span>
                 </th>
@@ -101,11 +76,11 @@
                 {{#each reports}}
                   <tr>
                     <td>
-                      <div class="row">
-                        <div class="col-md-3">
+                      <div class="row" style="width: 500px; height: 60px;">
+                        <div class="col-md-2">
                           <img src='{{this.images.[0]}}' alt='' class='img-fluid' style="width: 100%; height: 100%;"/>
                         </div>
-                        <div class="col-md-9 align-content-start">
+                        <div class="col-md-10 align-content-start">
                           <a href='#' class='user-link'>
                             {{this.method.reportMethod}}
                           </a>
@@ -136,27 +111,33 @@
                     </td>
                     <td>
                       <div class='d-flex flex-column'>
-                        <span class='user-subhead'>
-                          <b>{{this.sender.fullname}}</b>
-                        </span>
+                        <a class='text-bg-danger'>
+                          {{this.sender.fullname}}
+                        </a>
                         <span class='user-subhead'>
                           {{this.sender.email}}
                         </span>
                       </div>
                     </td>
-                    <td >
-                      {{#if ../isSuperAdmin}}
-                      <a href='http://localhost:4000/reports/{{this._id}}' class='table-link'>
-                        <i class='bi bi-zoom-in'></i>
-
+                    <td style='width: 20%;'>
                       <a href='#' class='table-link'>
-                        
+                        <span class='fa-stack'>
+                          <i class='fa fa-square fa-stack-2x'></i>
+                          <i class='fa fa-search-plus fa-stack-1x fa-inverse'></i>
+                        </span>
                       </a>
-                      {{else}}
                       <a href='http://localhost:4000/reports/{{this._id}}' class='table-link'>
-                        <i class='bi bi-pencil-square'></i>
+                        <span class='fa-stack'>
+                          <i class='fa fa-square fa-stack-2x'></i>
+                          <i class='fa fa-pencil fa-stack-1x fa-inverse'></i>
+                        </span>
                       </a>
-                      {{/if}}
+                      <a href='#' class='table-link danger'>
+                        <span class='fa-stack'>
+                          <i class='fa fa-square fa-stack-2x'></i>
+                          <i class='fa fa-trash-o fa-stack-1x fa-inverse'></i>
+                        </span>
+                      </a>
                     </td>
                   </tr>
                 {{/each}}
@@ -164,7 +145,7 @@
                 <tr>
                   <td colspan='5'>
                     <div class='alert alert-danger'>
-                      Không tìm thấy báo cáo
+                      No reports found
                     </div>
                   </td>
                 </tr>
@@ -185,15 +166,9 @@
             {{/if}}
 
             {{#paginate currentPage lastPage}}
-              {{#compare this.number '==' ../currentPage}}
-                <li class="page-item active">
-                  <a class="page-link" href="?page={{this.number}}">{{this.number}}</a>
-                </li>
-              {{else}}
-                <li class="page-item">
-                  <a class="page-link" href="?page={{this.number}}">{{this.number}}</a>
-                </li>
-              {{/compare}}
+              <li class="page-item {{#if (eq this.number currentPage)}}active{{/if}}">
+                <a class="page-link" href="?page={{this.number}}">{{this.number}}</a>
+              </li>
             {{/paginate}}
 
 
@@ -209,5 +184,4 @@
       </div>
     </div>
   </div>
-</div>
 </div>

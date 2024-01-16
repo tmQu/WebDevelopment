@@ -131,9 +131,9 @@ const licenseController = {
                 wards: JSON.stringify(wards),
                 SERVER_URL: process.env.SERVER_URL,
                 currentPage: page,
-                hasNextPage: ITEMS_PER_PAGE * page < total,
-                hasNextPage: page > 1,
+                hasNextPage: ITEMS_PER_PAGE * page <= total,
                 nextPage: page + 1,
+                hasPreviousPage: page > 1,
                 previousPage: page - 1,
                 lastPage: Math.ceil(total / ITEMS_PER_PAGE)
             });

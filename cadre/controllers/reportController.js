@@ -125,9 +125,13 @@ const reportController = {
       reports = await Report.find(query, null, options);
 
       // Get boardLocation of each board
+      console.log(req.user)
+      var number_statistic = [0,0,0]
       reports = await Promise.all(
         reports.map(async (report) => {
           let boardLocation = null;
+          number_statistic[report.status + 1] += 1
+
           if (report.board) {
             boardLocation = await BoardLocation.findById(report.board.boardLocation);
             boardLocation = boardLocation.toObject();
@@ -142,8 +146,14 @@ const reportController = {
           };
         })
       );
-
+      console.log(number_statistic)
       res.render('vwReport/reports', {
+        isSuperAdmin: req.user.role.level === 'departmental',
+        number_statistic: {
+          pending: number_statistic[0],
+          inprogress: number_statistic[1],
+          done: number_statistic[2]
+        },
         layout: 'list',
         reports: reports,
         currentPage: page,
@@ -182,8 +192,9 @@ const reportController = {
       }
 
       report = report.toObject();
-
+      
       res.render('vwReport/reportDetails', {
+        isSuperAdmin: req.user.role.level === 'departmental',
         layout: 'report',
         report: {
           ...report,

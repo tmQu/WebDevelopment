@@ -140,7 +140,6 @@ const boardController = {
   },
   updateBoard: async (req, res) => {
     try {
-      console.log('test')
       console.log(req.body.boardType)
       console.log(req.body)
       var boardType = await boardTypeModel.findById(req.body.boardType);
@@ -199,10 +198,12 @@ const boardController = {
 
       res.redirect('/boardsLocation/' + boardLocation._id)
     } catch (err) {
-      res.status(400).json({
+      res.render('vwError/error', {
+        statusCode: 500,
         status: 'fail',
-        message: err,
-      });
+        message: err.message,
+        layout: 'main',
+      })
     }
   },
 
@@ -261,6 +262,7 @@ const boardController = {
           user: user.toObject(),
           layout: 'report',
         });
+        return;
       }
 
       // request change board
@@ -275,7 +277,12 @@ const boardController = {
 
 
     } catch (err) {
-      console.log(err);
+      res.render('vwError/error', {
+        statusCode: 500,
+        status: 'fail',
+        message: err.message,
+        layout: 'main',
+      })
     }
   },
 };

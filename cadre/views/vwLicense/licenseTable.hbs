@@ -1,114 +1,116 @@
-<div style="width:80%; margin: 50px auto">
-<div>
-    <div class="d-flex" style="width: 50%">
-    <select id ='ward' class="form-select" disabled>
-        <option value="">Chọn phường</option>
-    </select>
+<!-- Page Wrapper -->
+<div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar"
+        style="background: linear-gradient(45deg, #5c7ea1, #509177);">
+        <!-- Sidebar - Brand -->
+        {{> sidebarWard}}
 
+    </ul>
 
+    <div class="container-fluid mt-2">
+        <div>
+            <div class="d-flex" style="width: 50%;">
+                <div class="d-flex justify-content-end" style="width: 70%; border-radius: 0%;">
+                    <select id='district' class="form-select mr-3" value="Chọn quận">
+                        <option value="">Chọn quận</option>
+                        {{#each districts}}
+                        <option value="{{_id}}">{{district}}</option>
+                        {{/each}}
+                    </select>
+                    <select id='ward' class="form-select" disabled>
+                        <option value="">Chọn phường</option>
+                    </select>
+                </div>
+                <script>
+                    var wards = JSON.parse('{{{wards}}}');
+                    document.getElementById('district').addEventListener('change', (e) => {
+                        let districtId = e.target.value
+                        if (!districtId) {
+                            document.getElementById('ward').disabled = true
+                            return
+                        }
+                        let wardSelect = document.getElementById('ward')
 
-    <select id ='district' class="form-select ml-3" value="Chọn quận">
-        <option value="">Chọn quận</option>
-        {{#each districts}}
-            <option value="{{_id}}">{{district}}</option>
-        {{/each}}
-    </select>
+                        wardSelect.innerHTML = '<option value="">Chọn phường</option>'
+                        wards.forEach(ward => {
+                            if (ward.district == districtId) {
+                                let option = document.createElement('option')
+                                option.value = ward._id
+                                option.innerText = ward.ward
+                                wardSelect.appendChild(option)
+                            }
 
+                        })
+                        wardSelect.disabled = false
 
-    <script>
-        var wards = JSON.parse('{{{wards}}}');
-        document.getElementById('district').addEventListener('change', (e) =>{
-            let districtId = e.target.value
-            if (!districtId)
-            {
-                document.getElementById('ward').disabled = true
-                return
-            }
-            let wardSelect = document.getElementById('ward')
+                    })
+                </script>
+            </div>
 
-            wardSelect.innerHTML = '<option value="">Chọn phường</option>'
-            wards.forEach(ward => {
-                if (ward.district == districtId)
-                {
-                    let option = document.createElement('option')
-                    option.value = ward._id
-                    option.innerText = ward.ward
-                    wardSelect.appendChild(option)
-                }
-
-            })
-            wardSelect.disabled = false
-
-        })
-    </script>
-    </div>
-    <script>
-
-    </script>
-</div>
-<table id="license-table" class="table table-striped">
-        <thead>
-            <tr>
-                <th>Nơi xin cấp phép</th>
-                <th>Công ty xin cấp</th>
-                <th>Ngày bắt đầu</th>
-                <th>Ngày kết thúc</th>
-                <th>Ngày tạo</th>
-                <th>Tình trạng</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each license}}
-            <tr data-id="{{{_id}}}">
-                <td>
-                    {{board.boardLocation.addr}}
-                </td>
-                <td>
-                    {{company.infor}}
-                </td>
-                <td>
-                    {{period.start_date}}  
-                </td>
-                <td>
-                    {{period.end_date}}
-                </td>
-                <td>
-                    {{createAt}}
-                </td>
-                <td>
-                    {{#if this.status}}
+        </div>
+        <table id="license-table" class="table user-list">
+            <thead>
+                <tr>
+                    <th>Nơi xin cấp phép</th>
+                    <th>Công ty xin cấp</th>
+                    <th>Ngày bắt đầu</th>
+                    <th>Ngày kết thúc</th>
+                    <th>Ngày tạo</th>
+                    <th>Tình trạng</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each license}}
+                <tr data-id="{{{_id}}}">
+                    <td>
+                        {{board.boardLocation.addr}}
+                    </td>
+                    <td>
+                        {{company.infor}}
+                    </td>
+                    <td>
+                        {{period.start_date}}
+                    </td>
+                    <td>
+                        {{period.end_date}}
+                    </td>
+                    <td>
+                        {{createAt}}
+                    </td>
+                    <td>
+                        {{#if this.status}}
                         <span class="badge bg-success">Đã duyệt</span>
-                    {{else}}
+                        {{else}}
                         <span class="badge bg-warning">Chưa duyệt</span>
-                    {{/if}}
-                </td>
-                <td>
-                    <a href="{{SERVER_URL}}/api/v1/license?id={{_id}}&action=view" class="table-link btn btn-primary">
-                        <i class="bi bi-search"></i>
-                    </a>
-                    {{#if this.status}}
-                    
-                    {{else}}
-                        <a class="table-link btn btn-danger" href="{{SERVER_URL}}/api/v1/license?id={{_id}}&action=delete">
+                        {{/if}}
+                    </td>
+                    <td>
+                        <a href="{{SERVER_URL}}/api/v1/license?id={{_id}}&action=view" class="table-link">
+                            <i class="bi bi-search"></i>
+                        </a>
+                        {{#if this.status}}
+
+                        {{else}}
+                        <a class="table-link" href="{{SERVER_URL}}/api/v1/license?id={{_id}}&action=delete">
                             <i class="bi bi-trash"></i>
                         </a>
-                    {{/if}}
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-        <tfoot>
-            <td>
-            <nav>
+                        {{/if}}
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+            <tfoot>
+            </tfoot>
+        </table>
+        <nav class="d-flex justify-content-center">
             <ul class="pagination">
-                {{#if hasPreviousPage}}
-                    <li class="page-item">
-                        <a class="page-link" href="?page={{previousPage}}" aria-label="Previous">
+                <li class="page-item {{#unless hasPreviousPage}}disabled{{/unless}}">
+                    <a class="page-link" href="?page={{previousPage}}" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                {{/if}}
+                    </a>
+                </li>
 
                 {{#paginate currentPage lastPage}}
                     {{#compare this.number '==' ../currentPage}}
@@ -121,37 +123,29 @@
                         </li>
                     {{/compare}}
                 {{/paginate}}
-
-
-                {{#if hasNextPage}}
-                <li class="page-item">
+                <li class="page-item {{#unless hasNextPage}}disabled{{/unless}}">
                     <a class="page-link" href="?page={{nextPage}}" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
+                        <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
-                {{/if}} 
             </ul>
-            </nav>
-            </td>
-        </tfoot>
-    </table>
+        </nav>
+    </div>
 </div>
 
 {{#section 'footer'}}
-    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-    <script>
-        const socket = io('http://localhost:4000')
-        socket.on('update status', (data) =>{
-            console.log(data);
-            document.querySelectorAll('#license-table tbody tr').forEach(tr =>{
-                if (tr.dataset.id == data.id && data.status == true)
-                {
-                    console.log(tr);
-                    tr.querySelector('td:nth-child(6)').innerHTML = '<span class="badge bg-success">Đã duyệt</span>'
-                    tr.querySelector('td:nth-child(7) a.btn-danger').disabled = true
-                }
-            })
+<script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+<script>
+    const socket = io('http://localhost:4000')
+    socket.on('update status', (data) => {
+        console.log(data);
+        document.querySelectorAll('#license-table tbody tr').forEach(tr => {
+            if (tr.dataset.id == data.id && data.status == true) {
+                console.log(tr);
+                tr.querySelector('td:nth-child(6)').innerHTML = '<span class="badge bg-success">Đã duyệt</span>'
+                tr.querySelector('td:nth-child(7) a.btn-danger').disabled = true
+            }
         })
-    </script>
+    })
+</script>
 {{/section}}
-
