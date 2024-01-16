@@ -22,6 +22,8 @@ import changeBoardRoutes from './routes/changeBoardRoutes.js';
 import changeBoardLocationRoutes from './routes/changeBoardLocationRoutes.js';
 import advFormRoutes from './routes/advFormRoutes.js';
 import licenseRouter from './routes/licenseRoutes.js';
+import wardRoutes from './routes/wardRoutes.js';
+import districtRoutes from './routes/districtRoutes.js';
 
 import hbsHelpers from './static/js/handlebarsHelpers.js';
 import cookieParser from 'cookie-parser';
@@ -73,7 +75,13 @@ app.engine(
       eq: function (a, b) {
         return a === b;
       },
-    },
+      isSelected: function (value, selectedValues) {
+        if (selectedValues && Array.isArray(selectedValues) && selectedValues.includes(value.toString())) {
+          return 'checked';
+        }
+        return '';
+      },
+    }
   })
 );
 
@@ -146,7 +154,8 @@ app.use('/api/v1/advForms', advFormRoutes);
 app.use('/api/v2/boards', boardRouter.router_v2);
 app.use('/api/v2/reports', reportRouter.router_v2);
 app.use('/api/v2/reportMethods', reportMethodRoutes);
-
+app.use('/api/v2/wards', wardRoutes);
+app.use('/api/v2/districts', districtRoutes);
 
 // app.get('/', async (req, res) => {
 //   var boardLocation = await boardLocationModel
@@ -225,6 +234,7 @@ app.get('/boardsLocation/:id', authController.protect, (req, res) => {
 app.get('/boardsLocation/:id/board', authController.protect, (req, res) => {
   boardController.viewBoard(req, res);
 });
+
 app.get('/boardsLocation/:id/board/:boardId', authController.protect, (req, res) => {
   boardController.viewBoard(req, res);
 });
@@ -292,10 +302,11 @@ app.get('/advForms/edit/:id', (req, res) => {
   });
 });
 
+import areaController from './controllers/areaController.js';
+import wardController from './controllers/wardController.js';
+
 app.get('/areas', (req, res) => {
-  res.render('vwDepartment/area/areaManagement', {
-    layout: 'department'
-  });
+  areaController.getAll(req, res);
 });
 
 app.get('/', async (req, res) => {
@@ -315,4 +326,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-export { server, io, __dirname};
+export { server, io, __dirname };

@@ -1,13 +1,30 @@
+import wardModel from '../models/wardModel.js';
 import districtModel from '../models/districtModel.js';
 
-const districtController = {
+const wardController = {
     getAll: async (req, res) => {
         try {
-            const districts = await districtModel.find();
+            const wards = await wardModel.find().populate('district');
 
             res.status(200).json({
                 status: 'success',
-                data: districts
+                data: wards
+            });
+        } catch (err) {
+            res.status(404).json({
+                status: 'fail',
+                message: err
+            });
+        }
+    },
+    getOfDistrict: async (req, res) => {
+        try {       
+            const wards = await wardModel.find({ 'district': { $in: req.query.districts } });
+
+            res.status(200).json({
+                status: 'success',
+                length: wards.length,
+                data: wards
             });
         } catch (err) {
             res.status(404).json({
@@ -18,11 +35,11 @@ const districtController = {
     },
     getById: async (req, res) => {
         try {
-            const district = await districtModel.findById(req.params.id);
+            const ward = await wardModel.findById(req.params.id);
 
             res.status(200).json({
                 status: 'success',
-                data: district
+                data: ward
             });
         } catch (err) {
             res.status(404).json({
@@ -33,23 +50,22 @@ const districtController = {
     },
     create: async (req, res) => {
         try {
-            const newDistrict = await districtModel.create(req.body);
+            const newWard = await wardModel.create(req.body);
 
             res.status(201).json({
                 status: "success",
-                data: newDistrict,
+                data: newWard,
             });
         } catch (err) {
             res.status(400).json({
-                status: "fail",
-                message: err,
+                status: 'fail',
+                message: err
             });
         }
     },
     update: async (req, res) => {
         try {
-            console.log('req.body', req.body, 'req.params.id', req.params.id);
-            const district = await districtModel.findByIdAndUpdate(
+            const ward = await districtModel.findByIdAndUpdate(
                 req.params.id,
                 req.body, {
                     new: true,
@@ -58,7 +74,7 @@ const districtController = {
             );
             res.status(200).json({
                 status: "success",
-                data: district
+                data: ward
             });
         } catch (err) {
             res.status(400).json({
@@ -69,19 +85,18 @@ const districtController = {
     },
     remove: async (req, res) => {
         try {
-            await districtModel.findByIdAndDelete(req.params.id);
-
+            await wardModel.findByIdAndDelete(req.params.id);
             res.status(204).json({
                 status: "success",
                 data: null,
             });
         } catch (err) {
-            res.status(404).json({
+            res.status(400).json({
                 status: "fail",
                 message: err,
             });
         }
-    },
+    }
 }
 
-export default districtController;
+export default wardController;
