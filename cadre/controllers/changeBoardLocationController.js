@@ -30,7 +30,7 @@ const changeBoardLocationController = {
           lng: req.body.lng,
         },
         imgBillboardLocation: req.files.map((file) => '/' + file.path),
-        num_board: req.body.boardQuantity,
+        // num_board: req.body.boardQuantity,
         advertisementForm: req.body.advertisementForm,
         locationCategory: req.body.locationCategory,
       });

@@ -58,20 +58,16 @@ const changeBoardLocationSchema = new mongoose.Schema(
         required: true,
       }
     ],
-    // boardLocation: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'board_locations',
-    //   required: true,
-    // },
+    boardLocation: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'board_locations',
+      required: true,
+    },
     advertisementForm: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'advertisement_forms',
       required: true,
     }, 
-    num_board: {
-      type: Number,
-      required: true,
-    },
     isDelete: {
       type: Boolean,
       default: false,

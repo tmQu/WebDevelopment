@@ -7,19 +7,23 @@
 {{!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzxW5txxZHhPZCjPrOvrjCE8awoF3IP50&callback=initMap" async defer></script> --}}
 {{/section}}
 
-<div class="formbold-main-wrapper">
+<div class="formbold-main-wrapper m-1">
   <form action="/api/v2/changeBoardLocation/" method="POST" enctype="multipart/form-data" id="editBoardForm">
     <div class="formbold-form-wrapper">
-      <div class="formbold-input-flex">
-        <div>
-          <input
-          type="number"
-          name="boardQuantity"
-          id="editQuantity"
-          value="{{boardLocation.num_board}}"
-          class="formbold-form-input"
-          />
-          <label for="editQuantity" class="formbold-form-label"> Số lượng </label>
+      <div class="formbold-input-flex align-items-start p-2">
+        <div class="d-flex justify-content-start">
+          <div class="formbold-select-wrapper">
+            <label class="formbold-form-label">Loại đất</label>
+            <div id="editLocationCategory" class="formbold-form-input">
+              {{#each locationCategory}}
+                <div class="checkbox-option">
+                  <input type="checkbox" id="{{this._id}}" name="locationCategory" value="{{this._id}}" 
+                    {{#if (containsLocationCategory @root.boardLocation.locationCategory this.locationCategory)}}checked{{/if}}>
+                  <label for="location-{{this._id}}">{{this.locationCategory}}</label>
+                </div>
+              {{/each}}
+            </div>
+          </div>
         </div>
         <div>
           <div class="formbold-select-wrapper">
@@ -36,24 +40,7 @@
         </div>
       </div>
 
-      <div class="formbold-input-flex">
-        <div>
-          <div class="formbold-select-wrapper">
-            <label class="formbold-form-label">Loại đất</label>
-            <div id="editLocationCategory" class="formbold-form-input">
-              {{#each locationCategory}}
-                <div class="checkbox-option">
-                  <input type="checkbox" id="{{this._id}}" name="locationCategory" value="{{this._id}}" 
-                    {{#if (containsLocationCategory @root.boardLocation.locationCategory this.locationCategory)}}checked{{/if}}>
-                  <label for="location-{{this._id}}">{{this.locationCategory}}</label>
-                </div>
-              {{/each}}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="formbold-textarea">
+      <div class="formbold-textarea p-2">
           <textarea
               rows="6"
               name="boardReason"
@@ -81,7 +68,7 @@
       </div>
       <input type="file" name="imgBillboardLocation" id="editUploadImage" class="formbold-form-input" accept="image.png image.jpeg image.jpg" multiple/>
 
-      <button class="formbold-btn" type="submit">
+      <button class="formbold-btn m-2" type="submit">
           Gửi
       </button>
       <input type="hidden" name="creator" value="{{user._id}}">
@@ -95,7 +82,7 @@
       <input type="hidden" name="city" value="{{boardLocation.addr.city}}" id="addrCity">
     </div>
   </form>
-  <div class="formbold-new-column">
+  <div class="formbold-new-column ml-4 p-2">
     <!-- Ô nhập địa chỉ -->
     <div class="formbold-address-input">
       <label for="address" class="formbold-form-label">Địa chỉ</label>
@@ -110,7 +97,7 @@
         src="https://maps.google.com/maps?q={{boardLocation.location.lat}},{{boardLocation.location.lng}}&output=embed"
         frameborder="0"
         style="border:0; width: 100%; height: 300px;"
-        allowfullscreen=""
+        allowfullscreen=""  
         aria-hidden="false"
         tabindex="0">
       </iframe>
