@@ -5,9 +5,10 @@ import convertVNTime from "../utils/convertVNTime.js";
 import districtModel from '../models/districtModel.js'
 import wardModel from '../models/wardModel.js'
 import mongoose from 'mongoose';
-import {io} from '../app.js';
+import { io } from '../app.js';
+
 const ITEMS_PER_PAGE = 4; // Số lượng mục trên mỗi trang
-const licenseController = { 
+const licenseController = {
     renderLicenseForm: async (req, res) => {
         try {
             console.log('test');
@@ -17,19 +18,19 @@ const licenseController = {
             board = board.toObject();
 
             var board_location = await boardLocationModel.findById(board.boardLocation)
-                                    .populate('advertisementForm')
-                                    .populate('locationCategory')
-                                    .populate('addr.district')
-                                    .populate('addr.ward');
+                .populate('advertisementForm')
+                .populate('locationCategory')
+                .populate('addr.district')
+                .populate('addr.ward');
 
-                        
+
             board_location = board_location.toObject();
             board_location.addr = `${board_location.addr.street_number} ${board_location.addr.route}, ${board_location.addr.ward.ward}, ${board_location.addr.district.district}, ${board_location.addr.city}`;
             board_location.locationCategory = board_location.locationCategory.map(category => category.locationCategory).join('/');
             board_location.advertisementForm = board_location.advertisementForm.advertisementForm;
             console.log(board_location)
-            res.render('vwLicense/license', { 
-                layout: 'license' ,
+            res.render('vwLicense/license', {
+                layout: 'license',
                 imgBoardLocation: board_location.imgBillboardLocation[0],
                 plan: (board_location.isPlanning == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'),
                 boardLocation: board_location,
@@ -82,26 +83,26 @@ const licenseController = {
         try {
 
             const page = parseInt(req.query.page) || 1;
-            var filter  = {};
+            var filter = {};
             var total = await licenseModel.countDocuments(filter);
-            
-            
+
+
 
             var licenses = await licenseModel.find(filter).populate({
-                path: 'board', 
-                populate : {
-                    path : 'boardLocation',
-                    populate : {
-                        path : 'addr.district'
+                path: 'board',
+                populate: {
+                    path: 'boardLocation',
+                    populate: {
+                        path: 'addr.district'
                     },
                     populate: {
                         path: 'addr.ward'
                     }
                 }
             })
-            .skip((page - 1) * ITEMS_PER_PAGE)
-            .limit(ITEMS_PER_PAGE);
-            
+                .skip((page - 1) * ITEMS_PER_PAGE)
+                .limit(ITEMS_PER_PAGE);
+
 
 
             var districtId = []
@@ -119,8 +120,8 @@ const licenseController = {
 
             });
             console.log(licenses)
-            var districts = await districtModel.find({_id: {$in: districtId}}).lean();
-            var wards = await wardModel.find({_id: {$in: wardId}}).lean();
+            var districts = await districtModel.find({ _id: { $in: districtId } }).lean();
+            var wards = await wardModel.find({ _id: { $in: wardId } }).lean();
             console.log(districts)
             console.log(wards)
             res.render('vwLicense/licenseTable', {
@@ -136,10 +137,9 @@ const licenseController = {
                 previousPage: page - 1,
                 lastPage: Math.ceil(total / ITEMS_PER_PAGE)
             });
-            
+
         }
-        catch(err)
-        {
+        catch (err) {
             console.log(err);
             res.status(400).json({
                 status: 'fail'
@@ -151,36 +151,35 @@ const licenseController = {
             var id = req.query.id;
             var action = req.query.action;
             var link
-            if (action === 'view')
-            {
+            if (action === 'view') {
                 link = ''
             }
-            else if (action === 'delete'){
-                link = process.env.SERVER_URL +  `/api/v1/license/delete/${id}`;
+            else if (action === 'delete') {
+                link = process.env.SERVER_URL + `/api/v1/license/delete/${id}`;
             }
-            else if(action === 'approve'){
-                link =  process.env.SERVER_URL +  `/api/v1/license/approve/${id}`;
+            else if (action === 'approve') {
+                link = process.env.SERVER_URL + `/api/v1/license/approve/${id}`;
             }
             var license = await licenseModel.findById(id).lean();
             license.period.start_date = convertVNTime(license.period.start_date);
             license.period.end_date = convertVNTime(license.period.end_date);
             var board = await boardModel.findById(license.board).populate('boardType').lean();
-           
+
 
             var board_location = await boardLocationModel.findById(board.boardLocation)
-                                    .populate('advertisementForm')
-                                    .populate('locationCategory')
-                                    .populate('addr.district')
-                                    .populate('addr.ward');
+                .populate('advertisementForm')
+                .populate('locationCategory')
+                .populate('addr.district')
+                .populate('addr.ward');
 
-                        
+
             board_location = board_location.toObject();
             board_location.addr = `${board_location.addr.street_number} ${board_location.addr.route}, ${board_location.addr.ward.ward}, ${board_location.addr.district.district}, ${board_location.addr.city}`;
             board_location.locationCategory = board_location.locationCategory.map(category => category.locationCategory).join('/');
             board_location.advertisementForm = board_location.advertisementForm.advertisementForm;
-            
-            res.render('vwLicense/license_detail', { 
-                layout: 'license' ,
+
+            res.render('vwLicense/license_detail', {
+                layout: 'license',
                 imgBoardLocation: board_location.imgBillboardLocation[0],
                 plan: (board_location.isPlanning == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'),
                 boardLocation: board_location,
@@ -194,8 +193,7 @@ const licenseController = {
                 SERVER_URL: process.env.SERVER_URL
             });
         }
-        catch(err)
-        {
+        catch (err) {
             console.log(err);
             res.status(400).json({
                 status: 'fail'
@@ -207,17 +205,16 @@ const licenseController = {
         try {
             console.log('aprrove')
             var approve = req.body.approve;
-            if (approve == 'true')
-            {
+            if (approve == 'true') {
                 approve = true;
                 license = await licenseModel.findById(req.params.id);
-                await findByIdAndUpdate(license.board, {isLicense: true});
+                await findByIdAndUpdate(license.board, { isLicense: true });
             }
-            else{
+            else {
                 approve = false;
             }
-            const updateLicense = await licenseModel.findByIdAndUpdate(req.params.id, {status: true, approve: approve});
-            io.emit('update status', {id: req.params.id, status: true, approve: approve});
+            const updateLicense = await licenseModel.findByIdAndUpdate(req.params.id, { status: true, approve: approve });
+            io.emit('update status', { id: req.params.id, status: true, approve: approve });
             res.json(updateLicense);
         } catch (err) {
             console.log(err);
@@ -226,8 +223,7 @@ const licenseController = {
     deleteLicense: async (req, res) => {
         try {
             var license = await licenseModel.findById(req.params.id)
-            if (license.status === false)
-            {
+            if (license.status === false) {
                 const deleteLicense = await licenseModel.findByIdAndDelete(req.params.id);
             }
             else {

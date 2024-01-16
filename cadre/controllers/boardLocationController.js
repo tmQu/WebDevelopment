@@ -1,7 +1,7 @@
 import boardLocationModel from '../models/boardLocationModel.js';
 import boardModel from '../models/boardModel.js';
 import boardTypeModel from '../models/boardTypeModel.js';
-import advtFormModel from '../models/advtFormModel.js';
+import advtFormModel from '../models/advFormModel.js';
 import locationCategoryModel from '../models/locationCategoryModel.js';
 import wardModel from '../models/wardModel.js';
 import districtModel from '../models/districtModel.js';
@@ -74,7 +74,7 @@ const boardLocationController = {
   },
   viewBoardLocation: async (req, res) => {
     try {
-    
+
       let boardLocation = await boardLocationModel.findById(req.params.id);
       let boards = await boardModel.find({ boardLocation: boardLocation._id });
       let boardType = await boardTypeModel.find();

@@ -43,7 +43,7 @@ const authController = {
       const newUser = await User.create(req.body);
 
       // createSendToken(newUser, 201, res);
-    
+      res.redirect('/');
     } catch (err) {
       res.status(400).json({
         status: 'fail',
@@ -224,6 +224,16 @@ const authController = {
     // 4. Log user in, send JWT
     createSendToken(user, 200, res);
   }),
+
+  // Log out
+  logout: (req, res) => {
+    res.cookie('jwt', 'loggedout', {
+      expires: new Date(Date.now() + 10 * 1000),
+      httpOnly: true,
+      path: '/',
+    });
+    res.redirect('/');
+  },
 };
 
 export default authController;

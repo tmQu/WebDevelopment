@@ -3,30 +3,29 @@ import authController from '../controllers/authController.js';
 import express from 'express';
 import { upload } from '../utils/imgHandler.js';
 
-
 // router_v1 -> render, cadre
 // router_v2 -> json, resdient
 const router_v1 = express.Router();
-const router_v2 = express.Router();  
-  
+const router_v2 = express.Router();
+
 router_v1
   .route('/:id')
   .get(authController.protect,
     boardController.getBoardLocationWithId)
 
 router_v1.route('/update/:id')
-    .post(    
+  .post(
     authController.protect,
     authController.restrictTo('departmental'),
     upload.single('imgBillboard'),
     boardController.updateBoard)
 
 router_v1.route('/add')
-.post(    
-  authController.protect,
-  authController.restrictTo('departmental'),
-  upload.single('imgBillboard'),
-  boardController.createBoard)
+  .post(
+    authController.protect,
+    authController.restrictTo('departmental'),
+    upload.single('imgBillboard'),
+    boardController.createBoard)
 
 router_v1.route('/delete/:id')
   .get(
@@ -52,9 +51,4 @@ router_v2
   .route('/detail/:id')
   .get(boardController.getBoardInLocation);
 
-
-
-
-
-
-export default {router_v1, router_v2};
+export default { router_v1, router_v2 };

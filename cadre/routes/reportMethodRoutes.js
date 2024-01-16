@@ -10,6 +10,8 @@ router
 
 router
     .route("/:id")
-    .get(reportMethodController.getByID);
+    .get(reportMethodController.getByID)
+    .patch(reportMethodController.updateMethod)
+    .delete(reportMethodController.deleteMethod);
 
 export default router;
