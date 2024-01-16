@@ -144,7 +144,7 @@ const reportController = {
       );
 
       res.render('vwReport/reports', {
-        layout: 'report',
+        layout: 'list',
         reports: reports,
         currentPage: page,
         hasNextPage: ITEMS_PER_PAGE * page < totalItems, // Kiểm tra trang tiếp theo có tồn tại không

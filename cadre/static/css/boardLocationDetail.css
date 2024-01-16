@@ -36,7 +36,7 @@ nav > div a.nav-item.nav-link.active:after
   content: "";
   position: relative;
   bottom: -60px;
-  left: -10%;
+  left: -5%;
   border: 15px solid transparent;
   border-top-color: #7bcbc6 ;
 }

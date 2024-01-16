@@ -185,3 +185,7 @@ body {
   height: 512px;
   object-fit: cover; /* Đảm bảo ảnh phủ kín khung mà không bị méo */
 }
+
+#status {
+  width: 11%;
+}
