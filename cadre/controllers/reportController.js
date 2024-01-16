@@ -227,9 +227,7 @@ const reportController = {
       else {
         board = null;
         boardLocation = null;
-
       }
-
 
       report = report.toObject();
 
@@ -241,8 +239,6 @@ const reportController = {
       })
       report.images = newImage;
 
-
-
       res.status(200).json(
       {
           success: true,
@@ -251,8 +247,6 @@ const reportController = {
             report: report,
             board: board,
             boardLocation: boardLocation
-  
-
           }
       })
     } catch (error) {

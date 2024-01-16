@@ -42,7 +42,8 @@ const authController = {
       req.body.role = { level: req.body.btnradio };
       const newUser = await User.create(req.body);
 
-      createSendToken(newUser, 201, res);
+      // createSendToken(newUser, 201, res);
+    
     } catch (err) {
       res.status(400).json({
         status: 'fail',

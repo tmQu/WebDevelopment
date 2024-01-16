@@ -19,6 +19,7 @@ import reportRouter from './routes/reportRoutes.js';
 import reportController from './controllers/reportController.js';
 import reportMethodRoutes from './routes/reportMethodRoutes.js';
 import changeBoardRoutes from './routes/changeBoardRoutes.js';
+import changeBoardLocationRoutes from './routes/changeBoardLocationRoutes.js';
 
 import hbsHelpers from './static/js/handlebarsHelpers.js';
 import licenseRouter from './routes/licenseRoutes.js';
@@ -129,7 +130,6 @@ app.use('/api/v1/boards', boardRouter.router_v1);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reports', reportRouter.router_v1);
 app.use('/api/v1/reportMethods', reportMethodRoutes);
-app.use('/api/v1/changeBoard', changeBoardRoutes);
 app.use('/api/v1/license', licenseRouter);
 
 
@@ -137,6 +137,8 @@ app.use('/api/v1/license', licenseRouter);
 app.use('/api/v2/boards', boardRouter.router_v2)
 app.use('/api/v2/reports', reportRouter.router_v2);
 app.use('/api/v2/reportMethods', reportMethodRoutes);
+app.use('/api/v2/changeBoard', changeBoardRoutes.router_v2);
+app.use('/api/v2/changeBoardLocation', changeBoardLocationRoutes.router_v2);
 
 app.get('/', async (req, res) => {
   var boardLocation = await boardLocationModel
@@ -240,7 +242,7 @@ app.get('/reports', authController.protect, async (req, res) => {
 });
 
 app.get('/reports/:id', authController.protect, async (req, res) => {
-  reportController.getByID(req, res);
+  reportController.getByID_v1(req, res);
 });
 
 app.use((err, req, res, next) => {
