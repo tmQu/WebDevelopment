@@ -1,6 +1,8 @@
 import boardLocationModel from '../models/boardLocationModel.js';
 import boardModel from '../models/boardModel.js';
 import boardTypeModel from '../models/boardTypeModel.js';
+import advtFormModel from '../models/advtFormModel.js';
+import locationCategoryModel from '../models/locationCategoryModel.js';
 import wardModel from '../models/wardModel.js';
 
 const ITEMS_PER_PAGE = 5; // Số lượng mục trên mỗi trang
@@ -47,8 +49,8 @@ const boardLocationController = {
         layout: 'list',
         boardLocation: boardLocation,
         currentPage: page,
-        hasNextPage: ITEMS_PER_PAGE * page < totalItems, 
-        hasPreviousPage: page > 1, 
+        hasNextPage: ITEMS_PER_PAGE * page < totalItems,
+        hasPreviousPage: page > 1,
         nextPage: page + 1,
         previousPage: page - 1,
         lastPage: Math.ceil(totalItems / ITEMS_PER_PAGE),
@@ -141,6 +143,56 @@ const boardLocationController = {
         layout: 'list',
         boards: boards,
         boardLocation: boardLocation,
+      });
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({
+        status: 'fail',
+        message: 'Server error',
+      });
+    }
+  },
+  changeInfoRequest: async (req, res) => {
+    try {
+      let boardLocation = await boardLocationModel.findById(req.params.id);
+      let advertisementForm = await advtFormModel.find();
+      let locationCategory = await locationCategoryModel.find();
+      const user = req.user;
+
+      advertisementForm = advertisementForm.map((advertisementForm) => {
+        advertisementForm = advertisementForm.toObject();
+        return {
+          ...advertisementForm,
+          advertisementForm: advertisementForm.advertisementForm,
+        };
+      });
+
+      locationCategory = locationCategory.map((locationCategory) => {
+        locationCategory = locationCategory.toObject();
+        return {
+          ...locationCategory,
+          locationCategory: locationCategory.locationCategory,
+        };
+      });
+
+      boardLocation = boardLocation.toObject();
+      boardLocation = {
+        ...boardLocation,
+        locationCategory: boardLocation.locationCategory,
+        addr: {
+          ...boardLocation.addr,
+          district: boardLocation.addr.district,
+          ward: boardLocation.addr.ward,
+        },
+        advertisementForm: boardLocation.advertisementForm,
+      };
+      console.log(boardLocation);
+      res.render('vwBoard/boardLocationRequest', {
+        layout: 'report',
+        user: user.toObject(),
+        boardLocation: boardLocation,
+        advertisementForm: advertisementForm,
+        locationCategory: locationCategory,
       });
     } catch (error) {
       console.log(error);

@@ -4,30 +4,7 @@
 
 {{#section 'js'}}
   <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css' rel='stylesheet' />
-  <script href='../../static/js/boards/boardLocation.js'></script>
-<script>
-$(document).ready(function() {
-    {{#each boardLocation}}
-    // Bắt sự kiện click trên nút
-    $(".boardLocationReq").click(function() {
-      // Lấy thông tin từ các trường và nạp vào modal
-      var advertisementForm = $("#advertisementForm_{{this._id}}").text();
-      var address = $("#address_{{this._id}}").text();
-      var locationCategory = $("#locationCategory_{{this._id}}").text();
-      var isPlan = $("#isPlan_{{this._id}}").text();
-
-      $("#editModal #advertisementForm").val(advertisementForm);
-      $("#editModal #address").val(address);
-      $("#editModal #locationCategory").val(locationCategory);
-      $("#editModal #isPlan").val(isPlan);
-
-      // Hiển thị modal
-      $("#editModal").modal("show");
-    });
-    {{/each}}
-  });
-</script>
-  
+  <script href='../../static/js/boards/boardLocation.js'></script>  
 {{/section}}
 
 <div class='container'>
@@ -103,7 +80,7 @@ $(document).ready(function() {
                           <i class='fa fa-search-plus fa-stack-1x fa-inverse'></i>
                         </span>
                       </a>
-                      <a href='#' class='table-link boardLocationReq'>
+                      <a href='/boardsLocation/{{this._id}}/changeInfoRequest' class='table-link boardLocationReq'>
                         <span class='fa-stack'>
                           <i class='fa fa-square fa-stack-2x'></i>
                           <i class='fa fa-pencil fa-stack-1x fa-inverse'></i>

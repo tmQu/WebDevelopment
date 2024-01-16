@@ -65,5 +65,11 @@ Handlebars.registerHelper('paginate', function (currentPage, pageCount, options)
     return new Handlebars.SafeString(result); // Sử dụng Handlebars.SafeString để tránh lỗi
   });
   
+Handlebars.registerHelper('containsLocationCategory', function(locationCategories, categoryToCheck) {
+  return locationCategories.some(function(locationCategory) {
+    return locationCategory.locationCategory === categoryToCheck;
+  });
+});
+  
 
-export default { compare: Handlebars.helpers.compare, paginate: Handlebars.helpers.paginate};
+export default { compare: Handlebars.helpers.compare, paginate: Handlebars.helpers.paginate, containsLocationCategory: Handlebars.helpers.containsLocationCategory};
