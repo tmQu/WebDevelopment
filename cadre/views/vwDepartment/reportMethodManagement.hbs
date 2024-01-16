@@ -11,80 +11,34 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <span>
-                                        Method
-                                    </span>
+                                    Phương thức báo cáo
                                 </th>
-                                <th class='text-center'>
-                                <th>
-                                    &nbsp;
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody class='reports-list'>
-                            {{#if data}}
-                            {{#each data}}
-                            <tr>
-                                <td>
-                                    <div class="row" style="width: 500px; height: 60px;">
+                                <th
+                                    class='text-center'>
+                                    <a href='/reportMethods/add'
+                                        class='table-link'>
+                                        <span class='fa-stack'>
+                                            <i
+                                                class='fa fa-square fa-stack-2x'></i>
+                                            <i
+                                                class='fa fa-plus fa-stack-1x fa-inverse'></i>
+                                        </span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class='reports-list'>
+                                {{#if data}}
+                                {{#each data}}
+                                <tr>
+                                    <td>
                                         <div
                                             class="col-md-10 align-content-start">
-                                            <a href='#' class='user-link'>
-                                                {{this.data.reportMethod}}
-                                            </a>
-                                            <span
-                                                class='user-subhead d-block mt-2'>
-                                                {{this.boardLocation.addr.street_number}},
-                                                {{this.boardLocation.addr.route}},
-                                                {{this.boardLocation.addr.ward.ward}},
-                                                {{this.boardLocation.addr.district.district}},
-                                                {{this.boardLocation.addr.city}}
-                                            </span>
-                                        </div>
-
-                                    </td>
-                                    <td>
-                                        {{this.createdAt}}
-                                    </td>
-                                    <td class='text-center'>
-                                        {{#compare this.status '===' -1}}
-                                        <span
-                                            class='badge badge-pill badge-warning'>
-                                            Chưa xử lý
-                                        </span>
-                                        {{else compare this.status '===' 0}}
-                                        <span
-                                            class='badge badge-pill badge-primary'>
-                                            Đang xử lý
-                                        </span>
-                                        {{else compare this.status '===' 1}}
-                                        <span
-                                            class='badge badge-pill badge-success'>
-                                            Đã xử lý
-                                        </span>
-                                        {{/compare}}
-                                    </td>
-                                    <td>
-                                        <div class='d-flex flex-column'>
-                                            <a class='text-bg-danger'>
-                                                {{this.sender.fullname}}
-                                            </a>
-                                            <span class='user-subhead'>
-                                                {{this.sender.email}}
-                                            </span>
+                                            {{this.reportMethod}}
                                         </div>
                                     </td>
-                                    <td style='width: 20%;'>
-                                        <a href='#' class='table-link'>
-                                            <span class='fa-stack'>
-                                                <i
-                                                    class='fa fa-square fa-stack-2x'></i>
-                                                <i
-                                                    class='fa fa-search-plus fa-stack-1x fa-inverse'></i>
-                                            </span>
-                                        </a>
+                                    <td style='width: 20%' class='text-center'>
                                         <a
-                                            href='http://localhost:4000/reports/{{this._id}}'
+                                            href='/reportMethods/edit/{{this.id}}'
                                             class='table-link'>
                                             <span class='fa-stack'>
                                                 <i
@@ -93,7 +47,9 @@
                                                     class='fa fa-pencil fa-stack-1x fa-inverse'></i>
                                             </span>
                                         </a>
-                                        <a href='#' class='table-link danger'>
+                                        <a
+                                            href='/api/v1/reportMethods/{{this.id}}'
+                                            class='table-link danger'>
                                             <span class='fa-stack'>
                                                 <i
                                                     class='fa fa-square fa-stack-2x'></i>
@@ -108,7 +64,7 @@
                                 <tr>
                                     <td colspan='5'>
                                         <div class='alert alert-danger'>
-                                            No reports found
+                                            <strong>Không có dữ liệu</strong>
                                         </div>
                                     </td>
                                 </tr>
@@ -140,7 +96,8 @@
 
                             {{#if hasNextPage}}
                             <li class="page-item">
-                                <a class="page-link" href="?page={{nextPage}}"
+                                <a class="page-link"
+                                    href="?page={{nextPage}}"
                                     aria-label="Next">
                                     <span aria-hidden="true">&raquo;</span>
                                 </a>
@@ -152,3 +109,38 @@
             </div>
         </div>
     </div>
+</div>
+
+{{#section 'js'}}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.table-link.danger');
+
+        deleteButtons.forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                event.preventDefault(); 
+
+                const deleteLink = button.getAttribute('href');
+
+                fetch(deleteLink, {
+                    method: 'DELETE',
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Lỗi khi gọi API xoá');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+
+                    window.location.reload();
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+            });
+        });
+    });
+</script>
+{{/section}}

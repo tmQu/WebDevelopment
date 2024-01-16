@@ -132,7 +132,6 @@ app.use('/api/v1/reports', reportRouter.router_v1);
 app.use('/api/v1/reportMethods', reportMethodRoutes);
 app.use('/api/v1/license', licenseRouter);
 
-
 // Resident Route -> for get json
 app.use('/api/v2/boards', boardRouter.router_v2)
 app.use('/api/v2/reports', reportRouter.router_v2);
@@ -278,6 +277,19 @@ import reportMethodController from './controllers/reportMethodController.js';
 
 app.get('/reportMethods', (req, res) => {
   reportMethodController.getAllMethods_v2(req, res);
+});
+
+app.get('/reportMethods/add', (req, res) => {
+  res.render('vwDepartment/reportMethodAdd', {
+    layout: 'department'
+  });
+});
+
+app.get('/reportMethods/edit/:id', (req, res) => {
+  res.render('vwDepartment/reportMethodEdit', {
+    id: req.params.id,
+    layout: 'department'
+  });
 });
 
 app.get('/', (req, res) => {
