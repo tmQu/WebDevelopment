@@ -128,12 +128,18 @@
                                 <img src='/static/img/adboard.png' class='img-fluid' alt='user' />
                               {{/if}}
                               <div class="button mt-2">
-                          <a class='badge badge-pill badge-primary square-button' id="editButton" href="">
+                          <a class='badge badge-pill badge-primary square-button' id="editButton" href="/boardsLocation/{{this.boardLocation}}/board/{{this._id}}">
                             <i class="bi bi-gear"></i> Yêu cầu chỉnh sửa
                           </a>
-                          <a class='badge badge-pill badge-success square-button ml-2' id="licenseButton" href="">
-                            <i class="bi bi-check-circle"></i> Yêu cầu cấp phép
-                          </a>
+                          {{#compare this.isLicense '===' true}}
+                            <a href="#" class="btn btn-success badge badge-pill badge-success square-button ml-2 disabled" role="button" aria-disabled="true" id="licenseButton">
+                              <i class="bi bi-check-circle"></i>Yêu cầu cấp phép
+                            </a>
+                          {{else}}
+                            <a href="/api/v1/license/form/{{this._id}}" class='badge badge-pill badge-success square-button ml-2' id="licenseButton">
+                              <i class="bi bi-check-circle"></i> Yêu cầu cấp phép
+                            </a>
+                          {{/compare}}
                         </div>
                             </div>
                           </div>
@@ -223,99 +229,7 @@
           <div class='tab-pane active' id='profile' role='tabpanel' aria-labelledby='profile-tab'>
             <div class='container-fluid mt-2'>
               <!-- Thông tin bảng quảng cáo -->
-              {{#if boards}}
-                {{#each boards}}
-                  <div class='card shadow mb-2 board-card' data-board-id="{{this._id}}" id="{{this._id}}">
-                    <div class='card-header text-body-emphasis d-flex justify-content-between'>
-                      <h4>
-                        {{this.boardType}}
-                      </h4>
-                      <div class="d-flex">
-                        <a class='badge badge-pill badge-primary square-button edit-button' href="/boardsLocation/{{this.boardLocation}}/board/{{this._id}}" aria-disabled="true">
-                          <i class="bi bi-gear"></i> Yêu cầu chỉnh sửa
-                        </a>
-                        {{#compare this.isLicense '===' true}}
-                          <a href="#" class="btn btn-success badge badge-pill badge-success square-button ml-2 disabled" role="button" aria-disabled="true">
-                            <i class="bi bi-check-circle"></i>Yêu cầu cấp phép
-                          </a>
-                        {{else}}
-                          <a href="/api/v1/license/form/{{this._id}}" class='badge badge-pill badge-success square-button ml-2' id="licenseButton">
-                            <i class="bi bi-check-circle"></i> Yêu cầu cấp phép
-                          </a>
-                        {{/compare}}
-                      </div>
-                    </div>
-                    <div class='card-body'>
-                      <div class='row d-flex align-items-stretch'>
-                        <div class='col-lg-5 col-md-5 col-sm-6'>
-                          <div class='white-box text-center'>
-                            {{#if this.imgBillboard}}
-                              <img src='{{this.imgBillboard}}' class='img-fluid' alt='Board image' />
-                            {{else}}
-                              <img src='/static/img/adboard.png' class='img-fluid' alt='user' />
-                            {{/if}}
-                          </div>`
-                        </div>
-                        <!-- Thông tin điểm đặt quảng cáo -->
-                        <div class='col-lg-7 col-md-7 col-sm-6'>
-                          <h4 class='box-title mt-5 boardType'>
-                            {{this.boardType}}
-                          </h4>
-                          <p>
-                            {{../boardLocation.addr.street_number}}, {{../boardLocation.addr.route}}, {{../boardLocation.addr.ward}},
-                            {{../boardLocation.addr.district}}, {{../boardLocation.addr.city}}
-                          </p>
-                          <p>
-                            Kích thước:
-                            <strong>
-                              <span class="boardSize">{{this.size}}</span>
-                            </strong>
-                          </p>
-                          <p>
-                            Hình thức:
-                            <strong>
-                              {{../boardLocation.advertisementForm}}
-                            </strong>
-                          </p>
-                          <p>
-                            Phân loại:
-                            {{#each ../boardLocation.locationCategory}}
-                              <span class='badge badge-pill badge-primary'>
-                                {{this}}
-                              </span>
-                            {{/each}}
-                          </p>
-                          <p>
-                            Số lượng:
-                            <strong class="boardQuantity">
-                              {{this.quantity}}
-                            </strong>
-                          </p>
-                          <p>
-                            Ngày hết hạn hợp đồng:
-                            <strong>
-                              {{this.expireDate}}
-                            </strong>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                {{/each}}
-              {{else}}
-                <div class='alert alert-warning' role='alert'>
-                  <strong>
-                    Không tìm thấy bảng quảng cáo
-                  </strong>
-                </div>
-              {{/if}}
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+            --}}
+             
   </div>
 </div>
-
-
-

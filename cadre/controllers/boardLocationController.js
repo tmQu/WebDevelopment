@@ -66,9 +66,11 @@ const boardLocationController = {
   viewBoardLocation: async (req, res) => {
     try {
       let boardLocation = await boardLocationModel.findById(req.params.id);
-      let boards = await boardModel.find({ boardLocation: req.params.id });
+      let boards = await boardModel.find({ boardLocation: boardLocation._id });
       let boardType = await boardTypeModel.find();
       const user = req.user._id;
+
+      // console.log(boardLocation, boards, boardType, user);
 
       boards = boards.map((board) => {
         board = board.toObject();
