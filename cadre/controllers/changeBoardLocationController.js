@@ -14,8 +14,6 @@ const changeBoardLocationController = {
       // console.log(district_id[0]);
       const ward_id = await wardModel.find({ ward: { $regex: req.body.ward, $options: 'i' }, district: district_id[0]._id });
   
-      // console.log(district_id[0], ward_id[0]);
-      // console.log(district_id[0]._id, ward_id[0]._id);
       const changeBoardLocationReq = await changeBoardLocationModel.create({
         boardLocation: req.body.boardLocation,
         reason: sanitizeHtml(req.body.boardReason),
