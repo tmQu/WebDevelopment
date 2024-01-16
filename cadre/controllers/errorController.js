@@ -1,4 +1,3 @@
-// const AppError = require('./../utils/appError');
 import AppError from '../utils/appError.js';
 
 const handleCastErrorDB = (err) => {

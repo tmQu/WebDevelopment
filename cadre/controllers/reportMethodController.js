@@ -1,4 +1,3 @@
-import e from "express";
 import reportMethodModel from "../models/reportMethodModel.js";
 
 const reportMethodController = {
@@ -23,14 +22,14 @@ const reportMethodController = {
         try {
             const methods = await reportMethodModel.find();
 
-            res.render('vwDepartment/reportMethodManagement', {
+            res.render('vwDepartment/reportMethod/reportMethodManagement', {
                 success: true,
                 results: methods.length,
                 data: methods.map(method => method.toObject()),
                 layout: 'department'
             });
         } catch (error) {
-            res.render('vwDepartment/reportMethodManagement', {
+            res.render('vwDepartment/reportMethod/reportMethodManagement', {
                 success: false,
                 message: error.message,
                 layout: 'department'
@@ -92,6 +91,7 @@ const reportMethodController = {
     deleteMethod: async (req, res) => {
         try {
             await reportMethodModel.findByIdAndDelete(req.params.id);
+            
             res.status(200).json({
                 success: true,
                 data: null

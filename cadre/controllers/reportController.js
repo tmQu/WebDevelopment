@@ -216,8 +216,7 @@ const reportController = {
       let report = await Report.findById(req.params.id);
       let board;
       let boardLocation;
-      if (report.board != null)
-      {
+      if (report.board != null) {
         board = await Board.findById(report.board);
 
         boardLocation = await BoardLocation.findById(board.boardLocation);
@@ -240,7 +239,7 @@ const reportController = {
       report.images = newImage;
 
       res.status(200).json(
-      {
+        {
           success: true,
           message: 'Report created successfully',
           data: {
@@ -248,7 +247,7 @@ const reportController = {
             board: board,
             boardLocation: boardLocation
           }
-      })
+        })
     } catch (error) {
       console.log(error);
       res.status(500).json({
