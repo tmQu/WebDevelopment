@@ -25,6 +25,11 @@ const changeBoardSchema = new mongoose.Schema(
       ref: 'board_locations',
       required: true,
     },  
+    board: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'boards',
+      required: true,
+    },
     quantity: {
       type: String,
       required: true,
@@ -33,9 +38,9 @@ const changeBoardSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    isDelete: {
-      type: Boolean,
-      default: false,
+    status: {
+      type: Number,
+      default: 0,
     },
     reason: {
       type: String,
@@ -47,6 +52,14 @@ const changeBoardSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
+
+changeBoardSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'boardType',
+    select: 'boardType',
+  });
+  next();
+});
 
 const changeBoardModel = mongoose.model('change_board', changeBoardSchema);
 

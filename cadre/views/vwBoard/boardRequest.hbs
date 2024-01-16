@@ -96,12 +96,12 @@
   <div class="formbold-form-wrapper">
     <form action={{#if isSuperAdmin}} 
                     {{#if action.add}}
-                      '/api/v1/boards/add/{{board._id}}/'
+                      '/api/v2/boards/add/{{board._id}}/'
                     {{else}} 
-                      "/api/v1/boards/update/{{board._id}}/" 
+                      "/api/v2/boards/update/{{board._id}}/" 
                     {{/if}}
                     {{else}} 
-                    "/api/v1/changeBoard" 
+                    "/api/v2/changeBoard" 
                     {{/if}}
                      method="POST" enctype="multipart/form-data" id="editBoardForm">
         <div class="formbold-input-flex">
@@ -196,6 +196,7 @@
         </button>
         <input type="hidden" name="creator" value="{{user._id}}">
         <input type="hidden" name="boardLocation" value="{{boardLocation._id}}">
+        <input type="hidden" name="board" value="{{board._id}}">
     </form>
   </div>
 </div>

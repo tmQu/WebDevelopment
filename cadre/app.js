@@ -16,10 +16,12 @@ import xss from 'xss-clean';
 import boardRouter from './routes/boardRoutes.js';
 import userRouter from './routes/userRoutes.js';
 import reportRouter from './routes/reportRoutes.js';
-import reportController from './controllers/reportController.js';
 import reportMethodRoutes from './routes/reportMethodRoutes.js';
 import changeBoardRoutes from './routes/changeBoardRoutes.js';
 import changeBoardLocationRoutes from './routes/changeBoardLocationRoutes.js';
+
+import reportController from './controllers/reportController.js';
+import changeBoardController from './controllers/changeBoardController.js';
 
 import hbsHelpers from './static/js/handlebarsHelpers.js';
 import licenseRouter from './routes/licenseRoutes.js';
@@ -132,9 +134,8 @@ app.use('/api/v1/reports', reportRouter.router_v1);
 app.use('/api/v1/reportMethods', reportMethodRoutes);
 app.use('/api/v1/license', licenseRouter);
 
-
 // Resident Route -> for get json
-app.use('/api/v2/boards', boardRouter.router_v2)
+app.use('/api/v2/boards', boardRouter.router_v2);
 app.use('/api/v2/reports', reportRouter.router_v2);
 app.use('/api/v2/reportMethods', reportMethodRoutes);
 app.use('/api/v2/changeBoard', changeBoardRoutes.router_v2);
@@ -162,7 +163,7 @@ app.get('/test', async (req, res) => {
   var board = await boardModel.find();
   for (var i = 0; i < board.length; i++) {
     var boardItem = board[i];
-    boardItem.isLicense = (Math.floor(Math.random() * 2) === 1);
+    boardItem.isLicense = Math.floor(Math.random() * 2) === 1;
     await boardItem.save();
   }
   res.send('success');
@@ -256,7 +257,7 @@ app.use((err, req, res, next) => {
     message: message,
     layout: 'main',
   });
-}); 
+});
 
 app.get('/boardsLocation', authController.protect, (req, res) => {
   boardLocationController.viewAllBoardLocation(req, res);
@@ -272,6 +273,18 @@ app.get('/boardsLocation/:id/changeInfoRequest', authController.protect, (req, r
 
 app.get('/boardsLocation/:id/board/:boardId', authController.protect, (req, res) => {
   boardController.viewBoard(req, res);
+});
+
+app.get('/boardRequest', authController.protect, (req, res) => {
+  changeBoardController.viewAllRequest(req, res);
+});
+
+app.get('/boardRequest/:id', authController.protect, (req, res) => {
+  changeBoardController.viewRequest(req, res);
+});
+
+app.get('/boardRequest/:id/accept', authController.protect, (req, res) => {
+  changeBoardController.acceptRequest(req, res);
 });
 
 import reportMethodController from './controllers/reportMethodController.js';

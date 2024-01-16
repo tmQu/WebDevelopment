@@ -68,9 +68,9 @@ const changeBoardLocationSchema = new mongoose.Schema(
       ref: 'advertisement_forms',
       required: true,
     }, 
-    isDelete: {
-      type: Boolean,
-      default: false,
+    status: {
+      type: Number,
+      default: 0,
     },
     reason: {
       type: String,

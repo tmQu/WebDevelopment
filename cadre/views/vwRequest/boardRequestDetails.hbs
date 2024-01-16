@@ -1,0 +1,257 @@
+{{#section 'css'}}
+  <link rel='stylesheet' href='../../static/css/handleRequest/boardRequestList.css' />
+{{/section}}
+{{#section 'js'}}
+  <script src='../../static/js/requests/boardRequestList.js'></script>
+  <link
+    rel='stylesheet'
+    href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css'
+    integrity='sha256-2XFplPlrFClt0bIdPgpz8H7ojnk10H69xRqd9+uTShA='
+    crossorigin='anonymous'
+  />
+{{/section}}
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul
+    class="navbar-nav sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+    style="background: linear-gradient(45deg, #5c7ea1, #509177);"
+  >
+    <!-- Sidebar - Brand -->
+    <div
+      class="sidebar-brand d-flex align-items-center justify-content-center"
+      href="/"
+    >
+      <div class="sidebar-brand-text mt-5">ADVERTISING BOARDS MANAGEMENT</div>
+    </div>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0" />
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item">
+      <a class="nav-link mt-5" href="/">
+        <i class="bi bi-house"></i>
+        <span>TRANG CHỦ</span></a>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <!-- Heading -->
+    <div class="sidebar-heading">
+      QUẢN LÝ
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="/boardsLocation" id="option">
+        <i class="bi bi-clipboard-data"></i>
+        <span>Xem danh sách</span>
+      </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <!-- Heading -->
+    <div class="sidebar-heading mt-4">
+      Xử lý báo cáo
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="/reports" id="option">
+        <i class="bi bi-clipboard-data"></i>
+        <span>Xem danh sách</span>
+      </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+    <!-- Heading -->
+    <div class="sidebar-heading mt-4">
+      Cấp phép quảng cáo
+    </div>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="#" id="option">
+        <i class="bi bi-plus-circle"></i>
+        <span>Tạo yêu cầu</span>
+      </a>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="#" id="option">
+        <i class="bi bi-clipboard-data"></i>
+        <span>Xem danh sách</span>
+      </a>
+    </li>
+
+    <!-- Log out -->
+    <a class="sidebar-heading mt-5 logout" id="logout" href="/login">
+      ĐĂNG XUẤT
+    </a>
+
+  </ul>
+
+  <!-- End of Sidebar -->
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 ">
+          <nav>
+            <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-home" aria-selected="true"><b>Profile</b></a>
+              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-secure" role="tab" aria-controls="nav-profile" aria-selected="false"><b>Security</b></a>
+            </div>
+          </nav>
+          <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+            <div class='tab-pane active' id='profile' role='tabpanel' aria-labelledby='profile-tab'>
+              <div class='container-fluid mt-2'> 
+                <!-- Thông tin bảng quảng cáo -->
+                {{#if newBoard}}
+                  <div class='card shadow mb-2'>
+                    <div class='card-body'>
+                      <div class='row d-flex align-items-stretch'>
+                        <div class='col-lg-5 col-md-5 col-sm-6'>
+                          <div class='white-box text-center'>
+                            {{#if newBoard.imgBillboard}}
+                              <img src='{{newBoard.imgBillboard}}' class='img-fluid' alt='Board image' />
+                            {{else}}
+                              <img src='/static/img/adboard.png' class='img-fluid' alt='Board image' />
+                            {{/if}}
+                          </div>
+                        </div>
+                        <!-- Thông tin điểm đặt quảng cáo -->
+                        <div class='col-lg-7 col-md-7 col-sm-6'>
+                          <h4 class='box-title d-flex flex-row justify-content-between'>
+                            <strong>{{newBoard.boardType.boardType}}</strong>
+                            {{#compare newBoard.status '===' 0}}
+                              <a class="btn btn-outline-primary" id="newBoard" href="/boardRequest/{{newBoard._id}}/accept?approve=true">Mới</a>
+                            {{else compare newBoard.status '===' -1}}
+                              <a class="btn btn-outline-primary disabled" id="newBoard" href="/boardRequest/{{newBoard._id}}/accept?approve=true" aria-disabled="true">Mới</a>
+                            {{else}}
+                              <a class="btn btn-primary disabled" id="newBoard" href="/boardRequest/{{newBoard._id}}/accept?approve=true" aria-disabled="true">Mới - Đã chọn</a>
+                            {{/compare}}
+                          </h4>
+                          <p>
+                            {{newBoard.boardLocation.addr.street_number}}, {{newBoard.boardLocation.addr.route}}, {{newBoard.boardLocation.addr.ward}},
+                            {{newBoard.boardLocation.addr.district}}, {{newBoard.boardLocation.addr.city}}
+                          </p>
+                          <p>
+                            Kích thước:
+                            <strong>
+                              <span class="boardSize">{{newBoard.size}}</span>
+                            </strong>
+                          </p>
+                          <p>
+                            Hình thức:
+                            <strong>
+                              {{newBoard.boardLocation.advertisementForm}}
+                            </strong>
+                          </p>
+                          <p>
+                            Phân loại:
+                            {{#each newBoard.boardLocation.locationCategory}}
+                              <span class='badge badge-pill badge-primary'>
+                                {{this.locationCategory}}
+                              </span>
+                            {{/each}}
+                          </p>
+                          <p>
+                            Số lượng:
+                            <strong>
+                              {{newBoard.quantity}}
+                            </strong>
+                          </p>
+                          <p>Lý do: {{newBoard.reason}}</p>                     
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {{else}}
+                  <div class='alert alert-warning' role='alert'>
+                    <strong>
+                      Không tìm thấy yêu cầu chỉnh sửa
+                    </strong>
+                  </div>
+                {{/if}}
+                {{#if oldBoard}}
+                  <div class='card shadow mb-2'>
+                    <div class='card-body'>
+                      <div class='row d-flex align-items-stretch'>
+                        <div class='col-lg-5 col-md-5 col-sm-6'>
+                          <div class='white-box text-center'>
+                            {{#if oldBoard.imgBillboard}}
+                              <img src='{{oldBoard.imgBillboard}}' class='img-fluid' alt='Board image' />
+                            {{else}}
+                              <img src='/static/img/adboard.png' class='img-fluid' alt='Board image' />
+                            {{/if}}
+                          </div>
+                        </div>
+                        <!-- Thông tin điểm đặt quảng cáo -->
+                        <div class='col-lg-7 col-md-7 col-sm-6'>
+                          <h4 class='box-title d-flex flex-row justify-content-between'>
+                            <strong>{{oldBoard.boardType.boardType}}</strong>
+                            {{#compare newBoard.status '===' -1 }}
+                              <a class="btn btn-danger disabled" href="/boardRequest/{{newBoard._id}}/accept?approve=false" aria-disabled="true">Cũ - Đã chọn</a>
+                            {{else compare newBoard.status '===' 0}}
+                              <a class="btn btn-outline-danger" href="/boardRequest/{{newBoard._id}}/accept?approve=false">Cũ</a>
+                            {{else}}
+                              <a class="btn btn-outline-danger disabled" href="/boardRequest/{{newBoard._id}}/accept?approve=false" aria-disabled="true">Cũ</a>
+                            {{/compare}}
+                          </h4>
+                          <p>
+                            {{oldBoard.boardLocation.addr.street_number}}, {{oldBoard.boardLocation.addr.route}}, {{oldBoard.boardLocation.addr.ward}},
+                            {{oldBoard.boardLocation.addr.district}}, {{oldBoard.boardLocation.addr.city}}
+                          </p>
+                          <p>
+                            Kích thước:
+                            <strong>
+                              <span class="boardSize">{{oldBoard.size}}</span>
+                            </strong>
+                          </p>
+                          <p>
+                            Hình thức:
+                            <strong>
+                              {{oldBoard.boardLocation.advertisementForm}}
+                            </strong>
+                          </p>
+                          <p>
+                            Phân loại:
+                            {{#each oldBoard.boardLocation.locationCategory}}
+                              <span class='badge badge-pill badge-primary'>
+                                {{this.locationCategory}}
+                              </span>
+                            {{/each}}
+                          </p>
+                          <p>
+                            Số lượng:
+                            <strong>
+                              {{oldBoard.quantity}}
+                            </strong>
+                          </p>              
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {{else}}
+                  <div class='alert alert-warning' role='alert'>
+                    <strong>
+                      Không tìm thấy yêu cầu chỉnh sửa
+                    </strong>
+                  </div>
+                {{/if}}
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+             
+  </div>
+</div>

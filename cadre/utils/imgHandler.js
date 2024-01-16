@@ -8,9 +8,9 @@ const upload = multer({
       if (url.includes('license')) {
         cb(null, './static/db/license');
       } else if (url.includes('changeBoard')) {
-        cb(null, './static/img/boardsLocation');
+        cb(null, './static/db/advs');
       }else if (url.includes('changeBoardLocation')) {
-        cb(null, './static/img/boardsLocation');
+        cb(null, './static/db/billboard');
       } else {
         cb(null, './static/img/reports');
       }
