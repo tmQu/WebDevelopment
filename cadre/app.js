@@ -14,31 +14,34 @@ import mongoSanitize from 'express-mongo-sanitize';
 import xss from 'xss-clean';
 
 import boardRouter from './routes/boardRoutes.js';
+import boardLocationRouter from './routes/boardLocationRoutes.js'
 import userRouter from './routes/userRoutes.js';
 import reportRouter from './routes/reportRoutes.js';
 import reportMethodRoutes from './routes/reportMethodRoutes.js';
 import changeBoardRoutes from './routes/changeBoardRoutes.js';
 import changeBoardLocationRoutes from './routes/changeBoardLocationRoutes.js';
-
-import reportController from './controllers/reportController.js';
-import changeBoardController from './controllers/changeBoardController.js';
-
-import hbsHelpers from './static/js/handlebarsHelpers.js';
+import advFormRoutes from './routes/advFormRoutes.js';
 import licenseRouter from './routes/licenseRoutes.js';
 
+import hbsHelpers from './static/js/handlebarsHelpers.js';
 import cookieParser from 'cookie-parser';
 
 // import model
 import boardLocationModel from './models/boardLocationModel.js';
-import advtFormModel from './models/advtFormModel.js';
+import advtFormModel from './models/advFormModel.js';
 import locationCategoryModel from './models/locationCategoryModel.js';
 import districtModel from './models/districtModel.js';
 import wardModel from './models/wardModel.js';
 import mongoose from 'mongoose';
 import boardModel from './models/boardModel.js';
 import boardTypeModel from './models/boardTypeModel.js';
+
+import reportMethodController from './controllers/reportMethodController.js';
 import boardLocationController from './controllers/boardLocationController.js';
 import boardController from './controllers/boardController.js';
+import authController from './controllers/authController.js';
+import reportController from './controllers/reportController.js';
+import changeBoardController from './controllers/changeBoardController.js';
 
 import { Server } from 'socket.io';
 import { createServer } from 'http';
@@ -129,66 +132,36 @@ app.use('/static', express.static('static'));
 
 // Cadre Route -> for render
 app.use('/api/v1/boards', boardRouter.router_v1);
+app.use('/api/v1/boardLocation', boardLocationRouter.router_v1)
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reports', reportRouter.router_v1);
 app.use('/api/v1/reportMethods', reportMethodRoutes);
 app.use('/api/v1/license', licenseRouter);
+app.use('/api/v1/changeBoard', changeBoardRoutes.router_v1);
+app.use('/api/v1/changeBoardLocation', changeBoardLocationRoutes.router_v1);
+app.use('/api/v1/advForms', advFormRoutes);
 
 // Resident Route -> for get json
 app.use('/api/v2/boards', boardRouter.router_v2);
 app.use('/api/v2/reports', reportRouter.router_v2);
 app.use('/api/v2/reportMethods', reportMethodRoutes);
-app.use('/api/v2/changeBoard', changeBoardRoutes.router_v2);
-app.use('/api/v2/changeBoardLocation', changeBoardLocationRoutes.router_v2);
 
-app.get('/', async (req, res) => {
-  var boardLocation = await boardLocationModel
-    .find()
-    .populate('advertisementForm')
-    .populate('locationCategory')
-    .populate('addr.district')
-    .populate('addr.ward');
-  var boards = await boardModel.find().populate('boardType');
 
-  res.render('vwHome/index', {
-    layout: 'main',
-    boardLocation: JSON.stringify(boardLocation),
-    boards: JSON.stringify(boards),
-  });
-});
+// app.get('/', async (req, res) => {
+//   var boardLocation = await boardLocationModel
+//     .find()
+//     .populate('advertisementForm')
+//     .populate('locationCategory')
+//     .populate('addr.district')
+//     .populate('addr.ward');
+//   var boards = await boardModel.find().populate('boardType');
 
-import authController from './controllers/authController.js';
-
-app.get('/test', async (req, res) => {
-  var board = await boardModel.find();
-  for (var i = 0; i < board.length; i++) {
-    var boardItem = board[i];
-    boardItem.isLicense = Math.floor(Math.random() * 2) === 1;
-    await boardItem.save();
-  }
-  res.send('success');
-  res.render('vwLicense/test', { layout: 'main' });
-  // var boardLocations = await boardLocationModel.find();
-
-  // for (var i = 0; i < boardLocations.length; i++) {
-  //   var boardLocation = boardLocations[i];
-  //   if (i > 2 && i < 30)
-  //   {
-  //     if (Math.floor(Math.random() + 1) === 1)
-  //     {
-  //       await boardModel.deleteMany({boardLocation: boardLocation._id});
-  //     }
-
-  //   }
-
-  //     var boards = await boardModel.find({boardLocation: boardLocation._id});
-
-  //     boardLocation.num_board = boards.length;
-  //     await boardLocation.save();
-
-  // }
-  // res.send('success');
-});
+//   res.render('vwHome/index', {
+//     layout: 'main',
+//     boardLocation: JSON.stringify(boardLocation),
+//     boards: JSON.stringify(boards),
+//   });
+// });
 
 app.get('/licenseAccount', authController.protect, authController.restrictTo('departmental'), (req, res) => {
   res.render('vwLicense/licenseAccount', { layout: 'department' });
@@ -200,26 +173,6 @@ app.get('/license', (req, res) => {
 
 app.get('/wardAdmin', (req, res) => {
   res.render('vwAdmin/wardAdmin', { layout: 'main' });
-});
-
-app.get('/', async (req, res) => {
-  // var boardLocation = await boardLocationModel
-  //   .find()
-  //   .populate('advertisementForm')
-  //   .populate('locationCategory')
-  //   .populate('addr.district')
-  //   .populate('addr.ward');
-  // var boards = await boardModel.find().populate('boardType');
-
-  // // console.log(boardLocation);
-  // // console.log(boards);
-
-  // res.render('vwHome/index', {
-  //   layout: 'main',
-  //   boardLocation: JSON.stringify(boardLocation),
-  //   boards: JSON.stringify(boards),
-  // });
-  res.render('vwHome/index', { layout: 'main' });
 });
 
 app.get('/login', (req, res) => {
@@ -246,31 +199,31 @@ app.get('/reports/:id', authController.protect, async (req, res) => {
   reportController.getByID_v1(req, res);
 });
 
-app.use((err, req, res, next) => {
-  const statusCode = err.statusCode || 500;
-  const status = err.status || 'error';
-  const message = err.message || 'Something went wrong!';
-
-  res.status(statusCode).render('vwError/error', {
-    statusCode: statusCode,
-    status: status,
-    message: message,
-    layout: 'main',
-  });
-});
-
 app.get('/boardsLocation', authController.protect, (req, res) => {
   boardLocationController.viewAllBoardLocation(req, res);
 });
 
-app.get('/boardsLocation/:id', authController.protect, (req, res) => {
-  boardLocationController.viewBoardLocation(req, res);
+
+
+// for add
+app.get('/boardsLocation/departmental', authController.protect, (req, res) => {
+  boardLocationController.viewBoardLocationForm(req, res);
+});
+
+// for edit action=update
+app.get('/boardsLocation/departmental/:id', authController.protect, (req, res) => {
+  boardLocationController.viewBoardLocationForm(req, res);
 });
 
 app.get('/boardsLocation/:id/changeInfoRequest', authController.protect, (req, res) => {
   boardLocationController.changeInfoRequest(req, res);
 });
 
+
+
+app.get('/boardsLocation/:id/board', authController.protect, (req, res) => {
+  boardController.viewBoard(req, res);
+});
 app.get('/boardsLocation/:id/board/:boardId', authController.protect, (req, res) => {
   boardController.viewBoard(req, res);
 });
@@ -287,14 +240,56 @@ app.get('/boardRequest/:id/accept', authController.protect, (req, res) => {
   changeBoardController.acceptRequest(req, res);
 });
 
-import reportMethodController from './controllers/reportMethodController.js';
+app.get('/boardsLocation/:id', authController.protect, (req, res) => {
+  boardLocationController.viewBoardLocation(req, res);
+});
+
+
 
 app.get('/reportMethods', (req, res) => {
   reportMethodController.getAllMethods_v2(req, res);
 });
 
-app.get('/', (req, res) => {
-  res.render('vwAdmin/wardAdmin');
+app.get('/reportMethods/add', (req, res) => {
+  res.render('vwDepartment/reportMethod/reportMethodAdd', {
+    layout: 'department'
+  });
+});
+
+app.get('/reportMethods/edit/:id', (req, res) => {
+  res.render('vwDepartment/reportMethod/reportMethodEdit', {
+    id: req.params.id,
+    layout: 'department'
+  });
+});
+
+import advFormController from './controllers/advFormController.js';
+
+app.get('/advForms', (req, res) => {
+  advFormController.getAll(req, res);
+});
+
+app.get('/advForms/add', (req, res) => {
+  res.render('vwDepartment/advForm/advFormAdd', {
+    layout: 'department'
+  });
+});
+
+app.get('/advForms/edit/:id', (req, res) => {
+  res.render('vwDepartment/advForm/advFormEdit', {
+    id: req.params.id,
+    layout: 'department'
+  });
+});
+
+app.get('/areas', (req, res) => {
+  res.render('vwDepartment/area/areaManagement', {
+    layout: 'department'
+  });
+});
+
+app.get('/', async (req, res) => {
+  res.render('vwHome/index', { layout: 'main' });
 });
 
 app.use((err, req, res, next) => {
@@ -310,4 +305,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-export { server, io };
+export { server, io, __dirname};

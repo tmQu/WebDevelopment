@@ -10,7 +10,7 @@ const reportMethodModel = new mongoose.Schema(
     steps: [
       {
         type: String,
-        required: true,
+        required: false
       },
     ],
   },

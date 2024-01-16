@@ -7,6 +7,6 @@ const advtFormSchema = new mongoose.Schema({
     }
 });
 
-const advtFormModel = mongoose.model("advertisement_forms", advtFormSchema);
+const advFormModel = mongoose.model("advertisement_forms", advtFormSchema);
 
-export default advtFormModel;
+export default advFormModel;

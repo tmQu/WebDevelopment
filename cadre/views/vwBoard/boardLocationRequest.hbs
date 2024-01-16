@@ -7,8 +7,18 @@
 {{!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzxW5txxZHhPZCjPrOvrjCE8awoF3IP50&callback=initMap" async defer></script> --}}
 {{/section}}
 
-<div class="formbold-main-wrapper m-1">
-  <form action="/api/v2/changeBoardLocation/" method="POST" enctype="multipart/form-data" id="editBoardForm">
+<div class="formbold-main-wrapper">
+  <form action=
+  {{#if isSuperAdmin}}
+    {{#if action.add}}
+    'http://localhost:4000/api/v1/boardLocation/add'
+    {{else}}
+    'http://localhost:4000/api/v1/boardLocation/update/{{boardLocation._id}}'
+    {{/if}}
+  {{else}}
+    "http://localhost:4000/api/v1/changeBoardLocation/" 
+  {{/if}}
+      method="POST" enctype="multipart/form-data" id="editBoardForm">
     <div class="formbold-form-wrapper">
       <div class="formbold-input-flex align-items-start p-2">
         <div class="d-flex justify-content-start">
@@ -27,6 +37,7 @@
         </div>
         <div>
           <div class="formbold-select-wrapper">
+            <h4>Hình thức quảng cáo</h4>
             <select name="advertisementForm" id="editAdvertisementForm" class="formbold-form-input">
               <option value="{{boardLocation.advertisementForm._id}}" selected>{{boardLocation.advertisementForm.advertisementForm}}</option>
               {{#each advertisementForm}}
@@ -40,7 +51,25 @@
         </div>
       </div>
 
-      <div class="formbold-textarea p-2">
+      <div class="formbold-input-flex">
+        <div>
+          <div class="formbold-select-wrapper">
+            <label class="formbold-form-label">Loại đất</label>
+            <div id="editLocationCategory" class="formbold-form-input">
+              {{#each locationCategory}}
+                <div class="checkbox-option">
+                  <input type="checkbox" id="{{this._id}}" name="locationCategory" value="{{this._id}}" 
+                        {{#if (containsLocationCategory @root.boardLocation.locationCategory this.locationCategory)}}checked{{/if}}>
+                    <label for="location-{{this._id}}">{{this.locationCategory}}</label>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{#unless isSuperAdmin}}
+      <div class="formbold-textarea">
           <textarea
               rows="6"
               name="boardReason"
@@ -50,7 +79,8 @@
           ></textarea>
           <label for="editReason" class="formbold-form-label"> Lý do </label>
       </div>
-
+      {{/unless}}
+      
       <div class="formbold-input-file">
         <label for="editUploadImage" class="formbold-input-label">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,8 +98,17 @@
       </div>
       <input type="file" name="imgBillboardLocation" id="editUploadImage" class="formbold-form-input" accept="image.png image.jpeg image.jpg" multiple/>
 
-      <button class="formbold-btn m-2" type="submit">
-          Gửi
+
+      <button class="formbold-btn" type="submit">
+          {{#if isSuperAdmin}}
+            {{#if action.edit}}
+              Chỉnh sửa điểm đặt
+            {{else}}
+              Thêm điểm đặt quảng cáo
+            {{/if}}
+          {{else}}
+            Gửi
+          {{/if}}
       </button>
       <input type="hidden" name="creator" value="{{user._id}}">
       <input type="hidden" name="boardLocation" value="{{boardLocation._id}}">    

@@ -5,7 +5,7 @@ import { upload } from '../utils/imgHandler.js';
 const router_v1 = express.Router();
 const router_v2 = express.Router();
 
-router_v2
+router_v1
   .route('/')
   .post(upload.array('imgBillboardLocation', 3), changeBoardLocationController.createChangeBoardLocationReq);
 

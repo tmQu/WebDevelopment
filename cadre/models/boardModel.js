@@ -6,7 +6,7 @@ const billboardSchema = new mongoose.Schema({
     ref: 'board_locations',
     required: true,
   },
-  imgBoard: {
+  imgBillboard: {
     type: String,
     require: true,
   },

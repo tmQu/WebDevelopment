@@ -2,6 +2,9 @@ import boardLocationModel from '../models/boardLocationModel.js';
 import boardModel from '../models/boardModel.js';
 import boardTypeModel from '../models/boardTypeModel.js';
 import mongoose from 'mongoose';
+import fs from 'fs'
+import path from 'path'
+import {__dirname} from '../app.js'
 
 const boardController = {
   getAllBoardLocation: async (req, res) => {
@@ -115,10 +118,16 @@ const boardController = {
         size: `${req.body.boardWidth}x${req.body.boardHeight}`,
         quantity: `${req.body.boardQuantity} ${unit}`,
         boardType: req.body.boardType,
-        imgBillboard: '/' + req.file.path,
+        imgBillboard: '\\' + req.file.path,
         boardLocation: req.body.boardLocation
       }
+      console.log(data);
+
+
       var board = await boardModel.create(data);
+
+      var boardLocation = await boardLocationModel.findById(req.body.boardLocation);
+      boardLocation.num_board = boardLocation.num_board + 1;
 
 
       res.redirect('/boardsLocation/' + req.body.boardLocation)
@@ -167,7 +176,12 @@ const boardController = {
   },
   deleteBoard: async (req, res) => {
     try {
-      const board = await boardModel.findByIdAndDelete({ _id: req.params.id });
+      const board = await boardModel.findByIdAndDelete(req.params.id);
+      console.log(board)
+      var boardLocation = await boardLocationModel.findById(board.boardLocation);
+      boardLocation.num_board = boardLocation.num_board - 1;
+      boardLocation.save();
+      console.log('sucess')
       if (!board) {
         return res.status(404).json({
           status: 'fail',
@@ -175,10 +189,15 @@ const boardController = {
         });
       }
 
-      res.status(204).json({
-        status: 'success',
-        data: null,
-      });
+      // not delete the sample image use for all board
+      if (!board.imgBillboard.includes('static/db/advs/adv_'))
+      {
+        console.log(path.join(__dirname, board.imgBillboard))
+        fs.unlinkSync(path.join(__dirname, board.imgBillboard));
+      }
+      console.log('delet success')
+
+      res.redirect('/boardsLocation/' + boardLocation._id)
     } catch (err) {
       res.status(400).json({
         status: 'fail',
@@ -190,23 +209,33 @@ const boardController = {
   viewBoard: async (req, res) => {
     try {
       let action = req.query.action;
-      let board = await boardModel.findById(req.params.boardId);
+      let board;
+      let boardWidth;
+      let boardHeight;
+      let boardQuantity;
+      if(action !== 'add')
+      {
+        board = await boardModel.findById(req.params.boardId);
+        board = board.toObject();
+        boardWidth = board.size.split('x')[0];
+        boardHeight = board.size.split('x')[1];
+        boardQuantity = board.quantity.split(' ')[0];
+
+        board = {
+          ...board,
+          width: boardWidth,
+          height: boardHeight,
+          quantity: boardQuantity,
+        };
+
+      }
       let boardLocation = await boardLocationModel.findById(req.params.id);
       let boardType = await boardTypeModel.find();
       const user = req.user;
-      
-      const boardWidth = board.size.split('x')[0];
-      const boardHeight = board.size.split('x')[1];
-      const boardQuantity = board.quantity.split(' ')[0];
-      
-      board = board.toObject();
 
-      board = {
-        ...board,
-        width: boardWidth,
-        height: boardHeight,
-        quantity: boardQuantity,
-      };
+
+
+
       boardLocation = boardLocation.toObject();
       boardLocation = {
         ...boardLocation,
@@ -225,8 +254,9 @@ const boardController = {
           isSuperAdmin: req.user.role.level === 'departmental',
           action: {
             add: action === 'add',
-            edit: action === 'edit',
+            edit: action === 'update',
           },
+          boardLocation,
           boardType,
           user: user.toObject(),
           layout: 'report',

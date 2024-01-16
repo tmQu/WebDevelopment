@@ -7,13 +7,12 @@ import mongoose from "mongoose";
 import sanitizeHtml from 'sanitize-html';
 
 const changeBoardLocationController = {
-  createChangeBoardLocationReq: async (req, res) => { 
+  createChangeBoardLocationReq: async (req, res) => {
     try {
       console.log(req.body.boardLocation);
       const district_id = await districtModel.find({ district: { $regex: req.body.district, $options: 'i' } });
-      // console.log(district_id[0]);
       const ward_id = await wardModel.find({ ward: { $regex: req.body.ward, $options: 'i' }, district: district_id[0]._id });
-  
+
       const changeBoardLocationReq = await changeBoardLocationModel.create({
         boardLocation: req.body.boardLocation,
         reason: sanitizeHtml(req.body.boardReason),

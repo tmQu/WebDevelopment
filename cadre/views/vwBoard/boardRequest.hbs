@@ -16,9 +16,13 @@
 <script>
     $("#editUploadImage").fileinput({
     dropZoneEnabled: false,
+    showRemove: false,
     maxFileCount: 1,
     showUpload: false,
     allowedFileExtensions: ["jpg", "png", "gif"],
+    {{#if action.add}}
+    required: true
+    {{/if}}
   });
 </script>
 
@@ -43,15 +47,16 @@
 
     {{#unless isSuperAdmin}}
     const reason = document.getElementById('editReason').value;
-      {{#if action.add}}
-      const imgBillboard = document.getElementById('editUploadImage').value;
-      
-      if (imgBillboard.files.length === 0) {
-        alert('Vui lòng chọn ảnh đính kèm.');
-        return false;
-      }
-      {{/if}}
     {{/unless}}
+
+    {{#if action.add}}
+    const imgBillboard = document.getElementById('editUploadImage');
+    console.log(imgBillboard.files.length)
+    if (imgBillboard.files.length === 0) {
+      alert('Vui lòng chọn ảnh đính kèm.');
+      return false;
+    }
+    {{/if}}
 
 
     // Kiểm tra các trường nhập liệu ở đây
@@ -96,12 +101,12 @@
   <div class="formbold-form-wrapper">
     <form action={{#if isSuperAdmin}} 
                     {{#if action.add}}
-                      '/api/v2/boards/add/{{board._id}}/'
+                      '/api/v1/boards/add/{{board._id}}/'
                     {{else}} 
-                      "/api/v2/boards/update/{{board._id}}/" 
+                      "/api/v1/boards/update/{{board._id}}/" 
                     {{/if}}
                     {{else}} 
-                    "/api/v2/changeBoard" 
+                    "/api/v1/changeBoard" 
                     {{/if}}
                      method="POST" enctype="multipart/form-data" id="editBoardForm">
         <div class="formbold-input-flex">
@@ -181,7 +186,7 @@
               Ảnh đính kèm           
           </label>
         </div>
-        <input type="file" name="imgBillboard" id="editUploadImage" class="formbold-form-input"/>
+        <input type="file" name="imgBillboard" id="editUploadImage" />
 
         <button class="formbold-btn" type="submit">
           {{#if isSuperAdmin}}

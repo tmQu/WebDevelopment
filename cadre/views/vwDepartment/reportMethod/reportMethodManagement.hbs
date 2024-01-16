@@ -1,0 +1,113 @@
+{{#section 'css'}}
+<link rel='stylesheet' href='../../static/css/reports.css' />
+{{/section}}
+
+<div class='container'>
+    <div class='row'>
+        <div class='col-lg-12'>
+            <div class='main-box clearfix'>
+                <div class='table-responsive'>
+                    <table class='table user-list'>
+                        <thead>
+                            <tr>
+                                <th>
+                                    Phương thức báo cáo
+                                </th>
+                                <th
+                                    class='text-center'>
+                                    <a href='/reportMethods/add'
+                                        class='table-link'>
+                                        <span class='fa-stack'>
+                                            <i
+                                                class='fa fa-square fa-stack-2x'></i>
+                                            <i
+                                                class='fa fa-plus fa-stack-1x fa-inverse'></i>
+                                        </span>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class='reports-list'>
+                                {{#if data}}
+                                {{#each data}}
+                                <tr>
+                                    <td>
+                                        <div
+                                            class="col-md-10 align-content-start">
+                                            {{this.reportMethod}}
+                                        </div>
+                                    </td>
+                                    <td style='width: 20%' class='text-center'>
+                                        <a
+                                            href='/reportMethods/edit/{{this._id}}'
+                                            class='table-link'>
+                                            <span class='fa-stack'>
+                                                <i
+                                                    class='fa fa-square fa-stack-2x'></i>
+                                                <i
+                                                    class='fa fa-pencil fa-stack-1x fa-inverse'></i>
+                                            </span>
+                                        </a>
+                                        <a
+                                            href='/api/v1/reportMethods/{{this._id}}'
+                                            class='table-link danger'>
+                                            <span class='fa-stack'>
+                                                <i
+                                                    class='fa fa-square fa-stack-2x'></i>
+                                                <i
+                                                    class='fa fa-trash-o fa-stack-1x fa-inverse'></i>
+                                            </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                                {{else}}
+                                <tr>
+                                    <td colspan='5'>
+                                        <div class='alert alert-danger'>
+                                            <strong>Không có dữ liệu</strong>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{/if}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{#section 'js'}}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteButtons = document.querySelectorAll('.table-link.danger');
+
+        deleteButtons.forEach(function (button) {
+            button.addEventListener('click', function (event) {
+                event.preventDefault(); 
+
+                const deleteLink = button.getAttribute('href');
+
+                fetch(deleteLink, {
+                    method: 'DELETE',
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Lỗi khi gọi API xoá');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+
+                    window.location.reload();
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+            });
+        });
+    });
+</script>
+{{/section}}

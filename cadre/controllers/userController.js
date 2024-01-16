@@ -4,17 +4,6 @@ import catchAsync from '../utils/catchAsync.js';
 import multer from 'multer'; // for uploading files
 import sharp from 'sharp'; // image processing library
 
-// const multerStorage = multer.diskStorage({
-//   destination: (req, file, cb) => {
-//     cb(null, 'static/img/users');
-//   },
-//   filename: (req, file, cb) => {
-//     // user-123abc123abc123abc-1234567890.jpeg
-//     const ext = file.mimetype.split('/')[1];
-//     cb(null, `user-${req.user._id}-${Date.now()}.${ext}`);
-//   },
-// });
-
 const multerStorage = multer.memoryStorage(); // store image as buffer
 
 const multerFilter = (req, file, cb) => {
@@ -73,6 +62,7 @@ const userController = {
   createUser: async (req, res) => {
     try {
       const newUser = await User.create(req.body);
+      
       res.status(201).json({
         status: 'success',
         data: {

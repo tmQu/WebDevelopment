@@ -10,13 +10,21 @@ const upload = multer({
       } else if (url.includes('changeBoard')) {
         cb(null, './static/db/advs');
       }else if (url.includes('changeBoardLocation')) {
+        cb(null, './static/img/boardsLocation');
+
+      } 
+      else if (url.includes('api/v1/boards')) {
+        cb(null, './static/db/advs');
+      }
+      else if (url.includes('api/v1/boardLocation')) {
         cb(null, './static/db/billboard');
-      } else {
+      }
+      else {
         cb(null, './static/img/reports');
       }
     },
     filename: function (req, file, cb) {
-      cb(null, file.originalname + '_' + Date.now());
+      cb(null, Date.now() + '_' + file.originalname );
     },
   }),
 });

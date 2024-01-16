@@ -95,6 +95,15 @@
   <!-- End of Sidebar -->
 <div class='container mt-4'>
   <div class='row'>
+    <div >
+      <form action="http://localhost:4000/boardsLocation/departmental" method="get">
+      <input type="hidden" name="action" value="add" >
+      <button class="btn btn-primary">
+        <i class="bi bi-plus-square"></i> Thêm điểm đặt mới
+      </button>
+      </form>
+
+    </div>
     <div class='col-lg-12'>
       <div class='main-box clearfix'>
         <div class='table-responsive'>
@@ -163,12 +172,24 @@
                       <a href='http://localhost:4000/boardsLocation/{{this._id}}' class='table-link'>
                         <i class="bi bi-zoom-in"></i>
                       </a>  
-                      <a href='/boardsLocation/{{this._id}}/changeInfoRequest' class='table-link boardLocationReq'>
+                      <a href=
+                      {{#if ../isSuperAdmin}}
+                        '/boardsLocation/departmental/{{this._id}}?action=update'
+                      {{else}}
+                        '/boardsLocation/{{this._id}}/changeInfoRequest' 
+                      {{/if}}
+                        class='table-link boardLocationReq'>
                         <span class='fa-stack'>
                           <i class='fa fa-square fa-stack-2x'></i>
                           <i class='fa fa-pencil fa-stack-1x fa-inverse'></i>
                         </span>
                       </a>
+
+                      {{#if ../isSuperAdmin}}
+                        <a href = 'http://localhost:4000/api/v1/boardLocation/delete/{{this._id}}' class='table-link boardLocationReq'>
+                          <i class="fa fa-trash" aria-hidden="true"></i>
+                        </a>
+                      {{/if}}
                     </td>
                   </tr>
                 {{/each}}
