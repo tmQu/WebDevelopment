@@ -39,7 +39,7 @@ const changeBoardLocationSchema = new mongoose.Schema(
       {
         type: String,
         required: true,
-      }
+      },
     ],
     location: {
       lat: {
@@ -56,7 +56,7 @@ const changeBoardLocationSchema = new mongoose.Schema(
         type: mongoose.Schema.Types.ObjectId,
         ref: 'location_categories',
         required: true,
-      }
+      },
     ],
     boardLocation: {
       type: mongoose.Schema.Types.ObjectId,
@@ -67,7 +67,7 @@ const changeBoardLocationSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'advertisement_forms',
       required: true,
-    }, 
+    },
     status: {
       type: Number,
       default: 0,
@@ -82,6 +82,26 @@ const changeBoardLocationSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
+
+changeBoardLocationSchema.pre(/^find/, function (next) {
+  this.populate({
+    path: 'advertisementForm',
+    select: 'advertisementForm',
+  })
+    .populate({
+      path: 'locationCategory',
+      select: 'locationCategory',
+    })
+    .populate({
+      path: 'addr.district',
+      select: 'district',
+    })
+    .populate({
+      path: 'addr.ward',
+      select: 'ward',
+    });
+  next();
+});
 
 const changeBoardLocationModel = mongoose.model('change_board_location', changeBoardLocationSchema);
 

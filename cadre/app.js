@@ -42,6 +42,7 @@ import boardController from './controllers/boardController.js';
 import authController from './controllers/authController.js';
 import reportController from './controllers/reportController.js';
 import changeBoardController from './controllers/changeBoardController.js';
+import changeBoardLocationController from './controllers/changeBoardLocationController.js';
 
 import { Server } from 'socket.io';
 import { createServer } from 'http';
@@ -203,8 +204,6 @@ app.get('/boardsLocation', authController.protect, (req, res) => {
   boardLocationController.viewAllBoardLocation(req, res);
 });
 
-
-
 // for add
 app.get('/boardsLocation/departmental', authController.protect, (req, res) => {
   boardLocationController.viewBoardLocationForm(req, res);
@@ -219,7 +218,9 @@ app.get('/boardsLocation/:id/changeInfoRequest', authController.protect, (req, r
   boardLocationController.changeInfoRequest(req, res);
 });
 
-
+app.get('/boardsLocation/:id', authController.protect, (req, res) => {
+  boardLocationController.viewBoardLocation(req, res);
+});
 
 app.get('/boardsLocation/:id/board', authController.protect, (req, res) => {
   boardController.viewBoard(req, res);
@@ -240,8 +241,16 @@ app.get('/boardRequest/:id/accept', authController.protect, (req, res) => {
   changeBoardController.acceptRequest(req, res);
 });
 
-app.get('/boardsLocation/:id', authController.protect, (req, res) => {
-  boardLocationController.viewBoardLocation(req, res);
+app.get('/boardLocationRequest', authController.protect, (req, res) => {
+  changeBoardLocationController.viewAllRequest(req, res);
+});
+
+app.get('/boardLocationRequest/:id', authController.protect, (req, res) => {
+  changeBoardLocationController.viewRequest(req, res);
+});
+
+app.get('/boardLocationRequest/:id/accept', authController.protect, (req, res) => {
+  changeBoardLocationController.acceptRequest(req, res);
 });
 
 
