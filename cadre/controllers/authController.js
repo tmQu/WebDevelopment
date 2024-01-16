@@ -43,7 +43,7 @@ const authController = {
       const newUser = await User.create(req.body);
 
       // createSendToken(newUser, 201, res);
-    
+      res.redirect('/');
     } catch (err) {
       res.status(400).json({
         status: 'fail',

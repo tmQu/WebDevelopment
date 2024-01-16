@@ -198,8 +198,9 @@ const boardController = {
       const boardWidth = board.size.split('x')[0];
       const boardHeight = board.size.split('x')[1];
       const boardQuantity = board.quantity.split(' ')[0];
-
+      
       board = board.toObject();
+
       board = {
         ...board,
         width: boardWidth,
