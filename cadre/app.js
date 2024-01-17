@@ -22,6 +22,8 @@ import changeBoardRoutes from './routes/changeBoardRoutes.js';
 import changeBoardLocationRoutes from './routes/changeBoardLocationRoutes.js';
 import advFormRoutes from './routes/advFormRoutes.js';
 import licenseRouter from './routes/licenseRoutes.js';
+import wardRoutes from './routes/wardRoutes.js';
+import districtRoutes from './routes/districtRoutes.js';
 
 import hbsHelpers from './static/js/handlebarsHelpers.js';
 import cookieParser from 'cookie-parser';
@@ -43,6 +45,7 @@ import boardController from './controllers/boardController.js';
 import authController from './controllers/authController.js';
 import reportController from './controllers/reportController.js';
 import changeBoardController from './controllers/changeBoardController.js';
+import changeBoardLocationController from './controllers/changeBoardLocationController.js';
 
 import { Server } from 'socket.io';
 import { createServer } from 'http';
@@ -73,7 +76,13 @@ app.engine(
       eq: function (a, b) {
         return a === b;
       },
-    },
+      isSelected: function (value, selectedValues) {
+        if (selectedValues && Array.isArray(selectedValues) && selectedValues.includes(value.toString())) {
+          return 'checked';
+        }
+        return '';
+      },
+    }
   })
 );
 
@@ -146,7 +155,8 @@ app.use('/api/v1/advForms', advFormRoutes);
 app.use('/api/v2/boards', boardRouter.router_v2);
 app.use('/api/v2/reports', reportRouter.router_v2);
 app.use('/api/v2/reportMethods', reportMethodRoutes);
-
+app.use('/api/v2/wards', wardRoutes);
+app.use('/api/v2/districts', districtRoutes);
 
 // app.get('/', async (req, res) => {
 //   var boardLocation = await boardLocationModel
@@ -232,8 +242,6 @@ app.get('/boardsLocation', authController.protect, (req, res) => {
   boardLocationController.viewAllBoardLocation(req, res);
 });
 
-
-
 // for add
 app.get('/boardsLocation/departmental', authController.protect, (req, res) => {
   boardLocationController.viewBoardLocationForm(req, res);
@@ -248,11 +256,14 @@ app.get('/boardsLocation/:id/changeInfoRequest', authController.protect, (req, r
   boardLocationController.changeInfoRequest(req, res);
 });
 
-
+app.get('/boardsLocation/:id', authController.protect, (req, res) => {
+  boardLocationController.viewBoardLocation(req, res);
+});
 
 app.get('/boardsLocation/:id/board', authController.protect, (req, res) => {
   boardController.viewBoard(req, res);
 });
+
 app.get('/boardsLocation/:id/board/:boardId', authController.protect, (req, res) => {
   boardController.viewBoard(req, res);
 });
@@ -269,8 +280,16 @@ app.get('/boardRequest/:id/accept', authController.protect, (req, res) => {
   changeBoardController.acceptRequest(req, res);
 });
 
-app.get('/boardsLocation/:id', authController.protect, (req, res) => {
-  boardLocationController.viewBoardLocation(req, res);
+app.get('/boardLocationRequest', authController.protect, (req, res) => {
+  changeBoardLocationController.viewAllRequest(req, res);
+});
+
+app.get('/boardLocationRequest/:id', authController.protect, (req, res) => {
+  changeBoardLocationController.viewRequest(req, res);
+});
+
+app.get('/boardLocationRequest/:id/accept', authController.protect, (req, res) => {
+  changeBoardLocationController.acceptRequest(req, res);
 });
 
 
@@ -313,10 +332,11 @@ app.get('/advForms/edit/:id', (req, res) => {
   });
 });
 
+import areaController from './controllers/areaController.js';
+import wardController from './controllers/wardController.js';
+
 app.get('/areas', (req, res) => {
-  res.render('vwDepartment/area/areaManagement', {
-    layout: 'department'
-  });
+  areaController.getAll(req, res);
 });
 
 app.get('/', async (req, res) => {
@@ -336,4 +356,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-export { server, io, __dirname};
+export { server, io, __dirname };

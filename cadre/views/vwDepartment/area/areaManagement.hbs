@@ -1,29 +1,151 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">All</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Category 1</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Category 2</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Category 3</a>
-        </li>
-      </ul>
+<div class="container">
+  <h2>Quản lý danh sách Phường, Quận</h2>
+  <div class="row">
+    <div class="col-md-6">
+      <form id="filterForm" action="/areas" method="get">
+        <div id="districtsContainer" style="height: 500px; overflow-y: auto;">
+          {{#each districts}}
+          <div class="form-check">
+            <div class="row">
+              <div class="col-md-8">
+                <input class="form-check-input" type="checkbox" name="districts"
+                  value="{{this._id}}" id="district{{@index}}"
+                  {{isSelected this._id ../selectedDistricts}}>
+                <label class="form-check-label" for="district{{@index}}">
+                  {{this.district}}
+                </label>
+              </div>
+              <div class="col-md-1">
+                <a href='#' class='table-link edit' data-id="{{this._id}}" data-name="{{this.district}}">
+                  <span class='fa-stack'>
+                    <i class='fa fa-square fa-stack-2x'></i>
+                    <i class='fa fa-pencil fa-stack-1x fa-inverse'></i>
+                  </span>
+                </a>
+              </div>
+              <div class="col-md-3">
+                <a href='#' class='table-link danger'>
+                  <span class='fa-stack'>
+                    <i class='fa fa-square fa-stack-2x'></i>
+                    <i class='fa fa-trash-o fa-stack-1x fa-inverse'></i>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+          {{/each}}
+        </div>
+        <button type="submit" class="btn btn-primary">Áp dụng</button>
+      </form>
+    </div>
+    <div class="col-md-6">
+      <div id="wardsContainer" style="height: 500px; overflow-y: auto;">
+        {{#each wards}}
+        <div class="row ward-item">
+          <div class="col-md-8">
+            <strong>{{this.ward}}</strong>: {{this.district.district}}
+          </div>
+          <div class="col-md-1">
+            <a href='/reportMethods/edit/{{this._id}}' class='table-link'>
+              <span class='fa-stack'>
+                <i class='fa fa-square fa-stack-2x'></i>
+                <i class='fa fa-pencil fa-stack-1x fa-inverse'></i>
+              </span>
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href='/api/v1/reportMethods/{{this._id}}'
+              class='table-link danger'>
+              <span class='fa-stack'>
+                <i class='fa fa-square fa-stack-2x'></i>
+                <i class='fa fa-trash-o fa-stack-1x fa-inverse'></i>
+              </span>
+            </a>
+          </div>
+        </div>
+        {{/each}}
+      </div>
     </div>
   </div>
-</nav>
-
-<!-- Optional: Add some content to demonstrate the filter bar -->
-<div class="container mt-4">
-  <h2>Filtered Content</h2>
-  <p>This is the content that will be filtered based on the selected category.</p>
 </div>
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" id="editModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sửa tên</h5>
+        <button type="button" class="close" data-dismiss="modal"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="newName">Tên mới:</label>
+          <input type="text" class="form-control" id="newName">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+          data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary" id="saveName">Lưu</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const editButtons = document.querySelectorAll('.table-link.edit');
+  let selectedDistrictId = null;
+
+  editButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      const currentName = button.getAttribute('data-name');
+      selectedDistrictId = button.getAttribute('data-id');
+
+      document.getElementById('newName').value = currentName;
+      document.getElementById('editModal').style.display = 'block';
+    });
+  });
+
+  const modal = document.getElementById('editModal');
+  const closeModalButtons = modal.querySelectorAll('[data-dismiss="modal"]');
+
+  closeModalButtons.forEach(function (closeButton) {
+    closeButton.addEventListener('click', function () {
+      modal.style.display = 'none';
+    });
+  });
+
+  const saveButton = document.getElementById('saveName');
+  saveButton.addEventListener('click', function () {
+    if (selectedDistrictId) {
+      fetch(`/api/v2/districts/${selectedDistrictId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          district: document.getElementById('newName').value,
+        }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+
+          window.location.reload();
+        })
+        .catch(error => {
+          console.error('Lỗi:', error);
+        });
+
+      selectedDistrictId = null;
+
+      modal.style.display = 'none';
+    }
+  });
+});
+
+</script>

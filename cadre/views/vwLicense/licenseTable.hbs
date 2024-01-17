@@ -113,15 +113,15 @@
                 </li>
 
                 {{#paginate currentPage lastPage}}
-                {{#compare this.number '==' ../currentPage}}
-                <li class="page-item active">
-                    <a class="page-link" href="?page={{this.number}}">{{this.number}}</a>
-                </li>
-                {{else}}
-                <li class="page-item">
-                    <a class="page-link" href="?page={{this.number}}">{{this.number}}</a>
-                </li>
-                {{/compare}}
+                    {{#compare this.number '==' ../currentPage}}
+                        <li class="page-item active">
+                            <a class="page-link" href="?page={{this.number}}">{{this.number}}</a>
+                        </li>
+                    {{else}}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{this.number}}">{{this.number}}</a>
+                        </li>
+                    {{/compare}}
                 {{/paginate}}
                 <li class="page-item {{#unless hasNextPage}}disabled{{/unless}}">
                     <a class="page-link" href="?page={{nextPage}}" aria-label="Next">
