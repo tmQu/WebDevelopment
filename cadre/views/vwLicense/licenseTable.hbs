@@ -4,7 +4,11 @@
     <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar"
         style="background: linear-gradient(45deg, #5c7ea1, #509177);">
         <!-- Sidebar - Brand -->
-        {{> sidebarWard}}
+        {{#if isSuperAdmin}}
+  {{> sidebarDepartment}}
+{{else}}
+  {{> sidebarWard}}
+{{/if}}
 
     </ul>
 

@@ -2,7 +2,18 @@
 <link rel='stylesheet' href='../../static/css/reports.css' />
 {{/section}}
 
-<div class='container'>
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul
+    class="navbar-nav sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+    style="background: linear-gradient(45deg, #5c7ea1, #509177);"
+  >
+    <!-- Sidebar - Brand -->
+    {{> sidebarDepartment}}
+
+  </ul>
+    <div class='container-fluid'>
     <div class='row'>
         <div class='col-lg-12'>
             <div class='main-box clearfix'>

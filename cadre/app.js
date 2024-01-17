@@ -175,7 +175,7 @@ app.use('/api/v2/districts', districtRoutes);
 // });
 
 app.get('/licenseAccount', authController.protect, authController.restrictTo('departmental'), (req, res) => {
-  res.render('vwLicense/licenseAccount', { layout: 'department' });
+  res.render('vwLicense/licenseAccount', { layout: 'license' });
 });
 
 app.get('/license', (req, res) => {
@@ -212,6 +212,10 @@ app.get('/wardAdmin',async (req, res) => {
     boards: JSON.stringify(boards),
     reports: JSON.stringify(reportObject)
   });
+});
+
+app.get('/departmentAdmin',async (req, res) => {
+  res.render('vwAdmin/departmentAdmin', { layout: 'main' });
 });
 
 app.get('/login', (req, res) => {

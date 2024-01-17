@@ -125,6 +125,7 @@ const licenseController = {
             console.log(districts)
             console.log(wards)
             res.render('vwLicense/licenseTable', {
+                //isSuperAdmin: req.user.role.level === 'departmental',
                 layout: 'license',
                 license: licenses,
                 districts: districts,
