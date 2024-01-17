@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-md-6">
       <form id="filterForm" action="/areas" method="get">
-        <div id="districtsContainer" style="height: 500px; overflow-y: auto;">
+        <div id="districtsContainer" style="height: 500px; overflow-y: auto;overflow-x: hidden;">
           {{#each districts}}
           <div class="form-check">
             <div class="row">
@@ -39,7 +39,7 @@
       </form>
     </div>
     <div class="col-md-6">
-      <div id="wardsContainer" style="height: 500px; overflow-y: auto;">
+      <div id="wardsContainer" style="height: 500px; overflow-y: auto;overflow-x:hidden">
         {{#each wards}}
         <div class="row ward-item">
           <div class="col-md-8">

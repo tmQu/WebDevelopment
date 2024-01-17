@@ -1,0 +1,76 @@
+<div class="container">
+  <h2>Chọn danh sách Phường muốn quản lý</h2>
+
+  <div class="row">
+    <div>
+      <div id="wardsContainer">
+        <div class="wards-container">
+            <input class="form-check-input ward" type="checkbox"
+             style="position:static; margin: 0px;display:none" id="all-wards" name="all-wards">
+            <label class="form-check-label" for="all-wards">
+            Tất cả phường
+            </label>
+        </div>
+        <div id="ward-district{{@index}}" class="wards mt-3">
+            <h3>{{../district.name}}</h3>
+            <table class="table">
+            {{#each wards}}
+                <tr>
+                    <td>
+                        <input class="form-check-input ward" type="checkbox" name="wards"
+                        value="{{this._id}}" style="position:static; margin: 0px" {{isSelected this._id ../selectedWards}}>
+                        <label class="form-check-label" for="district{{@index}}" >
+                        {{this.ward}}
+                    </td>
+                </tr>
+            {{/each}}
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="">
+<button id="filter">Lọc danh sách</button>
+</div>
+
+<script>
+    var filter = []
+    document.querySelector('#all-wards').addEventListener('change', (e) => {
+        let wards = document.querySelectorAll('.wards .ward')
+                wards.forEach(ward =>{
+                    if(ward.checked != e.target.checked)
+                    {
+                        ward.click();
+                    }
+                })
+
+    
+    })
+
+    document.querySelector('#filter').addEventListener('click', (e) => {
+        filter = {wards: []};
+        document.querySelectorAll('.ward').forEach(ward => {
+
+            if (ward.checked)
+            {
+                console.log(ward.value)
+                filter.wards.push(ward.value);
+            }
+        })
+        console.log(filter.length)
+        fetch('/api/v2/filter', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(filter),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch(error => {
+                console.error('Lỗi:', error);
+            });
+    })
+</script>
