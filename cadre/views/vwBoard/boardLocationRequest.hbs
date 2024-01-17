@@ -28,7 +28,18 @@
           <div class="col col-xm-9">
             <div class="row">
               <div class="card-body">
-                <form action="/api/v1/changeBoardLocation/" method="POST" enctype="multipart/form-data" id="editBoardForm"
+                <form action= 
+                        {{#if isSuperAdmin}}
+                          {{#if action.add}}
+                          'http://localhost:4000/api/v1/boardLocation/add'
+                          {{else}}
+                          'http://localhost:4000/api/v1/boardLocation/update/{{boardLocation._id}}'
+                          {{/if}}
+                        {{else}}
+                          "http://localhost:4000/api/v1/changeBoardLocation/" 
+                        {{/if}}
+                  
+                  method="POST" enctype="multipart/form-data" id="editBoardForm"
                 >
                   <div class="row">
                     <div class="form-outline mb-2 col">
@@ -48,7 +59,11 @@
                       <div class="formbold-select-wrapper">
                         <label for="editBoardType" class="formbold-form-label"><b>Loại bảng quảng cáo</b></label>
                         <select name="advertisementForm" id="editAdvertisementForm" class="formbold-form-input">
+                          {{#unless isSuperAdmin}}
+                          {{#unless action.add}}
                           <option value="{{boardLocation.advertisementForm._id}}" selected>{{boardLocation.advertisementForm.advertisementForm}}</option>
+                          {{/unless}}
+                          {{/unless}}
                           {{#each advertisementForm}}
                             {{#compare this.advertisementForm '!=' ../boardLocation.advertisementForm.advertisementForm}}
                               <option value="{{this._id}}">{{this.advertisementForm}}</option>
@@ -93,7 +108,15 @@
                       class="col-12 btn btn-dark btn-lg btn-block"
                       type="submit"
                     >
+                      {{#if isSuperAdmin}}
+                      {{#if action.edit}}
+                        Chỉnh sửa điểm đặt
+                      {{else}}
+                        Thêm điểm đặt quảng cáo
+                      {{/if}}
+                    {{else}}
                       Gửi
+                    {{/if}}
                     </button>
                   </div>
                   <input type="hidden" name="creator" value="{{user._id}}">

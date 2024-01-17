@@ -203,12 +203,7 @@ app.get('/license', (req, res) => {
 });
 
 app.get('/wardAdmin', authController.protect, async (req, res) => {
-  // var boardLocation = await boardLocationModel
-  //   .find()
-  //   .populate('advertisementForm')
-  //   .populate('locationCategory')
-  //   .populate('addr.district')
-  //   .populate('addr.ward');
+
   var queryBoard = {};
   if (req.user.role.level === 'wards') {
     queryBoard['addr.ward'] = mongoose.Types.ObjectId(req.user.role.detail);
@@ -252,6 +247,7 @@ app.get('/wardAdmin', authController.protect, async (req, res) => {
 
   res.render('vwAdmin/wardAdmin', {
     layout: 'main',
+    isSuperAdmin: req.user.role.level === 'departmental',
     boardLocation: JSON.stringify(boardLocation),
     boards: JSON.stringify(boards),
     reports: JSON.stringify(reportObject),
