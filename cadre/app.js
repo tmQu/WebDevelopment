@@ -35,6 +35,7 @@ import wardModel from './models/wardModel.js';
 import mongoose from 'mongoose';
 import boardModel from './models/boardModel.js';
 import boardTypeModel from './models/boardTypeModel.js';
+import reportModel from './models/reportModel.js';
 
 import reportMethodController from './controllers/reportMethodController.js';
 import boardLocationController from './controllers/boardLocationController.js';
@@ -171,8 +172,36 @@ app.get('/license', (req, res) => {
   res.render('vwLicense/license', { layout: 'main' });
 });
 
-app.get('/wardAdmin', (req, res) => {
-  res.render('vwAdmin/wardAdmin', { layout: 'main' });
+app.get('/wardAdmin',async (req, res) => {
+  var boardLocation = await boardLocationModel
+    .find()
+    .populate('advertisementForm')
+    .populate('locationCategory')
+    .populate('addr.district')
+    .populate('addr.ward');
+  var boards = await boardModel.find().populate('boardType');
+  var reports = await reportModel.find().populate('reportMethod').populate('boardLocation').populate('board');
+
+  var reportObject = []
+  reports.forEach(report => {
+    reportObject.push(
+      {
+        _id: report._id,
+        location: report.location,
+        createdAt: report.createdAt,
+        method: report.method.reportMethod,
+        sender: report.sender,
+        board: report.board,
+        addr: report.addr
+      });
+  });
+
+  res.render('vwAdmin/wardAdmin', { 
+    layout: 'main',
+    boardLocation: JSON.stringify(boardLocation),
+    boards: JSON.stringify(boards),
+    reports: JSON.stringify(reportObject)
+  });
 });
 
 app.get('/login', (req, res) => {
@@ -265,6 +294,7 @@ app.get('/reportMethods/edit/:id', (req, res) => {
 });
 
 import advFormController from './controllers/advFormController.js';
+import { report } from 'process';
 
 app.get('/advForms', (req, res) => {
   advFormController.getAll(req, res);

@@ -454,15 +454,15 @@ const clusterMarker = async (map, data) => {
 
     if (markerInfo.board)
     {
-      iconImage.src = "/static/static/img/icon/Repot.png"
+      iconImage.src = "/static/map/img/icon/Repot.png"
     }
     else{
       if (markerInfo.isPlan == false)
       {
-        iconImage.src = "/static/static/img/icon/ad_not_plan.png"
+        iconImage.src = "/static/map/img/icon/ad_not_plan.png"
       }
       else{
-        iconImage.src = "/static/static/img/icon/ad_planned.png"
+        iconImage.src = "/static/map/img/icon/ad_planned.png"
       }
     }
     const marker = new AdvancedMarkerElement({
