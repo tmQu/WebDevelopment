@@ -14,7 +14,6 @@ router.route('/delete/:id')
 router.route('/list')
     .get(authController.protect ,licenseController.renderLicenseList)
 
-
 router.route('/form/:id')
     .get(authController.protect, authController.restrictTo('wards', 'districts'),licenseController.renderLicenseForm)
     .post(upload.single('imgBoard'),licenseController.createLicense);
