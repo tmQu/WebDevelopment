@@ -19,7 +19,7 @@
     showRemove: false,
     maxFileCount: 1,
     showUpload: false,
-    allowedFileExtensions: ["jpg", "png", "gif"],
+    allowedFileExtensions: ["jpg", "png", "gif", "jpeg"],
     {{#if action.add}}
     required: true
     {{/if}}
@@ -139,7 +139,7 @@
               <select name="boardType" id="editBoardType" class="formbold-form-input">
                 <option value="{{board.boardType._id}}" selected>{{board.boardType.boardType}}</option>
                 {{#each boardType}}
-                  {{#compare this._id '!=' ../board.boardType._id}}
+                  {{#compare this.boardType '!=' ../board.boardType.boardType}}
                     <option value="{{this._id}}">{{this.boardType}}</option>
                   {{/compare}}
                 {{/each}}

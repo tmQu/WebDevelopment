@@ -11,7 +11,7 @@ const resetPassword = async (password, passwordConfirm) => {
     });
     console.log(response);
     if (response.data.status === 'success') {
-      alert('Reset password successfully');
+      alert('Đổi mật khẩu thành công');
       window.setTimeout(() => {
         location.assign('/login');
       }, 1000);

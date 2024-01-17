@@ -309,8 +309,10 @@ const reportController = {
       let subject = 'Thông báo xử lý báo cáo';
       let { email, updateDetails, statusDetails, sender, officer, reportId } = req.body;
 
-      const user = await userModel.findById(officer);
-      officer = user.role.level;
+      console.log(req.body);
+
+      // const user = await userModel.findById(officer);
+      // officer = user.role.level;
 
       let status = '';
       if (statusDetails === 'pending') status = -1;
@@ -319,6 +321,7 @@ const reportController = {
 
       const report = await Report.findByIdAndUpdate(reportId, { status: status, handleDetails: updateDetails, officer: officer });
 
+      console.log(report);
       let html = emailTemplate.sendEmailReport(sender, statusDetails, updateDetails, officer);
 
       await sendEmail({
@@ -326,6 +329,8 @@ const reportController = {
         subject,
         html: html,
       });
+
+      console.log('Email sent successfully');
 
       res.redirect(`/reports/${reportId}`);
     } catch (error) {

@@ -36,7 +36,7 @@ const changeBoardLocationController = {
         locationCategory: req.body.locationCategory,
       });
 
-      res.redirect('/boardsLocation/' + req.body.boardLocation);
+      res.redirect('/boardsLocation/');
     } catch (err) {
       console.log(err);
       res.render('vwError/error', {
