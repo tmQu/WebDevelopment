@@ -24,6 +24,7 @@ import advFormRoutes from './routes/advFormRoutes.js';
 import licenseRouter from './routes/licenseRoutes.js';
 import wardRoutes from './routes/wardRoutes.js';
 import districtRoutes from './routes/districtRoutes.js';
+import filterRoutes from './routes/filterRoutes.js';
 
 import hbsHelpers from './static/js/handlebarsHelpers.js';
 import cookieParser from 'cookie-parser';
@@ -52,6 +53,8 @@ import wardController from './controllers/wardController.js';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
 
+import session from 'express-session';
+
 const app = express();
 const server = createServer(app);
 const io = new Server(server);
@@ -79,12 +82,21 @@ app.engine(
         return a === b;
       },
       isSelected: function (value, selectedValues) {
+
         if (selectedValues && Array.isArray(selectedValues) && selectedValues.includes(value.toString())) {
           return 'checked';
         }
+  
         return '';
       },
-    },
+      isSelectedTableWard: function (value, selectedValues) {
+
+        if (selectedValues && Array.isArray(selectedValues) && selectedValues.includes(value.toString())) {
+          return 'display: block;';
+        }
+        return 'display: none;';
+      },
+    }
   })
 );
 
@@ -114,6 +126,12 @@ app.use(
 );
 
 app.use(express.urlencoded({ extended: true }));
+
+app.use(session({
+  resave: true, 
+  saveUninitialized: true, 
+  secret: 'somesecret', 
+  cookie: { maxAge: 60000 }}));
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {
@@ -159,7 +177,7 @@ app.use('/api/v2/reports', reportRouter.router_v2);
 app.use('/api/v2/reportMethods', reportMethodRoutes);
 app.use('/api/v2/wards', wardRoutes);
 app.use('/api/v2/districts', districtRoutes);
-
+app.use('/api/v2/filter', filterRoutes);
 // app.get('/', async (req, res) => {
 //   var boardLocation = await boardLocationModel
 //     .find()
@@ -364,6 +382,85 @@ app.get('/advForms/edit/:id', (req, res) => {
     layout: 'department',
   });
 });
+
+
+
+app.get('/accountSetting',authController.protect, async (req, res) => {
+  try {
+    if (req.user.role.level === 'departmental')
+    {
+      var filter = req.session.filter;
+      var selectedDistricts;
+      var selectedWards;
+      var showButtonWard = false;
+      if (!req.session.filter || !req.session.filter.districts)
+      {
+        console.log('filter')
+        var districts = await districtModel.find();
+        var allWard= await wardModel.find();
+        selectedDistricts = districts.map(district => district._id.toString());
+        selectedWards = allWard.map(ward => ward._id.toString());
+        showButtonWard = true;
+      }
+      else {
+        selectedDistricts = req.session.filter.districts;
+        selectedWards = req.session.filter.wards;
+      }
+      var wards = await wardModel.aggregate([
+        {$group: {_id: '$district', wards: {$push: '$$ROOT'}}},
+        {$lookup: {from: 'districts', localField: '_id', foreignField: '_id', as: 'district'}},
+        // {$sort: {'district.district': 1}},
+        {$project: {_id: -1, district: {$arrayElemAt: ['$district', 0]}, wards: 1}}
+      ])
+
+      // wards.forEach(ward => { newWards.push(wards.toObject()) });
+
+      if (req.session.filter)
+        if (filter.districts.length > 0)
+          showButtonWard = true;
+      console.log(wards)  
+      res.render('vwAccount/filterDepartmental', {
+          layout: 'list',
+          wardInDistrict: wards,
+          selectedDistricts: selectedDistricts,
+          selectedWards: selectedWards,
+          showButtonWard: showButtonWard
+      });
+    }
+    else
+    {
+      var filter;
+      if (req.session.filter)
+        filter = req.session.filter;
+
+      var wards = await wardModel.find({district: mongoose.Types.ObjectId('659271d460292ab573f76030')});
+      wards = wards.map(ward => ward.toObject());
+      console.log(wards)
+      var selectedWards;
+      console.log(filter)
+      if (!filter)
+      {
+        selectedWards = wards.map(ward => ward._id.toString());
+      }
+      else
+      {
+        selectedWards = filter.wards;
+      }
+      res.render('vwAccount/filterDistrict', {
+        layout: 'list',
+        wards: wards,
+        selectedWards: selectedWards
+      })
+    }
+
+} catch (err) {
+    console.log(err)
+    res.status(404).json({
+        status: 'fail',
+        message: err
+    });
+}
+})
 
 app.get('/areas', (req, res) => {
   areaController.getAll(req, res);

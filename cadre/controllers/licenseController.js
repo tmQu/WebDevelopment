@@ -123,10 +123,11 @@ const licenseController = {
             var districts = await districtModel.find({ _id: { $in: districtId } }).lean();
             var wards = await wardModel.find({ _id: { $in: wardId } }).lean();
             console.log(districts)
-            console.log(wards)
+            console.log(req.user)
             res.render('vwLicense/licenseTable', {
                 //isSuperAdmin: req.user.role.level === 'departmental',
                 layout: 'license',
+                isSuperAdmin: req.user.role.level === 'departmental',
                 license: licenses,
                 districts: districts,
                 wards: JSON.stringify(wards),

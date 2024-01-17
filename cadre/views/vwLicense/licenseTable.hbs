@@ -81,18 +81,27 @@
                         {{/if}}
                     </td>
                     <td>
-                        <div class="d-flex">
-                        <a href="{{SERVER_URL}}/api/v1/license?id={{_id}}&action=view" class="table-link mr-2">
-                            <i class="bi bi-search"></i>
-                        </a>
-                        {{#if this.status}}
-
+                        {{#if ../isSuperAdmin}}
+                            {{#if this.status}}
+                            <a href="{{SERVER_URL}}/api/v1/license?id={{_id}}&action=view" class="table-link">
+                                <i class="bi bi-search"></i>
+                            </a>
+                            {{else}}
+                            <a href="{{SERVER_URL}}/api/v1/license?id={{_id}}&action=approve" class="table-link">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                            {{/if}}
                         {{else}}
-                        <a class="table-link" href="{{SERVER_URL}}/api/v1/license?id={{_id}}&action=delete">
-                            <i class="bi bi-trash"></i>
-                        </a>
+                            <a href="{{SERVER_URL}}/api/v1/license?id={{_id}}&action=view" class="table-link">
+                                <i class="bi bi-search"></i>
+                            </a>
+                            {{#unless this.status}}
+                            <a class="table-link" href="{{SERVER_URL}}/api/v1/license?id={{_id}}&action=delete">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                            {{/unless}}
+
                         {{/if}}
-                        </div>
                     </td>
                 </tr>
                 {{/each}}

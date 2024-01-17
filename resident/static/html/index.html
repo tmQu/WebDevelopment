@@ -124,45 +124,65 @@
       <br />
       <span id="place-address"></span>
     </div>
-    <!--
+    
+
     <div id="legend">
-      <h3>Ký hiệu</h3>
-      <div class="">
-        <div class="d-flex">
-          <div class="icon-legend">
-            <img src="../img/icon/1.png" alt="" />
-          </div>
-          <div class="text-legend">
-            <p>Có biển quảng cáo</p>
-          </div>
-        </div>
-        <div class="d-flex">
-          <div class="icon-legend">
-            <i class="bi bi-geo-alt-fill"></i>
-          </div>
-          <div class="text-legend">
-            <p>Địa điểm</p>
-          </div>
-        </div>
-        <div class="d-flex">
-          <div class="icon-legend">
-            <i class="bi bi-geo-alt-fill"></i>
-          </div>
-          <div class="text-legend">
-            <p>Địa điểm</p>
-          </div>
-        </div>
-        <div class="d-flex">
-          <div class="icon-legend">
-            <i class="bi bi-geo-alt-fill"></i>
-          </div>
-          <div class="text-legend">
-            <p>Địa điểm</p>
-          </div>
-        </div>
+      <div style="overflow: hidden;">
+        <h3 style="text-align: center;">Ký hiệu</h3>
+        <table>
+         <tr>
+         <th></th>
+         <th>Quảng cáo</th>
+         <th>Quy hoạch</th>
+         </tr>
+         <tr>
+           <td style="text-align: center;"><img src="/static/img/icon/ad_plan.png" style="width: 30px;"></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-done.svg"style="width: 15px;"/></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-done.svg" style="width: 15px;"/></td>
+         </tr>
+         <tr>
+           <td style="text-align: center;"><img src="/static/img/icon/ad_no_plan.png" style="width: 30px;"></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-done.svg" style="width: 15px;"/></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-close.svg" style="width: 15px;"/></td>
+         </tr>
+         <tr>
+           <td style="text-align: center;"><img src="/static/img/icon/no_ad_plan.png" style="width: 30px;"></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-close.svg" style="width: 15px;"/></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-done.svg" style="width: 15px;"/></td>
+         </tr>
+         <tr>
+           <td style="text-align: center;"><img src="/static/img/icon/no_ad_no_plan.png" style="width: 30px;"></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-close.svg" style="width: 15px;"/></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-close.svg" style="width: 15px;"/></td>
+         </tr>
+         <tr>
+          <td style="text-align: center;"><img src="/static/img/icon/Report.png" style="width: 30px;"/></td>
+          <td colspan="2" style="text-align: center;">Báo cáo</td>
+         </tr>
+        </table>
+
       </div>
+      
+     <button id="collapse-legend">
+      <div>
+        <i class="bi bi-arrow-right-short" style="font-size: 15px;"></i>
+      </div>
+    </button>
+    <script>
+      document.querySelector('#collapse-legend').onclick = () => {
+        var legend = document.getElementById('legend');
+        if (legend.classList.contains('narrow')){
+          legend.classList.remove('narrow')
+          document.querySelector('#collapse-legend').innerHTML = '<div><i class="bi bi-arrow-right-short" style="font-size: 15px;"></i></div>'
+        }
+        else {
+          legend.classList.add('narrow');
+          document.querySelector('#collapse-legend').innerHTML = '<div><i class="bi bi-arrow-left-short" style="font-size: 15px;"></i></div>'
+        }
+      };
+    </script>
     </div>
-    -->
+   
     <!-- Filter -->
     <div id="filter">
       <div class="form-check form-switch" id="switch">
