@@ -1,6 +1,7 @@
 {{#section 'css'}}
 <link rel='stylesheet' href='../../static/css/reports.css' />
 {{/section}}
+
 <div id="wrapper">
     <!-- Sidebar -->
     <ul
@@ -22,9 +23,13 @@
                                     <th>
                                         Thông tin tài khoản
                                     </th>
-                                    <th
-                                        class='text-center'>
+                                    <th>
+                                        Họ tên
                                     </th>
+                                    <th>
+                                        Chức vụ
+                                    </th>
+                                    <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tbody class='reports-list'>
@@ -37,25 +42,25 @@
                                             {{this.email}}
                                         </div>
                                     </td>
+                                    <td>
+                                        <div class="col-md-10 align-content-start">
+                                            {{this.name}}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="col-md-10 align-content-start">
+                                            {{this._role}}
+                                        </div>
+                                    </td>
                                     <td style='width: 20%' class='text-center'>
                                         <a
-                                            href='/reportMethods/edit/{{this._id}}'
+                                            href='/assignment/districts/{{this._id}}'
                                             class='table-link'>
                                             <span class='fa-stack'>
                                                 <i
                                                     class='fa fa-square fa-stack-2x'></i>
                                                 <i
                                                     class='fa fa-pencil fa-stack-1x fa-inverse'></i>
-                                            </span>
-                                        </a>
-                                        <a
-                                            href='/api/v1/reportMethods/{{this._id}}'
-                                            class='table-link danger'>
-                                            <span class='fa-stack'>
-                                                <i
-                                                    class='fa fa-square fa-stack-2x'></i>
-                                                <i
-                                                    class='fa fa-trash-o fa-stack-1x fa-inverse'></i>
                                             </span>
                                         </a>
                                     </td>
@@ -78,37 +83,3 @@
         </div>
     </div>
 </div>
-
-{{#section 'js'}}
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const deleteButtons = document.querySelectorAll('.table-link.danger');
-
-        deleteButtons.forEach(function (button) {
-            button.addEventListener('click', function (event) {
-                event.preventDefault(); 
-
-                const deleteLink = button.getAttribute('href');
-
-                fetch(deleteLink, {
-                    method: 'DELETE',
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Lỗi khi gọi API xoá');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log(data);
-
-                    window.location.reload();
-                })
-                .catch(error => {
-                    console.error(error);
-                });
-            });
-        });
-    });
-</script>
-{{/section}}

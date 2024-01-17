@@ -51,7 +51,7 @@ const reportModel = mongoose.Schema(
 
     method: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'report_method',
+      ref: 'report_methods',
     },
 
     images: [

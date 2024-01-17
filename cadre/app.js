@@ -463,6 +463,16 @@ app.get('/assignment', (req, res) => {
   assignmentController.getAll(req, res);
 });
 
+app.get('/assignment/districts/:id', async (req, res) => {
+  const districts = await districtModel.find(); 
+
+  res.render('vwDepartment/area/districtAssignment', {
+    layout: 'department',
+    id: req.params.id,
+    districts: districts.map(district => district.toObject())
+  });
+});
+
 app.get('/', authController.isLoggedIn, async (req, res, next) => {
   if (res.locals.user) {
     if (res.locals.user.role.level === 'wards' || res.locals.user.role.level === 'districts')
