@@ -16,7 +16,7 @@ router.route('/list')
 
 
 router.route('/form/:id')
-    .get(authController.protect, authController.restrictTo(['wards', 'districts']),licenseController.renderLicenseForm)
+    .get(authController.protect, authController.restrictTo('wards', 'districts'),licenseController.renderLicenseForm)
     .post(upload.single('imgBoard'),licenseController.createLicense);
 
 router.route('/')

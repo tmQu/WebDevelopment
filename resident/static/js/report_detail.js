@@ -35,7 +35,7 @@ function renderReportDetail(data)
                      <div class="carousel-inner">`
         report.images.forEach((img, index) => {
             img_rp.innerHTML += `<div class="carousel-item ${index == 0 ? 'active' : ''}">
-                        <img src="${img}" class="d-block carousel-img" alt="Image ${index}">
+                        <img src="${img}" class="d-block carousel-img img-fluid" alt="Image ${index}">
                         </div>`
         });
         img_rp.innerHTML += `</div>
