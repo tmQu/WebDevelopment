@@ -70,7 +70,7 @@
                     <td>
                       <div class='row'>
                         <!-- Cột cho ảnh -->
-                        <div class='col-md-2'>
+                        <div class='col-md-2 mt-2'>
                           <img src='{{this.imgBillboardLocation.[0]}}' alt='' class='img-fluid' id='boardImage_{{this._id}}'>
                         </div>
 
@@ -85,9 +85,9 @@
                         </div>
                       </div>
                     </td>
-                    <td>
+                    <td class="col-md-3">
                       {{#each this.locationCategory}}
-                        <span id='locationCategory_{{this._id}}'>{{this.locationCategory}}</span>,
+                        <span id='locationCategory_{{this._id}}'>{{this.locationCategory}}</span> <br>
                       {{/each}}
                     </td>
                     <td class='text-center'>
