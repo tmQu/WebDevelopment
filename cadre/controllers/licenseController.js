@@ -54,7 +54,7 @@ const licenseController = {
             var license = {};
             console.log(req.file);
             console.log(req.body);
-            license.imgBoard = req.file.path;
+            license.imgBoard = '/' + req.file.path;
             license.imgBoard.replace("\\", "/");
             license.board = req.params.id;
             license.content = req.body.content;
