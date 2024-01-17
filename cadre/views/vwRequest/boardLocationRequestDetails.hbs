@@ -121,7 +121,7 @@
                         <div class='col-lg-5 col-md-5 col-sm-6'>
                           <div class='white-box text-center carousel-container'>
                             {{#if newBoardLocation.imgBillboardLocation}}
-                              <div id="reportImageCarousel" class="carousel slide" data-ride="carousel">
+                              <div id="reportImageCarouselNew" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
                                   {{#each newBoardLocation.imgBillboardLocation}}
                                     <div class="carousel-item {{#if @first}} active {{/if}}">
@@ -129,14 +129,14 @@
                                     </div>
                                   {{/each}}
                                 </div>
-                                <a class="carousel-control-prev" href="#reportImageCarousel" role="button" data-slide="prev">
+                                <button class="carousel-control-prev" type="button" data-bs-target="#reportImageCarouselNew" data-bs-slide="prev">
                                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                  <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#reportImageCarousel" role="button" data-slide="next">
+                                  <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#reportImageCarouselNew" data-bs-slide="next">
                                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                  <span class="sr-only">Next</span>
-                                </a>
+                                  <span class="visually-hidden">Next</span>
+                                </button>
                               </div>
                             {{else}}
                               <img src='/static/img/adboard.png' class='img-fluid' alt='Board Location'/>
@@ -194,14 +194,14 @@
                                     </div>
                                   {{/each}}
                                 </div>
-                                <a class="carousel-control-prev" href="#reportImageCarousel" role="button" data-slide="prev">
+                                <button class="carousel-control-prev" type="button" data-bs-target="#reportImageCarousel" data-bs-slide="prev">
                                   <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                  <span class="sr-only">Previous</span>
-                                </a>
-                                <a class="carousel-control-next" href="#reportImageCarousel" role="button" data-slide="next">
+                                  <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#reportImageCarousel" data-bs-slide="next">
                                   <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                  <span class="sr-only">Next</span>
-                                </a>
+                                  <span class="visually-hidden">Next</span>
+                                </button>
                               </div>
                             {{else}}
                               <img src='/static/img/adboard.png' class='img-fluid' alt='Board Location'/>
