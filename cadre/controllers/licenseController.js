@@ -181,6 +181,7 @@ const licenseController = {
             board_location.advertisementForm = board_location.advertisementForm.advertisementForm;
 
             res.render('vwLicense/license_detail', {
+                isSuperAdmin: req.user.role.level === 'departmental',
                 layout: 'license',
                 imgBoardLocation: board_location.imgBillboardLocation[0],
                 plan: (board_location.isPlanning == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'),

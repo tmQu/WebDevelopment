@@ -22,6 +22,11 @@ const boardController = {
           message: 'No boards found',
         });
       }
+      var location = []
+      boardLocations.forEach((boardLocation) => {
+        boardLocation = boardLocation.toObject();
+        boardLocation.imgBillboard
+      });
 
       res.status(200).json({
         status: 'success',
