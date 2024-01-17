@@ -1,92 +1,105 @@
-<div class="container">
-  <h2>Chọn danh sách Phường, Quận muốn quản lý</h2>
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul
+    class="navbar-nav sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+    style="background: linear-gradient(45deg, #5c7ea1, #509177);"
+  >
+    <!-- Sidebar - Brand -->
+      {{> sidebarDepartment}}
 
-  <div class="row">
-    <div class="col-md-6">
-        <div id="districtsContainer" style="height: 500px; overflow-y: auto;overflow-x: hidden;">
-            <table class="table">
-                <tr>
-                    <th>
-                        <input type="checkbox" id="all-district" name='all-district'style="display: none;">
-                         <label for="all-district">Tất cả quận</label>
-                    </th>
-                </tr>
-          {{#each wardInDistrict}}
-            <tr>
-              <td>
-                <div>
-                <input class="form-check-input districts" type="checkbox" name="districts"
-                  value="{{this.district._id}}" id="district{{@index}}"
-                    style="position:static; margin: 0px" {{isSelected this.district._id ../selectedDistricts}}>
-                <label class="form-check-label" for="district{{@index}}">
-                  {{this.district.district}}
+  </ul>
 
-                </label>
-                </div>
-              </td>
-            </tr>
-          {{/each}}
-          </table>
-        </div>
-    </div>
-    <div class="col-md-6">
-      <div id="wardsContainer" style="height: 500px; overflow-y: auto;overflow-x:hidden">
-        <div style="dislay: {{#if showButtonWard}} block; {{else}} none;{{/if}}" class="wards-container">
-            <input class="form-check-input ward" type="checkbox"
-             style="position:static; margin: 0px;display:none" id="all-wards" name="all-wards">
-            <label class="form-check-label" for="all-wards">
-            Tất cả phường
-            </label>
-        </div>
-        {{#each wardInDistrict}}
-        <div id="ward-district{{@index}}" dataid="{{district._id}}" style="{{isSelectedTableWard district._id ../selectedDistricts}}" class="wards mt-3">
-            <h3>{{district.district}}</h3>
-            <table class="table">
-            {{#each this.wards}}
-                <tr>
-                    <td>
-                        <input class="form-check-input ward" type="checkbox" name="wards"
-                        value="{{this._id}}" style="position:static; margin: 0px" {{isSelected this._id ../../selectedWards}}>
-                        <label class="form-check-label" for="district{{@index}}" >
-                        {{this.ward}}
-                    </td>
-                </tr>
+  <div class="container-fluid mt-4">
+    <h3 class="mb-4">Chọn danh sách Phường, Quận muốn quản lý</h3>
+
+    <div class="row">
+      <div class="col-md-6">
+          <div id="districtsContainer" style="height: 400px; overflow-y: auto;overflow-x: hidden;">
+              <table class="table">
+                  <tr>
+                      <th>
+                          <input type="checkbox" id="all-district" name='all-district'style="display: none;">
+                          <label for="all-district">Tất cả quận</label>
+                      </th>
+                  </tr>
+            {{#each wardInDistrict}}
+              <tr>
+                <td>
+                  <div>
+                  <input class="form-check-input districts" type="checkbox" name="districts"
+                    value="{{this.district._id}}" id="district{{@index}}"
+                      style="position:static; margin: 0px" {{isSelected this.district._id ../selectedDistricts}}>
+                  <label class="form-check-label" for="district{{@index}}">
+                    {{this.district.district}}
+
+                  </label>
+                  </div>
+                </td>
+              </tr>
             {{/each}}
             </table>
+          </div>
+      </div>
+      <div class="col-md-6">
+        <div id="wardsContainer" style="height: 400; overflow-y: auto;overflow-x:hidden">
+          <div style="display: {{#if showButtonWard}} block; {{else}} none;{{/if}}" class="wards-container">
+              <input class="form-check-input ward" type="checkbox"
+              style="position:static; margin: 0px;display:none" id="all-wards" name="all-wards">
+              <label class="form-check-label" for="all-wards">
+              Tất cả phường
+              </label>
+          </div>
+          {{#each wardInDistrict}}
+          <div id="ward-district{{@index}}" dataid="{{district._id}}" style="{{isSelectedTableWard district._id ../selectedDistricts}}" class="wards mt-3">
+              <h3>{{district.district}}</h3>
+              <table class="table">
+              {{#each this.wards}}
+                  <tr>
+                    <td>
+                      <input class="form-check-input ward" type="checkbox" name="wards"
+                      value="{{this._id}}" style="position:static; margin: 0px" {{isSelected this._id ../../selectedWards}}>
+                      <label class="form-check-label" for="district{{@index}}" >
+                      {{this.ward}}
+                    </td>
+                  </tr>
+              {{/each}}
+              </table>
+          </div>
+          {{/each}}
         </div>
-        {{/each}}
+      </div>
+    </div>
+    <button class="btn btn-dark btn-lg btn-block mt-4" id="filter">Lọc danh sách</button>
+  </div>
+  
+
+  <!-- Modal -->
+  <div class="modal" tabindex="-1" role="dialog" id="editModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Sửa tên</h5>
+          <button type="button" class="close" data-dismiss="modal"
+            aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="newName">Tên mới:</label>
+            <input type="text" class="form-control" id="newName">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"
+            data-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" id="saveName">Lưu</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<button id="filter">Lọc danh sách</button>
-
-<!-- Modal -->
-<div class="modal" tabindex="-1" role="dialog" id="editModal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Sửa tên</h5>
-        <button type="button" class="close" data-dismiss="modal"
-          aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="newName">Tên mới:</label>
-          <input type="text" class="form-control" id="newName">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary"
-          data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary" id="saveName">Lưu</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
     var filter = []
     document.querySelector('#all-wards').addEventListener('change', (e) => {

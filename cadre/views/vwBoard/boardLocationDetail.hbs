@@ -38,7 +38,7 @@
         <div class="col-xs-12 ">
           <nav>
             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-home" aria-selected="true"><b>Profile</b></a>
+              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="true"><b>Thông tin</b></a>
               
             </div>
           </nav>
@@ -63,7 +63,7 @@
                               <div class="button mt-2">
                                 {{isSuperAdmin}}
                                 {{#if ../isSuperAdmin}}
-                                    <a class='badge badge-pill badge-primary square-button edit-button' href="/boardsLocation/{{this.boardLocation}}/board/{{this._id}}?action=update" aria-disabled="true">
+                                    <a class='badge badge-pill badge-primary square-button edit-button mr-2' href="/boardsLocation/{{this.boardLocation}}/board/{{this._id}}?action=update" aria-disabled="true">
                                       <i class="bi bi-gear"></i> Chỉnh sửa bảng quảng cáo
                                     </a>
                                       <a class='badge badge-pill badge-danger square-button edit-button' href="http://localhost:4000/api/v1/boards/delete/{{this._id}}" aria-disabled="true">

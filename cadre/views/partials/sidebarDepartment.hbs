@@ -1,16 +1,13 @@
-<div
-      class="sidebar-brand d-flex align-items-center justify-content-center"
-      href="/"
-    >
+<div class="sidebar-brand d-flex align-items-center justify-content-center">
       <div class="sidebar-brand-text mt-5">ADVERTISING BOARDS MANAGEMENT</div>
-    </div>
+</div>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0" />
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item">
-      <a class="nav-link mt-5" href="/">
+      <a class="nav-link mt-5" href="/admin">
         <i class="bi bi-house"></i>
         <span>TRANG CHỦ</span></a>
     </li>
@@ -25,15 +22,23 @@
     <li class="nav-item">
       <a class="nav-link" href="/boardsLocation" id="option">
         <i class="bi bi-clipboard-data"></i>
-        <span>Bảng quảng cáo</span>
+        <span>Điểm đặt quảng cáo</span>
       </a>
     </li>
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link" href="#" id="option">
+      <a class="nav-link" href="/areas" id="option">
         <i class="bi bi-clipboard-data"></i>
         <span>Danh sách phường, quận</span>
+      </a>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="/advForms" id="option">
+        <i class="bi bi-flag-fill"></i>
+        <span>Hình thức quảng cáo</span>
       </a>
     </li>
 
@@ -64,14 +69,21 @@
     <hr class="sidebar-divider" />
     <!-- Heading -->
     <div class="sidebar-heading mt-4">
-      Cấp phép
+      Xét duyệt và cấp phép
     </div>    
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
       <a class="nav-link" href="http://localhost:4000/api/v1/license/list?page=1" id="option">
         <i class="bi bi-clipboard-data"></i>
-        <span>Danh sách bảng quảng cáo</span>
+        <span>Xét duyệt bảng quảng cáo</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="/boardLocationRequest" id="option">
+        <i class="bi bi-clipboard-data"></i>
+        <span>Xét duyệt điểm quảng cáo</span>
       </a>
     </li>
 
@@ -82,7 +94,10 @@
       </a>
     </li>
 
+    <a class="sidebar-heading mt-5" id="changePass" href="/resetPassword">
+      ĐỔI MẬT KHẨU
+    </a>
     <!-- Log out -->
-    <a class="sidebar-heading mt-5 mb-5 logout" id="logout" href="http://localhost:4000/logout">
+    <a class="sidebar-heading mt-3 mb-5" id="logout" href="http://localhost:4000/logout">
       ĐĂNG XUẤT
     </a>

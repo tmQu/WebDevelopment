@@ -38,7 +38,7 @@ document.getElementById('txtUsername').addEventListener('focusout', (event) => {
     document.getElementById('txtUsername').style.borderRadius = '5px';
     document.getElementById('txtUsername').style.outline = 'none';
     document.getElementById('txtUsername').style.boxShadow = 'none';
-    document.getElementById('txtUsername').placeholder = 'Enter a valid email';
+    document.getElementById('txtUsername').placeholder = 'Nhập email hợp lệ';
   } else {
     document.getElementById('txtUsername').style.borderColor = 'green';
     document.getElementById('txtUsername').style.borderWidth = '2px';

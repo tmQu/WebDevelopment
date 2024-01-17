@@ -200,7 +200,7 @@ app.get('/license', (req, res) => {
   res.render('vwLicense/license', { layout: 'main' });
 });
 
-app.get('/wardAdmin', authController.protect, async (req, res) => {
+app.get('/admin', authController.protect, async (req, res) => {
 
   var queryBoard = {};
   if (req.user.role.level === 'wards') {
@@ -243,17 +243,13 @@ app.get('/wardAdmin', authController.protect, async (req, res) => {
     });
   });
 
-  res.render('vwAdmin/wardAdmin', {
+  res.render('vwAdmin/admin', {
     layout: 'main',
     isSuperAdmin: req.user.role.level === 'departmental',
     boardLocation: JSON.stringify(boardLocation),
     boards: JSON.stringify(boards),
     reports: JSON.stringify(reportObject),
   });
-});
-
-app.get('/departmentAdmin', async (req, res) => {
-  res.render('vwAdmin/departmentAdmin', { layout: 'main' });
 });
 
 app.get('/login', (req, res) => {
@@ -470,9 +466,9 @@ app.get('/assignment', (req, res) => {
 app.get('/', authController.isLoggedIn, async (req, res, next) => {
   if (res.locals.user) {
     if (res.locals.user.role.level === 'wards' || res.locals.user.role.level === 'districts')
-      res.redirect('/wardAdmin');
+      res.redirect('/admin');
     else 
-      res.redirect('/wardAdmin');
+      res.redirect('/admin');
   } else res.redirect('/login');
 });
 
