@@ -52,10 +52,7 @@ const wardController = {
         try {
             const newWard = await wardModel.create(req.body);
 
-            res.status(201).json({
-                status: "success",
-                data: newWard,
-            });
+            res.redirect('/areas?districts=' + req.body.district);
         } catch (err) {
             res.status(400).json({
                 status: 'fail',
@@ -65,13 +62,15 @@ const wardController = {
     },
     update: async (req, res) => {
         try {
-            const ward = await districtModel.findByIdAndUpdate(
+            const ward = await wardModel.findByIdAndUpdate(
                 req.params.id,
                 req.body, {
                     new: true,
                     runValidators: true,
                 }
             );
+
+            console.log('ward: ', ward);
             res.status(200).json({
                 status: "success",
                 data: ward

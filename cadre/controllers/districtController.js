@@ -33,12 +33,11 @@ const districtController = {
     },
     create: async (req, res) => {
         try {
+            console.log('req.params', req.params);
+            console.log('req.body', req.body);
             const newDistrict = await districtModel.create(req.body);
 
-            res.status(201).json({
-                status: "success",
-                data: newDistrict,
-            });
+            res.redirect('/areas');
         } catch (err) {
             res.status(400).json({
                 status: "fail",
@@ -48,7 +47,6 @@ const districtController = {
     },
     update: async (req, res) => {
         try {
-            console.log('req.body', req.body, 'req.params.id', req.params.id);
             const district = await districtModel.findByIdAndUpdate(
                 req.params.id,
                 req.body, {
