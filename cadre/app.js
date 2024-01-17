@@ -2,7 +2,6 @@ import express from 'express';
 import morgan from 'morgan';
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
-import bodyParser from 'body-parser';
 
 import { engine } from 'express-handlebars';
 import hbs_sections from 'express-handlebars-sections';
@@ -31,14 +30,13 @@ import cookieParser from 'cookie-parser';
 
 // import model
 import boardLocationModel from './models/boardLocationModel.js';
-import advtFormModel from './models/advFormModel.js';
-import locationCategoryModel from './models/locationCategoryModel.js';
 import districtModel from './models/districtModel.js';
 import wardModel from './models/wardModel.js';
 import mongoose from 'mongoose';
 import boardModel from './models/boardModel.js';
-import boardTypeModel from './models/boardTypeModel.js';
 import reportModel from './models/reportModel.js';
+import advFormModel from './models/advFormModel.js';
+import reportMethodModel from './models/reportMethodModel.js';
 
 import reportMethodController from './controllers/reportMethodController.js';
 import boardLocationController from './controllers/boardLocationController.js';
@@ -48,7 +46,7 @@ import reportController from './controllers/reportController.js';
 import changeBoardController from './controllers/changeBoardController.js';
 import changeBoardLocationController from './controllers/changeBoardLocationController.js';
 import areaController from './controllers/areaController.js';
-import wardController from './controllers/wardController.js';
+import advFormController from './controllers/advFormController.js';
 
 import { Server } from 'socket.io';
 import { createServer } from 'http';
@@ -352,15 +350,15 @@ app.get('/reportMethods/add', (req, res) => {
   });
 });
 
-app.get('/reportMethods/edit/:id', (req, res) => {
+app.get('/reportMethods/edit/:id', async (req, res) => {
+  const oldData = await reportMethodModel.findById(req.params.id);
+  
   res.render('vwDepartment/reportMethod/reportMethodEdit', {
     id: req.params.id,
     layout: 'department',
+    oldData: oldData.reportMethod
   });
 });
-
-import advFormController from './controllers/advFormController.js';
-import { report } from 'process';
 
 app.get('/advForms', (req, res) => {
   advFormController.getAll(req, res);
@@ -372,14 +370,17 @@ app.get('/advForms/add', (req, res) => {
   });
 });
 
-app.get('/advForms/edit/:id', (req, res) => {
+app.get('/advForms/edit/:id', async (req, res) => {
+  const oldData = await advFormModel.findById(req.params.id);
+
   res.render('vwDepartment/advForm/advFormEdit', {
     id: req.params.id,
     layout: 'department',
+    oldData: oldData.advertisementForm
   });
 });
 
-app.get('/accountSetting',authController.protect, async (req, res) => {
+app.get('/accountSetting', authController.protect, async (req, res) => {
   try {
     if (req.user.role.level === 'departmental')
     {
