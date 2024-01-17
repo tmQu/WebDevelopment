@@ -218,6 +218,11 @@ app.get('/login', (req, res) => {
   res.render('vwAccount/login');
 });
 
+app.get('/logout', (req, res) => {
+  authController.logout(req, res);
+});
+
+
 app.get('/forgotPassword', (req, res) => {
   res.render('vwAccount/forgotPassword');
 });
