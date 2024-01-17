@@ -29,13 +29,12 @@
                                 <input type="txt" class="form-control"
                                     id="reportMethod" name="reportMethod"
                                     placeholder>
-                                <label for="reportMethod" id="requiredReportMethod">Phương thức
+                                <label for="reportMethod">Phương thức
                                     mới</label>
                             </div>
 
                             <div class="d-grid">
-                                <button
-                                    class="btn btn-primary btn-login text-uppercase fw-bold"
+                                <button class="btn btn-primary btn-login text-uppercase fw-bold"
                                     type="submit">Sửa Đổi</button>
                             </div>
                         </form>
@@ -58,10 +57,9 @@
         const editForm = document.getElementById('editForm');
 
         editForm.addEventListener('submit', function (event) {
-            event.preventDefault(); 
+            event.preventDefault();
 
-            const newReportMethod = document.getElementById('newReportMethod').value;
-
+            const newReportMethod = document.getElementById('reportMethod').value;
             fetch('/api/v1/reportMethods/' + '{{id}}', {
                 method: 'PATCH', 
                 headers: {

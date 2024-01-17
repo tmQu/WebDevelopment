@@ -379,8 +379,6 @@ app.get('/advForms/edit/:id', (req, res) => {
   });
 });
 
-
-
 app.get('/accountSetting',authController.protect, async (req, res) => {
   try {
     if (req.user.role.level === 'departmental')
@@ -460,6 +458,12 @@ app.get('/accountSetting',authController.protect, async (req, res) => {
 
 app.get('/areas', (req, res) => {
   areaController.getAll(req, res);
+});
+
+import assignmentController from './controllers/assignmentController.js';
+
+app.get('/assignment', (req, res) => {
+  assignmentController.getAll(req, res);
 });
 
 app.get('/', authController.isLoggedIn, async (req, res, next) => {
