@@ -23,6 +23,9 @@ async function initMap() {
   getAdvertisementBoards(map);
   filter(map);
 
+  const legend = document.getElementById('legend');
+  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legend);
+
   map.addListener('click', () => {
     document.getElementById('sub-window').classList.remove('show-up');
   })
