@@ -5674,13 +5674,6 @@
     transition: transform 0.3s ease-out;
     transform: translate(0, -50px);
   }
-
-  .modal-body {
-    font-size: 5rem;
-    display: flex;
-    justify-content: center;
-    color: var(--danger);
-  }
   
   @media (prefers-reduced-motion: reduce) {
     .modal.fade .modal-dialog {

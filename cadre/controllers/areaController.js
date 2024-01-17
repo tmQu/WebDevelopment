@@ -21,7 +21,8 @@ const areaController = {
                 }),
                 selectedDistricts: selectedDistricts,
                 idDistrict: nameDistrict._id,
-                nameDistrict: nameDistrict.district
+                nameDistrict: nameDistrict.district,
+                layout: 'department'
             });
         } catch (err) {
             res.status(404).json({

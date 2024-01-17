@@ -56,16 +56,18 @@
                           {{/each}}
                         </select>
                       </div>
-                      <div class="formbold-textarea p-2">
-                        <textarea
-                            rows="6"
-                            name="boardReason"
-                            id="editReason"
-                            placeholder="Lý do chỉnh sửa..."
-                            class="formbold-form-input"
-                        ></textarea>
-                        <label for="editReason" class="formbold-form-label mt-4"><b>Lý do</b></label>
-                      </div>
+                      {{#unless isSuperAdmin}}
+                        <div class="formbold-textarea p-2">
+                          <textarea
+                              rows="6"
+                              name="boardReason"
+                              id="editReason"
+                              placeholder="Lý do chỉnh sửa..."
+                              class="formbold-form-input"
+                          ></textarea>
+                          <label for="editReason" class="formbold-form-label mt-4"><b>Lý do</b></label>
+                        </div>
+                      {{/unless}}
                       <div class="formbold-input-file mt-5">
                       <label for="editUploadImage" class="formbold-input-label">
                           <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

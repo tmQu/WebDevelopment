@@ -82,7 +82,7 @@
                     </h4>
                     <div class="form-control">{{license.company.infor}}</div>
                   </div>
-                  <div class="form-outline mb-4 border border-info p-3">
+                  <div class="form-outline mb-4 border rounded border-info bo p-3">
                     <h6>Thông tin liên lạc công ty</h6>
                     <h4>
                       Email
@@ -99,14 +99,14 @@
                     <div class="form-control">{{license.company.addr}}</div>
                   </div>
 
-                  <div class="form-outline mb-4 border border-info p-3">
+                  <div class="form-outline mb-4 border rounded border-info p-3">
                     <h6>Thời hạn hợp đồng:
                       {{license.period.start_date}}
                       -
                       {{license.period.end_date}}</h6>
 
                   </div>
-                  <div class="form-outline mb-4 border border-info p-3">
+                  <div class="form-outline mb-4 border rounded border-info p-3">
                     <h6>Trạng thái:
                       {{#if license.status}}
                         <span class="badge bg-success">Đã duyệt</span>
@@ -156,7 +156,7 @@
                         class="col-12 btn btn-dark btn-lg btn-block"
                         type="submit"
                       >
-                        Đã xét duyệt
+                        Xét duyệt
                       </button>
                     </div>
                   {{/if}}

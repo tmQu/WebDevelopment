@@ -105,17 +105,24 @@
                         </span>
                       {{/compare}}
                     </td>
+
                     <td width='11%'>
                       <a href='http://localhost:4000/boardsLocation/{{this._id}}' class='table-link'>
                         <i class="bi bi-zoom-in"></i>
                       </a>  
-                      <a href='/boardsLocation/{{this._id}}/changeInfoRequest' class='table-link boardLocationReq'>
-                        <i class="bi bi-pencil-square"></i>
+                      <a href=
+                      {{#if ../isSuperAdmin}}
+                        '/boardsLocation/departmental/{{this._id}}?action=update'
+                      {{else}}
+                        '/boardsLocation/{{this._id}}/changeInfoRequest' 
+                      {{/if}}
+                        class='table-link boardLocationReq'>
+                        <i class="bi bi-pencil"></i>
                       </a>
 
                       {{#if ../isSuperAdmin}}
                         <a href = 'http://localhost:4000/api/v1/boardLocation/delete/{{this._id}}' class='table-link boardLocationReq'>
-                          <i class="bi bi-trash" aria-hidden="true"></i>
+                          <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                       {{/if}}
                     </td>

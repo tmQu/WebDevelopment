@@ -373,6 +373,8 @@ app.get('/', authController.isLoggedIn, async (req, res, next) => {
   if (res.locals.user) {
     if (res.locals.user.role.level === 'wards' || res.locals.user.role.level === 'districts')
       res.redirect('/wardAdmin');
+    else 
+      res.redirect('/wardAdmin');
   } else res.redirect('/login');
 });
 
