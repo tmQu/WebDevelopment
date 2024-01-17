@@ -260,7 +260,7 @@ const boardController = {
           boardLocation,
           boardType,
           user: user.toObject(),
-          layout: 'report',
+          layout: 'license',
         });
         return;
       }
@@ -272,7 +272,7 @@ const boardController = {
         boardLocation,
         boardType,
         user: user.toObject(),
-        layout: 'report',
+        layout: 'license',
       });
 
 

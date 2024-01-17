@@ -4,24 +4,18 @@
     <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar"
         style="background: linear-gradient(45deg, #5c7ea1, #509177);">
         <!-- Sidebar - Brand -->
-        {{> sidebarWard}}
+        {{#if isSuperAdmin}}
+  {{> sidebarDepartment}}
+{{else}}
+  {{> sidebarWard}}
+{{/if}}
 
     </ul>
 
     <div class="container-fluid mt-2">
         <div>
             <div class="d-flex" style="width: 50%;">
-                <div class="d-flex justify-content-end" style="width: 70%; border-radius: 0%;">
-                    <select id='district' class="form-select mr-3" value="Chọn quận">
-                        <option value="">Chọn quận</option>
-                        {{#each districts}}
-                        <option value="{{_id}}">{{district}}</option>
-                        {{/each}}
-                    </select>
-                    <select id='ward' class="form-select" disabled>
-                        <option value="">Chọn phường</option>
-                    </select>
-                </div>
+
                 <script>
                     var wards = JSON.parse('{{{wards}}}');
                     document.getElementById('district').addEventListener('change', (e) => {
@@ -64,7 +58,7 @@
             <tbody>
                 {{#each license}}
                 <tr data-id="{{{_id}}}">
-                    <td>
+                    <td class="col-md-4">
                         {{board.boardLocation.addr}}
                     </td>
                     <td>
@@ -108,7 +102,6 @@
                             {{/unless}}
 
                         {{/if}}
-
                     </td>
                 </tr>
                 {{/each}}

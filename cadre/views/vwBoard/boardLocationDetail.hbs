@@ -20,7 +20,11 @@
     style="background: linear-gradient(45deg, #5c7ea1, #509177);"
   >
     
-    {{> sidebarWard}}
+    {{#if isSuperAdmin}}
+  {{> sidebarDepartment}}
+{{else}}
+  {{> sidebarWard}}
+{{/if}}
 
   </ul>
 

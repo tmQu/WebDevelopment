@@ -15,7 +15,11 @@
         id="accordionSidebar"
         style="background: linear-gradient(45deg, #5c7ea1, #509177); margin-left: -24px;"
       >
-        {{> sidebarWard}}
+        {{#if isSuperAdmin}}
+  {{> sidebarDepartment}}
+{{else}}
+  {{> sidebarWard}}
+{{/if}}
       </ul>
     </div>
     <div class="col-md-9">

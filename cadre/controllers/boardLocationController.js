@@ -21,7 +21,6 @@ const boardLocationController = {
       console.log(req.user)
       var query = {};
       if (req.user.role.level === 'wards') {
-        // console.log(req.user.role.detail);
         query['addr.ward'] = mongoose.Types.ObjectId(req.user.role.detail);
         let ward = await wardModel.findById(req.user.role.detail);
         query['addr.district'] = mongoose.Types.ObjectId(ward.district);
@@ -37,7 +36,7 @@ const boardLocationController = {
 
       const totalItems = await boardLocationModel.countDocuments(query);
       boardLocation = await boardLocationModel.find(query, null, options);
-
+      
       boardLocation = boardLocation.map((boardLocation) => {
         boardLocation = boardLocation.toObject();
         return {
@@ -78,8 +77,6 @@ const boardLocationController = {
       let boards = await boardModel.find({ boardLocation: boardLocation._id });
       let boardType = await boardTypeModel.find();
       const user = req.user._id;
-
-      // console.log(boardLocation, boards, boardType, user);
 
       boards = boards.map((board) => {
         board = board.toObject();

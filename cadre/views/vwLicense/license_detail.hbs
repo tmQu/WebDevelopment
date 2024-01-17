@@ -1,154 +1,176 @@
-<section class='vh-100' style='background-color: #9A616D;'>
-        <div class='container py-5 h-100'>
-          <div class='row d-flex justify-content-center align-items-center h-100'>
-            <div class='col col-xl-12'>
-              <div class='card' style='border-radius: 1rem;'>
-                <div class='row'>
-                  <div class='border-end border-info col-md-5 col-lg-4 d-none d-md-flex flex-column  align-items-center'>
-                    <!-- Điểm đặt bảng quảng cáo -->
-                    <div style="position:sticky;top:0px;">
-                      <div class="card mt-3" style="width: 18rem;" >
-                        <img src="{{imgBoardLocation}}" class="card-img-top">
-                        <div class="card-body">
-                          <h5 class="card-title">Điểm đặt quảng cáo</h5>
-                          <div class = 'mt-3'><strong>Địa chỉ: </strong> {{boardLocation.addr}}</div>
-                          <div class = 'mt-1'><strong>Loại vị trí: </strong> {{boardLocation.locationCategory}}</div>
-                          <div class = 'mt-1'><strong>Hình thức quảng cáo: </strong> {{boardLocation.advertisementForm}}</div>
-                          <div class = 'mt-1'><strong>{{plan}}</strong></div>
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul
+    class="navbar-nav sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+    style="background: linear-gradient(45deg, #5c7ea1, #509177);"
+  >
+    <!-- Sidebar - Brand -->
+    {{#if isSuperAdmin}}
+  {{> sidebarDepartment}}
+{{else}}
+  {{> sidebarWard}}
+{{/if}}
 
+  </ul>
 
+  <div class="container-fluid py-3 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col col-xl-12">
+        <div class="" style="border-radius: 1rem;">
+          <div class="row">
+            <div
+              class="border-end border-info col-md-5 col-lg-4 d-none d-md-flex flex-column align-items-center"
+            >
+              <!-- Điểm đặt bảng quảng cáo -->
+              <div style="position:sticky;top:0px;">
+                <div class="mt-3" style="width: 18rem; color:black">
+                  <img src="{{imgBoardLocation}}" class="card-img-top" />
+                  <div class="card-body">
+                    <h5 class="card-title">Điểm đặt quảng cáo</h5>
+                    <div class="mt-3"><strong>Địa chỉ: </strong>
+                      {{boardLocation.addr}}</div>
+                    <div class="mt-1"><strong>Loại vị trí: </strong>
+                      {{boardLocation.locationCategory}}</div>
+                    <div class="mt-1"><strong>Hình thức quảng cáo: </strong>
+                      {{boardLocation.advertisementForm}}</div>
+                    <div class="mt-1"><strong>{{plan}}</strong></div>
 
-                        </div>
-                      </div>
-
-                      <!-- Bảng quảng cáo -->
-                    
-                      <div class="card mt-3" style="width: 18rem;">
-                        <div class="card-body">
-                          <h5 class="card-title">Bảng quảng cáo</h5>
-                          <div><strong>Kích thước: </strong> {{board.size}}</div>
-                          <div><strong>Loại bảng quảng cáo: </strong> {{board.boardType.boardType}}</div>
-                        </div>
-                      </div>
-                    </div>
-
-                  
-                  </div>
-                  <!-- img -->
-                  <div class='col-md-7 col-lg-8 d-flex align-items-center'>
-                    <div class='card-body p-4 p-lg-5 text-black'>
-                      <form id='form' action='{{action.link}}' method="post">
-                        <div class='d-flex align-items-center mb-3 pb-1'>
-                          <span class='h1 fw-bold mb-0'>
-                            Cấp phép quảng cáo
-                          </span>
-                        </div>
-
-                        <div class="mb-3">
-                            <h3>Hình ảnh minh hoạ</h3>
-                            <img src="{{license.imgBoard}}">
-                        </div>
-      
-                        <div class='form-outline mb-4'>
-                          <h3>
-                            Nội dung quảng cáo
-                          </h3>
-                          <div class="form-control">
-                            {{license.content}}
-                          </div>
-                        </div>
-
-                        <div class='form-outline mb-4'>
-                            <h3>
-                              Thông tin công ty đặt bảng quảng cáo
-                            </h3>
-                            <div class="form-control">{{license.company.infor}}</div>
-                        </div>
-                        <div class='form-outline mb-4 border border-info p-3'>
-                            <h6>Thông tin liên lạc công ty</h6>
-                            <h4>
-                              Email
-                            </h4>
-                            <div class="form-control">{{license.company.email}}</div>
-                            <h4>
-                                Điện thoại
-                            </h4>
-                            <div class="form-control">{{license.company.phone}}</div>
-                            <h4>
-
-                                Địa chỉ
-                            </h4>
-                              </label>
-                              <div class="form-control">{{license.company.addr}}</div>
-                        </div>
-                        
-
-                        <div class='form-outline mb-4 border  border-info p-3'>
-                            <h6>Thời hạn hợp đồng: {{license.period.start_date}} - {{license.period.end_date}}</h6>
-                 
-                        </div>
-                        <div class='form-outline mb-4 border  border-info p-3'>
-                            <h6>Trạng thái: 
-                              {{#if license.status}}
-                                <span class="badge bg-success">Đã duyệt</span>
-                              {{else}}
-                                <span class="badge bg-warning">Chưa duyệt</span>
-                              {{/if}}
-                            </h6>
-                 
-                        </div>
-
-                        {{#if license.status}}
-                            {{#if license.approve}}
-                              <div class="alert alert-warning" role="alert">
-                                Bảng quảng cáo đã được cấp phép
-                              </div>
-                            {{else}}
-                              <div class="alert alert-danger" role="alert">
-                                Bảng quảng cáo đã bị từ chối cấp phép
-                              </div>
-                            {{/if}}
-                        {{/if}}
-
-                        
-                        {{#if action.delete}}
-                        <div class='pt-1 mb-4'>
-                        <button class='col-12 btn btn-dark btn-lg btn-block' type='submit'>
-                          Hủy yêu cầu xét duyệt
-                        </button>
-                        </div>
-                        {{else if action.approve}}
-
-                        <div class="mb-4">
-
-                          <h3 class="mb-2">
-                            Bảng quảng cáo sẽ
-
-                          </h3>
-                          <select class="form-select" name="approve">
-                              <option value="true">Được cấp phép</option>
-                              <option value="false">Không được cấp phép</option>
-                          </select>
-                        </div>
-                        <div class='pt-1 mb-4'>
-                        <button class='col-12 btn btn-dark btn-lg btn-block' type='submit'>
-                          Xét duyệt
-                        </button>
-                        </div>
-                        {{/if}}
-                        <footer>
-                          <!-- footer -->
-                        </footer>
-                      </form>
-                    </div>
                   </div>
                 </div>
+
+                <!-- Bảng quảng cáo -->
+
+                <div class="card mt-3" style="width: 18rem;">
+                  <div class="card-body">
+                    <h5 class="card-title">Bảng quảng cáo</h5>
+                    <div><strong>Kích thước: </strong> {{board.size}}</div>
+                    <div><strong>Loại bảng quảng cáo: </strong>
+                      {{board.boardType.boardType}}</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- img -->
+            <div class="col-md-7 col-lg-8 d-flex align-items-center">
+              <div class="card-body p-4 p-lg-5 text-black">
+                <form id="form" action="{{action.link}}" method="post">
+                  <div class="d-flex align-items-center mb-3 pb-1">
+                    <span class="h1 fw-bold mb-0">
+                      Cấp phép quảng cáo
+                    </span>
+                  </div>
+
+                  <div class="mb-3">
+                    <h4>Hình ảnh minh hoạ</h4>
+                    <img src="{{license.imgBoard}}" />
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <h4>
+                      Nội dung quảng cáo
+                    </h4>
+                    <div class="form-control">
+                      {{license.content}}
+                    </div>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <h4>
+                      Thông tin công ty đặt bảng quảng cáo
+                    </h4>
+                    <div class="form-control">{{license.company.infor}}</div>
+                  </div>
+                  <div class="form-outline mb-4 border border-info p-3">
+                    <h6>Thông tin liên lạc công ty</h6>
+                    <h4>
+                      Email
+                    </h4>
+                    <div class="form-control">{{license.company.email}}</div>
+                    <h4 class="mt-3">
+                      Điện thoại
+                    </h4>
+                    <div class="form-control">{{license.company.phone}}</div>
+                    <h4 class="mt-3">
+
+                      Địa chỉ
+                    </h4>
+                    <div class="form-control">{{license.company.addr}}</div>
+                  </div>
+
+                  <div class="form-outline mb-4 border border-info p-3">
+                    <h6>Thời hạn hợp đồng:
+                      {{license.period.start_date}}
+                      -
+                      {{license.period.end_date}}</h6>
+
+                  </div>
+                  <div class="form-outline mb-4 border border-info p-3">
+                    <h6>Trạng thái:
+                      {{#if license.status}}
+                        <span class="badge bg-success">Đã duyệt</span>
+                      {{else}}
+                        <span class="badge bg-warning">Chưa duyệt</span>
+                      {{/if}}
+                    </h6>
+
+                  </div>
+
+                  {{#if license.status}}
+                    {{#if license.approve}}
+                      <div class="alert alert-warning" role="alert">
+                        Bảng quảng cáo đã được cấp phép
+                      </div>
+                    {{else}}
+                      <div class="alert alert-danger" role="alert">
+                        Bảng quảng cáo đã bị từ chối cấp phép
+                      </div>
+                    {{/if}}
+                  {{/if}}
+
+                  {{#if action.delete}}
+                    <div class="pt-1 mb-4">
+                      <button
+                        class="col-12 btn btn-dark btn-lg btn-block"
+                        type="submit"
+                      >
+                        Hủy yêu cầu xét duyệt
+                      </button>
+                    </div>
+                  {{else if action.approve}}
+
+                    <div class="mb-4">
+
+                      <h4 class="mb-2">
+                        Bảng quảng cáo sẽ
+
+                      </h4>
+                      <select class="form-select" name="approve">
+                        <option value="true">Được cấp phép</option>
+                        <option value="false">Không được cấp phép</option>
+                      </select>
+                    </div>
+                    <div class="pt-1 mb-4">
+                      <button
+                        class="col-12 btn btn-dark btn-lg btn-block"
+                        type="submit"
+                      >
+                        Đã xét duyệt
+                      </button>
+                    </div>
+                  {{/if}}
+                  <footer>
+                    <!-- footer -->
+                  </footer>
+                </form>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</div>
 
-
- {{#section 'footer'}}
- {{/section}}
+{{#section "footer"}}{{/section}}

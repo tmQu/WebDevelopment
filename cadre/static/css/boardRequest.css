@@ -133,3 +133,13 @@ body {
 .custom-file-upload:hover {
   background-color: #4c47cc;
 }
+
+#editBoardForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 48px;
+  background: white;
+  max-width: 550px;
+  margin: 0 auto;
+}

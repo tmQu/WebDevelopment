@@ -112,6 +112,7 @@ const authController = {
     req.isAuthorized = true;
     next();
   },
+  // Only for rendered pages, no errors!
   isLoggedIn: async (req, res, next) => {
     if (req.cookies.jwt) {
       try {
@@ -130,7 +131,6 @@ const authController = {
         }
 
         // THERE IS A LOGGED IN USER
-        console.log(currentUser);
         res.locals.user = currentUser;
         return next();
       } catch (err) {

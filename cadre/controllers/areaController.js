@@ -7,6 +7,7 @@ const areaController = {
             const selectedDistricts = [].concat(req.query.districts || []);
             const districts = await districtModel.find();
             const wards = await wardModel.find({ 'district': { $in: req.query.districts } }).populate('district');
+            const nameDistrict = await districtModel.findOne({ '_id': { $in: req.query.districts } }) || { _id: '', district: '' };
 
             res.render('vwDepartment/area/areaManagement', {
                 status: 'success',
@@ -18,7 +19,9 @@ const areaController = {
                         district: ward.district
                     }
                 }),
-                selectedDistricts: selectedDistricts
+                selectedDistricts: selectedDistricts,
+                idDistrict: nameDistrict._id,
+                nameDistrict: nameDistrict.district
             });
         } catch (err) {
             res.status(404).json({

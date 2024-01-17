@@ -1,14 +1,16 @@
 <div class="container">
   <h2>Quản lý danh sách Phường, Quận</h2>
   <div class="row">
+    <!-- Districts Column -->
     <div class="col-md-6">
+      <!-- Districts List -->
       <form id="filterForm" action="/areas" method="get">
         <div id="districtsContainer" style="height: 500px; overflow-y: auto;overflow-x: hidden;">
           {{#each districts}}
           <div class="form-check">
             <div class="row">
               <div class="col-md-8">
-                <input class="form-check-input" type="checkbox" name="districts"
+                <input class="form-check-input" type="radio" name="districts"
                   value="{{this._id}}" id="district{{@index}}"
                   {{isSelected this._id ../selectedDistricts}}>
                 <label class="form-check-label" for="district{{@index}}">
@@ -16,7 +18,9 @@
                 </label>
               </div>
               <div class="col-md-1">
-                <a href='#' class='table-link edit' data-id="{{this._id}}" data-name="{{this.district}}">
+                <a href='#' class='table-link edit-district'
+                  data-id="{{this._id}}"
+                  data-name="{{this.district}}">
                   <span class='fa-stack'>
                     <i class='fa fa-square fa-stack-2x'></i>
                     <i class='fa fa-pencil fa-stack-1x fa-inverse'></i>
@@ -24,7 +28,8 @@
                 </a>
               </div>
               <div class="col-md-3">
-                <a href='#' class='table-link danger'>
+                <a href='api/v2/districts/{{this._id}}'
+                  class='table-link danger delete-district'>
                   <span class='fa-stack'>
                     <i class='fa fa-square fa-stack-2x'></i>
                     <i class='fa fa-trash-o fa-stack-1x fa-inverse'></i>
@@ -35,18 +40,26 @@
           </div>
           {{/each}}
         </div>
+        <!-- Apply Button -->
         <button type="submit" class="btn btn-primary">Áp dụng</button>
+        <!-- Add New District Button -->
+        <button type="button" class="btn btn-success" id="addDistrict">Thêm Quận
+          Mới</button>
       </form>
     </div>
+
+    <!-- Wards Column -->
     <div class="col-md-6">
       <div id="wardsContainer" style="height: 500px; overflow-y: auto;overflow-x:hidden">
         {{#each wards}}
         <div class="row ward-item">
           <div class="col-md-8">
-            <strong>{{this.ward}}</strong>: {{this.district.district}}
+            {{this.ward}}
           </div>
           <div class="col-md-1">
-            <a href='/reportMethods/edit/{{this._id}}' class='table-link'>
+            <a href='#' class='table-link edit-ward'
+              data-id="{{this._id}}"
+              data-name="{{this.ward}}">
               <span class='fa-stack'>
                 <i class='fa fa-square fa-stack-2x'></i>
                 <i class='fa fa-pencil fa-stack-1x fa-inverse'></i>
@@ -54,8 +67,8 @@
             </a>
           </div>
           <div class="col-md-3">
-            <a href='/api/v1/reportMethods/{{this._id}}'
-              class='table-link danger'>
+            <a href='/api/v2/wards/{{this._id}}'
+              class='table-link danger delete-ward'>
               <span class='fa-stack'>
                 <i class='fa fa-square fa-stack-2x'></i>
                 <i class='fa fa-trash-o fa-stack-1x fa-inverse'></i>
@@ -64,17 +77,29 @@
           </div>
         </div>
         {{/each}}
+        {{else}}
+        {{#if selectedDistricts}}
+        <h4>Không có dữ liệu</h4>
+        {{/if}}
+        {{/if}}
       </div>
+      {{#if selectedDistricts}}
+      <!-- Add New Ward Button -->
+      <button type="button" class="btn btn-success" id="addWard"
+        data-district-name="{{this.nameDistrict}}"
+        data-district-id="{{this.idDistrict}}">Thêm Phường
+        Mới</button>
+      {{/if}}
     </div>
   </div>
 </div>
 
-<!-- Modal -->
+<!-- Modal Edit District-->
 <div class="modal" tabindex="-1" role="dialog" id="editModal">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Sửa tên</h5>
+        <h5 class="modal-title">Sửa Tên Quận</h5>
         <button type="button" class="close" data-dismiss="modal"
           aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -82,14 +107,103 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <label for="newName">Tên mới:</label>
-          <input type="text" class="form-control" id="newName">
+          <label for="newNameDistrict">Tên Quận Mới:</label>
+          <input type="text" class="form-control" id="newNameDistrict">
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary"
           data-dismiss="modal">Đóng</button>
-        <button type="button" class="btn btn-primary" id="saveName">Lưu</button>
+        <button type="button" class="btn btn-primary"
+          id="saveNameDistrict">Lưu</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Edit Ward-->
+<div class="modal" tabindex="-1" role="dialog" id="editModalWard">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Sửa Tên Phường</h5>
+        <button type="button" class="close" data-dismiss="modal"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="newNameWard">Tên Phường Mới:</label>
+          <input type="text" class="form-control" id="newNameWard">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary"
+          data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary"
+          id="saveNameWard">Lưu</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add District Modal -->
+<div class="modal" id="addDistrictModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Thêm Quận Mới</h5>
+        <button type="button" class="close" data-dismiss="modal"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="newDistrictForm" action="/api/v2/districts" method="post">
+          <div class="form-group">
+            <label for="newDistrictName">Tên Quận:</label>
+            <input type="text" class="form-control" id="newDistrictName"
+              name="district"
+              placeholder="Nhập tên quận mới">
+          </div>
+          <button type="submit" class="btn btn-primary">Lưu</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Add Ward Modal -->
+<div class="modal" id="addWardModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Thêm Phường Mới</h5>
+        <button type="button" class="close" data-dismiss="modal"
+          aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="newWardForm" action="/api/v2/wards" method="post">
+          <div class="form-group">
+            <label for="districtName">Tên Quận:</label>
+            <input type="text" class="form-control" id="districtName"
+              name="districtName" readonly>
+          </div>
+          <div class="form-group">
+            <label for="districtID" hidden>ID Quận:</label>
+            <input type="text" class="form-control" id="districtID"
+              name="district" hidden>
+          </div>
+          <div class="form-group">
+            <label for="newWardName">Tên Phường:</label>
+            <input type="text" class="form-control" id="newWardName" name="ward"
+              placeholder="Nhập tên phường mới">
+          </div>
+          <button type="submit" class="btn btn-primary">Lưu</button>
+        </form>
       </div>
     </div>
   </div>
@@ -97,30 +211,44 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const editButtons = document.querySelectorAll('.table-link.edit');
+  let editButtons = document.querySelectorAll('.edit-district');
   let selectedDistrictId = null;
+  let selectedWardId = null;
 
   editButtons.forEach(function (button) {
     button.addEventListener('click', function () {
       const currentName = button.getAttribute('data-name');
       selectedDistrictId = button.getAttribute('data-id');
 
-      document.getElementById('newName').value = currentName;
+      document.getElementById('newNameDistrict').value = currentName;
       document.getElementById('editModal').style.display = 'block';
     });
   });
 
-  const modal = document.getElementById('editModal');
-  const closeModalButtons = modal.querySelectorAll('[data-dismiss="modal"]');
+  editButtons = document.querySelectorAll('.edit-ward');
+  editButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+      const currentName = button.getAttribute('data-name');
+      selectedWardId = button.getAttribute('data-id');
 
-  closeModalButtons.forEach(function (closeButton) {
-    closeButton.addEventListener('click', function () {
-      modal.style.display = 'none';
+      document.getElementById('newNameWard').value = currentName;
+      document.getElementById('editModalWard').style.display = 'block';
     });
   });
 
-  const saveButton = document.getElementById('saveName');
-  saveButton.addEventListener('click', function () {
+  const modalDistrict = document.getElementById('editModal');
+  const modalWard = document.getElementById('editModalWard');
+  const closeModalButtons = modalDistrict.querySelectorAll('[data-dismiss="modal"]');
+
+  closeModalButtons.forEach(function (closeButton) {
+    closeButton.addEventListener('click', function () {
+      modalDistrict.style.display = 'none';
+      modalWard.style.display = 'none';
+    });
+  });
+
+  const saveButtonDistrict = document.getElementById('saveNameDistrict');
+  saveButtonDistrict.addEventListener('click', function () {
     if (selectedDistrictId) {
       fetch(`/api/v2/districts/${selectedDistrictId}`, {
         method: 'PATCH',
@@ -128,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          district: document.getElementById('newName').value,
+          district: document.getElementById('newNameDistrict').value,
         }),
       })
         .then(response => response.json())
@@ -143,7 +271,138 @@ document.addEventListener('DOMContentLoaded', function () {
 
       selectedDistrictId = null;
 
+      modalDistrict.style.display = 'none';
+    }
+  });
+
+  const saveButtonWard = document.getElementById('saveNameWard');
+  saveButtonWard.addEventListener('click', function () {
+    if (selectedWardId) {
+      fetch(`/api/v2/wards/${selectedWardId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ward: document.getElementById('newNameWard').value,
+        }),
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+
+          window.location.reload();
+        })
+        .catch(error => {
+          console.error('Lỗi:', error);
+        });
+
+      selectedWardId = null;
+
+      modalWard.style.display = 'none';
+    }
+  });
+
+  const deleteLinks = document.querySelectorAll('.delete-district');
+  deleteLinks.forEach(link => {
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+      const url = this.getAttribute('href');
+
+      fetch(url, {
+        method: 'DELETE',
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log('District was deleted');
+
+          window.location.reload(); 
+        } else {
+          console.error('Delete failed');
+        }
+      })
+      .catch(err => console.error('Error:', err));
+    });
+  });
+
+  const deleteWardLinks = document.querySelectorAll('.delete-ward');
+  deleteWardLinks.forEach(link => {
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+      const url = this.getAttribute('href');
+
+      fetch(url, {
+        method: 'DELETE',
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log('Ward was deleted');
+
+          window.location.reload(); 
+        } else {
+          console.error('Delete failed');
+        }
+      })
+      .catch(err => console.error('Error:', err));
+    });
+  });
+});
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const addDistrictButton = document.getElementById('addDistrict');
+  const addDistrictModal = document.getElementById('addDistrictModal');
+  const closeButtons = document.querySelectorAll('[data-dismiss="modal"]');
+
+  addDistrictButton.addEventListener('click', function () {
+    addDistrictModal.style.display = 'block';
+  });
+
+  closeButtons.forEach(function(button) {
+    button.addEventListener('click', function () {
+      const modal = button.closest('.modal');
       modal.style.display = 'none';
+    });
+  });
+
+  window.addEventListener('click', function (event) {
+    if (event.target == addDistrictModal) {
+      addDistrictModal.style.display = 'none';
+    }
+  });
+});
+
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const addWardButton = document.getElementById('addWard');
+  const addWardModal = document.getElementById('addWardModal');
+  const districtIDInput = document.getElementById('districtID');
+  const districtNameInput = document.getElementById('districtName');
+
+  addWardButton.addEventListener('click', function () {
+    const districtName = this.getAttribute('data-district-name'); 
+    const districtID = this.getAttribute('data-district-id');
+
+    districtNameInput.value = districtName; 
+    districtIDInput.value = districtID;
+
+    addWardModal.style.display = 'block';
+  });
+
+  closeButtons.forEach(function(button) {
+    button.addEventListener('click', function () {
+      const modal = button.closest('.modal');
+      modal.style.display = 'none';
+    });
+  });
+
+  window.addEventListener('click', function (event) {
+    if (event.target == addWardModal) {
+      addWardModal.style.display = 'none';
     }
   });
 });

@@ -1,10 +1,20 @@
-<body>
-    <div class="container">
+<div id="wrapper">
+  <!-- Sidebar -->
+    <ul
+        class="navbar-nav sidebar sidebar-dark accordion"
+        id="accordionSidebar"
+        style="background: linear-gradient(45deg, #5c7ea1, #509177);"
+    >
+        <!-- Sidebar - Brand -->
+        {{> sidebarWard}}
+
+    </ul>
+    <div class="container-fluid">
         <div class="row">
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card border-0 shadow rounded-3 my-5">
                     <div class="card-body p-4 p-sm-5">
-                        <h5 class="card-title text-center mb-5 fw-light fs-5">
+                        <h5 class="card-title text-center mb-3 fw-light fs-5">
                             Sửa Phương Thức Báo Cáo
                         </h5>
                         <form id = "editForm">
@@ -15,11 +25,11 @@
                                 <label for="floatingInput">Phương thức
                                     cũ</label>
                             </div>
-                            <div class="form-floating mb-3">
+                            <div class="form-floating mb-5">
                                 <input type="txt" class="form-control"
-                                    id="newReportMethod" name="reportMethod"
+                                    id="reportMethod" name="reportMethod"
                                     placeholder>
-                                <label for="newReportMethod">Phương thức
+                                <label for="reportMethod" id="requiredReportMethod">Phương thức
                                     mới</label>
                             </div>
 
@@ -40,7 +50,7 @@
             </div>
         </div>
     </div>
-</body>
+</div>
 
 {{#section 'js'}}
 <script>
@@ -82,4 +92,5 @@
         document.getElementById('editForm').submit();
     }
 </script>
+<script src="../../../static/js/department/reportMethods.js"></script>
 {{/section}}

@@ -1,31 +1,41 @@
-<body>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
-                <div class="card border-0 shadow rounded-3 my-5">
-                    <div class="card-body p-4 p-sm-5">
-                        <h5 class="card-title text-center mb-5 fw-light fs-5">
-                            Thêm Hình Thức Quảng Cáo
-                        </h5>
-                        <form action="/api/v1/advForms" method="post">
-                            <div class="form-floating mb-3">
-                                <input type="txt" class="form-control"
-                                    id="floatingInput" name="advertisementForm"
-                                    placeholder="">
-                                <label for="floatingInput">Hình thức quảng cáo</label>
-                            </div>
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul
+    class="navbar-nav sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+    style="background: linear-gradient(45deg, #5c7ea1, #509177);"
+  >
+    <!-- Sidebar - Brand -->
+    {{> sidebarWard}}
 
-                            <div class="d-grid">
-                                <button
-                                    class="btn btn-primary btn-login text-uppercase fw-bold"
-                                    type="submit">Thêm Mới</button>
-                            </div>
-                        </form>
-                        <div class="d-grid mt-3">
-                            <a href="/advForms" class="btn btn-danger btn-login text-uppercase fw-bold">Quay Lại</a>
+  </ul>
+<div class="container-fluid">
+    <div class="row">
+    <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card border-0 shadow rounded-3 my-5">
+            <div class="card-body p-4 p-sm-5">
+                <h5 class="card-title text-center mb-5 fw-light fs-5">
+                    Thêm Hình Thức Quảng Cáo
+                </h5>
+                <form action="/api/v1/advForms" method="post">
+                    <div class="form-floating mb-3">
+                        <input type="txt" class="form-control"
+                            id="floatingInput" name="advertisementForm"
+                            placeholder="">
+                        <label for="floatingInput">Hình thức quảng cáo</label>
                     </div>
-                </div>
+
+                    <div class="d-grid">
+                        <button
+                            class="btn btn-primary btn-login text-uppercase fw-bold"
+                            type="submit">Thêm Mới</button>
+                    </div>
+                </form>
+                <div class="d-grid mt-3">
+                    <a href="/advForms" class="btn btn-danger btn-login text-uppercase fw-bold">Quay Lại</a>
             </div>
         </div>
     </div>
-</body>
+</div>
+</div>
+</div>

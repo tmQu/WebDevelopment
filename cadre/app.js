@@ -14,7 +14,7 @@ import mongoSanitize from 'express-mongo-sanitize';
 import xss from 'xss-clean';
 
 import boardRouter from './routes/boardRoutes.js';
-import boardLocationRouter from './routes/boardLocationRoutes.js'
+import boardLocationRouter from './routes/boardLocationRoutes.js';
 import userRouter from './routes/userRoutes.js';
 import reportRouter from './routes/reportRoutes.js';
 import reportMethodRoutes from './routes/reportMethodRoutes.js';
@@ -47,6 +47,8 @@ import authController from './controllers/authController.js';
 import reportController from './controllers/reportController.js';
 import changeBoardController from './controllers/changeBoardController.js';
 import changeBoardLocationController from './controllers/changeBoardLocationController.js';
+import areaController from './controllers/areaController.js';
+import wardController from './controllers/wardController.js';
 
 import { Server } from 'socket.io';
 import { createServer } from 'http';
@@ -160,7 +162,7 @@ app.use('/static', express.static('static'));
 
 // Cadre Route -> for render
 app.use('/api/v1/boards', boardRouter.router_v1);
-app.use('/api/v1/boardLocation', boardLocationRouter.router_v1)
+app.use('/api/v1/boardLocation', boardLocationRouter.router_v1);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/reports', reportRouter.router_v1);
 app.use('/api/v1/reportMethods', reportMethodRoutes);
@@ -193,47 +195,79 @@ app.use('/api/v2/filter', filterRoutes);
 // });
 
 app.get('/licenseAccount', authController.protect, authController.restrictTo('departmental'), (req, res) => {
-  res.render('vwLicense/licenseAccount', { layout: 'department' });
+  res.render('vwLicense/licenseAccount', { layout: 'license' });
 });
 
 app.get('/license', (req, res) => {
   res.render('vwLicense/license', { layout: 'main' });
 });
 
-app.get('/wardAdmin',async (req, res) => {
+app.get('/wardAdmin', authController.protect, async (req, res) => {
+  // var boardLocation = await boardLocationModel
+  //   .find()
+  //   .populate('advertisementForm')
+  //   .populate('locationCategory')
+  //   .populate('addr.district')
+  //   .populate('addr.ward');
+  var queryBoard = {};
+  if (req.user.role.level === 'wards') {
+    queryBoard['addr.ward'] = mongoose.Types.ObjectId(req.user.role.detail);
+    let ward = await wardModel.findById(req.user.role.detail);
+    queryBoard['addr.district'] = mongoose.Types.ObjectId(ward.district);
+  } else if (req.user.role.level === 'districts') {
+    queryBoard['addr.district'] = mongoose.Types.ObjectId(req.user.role.detail);
+  }
+
+  const queryReport = {};
+    if (req.user.role.level === 'wards') {
+      queryReport.ward = req.user.role.detail;
+      let ward = await wardModel.findById(req.user.role.detail);
+      queryReport.district = ward.district;
+    } else if (req.user.role.level === 'districts') {
+      queryReport.district = req.user.role.detail;
+    }
+
   var boardLocation = await boardLocationModel
-    .find()
+    .find(queryBoard)
     .populate('advertisementForm')
     .populate('locationCategory')
     .populate('addr.district')
     .populate('addr.ward');
-  var boards = await boardModel.find().populate('boardType');
-  var reports = await reportModel.find().populate('reportMethod').populate('boardLocation').populate('board');
 
-  var reportObject = []
-  reports.forEach(report => {
-    reportObject.push(
-      {
-        _id: report._id,
-        location: report.location,
-        createdAt: report.createdAt,
-        method: report.method.reportMethod,
-        sender: report.sender,
-        board: report.board,
-        addr: report.addr
-      });
+  var boards = await boardModel.find().populate('boardType');
+  var reports = await reportModel.find(queryReport).populate('reportMethod').populate('boardLocation').populate('board');
+
+  var reportObject = [];
+  reports.forEach((report) => {
+    reportObject.push({
+      _id: report._id,
+      location: report.location,
+      createdAt: report.createdAt,
+      method: report.method.reportMethod,
+      sender: report.sender,
+      board: report.board,
+      addr: report.addr,
+    });
   });
 
-  res.render('vwAdmin/wardAdmin', { 
+  res.render('vwAdmin/wardAdmin', {
     layout: 'main',
     boardLocation: JSON.stringify(boardLocation),
     boards: JSON.stringify(boards),
-    reports: JSON.stringify(reportObject)
+    reports: JSON.stringify(reportObject),
   });
+});
+
+app.get('/departmentAdmin', async (req, res) => {
+  res.render('vwAdmin/departmentAdmin', { layout: 'main' });
 });
 
 app.get('/login', (req, res) => {
   res.render('vwAccount/login');
+});
+
+app.get('/logout', (req, res) => {
+  authController.logout(req, res);
 });
 
 app.get('/forgotPassword', (req, res) => {
@@ -310,7 +344,6 @@ app.get('/boardLocationRequest/:id/accept', authController.protect, (req, res) =
   changeBoardLocationController.acceptRequest(req, res);
 });
 
-
 import handlebarsHelpers from './static/js/handlebarsHelpers.js';
 
 app.get('/reportMethods', (req, res) => {
@@ -319,14 +352,14 @@ app.get('/reportMethods', (req, res) => {
 
 app.get('/reportMethods/add', (req, res) => {
   res.render('vwDepartment/reportMethod/reportMethodAdd', {
-    layout: 'department'
+    layout: 'department',
   });
 });
 
 app.get('/reportMethods/edit/:id', (req, res) => {
   res.render('vwDepartment/reportMethod/reportMethodEdit', {
     id: req.params.id,
-    layout: 'department'
+    layout: 'department',
   });
 });
 
@@ -339,18 +372,18 @@ app.get('/advForms', (req, res) => {
 
 app.get('/advForms/add', (req, res) => {
   res.render('vwDepartment/advForm/advFormAdd', {
-    layout: 'department'
+    layout: 'department',
   });
 });
 
 app.get('/advForms/edit/:id', (req, res) => {
   res.render('vwDepartment/advForm/advFormEdit', {
     id: req.params.id,
-    layout: 'department'
+    layout: 'department',
   });
 });
 
-import areaController from './controllers/areaController.js';
+
 
 app.get('/accountSetting',authController.protect, async (req, res) => {
   try {
@@ -428,13 +461,16 @@ app.get('/accountSetting',authController.protect, async (req, res) => {
     });
 }
 })
+
 app.get('/areas', (req, res) => {
   areaController.getAll(req, res);
 });
 
-app.get('/', authController.isLoggedIn, async (req, res) => {
-  console.log(res.locals.user)
-  res.render('vwHome/index', { layout: 'main' });
+app.get('/', authController.isLoggedIn, async (req, res, next) => {
+  if (res.locals.user) {
+    if (res.locals.user.role.level === 'wards' || res.locals.user.role.level === 'districts')
+      res.redirect('/wardAdmin');
+  } else res.redirect('/login');
 });
 
 app.use((err, req, res, next) => {

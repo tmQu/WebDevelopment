@@ -52,17 +52,14 @@
     style="background: linear-gradient(45deg, #5c7ea1, #509177);"
   >
     <!-- Sidebar - Brand -->
-    {{> sidebarWard}}
+    {{#if isSuperAdmin}}
+  {{> sidebarDepartment}}
+{{else}}
+  {{> sidebarWard}}
+{{/if}}
 
   </ul>
 <div class='container mt-2'>
-    {{#if isSuperAdmin}}
-    <div class="row">
-      <div>
-          <canvas id="myChart"></canvas>
-      </div>
-    </div>
-  {{/if}}
   <div class='row'>
 
     <div class='col-lg-12'>
@@ -208,6 +205,14 @@
         </nav>
       </div>
     </div>
-  </div>
+  </div>  
+  {{#if isSuperAdmin}}
+    <div class="row">
+      <div>
+          <canvas id="myChart"></canvas>
+      </div>
+    </div>
+  {{/if}}
+  
 </div>
 </div>

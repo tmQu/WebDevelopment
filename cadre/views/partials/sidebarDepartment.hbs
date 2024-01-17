@@ -1,10 +1,4 @@
-<ul
-    class="navbar-nav sidebar sidebar-dark accordion"
-    id="accordionSidebar"
-    style="background: linear-gradient(45deg, #5c7ea1, #509177);"
-  >
-    <!-- Sidebar - Brand -->
-    <div
+<div
       class="sidebar-brand d-flex align-items-center justify-content-center"
       href="/"
     >
@@ -31,7 +25,15 @@
     <li class="nav-item">
       <a class="nav-link" href="/boardsLocation" id="option">
         <i class="bi bi-clipboard-data"></i>
-        <span>Xem danh sách</span>
+        <span>Bảng quảng cáo</span>
+      </a>
+    </li>
+
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="#" id="option">
+        <i class="bi bi-clipboard-data"></i>
+        <span>Danh sách phường, quận</span>
       </a>
     </li>
 
@@ -50,32 +52,37 @@
       </a>
     </li>
 
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+      <a class="nav-link" href="/reportMethods" id="option">
+        <i class="bi bi-flag-fill"></i>
+        <span>Phương thức báo cáo</span>
+      </a>
+    </li>
+
     <!-- Divider -->
     <hr class="sidebar-divider" />
     <!-- Heading -->
     <div class="sidebar-heading mt-4">
-      Cấp phép quảng cáo
-    </div>
+      Cấp phép
+    </div>    
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link" href="#" id="option">
-        <i class="bi bi-plus-circle"></i>
-        <span>Tạo yêu cầu</span>
+      <a class="nav-link" href="http://localhost:4000/api/v1/license/list?page=1" id="option">
+        <i class="bi bi-clipboard-data"></i>
+        <span>Danh sách bảng quảng cáo</span>
       </a>
     </li>
 
-    <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-      <a class="nav-link" href="#" id="option">
-        <i class="bi bi-clipboard-data"></i>
-        <span>Xem danh sách</span>
+      <a class="nav-link" href="/licenseAccount" id="option">
+        <i class="bi bi-person-fill"></i>
+        <span>Cấp phép tài khoản</span>
       </a>
     </li>
 
     <!-- Log out -->
-    <a class="sidebar-heading mt-5 logout" id="logout">
+    <a class="sidebar-heading mt-5 mb-5 logout" id="logout" href="http://localhost:4000/logout">
       ĐĂNG XUẤT
     </a>
-
-  </ul>
