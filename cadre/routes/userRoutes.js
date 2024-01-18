@@ -1,6 +1,7 @@
 import express from 'express';
 import userController, { uploadUserPhoto } from '../controllers/userController.js';
 import authController from '../controllers/authController.js';
+import assignmentController from '../controllers/assignmentController.js';
 
 const router = express.Router();
 
@@ -20,10 +21,26 @@ router.patch(
   userController.resizeUserPhoto,
   userController.updateMe
 );
+
 router.delete('/deleteMe', authController.protect, userController.deleteMe);
 
-router.route('/').get(userController.getAllUsers).post(userController.createUser);
+router
+  .route('/')
+  .get(userController.getAllUsers)
+  .post(userController.createUser);
 
-router.route('/:id').get(userController.getUser).patch(userController.updateUser).delete(userController.deleteUser);
+router
+  .route('/:id')
+  .get(userController.getUser)
+  .patch(userController.updateUser)
+  .delete(userController.deleteUser);
+
+router
+  .route('/up/:id')
+  .get(assignmentController.upRole);
+
+router
+  .route('/down/:id')
+  .get(assignmentController.downRole);
 
 export default router;

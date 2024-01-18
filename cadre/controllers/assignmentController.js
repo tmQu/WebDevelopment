@@ -53,6 +53,30 @@ const assignmentController = {
                 message: err
             });
         }
+    },
+    upRole: async (req, res) => {
+        try {
+            const user = await User.findByIdAndUpdate(req.params.id, { 'role.level': 'districts', 'role.detail': null });
+
+            res.redirect('/assignment');
+        } catch (err) {
+            res.status(404).json({
+                status: 'fail',
+                message: err
+            });
+        }
+    },
+    downRole: async (req, res) => {
+        try {
+            const user = await User.findByIdAndUpdate(req.params.id, { 'role.level': 'wards', 'role.detail': null });
+
+            res.redirect('/assignment');
+        } catch (err) {
+            res.status(404).json({
+                status: 'fail',
+                message: err
+            });
+        }
     }
 }
 

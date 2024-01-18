@@ -74,10 +74,9 @@
                                                     class='fa fa-pencil fa-stack-1x fa-inverse'></i>
                                             </span>
                                         </a>
-                                        {{#compare this.role.level '==='
-                                        'wards'}}
+                                        {{#compare this.role.level '===' 'wards'}}
                                         <a
-                                            href='/assignment/{{this.role.level}}/{{this._id}}'
+                                            href='/api/v1/users/up/{{this._id}}'
                                             class='table-link'>
                                             <span class='fa-stack' style="color: #509177;">
                                                 <i
@@ -85,10 +84,9 @@
                                             </span>
                                         </a>
                                         {{/compare}}
-                                        {{#compare this.role.level '==='
-                                        'districts'}}
+                                        {{#compare this.role.level '===' 'districts'}}
                                         <a
-                                            href='/assignment/{{this.role.level}}/{{this._id}}'
+                                            href='/api/v1/users/down/{{this._id}}'
                                             class='table-link'>
                                             <span class='fa-stack' style="color: #509177;">
                                                 <i
