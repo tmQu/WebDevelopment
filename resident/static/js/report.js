@@ -1,4 +1,4 @@
-const serverURL = 'https://ads-management-n1j3.onrender.com';
+const serverURL = 'http://localhost:4000';
 
 const upReports = async (name, email, phone, board, method, images, description, lat, lng, ward, district, addr) => {
   try {
