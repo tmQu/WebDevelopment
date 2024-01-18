@@ -320,13 +320,11 @@ function setMarkerBillBoard(location, marker,infowindow)
             }
 
             idTemp.forEach(idBB => {
-                console.log(`#${idBB} button.circle-btn`)
-
                 // detail infor button
                 document.querySelector(`#${idBB} button.circle-btn`).addEventListener('click', () => {
                     document.querySelector(`#${idBB}`).classList.add('active');
                     var detailInfor = document.querySelector(`#${idBB} .detail-infor`);
-                    console.log(`#${idBB} .detail-infor`);
+                   
                     detailInfor.classList.add('show-up');
                     document.querySelector(`#${idBB} .btn-close`).onclick = () =>{
                         document.querySelector(`#${idBB} .detail-infor`).classList.remove('show-up');

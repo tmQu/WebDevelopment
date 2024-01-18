@@ -6,7 +6,7 @@ const assignmentController = {
         try {
             const users = await User.find({ 'role.level': { $in: ['districts', 'wards'] } }).populate('role.detail');
 
-            console.log(users);
+            
             res.render('vwDepartment/area/areaAssignment', {
                 status: 'success',
 

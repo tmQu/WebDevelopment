@@ -56,7 +56,6 @@ const reportMethodController = {
 
             const existingMethod = await reportMethodModel.findOne({ reportMethod });
             
-            console.log(req.body);
             if (existingMethod) {
                 return res.status(400).json({
                     success: false,

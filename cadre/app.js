@@ -254,7 +254,7 @@ app.get('/admin', authController.protect, async (req, res) => {
   }
 
   var boards = await boardModel.find().populate('boardType');
-  console.log(boards);
+
   var reportObject = [];
   if (reports.length > 0)
     reports.forEach((report) => {
@@ -443,7 +443,7 @@ app.get('/accountSetting', authController.protect, async (req, res) => {
       });
     } else {
       var filter;
-      console.log(req.session.filter);
+      
       if (req.session.filter) filter = req.session.filter;
 
       var wards = await wardModel.find({ district: mongoose.Types.ObjectId(req.user.role.detail) });
@@ -455,7 +455,7 @@ app.get('/accountSetting', authController.protect, async (req, res) => {
       } else {
         selectedWards = filter.wards;
       }
-      console.log();
+      
       res.render('vwAccount/filterDistrict', {
         layout: 'list',
         wards: wards,

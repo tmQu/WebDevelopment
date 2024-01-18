@@ -83,8 +83,6 @@ const userController = {
         runValidators: true,
       });
 
-      console.log('user: ', user);
-
       res.status(200).json({
         status: 'success',
         data: {

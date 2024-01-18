@@ -18,7 +18,6 @@ const boardLocationController = {
       const page = parseInt(req.query.page) || 1; // Trang mặc định là trang 1
 
       let boardLocation = [];
-      console.log(req.user)
       var query = {};
       if (req.user.role.level === 'wards') {
         query['addr.ward'] = mongoose.Types.ObjectId(req.user.role.detail);
@@ -27,8 +26,6 @@ const boardLocationController = {
       } else if (req.user.role.level === 'districts') {
         query['addr.district'] = mongoose.Types.ObjectId(req.user.role.detail);
       }
-
-      console.log(query)
 
       const options = {
         skip: (page - 1) * ITEMS_PER_PAGE,
@@ -46,10 +43,9 @@ const boardLocationController = {
           ]
         }
       }
-      console.log(query)
+      
       boardLocation = await boardLocationModel.find(query, null, options);
       const totalItems = await boardLocationModel.countDocuments(query);
-      console.log(boardLocation.length)
       
       boardLocation = boardLocation.map((boardLocation) => {
         boardLocation = boardLocation.toObject();
@@ -403,7 +399,7 @@ const boardLocationController = {
           message: 'Board location not found',
         });
       }
-      console.log(boardLocation)
+
       boardLocation.imgBillboardLocation.forEach((img)=>{
         // not delete the default image which is used by most of billbaord
   

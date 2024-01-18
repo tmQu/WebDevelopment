@@ -9,7 +9,7 @@ const authenticationUser = async function (email, password) {
         password,
       },
     });
-    console.log(response);
+
     if (response.data.status === 'success') {
       alert('Login successfully');
       window.setTimeout(() => {

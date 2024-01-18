@@ -33,8 +33,6 @@ const districtController = {
     },
     create: async (req, res) => {
         try {
-            console.log('req.params', req.params);
-            console.log('req.body', req.body);
             const newDistrict = await districtModel.create(req.body);
 
             res.redirect('/areas');

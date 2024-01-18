@@ -29,7 +29,6 @@ const boardController = {
           boardLocation.imgBillboardLocation[index] = process.env.SERVER_URL + img;
         });
       });
-      console.log(boardLocations[0])
 
       res.status(200).json({
         status: 'success',
@@ -80,7 +79,7 @@ const boardController = {
       boards.forEach((board,index) => {
         boards[index].imgBillboard = process.env.SERVER_URL + board.imgBillboard;
       });
-      // console.log(boards[0].imgBillboard)
+      
       var boardLocation = await boardLocationModel
         .findById(req.params.id)
         .populate('advertisementForm')
@@ -128,7 +127,7 @@ const boardController = {
     try {
       
       var boardType = await boardTypeModel.findById(req.body.boardType);
-      console.log(boardType);
+      
       var unit = boardType.boardType.split(' ')[0].toLowerCase() + '/bảng';
       let data = {
         size: `${req.body.boardWidth}x${req.body.boardHeight}`,
@@ -137,7 +136,6 @@ const boardController = {
         imgBillboard: '\\' + req.file.path,
         boardLocation: mongoose.Types.ObjectId(req.body.boardLocation)
       }
-      console.log(data);
 
 
       var board = await boardModel.create(data);
@@ -157,10 +155,8 @@ const boardController = {
   },
   updateBoard: async (req, res) => {
     try {
-      console.log(req.body.boardType)
-      console.log(req.body)
       var boardType = await boardTypeModel.findById(req.body.boardType);
-      console.log(boardType);
+  
       var unit = boardType.boardType.split(' ')[0].toLowerCase() + '/bảng';
       let updateInfor = {
         size: `${req.body.boardWidth}x${req.body.boardHeight}`,
@@ -193,11 +189,11 @@ const boardController = {
   deleteBoard: async (req, res) => {
     try {
       const board = await boardModel.findByIdAndDelete(req.params.id);
-      console.log(board)
+      
       var boardLocation = await boardLocationModel.findById(board.boardLocation);
       boardLocation.num_board = boardLocation.num_board - 1;
       boardLocation.save();
-      console.log('sucess')
+      
       if (!board) {
         return res.status(404).json({
           status: 'fail',
@@ -208,10 +204,8 @@ const boardController = {
       // not delete the sample image use for all board
       if (!board.imgBillboard.includes('static/db/advs/adv_'))
       {
-        console.log(path.join(__dirname, board.imgBillboard))
         fs.unlinkSync(path.join(__dirname, board.imgBillboard));
       }
-      console.log('delet success')
 
       res.redirect('/boardsLocation/' + boardLocation._id)
     } catch (err) {

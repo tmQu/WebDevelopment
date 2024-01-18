@@ -11,7 +11,6 @@ const ITEMS_PER_PAGE = 4; // Số lượng mục trên mỗi trang
 const licenseController = {
     renderLicenseForm: async (req, res) => {
         try {
-            console.log('test');
             var boardId = req.params.id;
 
             var board = await boardModel.findById(boardId).populate('boardType');
@@ -28,7 +27,7 @@ const licenseController = {
             board_location.addr = `${board_location.addr.street_number} ${board_location.addr.route}, ${board_location.addr.ward.ward}, ${board_location.addr.district.district}, ${board_location.addr.city}`;
             board_location.locationCategory = board_location.locationCategory.map(category => category.locationCategory).join('/');
             board_location.advertisementForm = board_location.advertisementForm.advertisementForm;
-            console.log(board_location)
+          
             res.render('vwLicense/license', {
                 layout: 'license',
                 imgBoardLocation: board_location.imgBillboardLocation[0],
@@ -50,11 +49,8 @@ const licenseController = {
     },
     createLicense: async (req, res) => {
         try {
-            console.log('test');
             var board = await boardModel.findById(req.params.id).populate('boardLocation');
             var license = {};
-            console.log(req.file);
-            console.log(req.body);
             license.imgBoard = '\\' + req.file.path;
             license.board = req.params.id;
             license.content = req.body.content;
@@ -116,7 +112,7 @@ const licenseController = {
 
             var districtId = []
             var wardId = []
-            console.log(licenses.length)
+        
             licenses = await Promise.all(licenses.map(async (license) => {
                 license = license.toObject()
                 var boardLocation = 'Bảng quảng cáo đã bị xóa'
@@ -138,11 +134,10 @@ const licenseController = {
                 license.createAt = convertVNTime(license.createAt);
                 return license
             }));
-            console.log(licenses.length)
+        
             var districts = await districtModel.find({ _id: { $in: districtId } }).lean();
             var wards = await wardModel.find({ _id: { $in: wardId } }).lean();
-            console.log(districts)
-            console.log(req.user)
+  
             res.render('vwLicense/licenseTable', {
                 //isSuperAdmin: req.user.role.level === 'departmental',
                 layout: 'license',
@@ -225,7 +220,6 @@ const licenseController = {
     approveLicense: async (req, res) => {
 
         try {
-            console.log('aprrove')
             var approve = req.body.approve;
             if (approve == 'true') {
                 approve = true;
