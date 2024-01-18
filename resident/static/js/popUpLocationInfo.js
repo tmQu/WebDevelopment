@@ -48,7 +48,7 @@ function displayLocationInfo(latitude, longitude, map) {
           `<div class="card" style="background: linear-gradient(90deg, #c8e0f8, #e4f8f0); border: none;">
           <div class="card-body pb-0">
             <div class="d-flex justify-content-between">
-              <p class="mb-0 h5" style="font-weight: bold;">${title} <a class="btn btn-report" href="https://ads-management.netlify.app/static/html/locationReport.html?lat=${latlng.lat}&lng=${latlng.lng}&addr=${address}"><i class="bi bi-exclamation-octagon"></i></a></p>
+              <p class="mb-0 h5" style="font-weight: bold;">${title} <a class="btn btn-report" href="https://ads-management.netlify.app/locationReport.html?lat=${latlng.lat}&lng=${latlng.lng}&addr=${address}"><i class="bi bi-exclamation-octagon"></i></a></p>
               
             </div>
           </div>
