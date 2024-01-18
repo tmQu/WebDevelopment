@@ -13,11 +13,9 @@ Welcome to the Ads Management Website, a comprehensive platform designed to stre
 
 ## Introduction
 
-The Ads Management Website is a user-friendly and powerful tool for managing various aspects of advertising boards. It offers a range of features to help advertisers create, monitor, and optimize their ads effectively.
+The Ads Management Website is a user-friendly and powerful tool for managing various aspects of advertising boards. It offers a range of features to help cadres create, monitor, and optimize ads effectively.
 
 ## Installation
-
-### Run locally
 
 1. **Download our souce code**
 2. **Install the necessary dependencies**
@@ -28,15 +26,10 @@ The Ads Management Website is a user-friendly and powerful tool for managing var
 
     Change address to **resident** or **cadre** folder and enter in terminal ```npm start```.
 
-### Run deployed server
-
-- Access to *link* as resident
-- Access to *link* as admin
-
 ## Account
 
 Login to these account for admin accessing through
-https://abm-5e84.onrender.com/admin 
+http://localhost:4000/login
 
 **Ward admin:**
 
