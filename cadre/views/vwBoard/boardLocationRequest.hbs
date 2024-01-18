@@ -31,12 +31,12 @@
                 <form action= 
                         {{#if isSuperAdmin}}
                           {{#if action.add}}
-                          'http://localhost:4000/api/v1/boardLocation/add'
+                          'https://ads-management-n1j3.onrender.com/api/v1/boardLocation/add'
                           {{else}}
-                          'http://localhost:4000/api/v1/boardLocation/update/{{boardLocation._id}}'
+                          'https://ads-management-n1j3.onrender.com/api/v1/boardLocation/update/{{boardLocation._id}}'
                           {{/if}}
                         {{else}}
-                          "http://localhost:4000/api/v1/changeBoardLocation/" 
+                          "https://ads-management-n1j3.onrender.com/api/v1/changeBoardLocation/" 
                         {{/if}}
                   
                   method="POST" enctype="multipart/form-data" id="editBoardForm"
