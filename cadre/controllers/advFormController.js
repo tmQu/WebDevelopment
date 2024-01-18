@@ -77,7 +77,7 @@ const advFormController = {
     },
     remove: async (req, res) => {
         try {
-            console.log(req.params.id);
+            
             await advFormModel.findByIdAndDelete(req.params.id);
 
             res.status(204).json({

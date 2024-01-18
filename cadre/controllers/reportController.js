@@ -82,7 +82,7 @@ const reportController = {
         description: req.body.description,
         addr: addr,
       });
-      console.log(report);
+
       var result = await report.save();
       var rp = await Report.findById(result._id).populate('method');
       res.status(200).json({
@@ -129,17 +129,15 @@ const reportController = {
             {'ward': {$in: filter.wards.map((ward)=>{return mongoose.Types.ObjectId(ward)})}}
             ]
         }
-        console.log(query)
       }
       reports = await Report.find(query, null, options);
-      console.log(reports.length);
+
       const totalItems = await Report.countDocuments(query);
 
       for (let i = 0; i < reports.length; i++) {
         reports[i] = reports[i].toObject();
       }
-      // Get boardLocation of each board
-      console.log(req.user)
+
       var number_statistic = [0,0,0]
       reports = 
         reports.map((report) => {
@@ -154,8 +152,6 @@ const reportController = {
           };
         });
 
-
-      console.log(number_statistic)
       res.render('vwReport/reports', {
         isSuperAdmin: req.user.role.level === 'departmental',
         number_statistic: {
@@ -318,8 +314,6 @@ const reportController = {
       let subject = 'Thông báo xử lý báo cáo';
       let { email, updateDetails, statusDetails, sender, officer, reportId } = req.body;
 
-      console.log(req.body);
-
       // const user = await userModel.findById(officer);
       // officer = user.role.level;
 
@@ -330,7 +324,6 @@ const reportController = {
 
       const report = await Report.findByIdAndUpdate(reportId, { status: status, handleDetails: updateDetails, officer: officer });
 
-      console.log(report);
       let html = emailTemplate.sendEmailReport(sender, statusDetails, updateDetails, officer);
 
       await sendEmail({

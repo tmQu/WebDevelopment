@@ -10,10 +10,7 @@ import { io } from '../app.js';
 
 const changeBoardLocationController = {
   createChangeBoardLocationReq: async (req, res) => {
-    try {
-      console.log(req.body.boardLocation);
-
-      
+    try {      
       var district_id = await districtModel.find({ district: req.body.district});
       
       if (district_id.length === 0)
@@ -24,9 +21,6 @@ const changeBoardLocationController = {
           { ward: { $regex: req.body.ward, $options: 'i' } }
         ]
       });
-      console.log(req.body.ward)
-      console.log(district_id[0]);
-      console.log(ward_id[0]);
       const changeBoardLocationReq = await changeBoardLocationModel.create({
         boardLocation: req.body.boardLocation,
         reason: sanitizeHtml(req.body.boardReason),

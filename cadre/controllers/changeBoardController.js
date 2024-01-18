@@ -7,7 +7,7 @@ const changeBoardController = {
   createChangeInfoReq: async (req, res) => {
     try {
       var boardType = await boardTypeModel.findById(req.body.boardType);
-      console.log(boardType);
+    
       var unit = boardType.boardType.split(' ')[0].toLowerCase() + '/bảng';
 
       const newChangeInfoReq = await changeBoardModel.create({
@@ -81,7 +81,7 @@ const changeBoardController = {
       let requests = await changeBoardModel.find();
       var filter = req.session.filter;
       const user = req.user;
-      console.log(filter)
+     
       requests = await Promise.all(
         requests.map(async (request) => {
           let boardLocation = await boardLocationModel.findById(request.boardLocation);

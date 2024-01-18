@@ -5,7 +5,7 @@ route.post('/', async(req, res) => {
     try{
 
         req.session.filter = req.body;
-        console.log(req.session.filter);
+       
         // res.redirect('/')
         res.status(200).json({
             status: 'success',
