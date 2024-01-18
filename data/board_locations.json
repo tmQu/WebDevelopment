@@ -1,0 +1,3989 @@
+[{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28338"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76422"
+    },
+    {
+      "$oid": "6592852960292ab573f7641d"
+    },
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f76425"
+    }
+  ],
+  "addr": {
+    "street_number": "120",
+    "route": "Đ. Nguyễn Du",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c0"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.7730471,
+    "lng": 106.693393
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/advs/1705581962299_default.jpg",
+    "/static/db/advs/1705581962300_istockphoto-1354776457-612x612-2.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28341"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f76425"
+    }
+  ],
+  "addr": {
+    "street_number": "167",
+    "route": "Đường Võ Thị Sáu",
+    "ward": {
+      "$oid": "659274ec60292ab573f76343"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.783422852237024,
+    "lng": 106.6879543702646
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28344"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f76424"
+    }
+  ],
+  "addr": {
+    "street_number": "228",
+    "route": "Lý Chính Thắng",
+    "ward": {
+      "$oid": "659274ec60292ab573f76344"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.779909269493132,
+    "lng": 106.68202826132472
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28350"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76425"
+    },
+    {
+      "$oid": "6592852960292ab573f76424"
+    }
+  ],
+  "addr": {
+    "street_number": "91",
+    "route": "Bà Huyện Thanh Quan",
+    "ward": {
+      "$oid": "659274ec60292ab573f76343"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.778439756588014,
+    "lng": 106.68693997521336
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2835c"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76420"
+    },
+    {
+      "$oid": "6592852960292ab573f76422"
+    }
+  ],
+  "addr": {
+    "street_number": "96",
+    "route": "Đường Cách Mạng Tháng 8",
+    "ward": {
+      "$oid": "659274ec60292ab573f76343"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.775978863828342,
+    "lng": 106.68479312292834
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28386"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76423"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "150bis",
+    "route": "Đường Lê Thị Hồng Gấm",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c3"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.767894009232293,
+    "lng": 106.69610792132221
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28389"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76422"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "69/3",
+    "route": "Đường Đề Thám",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c4"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.76384212720697,
+    "lng": 106.69525870420273
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283aa"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76423"
+    },
+    {
+      "$oid": "6592852960292ab573f76421"
+    }
+  ],
+  "addr": {
+    "street_number": "517/4",
+    "route": "Đường Nguyễn Trãi",
+    "ward": {
+      "$oid": "659274ec60292ab573f7637c"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f7603c"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.754008438381263,
+    "lng": 106.66920474055581
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283a7"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76420"
+    },
+    {
+      "$oid": "6592852960292ab573f76424"
+    }
+  ],
+  "addr": {
+    "street_number": "41/1",
+    "route": "Đường An Dương Vương",
+    "ward": {
+      "$oid": "659274ec60292ab573f7637b"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f7603c"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.756958625521676,
+    "lng": 106.67268549194625
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283b6"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    }
+  ],
+  "addr": {
+    "street_number": "27/45D",
+    "route": "Đường Trần Bình Trọng",
+    "ward": {
+      "$oid": "659274ec60292ab573f7637d"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f7603c"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.752729728683391,
+    "lng": 106.68148554043398
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283e3"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641d"
+    },
+    {
+      "$oid": "6592852960292ab573f76421"
+    }
+  ],
+  "addr": {
+    "street_number": "457/54",
+    "route": "Đường Cách Mạng Tháng 8",
+    "ward": {
+      "$oid": "659274ec60292ab573f7634c"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.780849872955017,
+    "lng": 106.67464237470591
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28383"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641d"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    }
+  ],
+  "addr": {
+    "street_number": "3",
+    "route": "Đường Ký Con",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c1"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.767617321300676,
+    "lng": 106.69912053955807
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 3
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2838f"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76421"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "5",
+    "route": "Đường Nguyễn Cảnh Chân",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c6"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.75733673577382,
+    "lng": 106.68972889878506
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283fe"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76421"
+    },
+    {
+      "$oid": "6592852960292ab573f7641f"
+    }
+  ],
+  "addr": {
+    "street_number": "BB19",
+    "route": "Nguyễn Giản Thanh",
+    "ward": {
+      "$oid": "659274ec60292ab573f7634b"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.782365118543481,
+    "lng": 106.66397102127917
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283f2"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76421"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "256",
+    "route": "Lý Thường Kiệt",
+    "ward": {
+      "$oid": "659274ec60292ab573f7634d"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.767238848232566,
+    "lng": 106.65964674564788
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 1
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28431"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f76422"
+    }
+  ],
+  "addr": {
+    "street_number": "1117",
+    "route": "Đường Hoàng Sa",
+    "ward": {
+      "$oid": "659274ec60292ab573f76341"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.788012936689867,
+    "lng": 106.66877781298217
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2841c"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641e"
+    },
+    {
+      "$oid": "6592852960292ab573f76424"
+    }
+  ],
+  "addr": {
+    "street_number": "49/10",
+    "route": "Huỳnh Mẫn Đạt",
+    "ward": {
+      "$oid": "659274ec60292ab573f762f4"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76033"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.790494307317644,
+    "lng": 106.708964110203
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283b0"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76422"
+    },
+    {
+      "$oid": "6592852960292ab573f76422"
+    }
+  ],
+  "addr": {
+    "street_number": "43",
+    "route": "Bùi Hữu Nghĩa",
+    "ward": {
+      "$oid": "659274ec60292ab573f76380"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f7603c"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.751896317745633,
+    "lng": 106.6750296242119
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283bc"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76425"
+    },
+    {
+      "$oid": "6592852960292ab573f76420"
+    }
+  ],
+  "addr": {
+    "street_number": "194",
+    "route": "Đường Sư Vạn Hạnh",
+    "ward": {
+      "$oid": "659274ec60292ab573f76377"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f7603c"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.759116988225614,
+    "lng": 106.67369510023155
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283cb"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641e"
+    },
+    {
+      "$oid": "6592852960292ab573f76421"
+    }
+  ],
+  "addr": {
+    "street_number": "385",
+    "route": "Lý Thái Tổ Tổ19 Khu phốII",
+    "ward": {
+      "$oid": "659274ec60292ab573f76351"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.767571615644187,
+    "lng": 106.66971751875008
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2845e"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641d"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "8",
+    "route": "Nguyễn Trọng Tuyển",
+    "ward": {
+      "$oid": "659274ec60292ab573f76318"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76036"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.796892506018423,
+    "lng": 106.68067606026267
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2843d"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "159",
+    "route": "Đường Nguyễn Văn Trỗi",
+    "ward": {
+      "$oid": "659274ec60292ab573f7631a"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76036"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.795160740576634,
+    "lng": 106.67566705118759
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283da"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76420"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    }
+  ],
+  "addr": {
+    "street_number": "181",
+    "route": "Đường Cao Thắng",
+    "ward": {
+      "$oid": "659274ec60292ab573f7634e"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.774620746688456,
+    "lng": 106.67521671803183
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2845b"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76421"
+    },
+    {
+      "$oid": "6592852960292ab573f76422"
+    }
+  ],
+  "addr": {
+    "street_number": "435",
+    "route": "Hoàng Văn Thụ",
+    "ward": {
+      "$oid": "659274ec60292ab573f762f7"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76034"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.797221106476997,
+    "lng": 106.65813596870322
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28428"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641e"
+    },
+    {
+      "$oid": "6592852960292ab573f7641d"
+    }
+  ],
+  "addr": {
+    "street_number": "160",
+    "route": "Xô Viết Nghệ Tĩnh",
+    "ward": {
+      "$oid": "659274ec60292ab573f762f2"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76033"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.797146101460143,
+    "lng": 106.71092691936587
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28446"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76425"
+    },
+    {
+      "$oid": "6592852960292ab573f76420"
+    }
+  ],
+  "addr": {
+    "street_number": "453KA/122",
+    "route": "Đường Lê Văn Sỹ",
+    "ward": {
+      "$oid": "659274ec60292ab573f76340"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.787534175641355,
+    "lng": 106.67347839933512
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28455"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76420"
+    },
+    {
+      "$oid": "6592852960292ab573f76422"
+    }
+  ],
+  "addr": {
+    "street_number": "36",
+    "route": "Bùi Thị Xuân",
+    "ward": {
+      "$oid": "659274ec60292ab573f762f6"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76034"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.798920820543657,
+    "lng": 106.662622232162
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28461"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641d"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    }
+  ],
+  "addr": {
+    "street_number": "8",
+    "route": "Nguyễn Kiệm",
+    "ward": {
+      "$oid": "659274ec60292ab573f76314"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76036"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.799957338031845,
+    "lng": 106.68035973501048
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "65746f5113fcf355ecd9ae40"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    }
+  ],
+  "location": {
+    "lat": 10.783008784403435,
+    "lng": 106.69470123683976
+  },
+  "addr": {
+    "street_number": "59C",
+    "route": "Nguyễn Đình Chiểu",
+    "ward": {
+      "$oid": "659274ec60292ab573f76343"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2832f"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76425"
+    },
+    {
+      "$oid": "6592852960292ab573f7641d"
+    }
+  ],
+  "addr": {
+    "street_number": "289",
+    "route": "Hai Bà Trưng",
+    "ward": {
+      "$oid": "659274ec60292ab573f76343"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.78855820535847,
+    "lng": 106.69073091938964
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2833b"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    },
+    {
+      "$oid": "6592852960292ab573f76424"
+    }
+  ],
+  "addr": {
+    "street_number": "39788",
+    "route": "Đường Trần Quang Khải",
+    "ward": {
+      "$oid": "659274ec60292ab573f762bd"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.792860434192704,
+    "lng": 106.6954313758032
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28353"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f7641f"
+    }
+  ],
+  "addr": {
+    "street_number": "Số 142",
+    "route": "Võ Văn Tần",
+    "ward": {
+      "$oid": "659274ec60292ab573f76343"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.775338696128102,
+    "lng": 106.68878130755542
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283b3"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76423"
+    },
+    {
+      "$oid": "6592852960292ab573f76420"
+    }
+  ],
+  "addr": {
+    "street_number": "468",
+    "route": "Hàm Tử",
+    "ward": {
+      "$oid": "659274ec60292ab573f76381"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f7603c"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.750256771975558,
+    "lng": 106.67224681720825
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28398"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f7641d"
+    }
+  ],
+  "addr": {
+    "street_number": "1b",
+    "route": "Tổ 2 Khu phố 1",
+    "ward": {
+      "$oid": "659274ec60292ab573f76352"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.766527650121631,
+    "lng": 106.6772658341007
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283c8"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f76420"
+    }
+  ],
+  "addr": {
+    "street_number": "336",
+    "route": "Đường Nguyễn Tri Phương",
+    "ward": {
+      "$oid": "659274ec60292ab573f76355"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.7635612654842,
+    "lng": 106.66836966170683
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2834a"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76425"
+    },
+    {
+      "$oid": "6592852960292ab573f7641d"
+    }
+  ],
+  "addr": {
+    "street_number": "47A/98",
+    "route": "Trần Văn Đang",
+    "ward": {
+      "$oid": "659274ec60292ab573f76341"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.78377546833974,
+    "lng": 106.67923080123194
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28347"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76425"
+    },
+    {
+      "$oid": "6592852960292ab573f7641f"
+    }
+  ],
+  "addr": {
+    "street_number": "17/13F",
+    "route": "Đường Nguyễn Thông",
+    "ward": {
+      "$oid": "659274ec60292ab573f76344"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.7815901103764,
+    "lng": 106.67989045700665
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283e6"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76425"
+    },
+    {
+      "$oid": "6592852960292ab573f7641d"
+    }
+  ],
+  "addr": {
+    "street_number": "149XF2",
+    "route": "Đường Tô Hiến Thành",
+    "ward": {
+      "$oid": "659274ec60292ab573f7634c"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.779298382413785,
+    "lng": 106.66812417783223
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28365"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f76421"
+    }
+  ],
+  "addr": {
+    "street_number": "373/2",
+    "route": "Nguyễn Đình Chiểu",
+    "ward": {
+      "$oid": "659274ec60292ab573f76347"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.771495975037325,
+    "lng": 106.68379280228248
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283f5"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76425"
+    },
+    {
+      "$oid": "6592852960292ab573f76425"
+    }
+  ],
+  "addr": {
+    "street_number": "3A",
+    "route": "Khu Lầu Nước Tổ 33 KP 5",
+    "ward": {
+      "$oid": "659274ec60292ab573f7634d"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.768502601775737,
+    "lng": 106.66241103963489
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283e0"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76425"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "16A",
+    "route": "Đường Lê Hồng Phong",
+    "ward": {
+      "$oid": "659274ec60292ab573f7634e"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.773834885108045,
+    "lng": 106.67117777288405
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28404"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f76422"
+    }
+  ],
+  "addr": {
+    "street_number": "203/10",
+    "route": "Lý Thường Kiệt",
+    "ward": {
+      "$oid": "659274ec60292ab573f76300"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76034"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.782643333546588,
+    "lng": 106.65550967079002
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283ef"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641d"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "474",
+    "route": "Đường 3 Tháng 2",
+    "ward": {
+      "$oid": "659274ec60292ab573f7634d"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.767839031015086,
+    "lng": 106.66628092377482
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28422"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f76424"
+    }
+  ],
+  "addr": {
+    "street_number": "12b",
+    "route": "Đường Nguyễn Hữu Cảnh",
+    "ward": {
+      "$oid": "659274ec60292ab573f762f4"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76033"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.788965197318618,
+    "lng": 106.71210409752729
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2839e"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76421"
+    },
+    {
+      "$oid": "6592852960292ab573f7641d"
+    }
+  ],
+  "addr": {
+    "street_number": "141",
+    "route": "Bùi Hữu Nghĩa",
+    "ward": {
+      "$oid": "659274ec60292ab573f7637c"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f7603c"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.754369978767954,
+    "lng": 106.67444053464573
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283a1"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76422"
+    },
+    {
+      "$oid": "6592852960292ab573f76422"
+    }
+  ],
+  "addr": {
+    "street_number": "193",
+    "route": "Đường Nguyễn Trãi",
+    "ward": {
+      "$oid": "659274ec60292ab573f7637a"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f7603c"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.756757532222295,
+    "lng": 106.67771007672582
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28440"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76422"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "108/38T",
+    "route": "Trần Quang Diệu",
+    "ward": {
+      "$oid": "659274ec60292ab573f7633f"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.790363538764126,
+    "lng": 106.68087595698933
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28449"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f76421"
+    }
+  ],
+  "addr": {
+    "street_number": "311",
+    "route": "Đường Lê Văn Sỹ",
+    "ward": {
+      "$oid": "659274ec60292ab573f76342"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.787504777981269,
+    "lng": 106.67809602805607
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2844c"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76423"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "275/7A",
+    "route": "Nguyễn Trọng Tuyển",
+    "ward": {
+      "$oid": "659274ec60292ab573f76319"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76036"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.797808442190842,
+    "lng": 106.67081414338827
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283e9"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641d"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "155",
+    "route": "Đường Sư Vạn Hạnh",
+    "ward": {
+      "$oid": "659274ec60292ab573f7634e"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.776120459421449,
+    "lng": 106.6675869301244
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283f8"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f76422"
+    }
+  ],
+  "addr": {
+    "street_number": "268",
+    "route": "Lý Thường Kiệt",
+    "ward": {
+      "$oid": "659274ec60292ab573f7634d"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.774833895915236,
+    "lng": 106.65743284577388
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28416"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76420"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "197/32D",
+    "route": "Đường Ngô Quyền",
+    "ward": {
+      "$oid": "659274ec60292ab573f76358"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.76411637096622,
+    "lng": 106.6642100651269
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28419"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76425"
+    },
+    {
+      "$oid": "6592852960292ab573f76420"
+    }
+  ],
+  "addr": {
+    "street_number": "90",
+    "route": "Đường Đào Duy Từ",
+    "ward": {
+      "$oid": "659274ec60292ab573f76357"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.760513154079447,
+    "lng": 106.66614845162223
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28452"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76423"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "31",
+    "route": "Đường Lê Văn Sỹ",
+    "ward": {
+      "$oid": "659274ec60292ab573f762fa"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76034"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.79515979426877,
+    "lng": 106.66754115140446
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2833e"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76420"
+    }
+  ],
+  "addr": {
+    "street_number": "151",
+    "route": "Đường Nam Kỳ Khởi Nghĩa",
+    "ward": {
+      "$oid": "659274ec60292ab573f76343"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.78167262873113,
+    "lng": 106.69234613420929
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2836e"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    }
+  ],
+  "addr": {
+    "street_number": "201",
+    "route": "Đường Nguyễn Thị Minh Khai",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c5"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.7673434010171,
+    "lng": 106.68392927039474
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28377"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f76420"
+    }
+  ],
+  "addr": {
+    "street_number": "324",
+    "route": "Đường Nguyễn Trãi",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c5"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.760330635172082,
+    "lng": 106.6849665511657
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2837d"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641d"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "28/5A",
+    "route": "Pasteur",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c1"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.770375150871544,
+    "lng": 106.70319897717047
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2838c"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76425"
+    },
+    {
+      "$oid": "6592852960292ab573f76421"
+    }
+  ],
+  "addr": {
+    "street_number": "210/15",
+    "route": "Cô Giang",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c4"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.761571483418152,
+    "lng": 106.69244842658912
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28395"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641d"
+    },
+    {
+      "$oid": "6592852960292ab573f76420"
+    },
+    {
+      "$oid": "6592852960292ab573f76421"
+    }
+  ],
+  "addr": {
+    "street_number": "163",
+    "route": "Đường Trần Phú",
+    "ward": {
+      "$oid": "659274ec60292ab573f76376"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f7603c"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.760002997450158,
+    "lng": 106.67621103693864
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2837a"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76422"
+    },
+    {
+      "$oid": "6592852960292ab573f76420"
+    }
+  ],
+  "addr": {
+    "street_number": "112",
+    "route": "Đường Trần Hưng Đạo",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c2"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.765905734414432,
+    "lng": 106.69287136428454
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28356"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76423"
+    },
+    {
+      "$oid": "6592852960292ab573f7641d"
+    }
+  ],
+  "addr": {
+    "street_number": "107",
+    "route": "Đường Nguyễn Du",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c0"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.774388849130375,
+    "lng": 106.69574855408729
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283d1"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76420"
+    },
+    {
+      "$oid": "6592852960292ab573f76421"
+    }
+  ],
+  "addr": {
+    "street_number": "28",
+    "route": "Đường Nguyễn Thiện Thuật",
+    "ward": {
+      "$oid": "659274ec60292ab573f7634a"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.769867403261784,
+    "lng": 106.6763706375379
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283d4"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    }
+  ],
+  "addr": {
+    "street_number": "469",
+    "route": "Nguyễn Đình Chiểu",
+    "ward": {
+      "$oid": "659274ec60292ab573f76349"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.769510264553972,
+    "lng": 106.68192210370427
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28374"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76423"
+    },
+    {
+      "$oid": "6592852960292ab573f7641d"
+    }
+  ],
+  "addr": {
+    "street_number": "189/5",
+    "route": "Đường Cống Quỳnh",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c5"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.766991926360049,
+    "lng": 106.68679118247411
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28410"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76423"
+    },
+    {
+      "$oid": "6592852960292ab573f76421"
+    }
+  ],
+  "addr": {
+    "street_number": "190",
+    "route": "Đường Trần Quang Khải",
+    "ward": {
+      "$oid": "659274ec60292ab573f762bd"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.791792799169457,
+    "lng": 106.68894609391498
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2844f"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76423"
+    },
+    {
+      "$oid": "6592852960292ab573f76421"
+    }
+  ],
+  "addr": {
+    "street_number": "245",
+    "route": "Hoàng Văn Thụ",
+    "ward": {
+      "$oid": "659274ec60292ab573f762fa"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76034"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.800008297560225,
+    "lng": 106.66732336862282
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2842e"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641e"
+    },
+    {
+      "$oid": "6592852960292ab573f7641f"
+    }
+  ],
+  "addr": {
+    "street_number": "61A",
+    "route": "Đường Điện Biên Phủ",
+    "ward": {
+      "$oid": "659274ec60292ab573f762f2"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76033"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.800792659913952,
+    "lng": 106.71396565145903
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283bf"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76422"
+    },
+    {
+      "$oid": "6592852960292ab573f76422"
+    }
+  ],
+  "addr": {
+    "street_number": "368",
+    "route": "Đường Lê Hồng Phong",
+    "ward": {
+      "$oid": "659274ec60292ab573f76352"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.763938530057956,
+    "lng": 106.67667028615995
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28458"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    }
+  ],
+  "addr": {
+    "street_number": "43/25",
+    "route": "Bùi Thị Xuân",
+    "ward": {
+      "$oid": "659274ec60292ab573f762fb"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76034"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.793895447046296,
+    "lng": 106.66453682740035
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283dd"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f76421"
+    }
+  ],
+  "addr": {
+    "street_number": "18B/2",
+    "route": "3 Th¸ng 2",
+    "ward": {
+      "$oid": "659274ec60292ab573f7634e"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.771014617317618,
+    "lng": 106.672543701155
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283ec"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f76421"
+    }
+  ],
+  "addr": {
+    "street_number": "45",
+    "route": "Hoàng Dư Khương",
+    "ward": {
+      "$oid": "659274ec60292ab573f7634e"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.776308253202345,
+    "lng": 106.67176915088675
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28407"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641e"
+    },
+    {
+      "$oid": "6592852960292ab573f76425"
+    }
+  ],
+  "addr": {
+    "street_number": "109/12",
+    "route": "Bành Văn Trân",
+    "ward": {
+      "$oid": "659274ec60292ab573f762fd"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76034"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.787875437804274,
+    "lng": 106.65792435249074
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2840a"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    }
+  ],
+  "addr": {
+    "street_number": "2501/1A",
+    "route": "Lạc Long Quân",
+    "ward": {
+      "$oid": "659274ec60292ab573f762fc"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76034"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.789201686499169,
+    "lng": 106.65078956510297
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28434"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76423"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    }
+  ],
+  "addr": {
+    "street_number": "55",
+    "route": "Hoàng Việt",
+    "ward": {
+      "$oid": "659274ec60292ab573f762f7"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76034"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.793255096032894,
+    "lng": 106.65834638645407
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28437"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "125",
+    "route": "Đường Lê Văn Sỹ",
+    "ward": {
+      "$oid": "659274ec60292ab573f7631c"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76036"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.791432658003188,
+    "lng": 106.67169853219411
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28332"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76421"
+    },
+    {
+      "$oid": "6592852960292ab573f76425"
+    }
+  ],
+  "addr": {
+    "street_number": "119",
+    "route": "Đường Võ Thị Sáu",
+    "ward": {
+      "$oid": "659274ec60292ab573f76343"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.786071804317857,
+    "lng": 106.69054527980194
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28335"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641e"
+    },
+    {
+      "$oid": "6592852960292ab573f76421"
+    }
+  ],
+  "addr": {
+    "street_number": "278A",
+    "route": "Đường Nam Kỳ Khởi Nghĩa",
+    "ward": {
+      "$oid": "659274ec60292ab573f76343"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.788700182528913,
+    "lng": 106.68576470238338
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28359"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76421"
+    },
+    {
+      "$oid": "6592852960292ab573f76422"
+    }
+  ],
+  "addr": {
+    "street_number": "120",
+    "route": "Đường Nguyễn Du",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c0"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.772994033887102,
+    "lng": 106.69272663032456
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2835f"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641e"
+    },
+    {
+      "$oid": "6592852960292ab573f7641f"
+    }
+  ],
+  "addr": {
+    "street_number": "200G",
+    "route": "Đường Lê Lai",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c2"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.769079090190615,
+    "lng": 106.69043976378782
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28368"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    }
+  ],
+  "addr": {
+    "street_number": "355/68A",
+    "route": "Đường Điện Biên Phủ",
+    "ward": {
+      "$oid": "659274ec60292ab573f76346"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.773982634862634,
+    "lng": 106.68188470516185
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2834d"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    }
+  ],
+  "addr": {
+    "street_number": "11Bis",
+    "route": "Nguyễn Gia Thiều",
+    "ward": {
+      "$oid": "659274ec60292ab573f76343"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.779016545709482,
+    "lng": 106.68936553532342
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2836b"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641e"
+    },
+    {
+      "$oid": "6592852960292ab573f76420"
+    }
+  ],
+  "addr": {
+    "street_number": "75A",
+    "route": "Đường Cao Thắng",
+    "ward": {
+      "$oid": "659274ec60292ab573f76348"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.771824572527763,
+    "lng": 106.67965304575353
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2839b"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76421"
+    },
+    {
+      "$oid": "6592852960292ab573f7641d"
+    }
+  ],
+  "addr": {
+    "street_number": "327",
+    "route": "Đường An Dương Vương",
+    "ward": {
+      "$oid": "659274ec60292ab573f76378"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f7603c"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.759290291660463,
+    "lng": 106.67929742810475
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283a4"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f7641f"
+    }
+  ],
+  "addr": {
+    "street_number": "217-215",
+    "route": "Đường Nguyễn Biểu",
+    "ward": {
+      "$oid": "659274ec60292ab573f7637a"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f7603c"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.75753424171063,
+    "lng": 106.68289102435574
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 0
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283c2"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f7641f"
+    }
+  ],
+  "addr": {
+    "street_number": "2/42A",
+    "route": "Đường Trần Nhân Tôn",
+    "ward": {
+      "$oid": "659274ec60292ab573f76354"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.762732034732267,
+    "lng": 106.6745527067564
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283d7"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76425"
+    },
+    {
+      "$oid": "6592852960292ab573f7641d"
+    }
+  ],
+  "addr": {
+    "street_number": "186",
+    "route": "cao thắng Tổ 16 Khu phố 2",
+    "ward": {
+      "$oid": "659274ec60292ab573f7634f"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.77376571177534,
+    "lng": 106.6782923060913
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28362"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f7641f"
+    }
+  ],
+  "addr": {
+    "street_number": "426",
+    "route": "Đường Nguyễn Thị Minh Khai",
+    "ward": {
+      "$oid": "659274ec60292ab573f76347"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76038"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.770198623805186,
+    "lng": 106.68575645013311
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283c5"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76420"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    }
+  ],
+  "addr": {
+    "street_number": "273",
+    "route": "Ngô Gia Tự",
+    "ward": {
+      "$oid": "659274ec60292ab573f76349"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.7628846932557,
+    "lng": 106.67122554122437
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28371"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76420"
+    },
+    {
+      "$oid": "6592852960292ab573f76422"
+    }
+  ],
+  "addr": {
+    "street_number": "1",
+    "route": "Đường Hùng Vương",
+    "ward": {
+      "$oid": "659274ec60292ab573f76376"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f7603c"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.765140619154977,
+    "lng": 106.68129509397289
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28380"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76425"
+    },
+    {
+      "$oid": "6592852960292ab573f7641d"
+    }
+  ],
+  "addr": {
+    "street_number": "66A",
+    "route": "Phó Đức Chính",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c1"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.770114919111109,
+    "lng": 106.69981521021924
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28413"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f76421"
+    }
+  ],
+  "addr": {
+    "street_number": "487",
+    "route": "Bà Hạt",
+    "ward": {
+      "$oid": "659274ec60292ab573f76353"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.765350036285298,
+    "lng": 106.66665378454172
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28392"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76420"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    }
+  ],
+  "addr": {
+    "street_number": "260",
+    "route": "Đường Trần Bình Trọng",
+    "ward": {
+      "$oid": "659274ec60292ab573f76376"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f7603c"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.76199371664336,
+    "lng": 106.67954940188264
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28401"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76425"
+    },
+    {
+      "$oid": "6592852960292ab573f7641f"
+    }
+  ],
+  "addr": {
+    "street_number": "330",
+    "route": "Bắc Hải",
+    "ward": {
+      "$oid": "659274ec60292ab573f76300"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76034"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.782692870822771,
+    "lng": 106.66038622934047
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2840d"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76423"
+    },
+    {
+      "$oid": "6592852960292ab573f7641e"
+    }
+  ],
+  "addr": {
+    "street_number": "1111/17C",
+    "route": "Đường Cách Mạng Tháng 8",
+    "ward": {
+      "$oid": "659274ec60292ab573f762fd"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76034"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.791445808867422,
+    "lng": 106.65457861584025
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283ad"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76420"
+    },
+    {
+      "$oid": "6592852960292ab573f7641d"
+    }
+  ],
+  "addr": {
+    "street_number": "127",
+    "route": "Đường Nguyễn Chí Thanh",
+    "ward": {
+      "$oid": "659274ec60292ab573f76357"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.759631848454575,
+    "lng": 106.66832209611448
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2841f"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76422"
+    },
+    {
+      "$oid": "6592852960292ab573f76424"
+    }
+  ],
+  "addr": {
+    "street_number": "87",
+    "route": "Ngô Tất Tố",
+    "ward": {
+      "$oid": "659274ec60292ab573f762f2"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76033"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.792699600605275,
+    "lng": 106.71256711567742
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76428"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2842b"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f7641d"
+    }
+  ],
+  "addr": {
+    "street_number": "26/8A",
+    "route": "Xô Viết Nghệ Tĩnh",
+    "ward": {
+      "$oid": "659274ec60292ab573f762f2"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76033"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.794345893874137,
+    "lng": 106.71224650511903
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283ce"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641e"
+    },
+    {
+      "$oid": "6592852960292ab573f76424"
+    }
+  ],
+  "addr": {
+    "street_number": "374",
+    "route": "lý Thái Tổ Tổ 1 Khu phố 1",
+    "ward": {
+      "$oid": "659274ec60292ab573f76350"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.768051268236675,
+    "lng": 106.67400258181914
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283fb"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f76423"
+    }
+  ],
+  "addr": {
+    "street_number": "575/48",
+    "route": "Đường Cách Mạng Tháng 8",
+    "ward": {
+      "$oid": "659274ec60292ab573f7634b"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76039"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.782994291231233,
+    "lng": 106.6686503407492
+  },
+  "isPlan": false,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28425"
+  },
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76421"
+    },
+    {
+      "$oid": "6592852960292ab573f76422"
+    }
+  ],
+  "addr": {
+    "street_number": "56",
+    "route": "Nguyễn Văn Lạc",
+    "ward": {
+      "$oid": "659274ec60292ab573f762f4"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76033"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.793447285923804,
+    "lng": 106.70903738507292
+  },
+  "isPlan": true,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "imgBillboardLocation": [
+    "/static/db/billboard/billboard_1.png",
+    "/static/db/billboard/billboard_2.png",
+    "/static/db/billboard/billboard_3.jpg"
+  ],
+  "__v": 1,
+  "num_board": 2
+},
+{
+  "_id": {
+    "$oid": "65a92017fcf3e81668263819"
+  },
+  "isPlan": false,
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f7641e"
+    },
+    {
+      "$oid": "6592852960292ab573f7641f"
+    },
+    {
+      "$oid": "6592852960292ab573f76422"
+    }
+  ],
+  "imgBillboardLocation": [
+    "/static/db/billboard/1705582615350_default.jpg",
+    "/static/db/billboard/1705582615351_images.jpeg",
+    "/static/db/billboard/1705582615351_logo.png"
+  ],
+  "num_board": 0,
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f7642a"
+  },
+  "location": {
+    "lat": 10.7748082,
+    "lng": 106.6953731
+  },
+  "addr": {
+    "street_number": "110",
+    "route": "Đ. Nguyễn Du",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c0"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh 70000"
+  },
+  "__v": 0
+}]

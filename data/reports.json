@@ -1,0 +1,75 @@
+[{
+  "_id": {
+    "$oid": "65a90e502bf9046bd4c7e336"
+  },
+  "createdAt": {
+    "$date": "2024-01-18T11:26:43.166Z"
+  },
+  "images": [
+    "/static\\img\\reports\\1705578063766_1705573875205_Anh-1-01.jpg",
+    "/static\\img\\reports\\1705578063768_1705573875209_Anhcv.jpg"
+  ],
+  "status": -1,
+  "ward": {
+    "$oid": "659274ec60292ab573f762fc"
+  },
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  },
+  "location": {
+    "lat": 10.789201686499169,
+    "lng": 106.65078956510297
+  },
+  "sender": {
+    "fullname": "ABC",
+    "email": "thientho03@gmail.com",
+    "phone": "0123123123"
+  },
+  "board": {
+    "$oid": "6572d5979eac4d299cc2840b"
+  },
+  "method": {
+    "$oid": "65a813bf97909d52f4460e5a"
+  },
+  "description": "<p>H&atilde;y đi<strong>ền nội dung bạn muốn b&aacute;o c&aacute;o</strong></p>",
+  "addr": "2501/1A Lạc Long Quân, Phường 11, Quận Tân Bình, Thành phố Hồ Chí Minh",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a90e902bf9046bd4c7e349"
+  },
+  "createdAt": {
+    "$date": "2024-01-18T11:26:43.166Z"
+  },
+  "images": [
+    "/static/img/reports/1705498591522_Anhcv.jpg"
+  ],
+  "status": 1,
+  "ward": {
+    "$oid": "659274ec60292ab573f762c0"
+  },
+  "district": {
+    "$oid": "659271d460292ab573f76030"
+  },
+  "location": {
+    "lat": 10.773853396985816,
+    "lng": 106.69649958839184
+  },
+  "sender": {
+    "fullname": "ABC",
+    "email": "thientho03@gmail.com",
+    "phone": "0123123123"
+  },
+  "board": null,
+  "method": {
+    "$oid": "6592841b5f724804fc2ec520"
+  },
+  "description": "<p>H&atilde;y đi<strong>ền nội dung bạn muốn b&aacute;o c&aacute;o</strong></p>",
+  "addr": "130 Lý Tự Trọng, Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh, Việt Nam",
+  "__v": 0,
+  "handleDetails": "đã xử lý",
+  "officer": {
+    "$oid": "65a695b0b556914038ce2320"
+  }
+}]

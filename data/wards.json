@@ -1,0 +1,2808 @@
+[{
+  "_id": {
+    "$oid": "659274ec60292ab573f762bd"
+  },
+  "ward": "Phường Tân Định",
+  "district": {
+    "$oid": "659271d460292ab573f76030"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762c1"
+  },
+  "ward": "Phường Nguyễn Thái Bình",
+  "district": {
+    "$oid": "659271d460292ab573f76030"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762c0"
+  },
+  "ward": "Phường Bến Thành",
+  "district": {
+    "$oid": "659271d460292ab573f76030"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762c4"
+  },
+  "ward": "Phường Cô Giang",
+  "district": {
+    "$oid": "659271d460292ab573f76030"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762c7"
+  },
+  "ward": "Phường Thạnh Xuân",
+  "district": {
+    "$oid": "659271d460292ab573f76031"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762cc"
+  },
+  "ward": "Phường An Phú Đông",
+  "district": {
+    "$oid": "659271d460292ab573f76031"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762cd"
+  },
+  "ward": "Phường Tân Thới Hiệp",
+  "district": {
+    "$oid": "659271d460292ab573f76031"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762d3"
+  },
+  "ward": "Phường 13",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762d4"
+  },
+  "ward": "Phường 17",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762e0"
+  },
+  "ward": "Phường 11",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762e3"
+  },
+  "ward": "Phường 11",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762e6"
+  },
+  "ward": "Phường 12",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762e9"
+  },
+  "ward": "Phường 7",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762eb"
+  },
+  "ward": "Phường 6",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762ee"
+  },
+  "ward": "Phường 2",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762f0"
+  },
+  "ward": "Phường 3",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762f4"
+  },
+  "ward": "Phường 19",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762f7"
+  },
+  "ward": "Phường 4",
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762fa"
+  },
+  "ward": "Phường 1",
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76308"
+  },
+  "ward": "Phường Tân Quý",
+  "district": {
+    "$oid": "659271d460292ab573f76035"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7630e"
+  },
+  "ward": "Phường Hiệp Tân",
+  "district": {
+    "$oid": "659271d460292ab573f76035"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7630f"
+  },
+  "ward": "Phường Tân Thới Hòa",
+  "district": {
+    "$oid": "659271d460292ab573f76035"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76314"
+  },
+  "ward": "Phường 3",
+  "district": {
+    "$oid": "659271d460292ab573f76036"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76319"
+  },
+  "ward": "Phường 10",
+  "district": {
+    "$oid": "659271d460292ab573f76036"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7631f"
+  },
+  "ward": "Phường Linh Trung",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76324"
+  },
+  "ward": "Phường Linh Chiểu",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76325"
+  },
+  "ward": "Phường Linh Tây",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76328"
+  },
+  "ward": "Phường Trường Thọ",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76329"
+  },
+  "ward": "Phường Long Bình",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76330"
+  },
+  "ward": "Phường Phước Long A",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76332"
+  },
+  "ward": "Phường Long Phước",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76336"
+  },
+  "ward": "Phường Thảo Điền",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7633c"
+  },
+  "ward": "Phường Thạnh Mỹ Lợi",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76341"
+  },
+  "ward": "Phường 11",
+  "district": {
+    "$oid": "659271d460292ab573f76038"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76345"
+  },
+  "ward": "Phường 10",
+  "district": {
+    "$oid": "659271d460292ab573f76038"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76346"
+  },
+  "ward": "Phường 4",
+  "district": {
+    "$oid": "659271d460292ab573f76038"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7634b"
+  },
+  "ward": "Phường 15",
+  "district": {
+    "$oid": "659271d460292ab573f76039"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7634f"
+  },
+  "ward": "Phường 11",
+  "district": {
+    "$oid": "659271d460292ab573f76039"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76351"
+  },
+  "ward": "Phường 9",
+  "district": {
+    "$oid": "659271d460292ab573f76039"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76353"
+  },
+  "ward": "Phường 8",
+  "district": {
+    "$oid": "659271d460292ab573f76039"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76357"
+  },
+  "ward": "Phường 5",
+  "district": {
+    "$oid": "659271d460292ab573f76039"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76358"
+  },
+  "ward": "Phường 6",
+  "district": {
+    "$oid": "659271d460292ab573f76039"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76362"
+  },
+  "ward": "Phường 12",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76365"
+  },
+  "ward": "Phường 4",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76366"
+  },
+  "ward": "Phường 1",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7636a"
+  },
+  "ward": "Phường 9",
+  "district": {
+    "$oid": "659271d460292ab573f7603b"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7636e"
+  },
+  "ward": "Phường 18",
+  "district": {
+    "$oid": "659271d460292ab573f7603b"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7636f"
+  },
+  "ward": "Phường 14",
+  "district": {
+    "$oid": "659271d460292ab573f7603b"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76370"
+  },
+  "ward": "Phường 4",
+  "district": {
+    "$oid": "659271d460292ab573f7603b"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76372"
+  },
+  "ward": "Phường 16",
+  "district": {
+    "$oid": "659271d460292ab573f7603b"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76373"
+  },
+  "ward": "Phường 2",
+  "district": {
+    "$oid": "659271d460292ab573f7603b"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76375"
+  },
+  "ward": "Phường 1",
+  "district": {
+    "$oid": "659271d460292ab573f7603b"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76380"
+  },
+  "ward": "Phường 5",
+  "district": {
+    "$oid": "659271d460292ab573f7603c"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76382"
+  },
+  "ward": "Phường 10",
+  "district": {
+    "$oid": "659271d460292ab573f7603c"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76384"
+  },
+  "ward": "Phường 14",
+  "district": {
+    "$oid": "659271d460292ab573f7603d"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76385"
+  },
+  "ward": "Phường 13",
+  "district": {
+    "$oid": "659271d460292ab573f7603d"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76388"
+  },
+  "ward": "Phường 12",
+  "district": {
+    "$oid": "659271d460292ab573f7603d"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76389"
+  },
+  "ward": "Phường 5",
+  "district": {
+    "$oid": "659271d460292ab573f7603d"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7638b"
+  },
+  "ward": "Phường 2",
+  "district": {
+    "$oid": "659271d460292ab573f7603d"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76392"
+  },
+  "ward": "Phường 8",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76393"
+  },
+  "ward": "Phường 2",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76394"
+  },
+  "ward": "Phường 1",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76396"
+  },
+  "ward": "Phường 11",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76397"
+  },
+  "ward": "Phường 9",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76399"
+  },
+  "ward": "Phường 4",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7639e"
+  },
+  "ward": "Phường 6",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763a3"
+  },
+  "ward": "Phường Bình Hưng Hoà A",
+  "district": {
+    "$oid": "659271d460292ab573f7603f"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762c2"
+  },
+  "ward": "Phường Phạm Ngũ Lão",
+  "district": {
+    "$oid": "659271d460292ab573f76030"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762c3"
+  },
+  "ward": "Phường Cầu Ông Lãnh",
+  "district": {
+    "$oid": "659271d460292ab573f76030"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762c5"
+  },
+  "ward": "Phường Nguyễn Cư Trinh",
+  "district": {
+    "$oid": "659271d460292ab573f76030"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762c8"
+  },
+  "ward": "Phường Thạnh Lộc",
+  "district": {
+    "$oid": "659271d460292ab573f76031"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762cf"
+  },
+  "ward": "Phường Tân Hưng Thuận",
+  "district": {
+    "$oid": "659271d460292ab573f76031"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762d0"
+  },
+  "ward": "Phường Đông Hưng Thuận",
+  "district": {
+    "$oid": "659271d460292ab573f76031"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762d1"
+  },
+  "ward": "Phường Tân Thới Nhất",
+  "district": {
+    "$oid": "659271d460292ab573f76031"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762d5"
+  },
+  "ward": "Phường 6",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762d8"
+  },
+  "ward": "Phường 14",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762d9"
+  },
+  "ward": "Phường 10",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762da"
+  },
+  "ward": "Phường 5",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762e1"
+  },
+  "ward": "Phường 3",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762e2"
+  },
+  "ward": "Phường 13",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762e4"
+  },
+  "ward": "Phường 27",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762e5"
+  },
+  "ward": "Phường 26",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762e7"
+  },
+  "ward": "Phường 25",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762e8"
+  },
+  "ward": "Phường 5",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762f1"
+  },
+  "ward": "Phường 17",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762f3"
+  },
+  "ward": "Phường 22",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762f6"
+  },
+  "ward": "Phường 2",
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762f9"
+  },
+  "ward": "Phường 13",
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762fb"
+  },
+  "ward": "Phường 3",
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762fe"
+  },
+  "ward": "Phường 5",
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762ff"
+  },
+  "ward": "Phường 10",
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76302"
+  },
+  "ward": "Phường 9",
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76303"
+  },
+  "ward": "Phường 14",
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76304"
+  },
+  "ward": "Phường 15",
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76309"
+  },
+  "ward": "Phường Tân Thành",
+  "district": {
+    "$oid": "659271d460292ab573f76035"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7630a"
+  },
+  "ward": "Phường Phú Thọ Hòa",
+  "district": {
+    "$oid": "659271d460292ab573f76035"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7630b"
+  },
+  "ward": "Phường Phú Thạnh",
+  "district": {
+    "$oid": "659271d460292ab573f76035"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7630c"
+  },
+  "ward": "Phường Phú Trung",
+  "district": {
+    "$oid": "659271d460292ab573f76035"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7630d"
+  },
+  "ward": "Phường Hòa Thạnh",
+  "district": {
+    "$oid": "659271d460292ab573f76035"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76315"
+  },
+  "ward": "Phường 1",
+  "district": {
+    "$oid": "659271d460292ab573f76036"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7631a"
+  },
+  "ward": "Phường 11",
+  "district": {
+    "$oid": "659271d460292ab573f76036"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7631b"
+  },
+  "ward": "Phường 17",
+  "district": {
+    "$oid": "659271d460292ab573f76036"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7631c"
+  },
+  "ward": "Phường 13",
+  "district": {
+    "$oid": "659271d460292ab573f76036"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7631d"
+  },
+  "ward": "Phường Linh Xuân",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7632c"
+  },
+  "ward": "Phường Hiệp Phú",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76333"
+  },
+  "ward": "Phường Long Trường",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7633e"
+  },
+  "ward": "Phường Thủ Thiêm",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76344"
+  },
+  "ward": "Phường 9",
+  "district": {
+    "$oid": "659271d460292ab573f76038"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7634e"
+  },
+  "ward": "Phường 12",
+  "district": {
+    "$oid": "659271d460292ab573f76039"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76355"
+  },
+  "ward": "Phường 4",
+  "district": {
+    "$oid": "659271d460292ab573f76039"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7635e"
+  },
+  "ward": "Phường 10",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7635f"
+  },
+  "ward": "Phường 13",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76364"
+  },
+  "ward": "Phường 6",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76371"
+  },
+  "ward": "Phường 3",
+  "district": {
+    "$oid": "659271d460292ab573f7603b"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76377"
+  },
+  "ward": "Phường 9",
+  "district": {
+    "$oid": "659271d460292ab573f7603c"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7637c"
+  },
+  "ward": "Phường 7",
+  "district": {
+    "$oid": "659271d460292ab573f7603c"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7637f"
+  },
+  "ward": "Phường 14",
+  "district": {
+    "$oid": "659271d460292ab573f7603c"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76381"
+  },
+  "ward": "Phường 6",
+  "district": {
+    "$oid": "659271d460292ab573f7603c"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7638a"
+  },
+  "ward": "Phường 11",
+  "district": {
+    "$oid": "659271d460292ab573f7603d"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7638d"
+  },
+  "ward": "Phường 4",
+  "district": {
+    "$oid": "659271d460292ab573f7603d"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7638e"
+  },
+  "ward": "Phường 8",
+  "district": {
+    "$oid": "659271d460292ab573f7603d"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7639f"
+  },
+  "ward": "Phường 15",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763a0"
+  },
+  "ward": "Phường 16",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763a9"
+  },
+  "ward": "Phường Tân Tạo A",
+  "district": {
+    "$oid": "659271d460292ab573f7603f"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763ac"
+  },
+  "ward": "Phường Tân Thuận Đông",
+  "district": {
+    "$oid": "659271d460292ab573f76040"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763af"
+  },
+  "ward": "Phường Tân Hưng",
+  "district": {
+    "$oid": "659271d460292ab573f76040"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763b3"
+  },
+  "ward": "Phường Tân Phú",
+  "district": {
+    "$oid": "659271d460292ab573f76040"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763b4"
+  },
+  "ward": "Phường Tân Phong",
+  "district": {
+    "$oid": "659271d460292ab573f76040"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763b9"
+  },
+  "ward": "Xã Trung Lập Thượng",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763c2"
+  },
+  "ward": "Xã Tân An Hội",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763c4"
+  },
+  "ward": "Xã Thái Mỹ",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763a4"
+  },
+  "ward": "Phường Bình Hưng Hoà B",
+  "district": {
+    "$oid": "659271d460292ab573f7603f"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763a5"
+  },
+  "ward": "Phường Bình Trị Đông",
+  "district": {
+    "$oid": "659271d460292ab573f7603f"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763a7"
+  },
+  "ward": "Phường Bình Trị Đông B",
+  "district": {
+    "$oid": "659271d460292ab573f7603f"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763aa"
+  },
+  "ward": "Phường  An Lạc",
+  "district": {
+    "$oid": "659271d460292ab573f7603f"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763ab"
+  },
+  "ward": "Phường An Lạc A",
+  "district": {
+    "$oid": "659271d460292ab573f7603f"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763b6"
+  },
+  "ward": "Thị trấn Củ Chi",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763ba"
+  },
+  "ward": "Xã An Nhơn Tây",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763bb"
+  },
+  "ward": "Xã Nhuận Đức",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763bd"
+  },
+  "ward": "Xã Phú Hòa Đông",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763be"
+  },
+  "ward": "Xã Trung Lập Hạ",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763c3"
+  },
+  "ward": "Xã Phước Vĩnh An",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763c6"
+  },
+  "ward": "Xã Hòa Phú",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763c7"
+  },
+  "ward": "Xã Tân Thạnh Đông",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763cc"
+  },
+  "ward": "Xã Tân Hiệp",
+  "district": {
+    "$oid": "659271d460292ab573f76042"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763ce"
+  },
+  "ward": "Xã Đông Thạnh",
+  "district": {
+    "$oid": "659271d460292ab573f76042"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763cf"
+  },
+  "ward": "Xã Tân Thới Nhì",
+  "district": {
+    "$oid": "659271d460292ab573f76042"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763d2"
+  },
+  "ward": "Xã Tân Xuân",
+  "district": {
+    "$oid": "659271d460292ab573f76042"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763d4"
+  },
+  "ward": "Xã Trung Chánh",
+  "district": {
+    "$oid": "659271d460292ab573f76042"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763d5"
+  },
+  "ward": "Xã Xuân Thới Thượng",
+  "district": {
+    "$oid": "659271d460292ab573f76042"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763d6"
+  },
+  "ward": "Xã Bà Điểm",
+  "district": {
+    "$oid": "659271d460292ab573f76042"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763dc"
+  },
+  "ward": "Xã Lê Minh Xuân",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763df"
+  },
+  "ward": "Xã Bình Hưng",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763e2"
+  },
+  "ward": "Xã Hưng Long",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763e3"
+  },
+  "ward": "Xã Đa Phước",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763ec"
+  },
+  "ward": "Xã Long Thới",
+  "district": {
+    "$oid": "659271d460292ab573f76044"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763ed"
+  },
+  "ward": "Xã Hiệp Phước",
+  "district": {
+    "$oid": "659271d460292ab573f76044"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763f0"
+  },
+  "ward": "Xã Tam Thôn Hiệp",
+  "district": {
+    "$oid": "659271d460292ab573f76045"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763c9"
+  },
+  "ward": "Xã Tân Phú Trung",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763cd"
+  },
+  "ward": "Xã Nhị Bình",
+  "district": {
+    "$oid": "659271d460292ab573f76042"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763d1"
+  },
+  "ward": "Xã Xuân Thới Sơn",
+  "district": {
+    "$oid": "659271d460292ab573f76042"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763d8"
+  },
+  "ward": "Xã Phạm Văn Hai",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763d9"
+  },
+  "ward": "Xã Vĩnh Lộc A",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763da"
+  },
+  "ward": "Xã Vĩnh Lộc B",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763db"
+  },
+  "ward": "Xã Bình Lợi",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763e0"
+  },
+  "ward": "Xã Phong Phú",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763e4"
+  },
+  "ward": "Xã Tân Quý Tây",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763e8"
+  },
+  "ward": "Xã Phước Kiển",
+  "district": {
+    "$oid": "659271d460292ab573f76044"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763ea"
+  },
+  "ward": "Xã Nhơn Đức",
+  "district": {
+    "$oid": "659271d460292ab573f76044"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763eb"
+  },
+  "ward": "Xã Phú Xuân",
+  "district": {
+    "$oid": "659271d460292ab573f76044"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763ef"
+  },
+  "ward": "Xã Bình Khánh",
+  "district": {
+    "$oid": "659271d460292ab573f76045"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762be"
+  },
+  "ward": "Phường Đa Kao",
+  "district": {
+    "$oid": "659271d460292ab573f76030"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762bf"
+  },
+  "ward": "Phường Bến Nghé",
+  "district": {
+    "$oid": "659271d460292ab573f76030"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762c9"
+  },
+  "ward": "Phường Hiệp Thành",
+  "district": {
+    "$oid": "659271d460292ab573f76031"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762ca"
+  },
+  "ward": "Phường Thới An",
+  "district": {
+    "$oid": "659271d460292ab573f76031"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762ce"
+  },
+  "ward": "Phường Trung Mỹ Tây",
+  "district": {
+    "$oid": "659271d460292ab573f76031"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762d7"
+  },
+  "ward": "Phường 12",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762df"
+  },
+  "ward": "Phường 8",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762ea"
+  },
+  "ward": "Phường 24",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762ef"
+  },
+  "ward": "Phường 1",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762f5"
+  },
+  "ward": "Phường 28",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762f8"
+  },
+  "ward": "Phường 12",
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762fc"
+  },
+  "ward": "Phường 11",
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762fd"
+  },
+  "ward": "Phường 7",
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76306"
+  },
+  "ward": "Phường Tây Thạnh",
+  "district": {
+    "$oid": "659271d460292ab573f76035"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76310"
+  },
+  "ward": "Phường 4",
+  "district": {
+    "$oid": "659271d460292ab573f76036"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76311"
+  },
+  "ward": "Phường 5",
+  "district": {
+    "$oid": "659271d460292ab573f76036"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76312"
+  },
+  "ward": "Phường 9",
+  "district": {
+    "$oid": "659271d460292ab573f76036"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76313"
+  },
+  "ward": "Phường 7",
+  "district": {
+    "$oid": "659271d460292ab573f76036"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76316"
+  },
+  "ward": "Phường 2",
+  "district": {
+    "$oid": "659271d460292ab573f76036"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7632d"
+  },
+  "ward": "Phường Tăng Nhơn Phú A",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7632e"
+  },
+  "ward": "Phường Tăng Nhơn Phú B",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76335"
+  },
+  "ward": "Phường Phú Hữu",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76337"
+  },
+  "ward": "Phường An Phú",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7633a"
+  },
+  "ward": "Phường Bình Trưng Tây",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7633f"
+  },
+  "ward": "Phường 14",
+  "district": {
+    "$oid": "659271d460292ab573f76038"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76342"
+  },
+  "ward": "Phường 13",
+  "district": {
+    "$oid": "659271d460292ab573f76038"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76343"
+  },
+  "ward": "Phường Võ Thị Sáu",
+  "district": {
+    "$oid": "659271d460292ab573f76038"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76347"
+  },
+  "ward": "Phường 5",
+  "district": {
+    "$oid": "659271d460292ab573f76038"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76349"
+  },
+  "ward": "Phường 2",
+  "district": {
+    "$oid": "659271d460292ab573f76038"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7634a"
+  },
+  "ward": "Phường 1",
+  "district": {
+    "$oid": "659271d460292ab573f76038"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7634c"
+  },
+  "ward": "Phường 13",
+  "district": {
+    "$oid": "659271d460292ab573f76039"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76350"
+  },
+  "ward": "Phường 10",
+  "district": {
+    "$oid": "659271d460292ab573f76039"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76354"
+  },
+  "ward": "Phường 2",
+  "district": {
+    "$oid": "659271d460292ab573f76039"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76356"
+  },
+  "ward": "Phường 7",
+  "district": {
+    "$oid": "659271d460292ab573f76039"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76359"
+  },
+  "ward": "Phường 15",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7635b"
+  },
+  "ward": "Phường 14",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7635c"
+  },
+  "ward": "Phường 11",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7635d"
+  },
+  "ward": "Phường 3",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76367"
+  },
+  "ward": "Phường 2",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7636b"
+  },
+  "ward": "Phường 6",
+  "district": {
+    "$oid": "659271d460292ab573f7603b"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7636c"
+  },
+  "ward": "Phường 8",
+  "district": {
+    "$oid": "659271d460292ab573f7603b"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7636d"
+  },
+  "ward": "Phường 10",
+  "district": {
+    "$oid": "659271d460292ab573f7603b"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76378"
+  },
+  "ward": "Phường 3",
+  "district": {
+    "$oid": "659271d460292ab573f7603c"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76379"
+  },
+  "ward": "Phường 12",
+  "district": {
+    "$oid": "659271d460292ab573f7603c"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7637d"
+  },
+  "ward": "Phường 1",
+  "district": {
+    "$oid": "659271d460292ab573f7603c"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76383"
+  },
+  "ward": "Phường 13",
+  "district": {
+    "$oid": "659271d460292ab573f7603c"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76386"
+  },
+  "ward": "Phường 9",
+  "district": {
+    "$oid": "659271d460292ab573f7603d"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7638c"
+  },
+  "ward": "Phường 1",
+  "district": {
+    "$oid": "659271d460292ab573f7603d"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76390"
+  },
+  "ward": "Phường 7",
+  "district": {
+    "$oid": "659271d460292ab573f7603d"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76391"
+  },
+  "ward": "Phường 10",
+  "district": {
+    "$oid": "659271d460292ab573f7603d"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76398"
+  },
+  "ward": "Phường 10",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7639a"
+  },
+  "ward": "Phường 13",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7639b"
+  },
+  "ward": "Phường 12",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763a2"
+  },
+  "ward": "Phường Bình Hưng Hòa",
+  "district": {
+    "$oid": "659271d460292ab573f7603f"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763b2"
+  },
+  "ward": "Phường Phú Thuận",
+  "district": {
+    "$oid": "659271d460292ab573f76040"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763b5"
+  },
+  "ward": "Phường Phú Mỹ",
+  "district": {
+    "$oid": "659271d460292ab573f76040"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763b8"
+  },
+  "ward": "Xã An Phú",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763bf"
+  },
+  "ward": "Xã Trung An",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763c0"
+  },
+  "ward": "Xã Phước Thạnh",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763c1"
+  },
+  "ward": "Xã Phước Hiệp",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763c5"
+  },
+  "ward": "Xã Tân Thạnh Tây",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763c8"
+  },
+  "ward": "Xã Bình Mỹ",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763d0"
+  },
+  "ward": "Xã Thới Tam Thôn",
+  "district": {
+    "$oid": "659271d460292ab573f76042"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763dd"
+  },
+  "ward": "Xã Tân Nhựt",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763e6"
+  },
+  "ward": "Xã Quy Đức",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762c6"
+  },
+  "ward": "Phường Cầu Kho",
+  "district": {
+    "$oid": "659271d460292ab573f76030"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762cb"
+  },
+  "ward": "Phường Tân Chánh Hiệp",
+  "district": {
+    "$oid": "659271d460292ab573f76031"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762d2"
+  },
+  "ward": "Phường 15",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762d6"
+  },
+  "ward": "Phường 16",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762db"
+  },
+  "ward": "Phường 7",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762dc"
+  },
+  "ward": "Phường 4",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762dd"
+  },
+  "ward": "Phường 1",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762de"
+  },
+  "ward": "Phường 9",
+  "district": {
+    "$oid": "659271d460292ab573f76032"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762ec"
+  },
+  "ward": "Phường 14",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762ed"
+  },
+  "ward": "Phường 15",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f762f2"
+  },
+  "ward": "Phường 21",
+  "district": {
+    "$oid": "659271d460292ab573f76033"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76300"
+  },
+  "ward": "Phường 6",
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76301"
+  },
+  "ward": "Phường 8",
+  "district": {
+    "$oid": "659271d460292ab573f76034"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76305"
+  },
+  "ward": "Phường Tân Sơn Nhì",
+  "district": {
+    "$oid": "659271d460292ab573f76035"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76307"
+  },
+  "ward": "Phường Sơn Kỳ",
+  "district": {
+    "$oid": "659271d460292ab573f76035"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76317"
+  },
+  "ward": "Phường 8",
+  "district": {
+    "$oid": "659271d460292ab573f76036"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76318"
+  },
+  "ward": "Phường 15",
+  "district": {
+    "$oid": "659271d460292ab573f76036"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7631e"
+  },
+  "ward": "Phường Bình Chiểu",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76320"
+  },
+  "ward": "Phường Tam Bình",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76321"
+  },
+  "ward": "Phường Tam Phú",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76322"
+  },
+  "ward": "Phường Hiệp Bình Phước",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76323"
+  },
+  "ward": "Phường Hiệp Bình Chánh",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76326"
+  },
+  "ward": "Phường Linh Đông",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76327"
+  },
+  "ward": "Phường Bình Thọ",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7632a"
+  },
+  "ward": "Phường Long Thạnh Mỹ",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7632b"
+  },
+  "ward": "Phường Tân Phú",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7632f"
+  },
+  "ward": "Phường Phước Long B",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76331"
+  },
+  "ward": "Phường Trường Thạnh",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76334"
+  },
+  "ward": "Phường Phước Bình",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76338"
+  },
+  "ward": "Phường An Khánh",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76339"
+  },
+  "ward": "Phường Bình Trưng Đông",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7633b"
+  },
+  "ward": "Phường Cát Lái",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7633d"
+  },
+  "ward": "Phường An Lợi Đông",
+  "district": {
+    "$oid": "659271d460292ab573f76037"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76340"
+  },
+  "ward": "Phường 12",
+  "district": {
+    "$oid": "659271d460292ab573f76038"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76348"
+  },
+  "ward": "Phường 3",
+  "district": {
+    "$oid": "659271d460292ab573f76038"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7634d"
+  },
+  "ward": "Phường 14",
+  "district": {
+    "$oid": "659271d460292ab573f76039"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76352"
+  },
+  "ward": "Phường 1",
+  "district": {
+    "$oid": "659271d460292ab573f76039"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7635a"
+  },
+  "ward": "Phường 5",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76360"
+  },
+  "ward": "Phường 8",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76361"
+  },
+  "ward": "Phường 9",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76363"
+  },
+  "ward": "Phường 7",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76368"
+  },
+  "ward": "Phường 16",
+  "district": {
+    "$oid": "659271d460292ab573f7603a"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76369"
+  },
+  "ward": "Phường 13",
+  "district": {
+    "$oid": "659271d460292ab573f7603b"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76374"
+  },
+  "ward": "Phường 15",
+  "district": {
+    "$oid": "659271d460292ab573f7603b"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76376"
+  },
+  "ward": "Phường 4",
+  "district": {
+    "$oid": "659271d460292ab573f7603c"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7637a"
+  },
+  "ward": "Phường 2",
+  "district": {
+    "$oid": "659271d460292ab573f7603c"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7637b"
+  },
+  "ward": "Phường 8",
+  "district": {
+    "$oid": "659271d460292ab573f7603c"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7637e"
+  },
+  "ward": "Phường 11",
+  "district": {
+    "$oid": "659271d460292ab573f7603c"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76387"
+  },
+  "ward": "Phường 6",
+  "district": {
+    "$oid": "659271d460292ab573f7603d"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7638f"
+  },
+  "ward": "Phường 3",
+  "district": {
+    "$oid": "659271d460292ab573f7603d"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f76395"
+  },
+  "ward": "Phường 3",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7639c"
+  },
+  "ward": "Phường 5",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f7639d"
+  },
+  "ward": "Phường 14",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763a1"
+  },
+  "ward": "Phường 7",
+  "district": {
+    "$oid": "659271d460292ab573f7603e"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763a6"
+  },
+  "ward": "Phường Bình Trị Đông A",
+  "district": {
+    "$oid": "659271d460292ab573f7603f"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763a8"
+  },
+  "ward": "Phường Tân Tạo",
+  "district": {
+    "$oid": "659271d460292ab573f7603f"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763ad"
+  },
+  "ward": "Phường Tân Thuận Tây",
+  "district": {
+    "$oid": "659271d460292ab573f76040"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763ae"
+  },
+  "ward": "Phường Tân Kiểng",
+  "district": {
+    "$oid": "659271d460292ab573f76040"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763b0"
+  },
+  "ward": "Phường Bình Thuận",
+  "district": {
+    "$oid": "659271d460292ab573f76040"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763b1"
+  },
+  "ward": "Phường Tân Quy",
+  "district": {
+    "$oid": "659271d460292ab573f76040"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763b7"
+  },
+  "ward": "Xã Phú Mỹ Hưng",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763bc"
+  },
+  "ward": "Xã Phạm Văn Cội",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763ca"
+  },
+  "ward": "Xã Tân Thông Hội",
+  "district": {
+    "$oid": "659271d460292ab573f76041"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763cb"
+  },
+  "ward": "Thị trấn Hóc Môn",
+  "district": {
+    "$oid": "659271d460292ab573f76042"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763e9"
+  },
+  "ward": "Xã Phước Lộc",
+  "district": {
+    "$oid": "659271d460292ab573f76044"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763ee"
+  },
+  "ward": "Thị trấn Cần Thạnh",
+  "district": {
+    "$oid": "659271d460292ab573f76045"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763f1"
+  },
+  "ward": "Xã An Thới Đông",
+  "district": {
+    "$oid": "659271d460292ab573f76045"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763f4"
+  },
+  "ward": "Xã Lý Nhơn",
+  "district": {
+    "$oid": "659271d460292ab573f76045"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763d3"
+  },
+  "ward": "Xã Xuân Thới Đông",
+  "district": {
+    "$oid": "659271d460292ab573f76042"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763d7"
+  },
+  "ward": "Thị trấn Tân Túc",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763de"
+  },
+  "ward": "Xã Tân Kiên",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763e1"
+  },
+  "ward": "Xã An Phú Tây",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763e5"
+  },
+  "ward": "Xã Bình Chánh",
+  "district": {
+    "$oid": "659271d460292ab573f76043"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763e7"
+  },
+  "ward": "Thị trấn Nhà Bè",
+  "district": {
+    "$oid": "659271d460292ab573f76044"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763f2"
+  },
+  "ward": "Xã Thạnh An",
+  "district": {
+    "$oid": "659271d460292ab573f76045"
+  }
+},
+{
+  "_id": {
+    "$oid": "659274ec60292ab573f763f3"
+  },
+  "ward": "Xã Long Hòa",
+  "district": {
+    "$oid": "659271d460292ab573f76045"
+  }
+}]

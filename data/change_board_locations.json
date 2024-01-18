@@ -1,0 +1,53 @@
+[{
+  "_id": {
+    "$oid": "65a91d8afcf3e816682634bf"
+  },
+  "imgBillboardLocation": [
+    "/static/db/advs/1705581962299_default.jpg",
+    "/static/db/advs/1705581962300_istockphoto-1354776457-612x612-2.jpg"
+  ],
+  "locationCategory": [
+    {
+      "$oid": "6592852960292ab573f76422"
+    },
+    {
+      "$oid": "6592852960292ab573f7641d"
+    },
+    {
+      "$oid": "6592852960292ab573f76424"
+    },
+    {
+      "$oid": "6592852960292ab573f76425"
+    }
+  ],
+  "status": 1,
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28338"
+  },
+  "reason": "Bỏ chợ",
+  "creator": {
+    "$oid": "65a695b0b556914038ce2320"
+  },
+  "addr": {
+    "street_number": "120",
+    "route": "Đ. Nguyễn Du",
+    "ward": {
+      "$oid": "659274ec60292ab573f762c0"
+    },
+    "district": {
+      "$oid": "659271d460292ab573f76030"
+    },
+    "city": "Thành phố Hồ Chí Minh"
+  },
+  "location": {
+    "lat": 10.7730471,
+    "lng": 106.693393
+  },
+  "advertisementForm": {
+    "$oid": "6592855060292ab573f76429"
+  },
+  "createdAt": {
+    "$date": "2024-01-18T12:46:02.423Z"
+  },
+  "__v": 0
+}]

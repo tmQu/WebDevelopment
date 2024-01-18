@@ -1,0 +1,132 @@
+[{
+  "_id": {
+    "$oid": "659271d460292ab573f76039"
+  },
+  "district": "Quận 10"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f7603b"
+  },
+  "district": "Quận 4"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f76040"
+  },
+  "district": "Quận 7"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f76041"
+  },
+  "district": "Huyện Củ Chi"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f76030"
+  },
+  "district": "Quận 1"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f76034"
+  },
+  "district": "Quận Tân Bình"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f76035"
+  },
+  "district": "Quận Tân Phú"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f76036"
+  },
+  "district": "Quận Phú Nhuận"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f7603a"
+  },
+  "district": "Quận 11"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f76042"
+  },
+  "district": "Huyện Hóc Môn"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f76031"
+  },
+  "district": "Quận 12"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f76037"
+  },
+  "district": "Thành phố Thủ Đức"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f76032"
+  },
+  "district": "Quận Gò Vấp"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f76033"
+  },
+  "district": "Quận Bình Thạnh"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f76038"
+  },
+  "district": "Quận 3"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f7603c"
+  },
+  "district": "Quận 5"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f7603e"
+  },
+  "district": "Quận 8"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f7603f"
+  },
+  "district": "Quận Bình Tân"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f76043"
+  },
+  "district": "Huyện Bình Chánh"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f7603d"
+  },
+  "district": "Quận 6"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f76044"
+  },
+  "district": "Huyện Nhà Bè"
+},
+{
+  "_id": {
+    "$oid": "659271d460292ab573f76045"
+  },
+  "district": "Huyện Cần Giờ"
+}]
