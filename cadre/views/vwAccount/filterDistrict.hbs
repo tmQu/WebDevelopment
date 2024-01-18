@@ -1,4 +1,16 @@
-<div class="container">
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul
+    class="navbar-nav sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+    style="background: linear-gradient(45deg, #5c7ea1, #509177);"
+  >
+    <!-- Sidebar - Brand -->
+      {{> sidebarWard}}
+
+  </ul>
+
+<div class="container mt-4">
   <h2>Chọn danh sách Phường muốn quản lý</h2>
 
   <div class="row">
@@ -31,6 +43,7 @@
   </div>
 <div class="">
 <button id="filter">Lọc danh sách</button>
+</div>
 </div>
 
 <script>
@@ -68,6 +81,7 @@
             .then(response => response.json())
             .then(data => {
                 console.log('Success:', data);
+                window.location.href = '/admin'
             })
             .catch(error => {
                 console.error('Lỗi:', error);

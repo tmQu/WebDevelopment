@@ -111,6 +111,7 @@ const authController = {
     req.user = freshUser;
     res.locals.loginUser = JSON.stringify(freshUser);
     res.locals.isSuperAdmin = (freshUser.role.level === 'departmental');
+    res.locals.isDistrict = (freshUser.role.level === 'districts');
     req.isAuthorized = true;
     next();
   },

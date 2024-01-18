@@ -254,7 +254,7 @@ app.get('/admin', authController.protect, async (req, res) => {
   }
 
   var boards = await boardModel.find().populate('boardType');
-  console.log(boards)
+  console.log(boards);
   var reportObject = [];
   if (reports.length > 0)
     reports.forEach((report) => {
@@ -362,37 +362,42 @@ app.get('/boardLocationRequest/:id/accept', authController.protect, (req, res) =
 
 import handlebarsHelpers from './static/js/handlebarsHelpers.js';
 
-app.get('/reportMethods', (req, res) => {
+app.get('/reportMethods', authController.protect, authController.restrictTo('departmental'), (req, res) => {
   reportMethodController.getAllMethods_v2(req, res);
 });
 
-app.get('/reportMethods/add', (req, res) => {
+app.get('/reportMethods/add', authController.protect, authController.restrictTo('departmental'), (req, res) => {
   res.render('vwDepartment/reportMethod/reportMethodAdd', {
     layout: 'department',
   });
 });
 
-app.get('/reportMethods/edit/:id', async (req, res) => {
-  const oldData = await reportMethodModel.findById(req.params.id);
+app.get(
+  '/reportMethods/edit/:id',
+  authController.protect,
+  authController.restrictTo('departmental'),
+  async (req, res) => {
+    const oldData = await reportMethodModel.findById(req.params.id);
 
-  res.render('vwDepartment/reportMethod/reportMethodEdit', {
-    id: req.params.id,
-    layout: 'department',
-    oldData: oldData.reportMethod,
-  });
-});
+    res.render('vwDepartment/reportMethod/reportMethodEdit', {
+      id: req.params.id,
+      layout: 'department',
+      oldData: oldData.reportMethod,
+    });
+  }
+);
 
-app.get('/advForms', (req, res) => {
+app.get('/advForms', authController.protect, authController.restrictTo('departmental'), (req, res) => {
   advFormController.getAll(req, res);
 });
 
-app.get('/advForms/add', (req, res) => {
+app.get('/advForms/add', authController.protect, authController.restrictTo('departmental'), (req, res) => {
   res.render('vwDepartment/advForm/advFormAdd', {
     layout: 'department',
   });
 });
 
-app.get('/advForms/edit/:id', async (req, res) => {
+app.get('/advForms/edit/:id', authController.protect, authController.restrictTo('departmental'), async (req, res) => {
   const oldData = await advFormModel.findById(req.params.id);
 
   res.render('vwDepartment/advForm/advFormEdit', {
@@ -438,12 +443,11 @@ app.get('/accountSetting', authController.protect, async (req, res) => {
       });
     } else {
       var filter;
-      console.log(req.session.filter)
-      if (req.session.filter)
-        filter = req.session.filter;
+      console.log(req.session.filter);
+      if (req.session.filter) filter = req.session.filter;
 
-      var wards = await wardModel.find({district: mongoose.Types.ObjectId(req.user.role.detail)});
-      wards = wards.map(ward => ward.toObject());
+      var wards = await wardModel.find({ district: mongoose.Types.ObjectId(req.user.role.detail) });
+      wards = wards.map((ward) => ward.toObject());
 
       var selectedWards;
       if (!filter) {
@@ -451,7 +455,7 @@ app.get('/accountSetting', authController.protect, async (req, res) => {
       } else {
         selectedWards = filter.wards;
       }
-      console.log()
+      console.log();
       res.render('vwAccount/filterDistrict', {
         layout: 'list',
         wards: wards,
@@ -467,33 +471,43 @@ app.get('/accountSetting', authController.protect, async (req, res) => {
   }
 });
 
-app.get('/areas', (req, res) => {
+app.get('/areas', authController.protect, authController.restrictTo('departmental'), (req, res) => {
   areaController.getAll(req, res);
 });
 
-app.get('/assignment', (req, res) => {
+app.get('/assignment', authController.protect, authController.restrictTo('departmental'), (req, res) => {
   assignmentController.getAll(req, res);
 });
 
-app.get('/assignment/districts/:id', async (req, res) => {
-  const districts = await districtModel.find();
+app.get(
+  '/assignment/districts/:id',
+  authController.protect,
+  authController.restrictTo('departmental'),
+  async (req, res) => {
+    const districts = await districtModel.find();
 
-  res.render('vwDepartment/area/districtAssignment', {
-    layout: 'department',
-    id: req.params.id,
-    districts: districts.map((district) => district.toObject()),
-  });
-});
+    res.render('vwDepartment/area/districtAssignment', {
+      layout: 'department',
+      id: req.params.id,
+      districts: districts.map((district) => district.toObject()),
+    });
+  }
+);
 
-app.get('/assignment/wards/:id', async (req, res) => {
-  const wards = await wardModel.find().populate('district');
+app.get(
+  '/assignment/wards/:id',
+  authController.protect,
+  authController.restrictTo('departmental'),
+  async (req, res) => {
+    const wards = await wardModel.find().populate('district');
 
-  res.render('vwDepartment/area/wardAssignment', {
-    layout: 'department',
-    id: req.params.id,
-    wards: wards.map(ward => ward.toObject())
-  });
-});
+    res.render('vwDepartment/area/wardAssignment', {
+      layout: 'department',
+      id: req.params.id,
+      wards: wards.map((ward) => ward.toObject()),
+    });
+  }
+);
 
 app.get('/', authController.isLoggedIn, async (req, res, next) => {
   if (res.locals.user) {

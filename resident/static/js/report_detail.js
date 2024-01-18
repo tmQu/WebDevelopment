@@ -19,8 +19,6 @@ function getReportDetail(callback) {
 
 }
 
-
-
 function renderReportDetail(data)
 {
     var report = data.data.report;
@@ -94,17 +92,17 @@ function renderReportDetail(data)
     document.querySelector('#create-at').innerHTML = report.createdAt;
     var status;
     console.log(report.status)
-    if (report.status == true)
+    if (report.status == 1)
     {
         status = `<span class='badge badge-pill badge-success'>Đã xử lý</span>`;
     }
-    else if (report.status == false)
+    else if (report.status == 0)
     {
         status = `<span class='badge badge-pill badge-warning'>Đang chờ xử lý</span>`;
     }
-    else if (report.status == undefined)
+    else if (report.status == -1)
     {
-        status = `<span class='badge badge-pill badge-danger'>Đã xóa</span>`
+        status = `<span class='badge badge-pill badge-danger'>Chưa xử lý</span>`
     }
     document.querySelector('#report-status').innerHTML = status;
 

@@ -6,7 +6,11 @@ route.post('/', async(req, res) => {
 
         req.session.filter = req.body;
         console.log(req.session.filter);
-        res.redirect('/')
+        // res.redirect('/')
+        res.status(200).json({
+            status: 'success',
+            message: 'Filter success'
+        });
     }
     catch(err)
     {
