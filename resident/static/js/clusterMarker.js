@@ -1,19 +1,20 @@
-import setMarker from './marker.js';
+import setMarker from "./marker.js";
 
 var advertisementBoards = new Array();
 var mc = null;
 
-const serverURL = 'http://localhost:4000';
+const serverURL = 'http://localhost:4000'
 
-function getAllLocation(callback) {
+function getAllLocation(callback){
   var url = serverURL + '/api/v2/boards';
   var xhr = new XMLHttpRequest();
 
   xhr.onreadystatechange = () => {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      callback(JSON.parse(xhr.responseText));
-    }
-  };
+      if (xhr.readyState === XMLHttpRequest.DONE)
+      {
+          callback(JSON.parse(xhr.responseText));
+      }
+  }
   xhr.open('GET', url);
   xhr.send();
 }
@@ -37,36 +38,37 @@ const getAdvertisementBoards = (map) => {
   getAllLocation((data) => {
     data = data.data;
 
-    var report = JSON.parse(localStorage.getItem('Report_Ads_Management')) || [];
+    var report = JSON.parse(localStorage.getItem('Report_Ads_Management')) || []
 
     // group report that have the same location
-    var reportLocation = report.reduce((result, item) => {
+    var reportLocation =  report.reduce((result, item) => {
       const { lat, lng } = item.location;
       const key = `${lat}-${lng}`;
-
+  
       // Create a new group for the location if it doesn't exist
       if (!result[key]) {
-        result[key] = { location: { lat, lng }, data: [] };
+          result[key] = { location: { lat, lng }, data: [] };
       }
-
+  
       // Push the current item to the location group
       result[key].data.push({
-        _id: item._id,
-        addr: item.addr,
-        createdAt: item.createdAt,
-        method: item.method,
-        board: item.board,
-        sender: item.sender,
+          _id: item._id,
+          addr: item.addr,
+          createdAt: item.createdAt,
+          method: item.method,
+          board: item.board,
+          sender: item.sender
       });
-
+  
       return result;
     }, {});
-
+  
     // Convert the groupedData object to an array of groups with lat and lng
-    reportLocation = Object.values(reportLocation).map((group) => ({
-      location: group.location,
-      report: group.data,
+    reportLocation = Object.values(reportLocation).map(group => ({
+        location: group.location,
+        report: group.data,
     }));
+      
 
     document.getElementById('btnAds').addEventListener('change', function () {
       if (this.checked) {
@@ -77,25 +79,27 @@ const getAdvertisementBoards = (map) => {
         handleMarkersRemoval(data, map, advertisementBoards);
       }
     });
-
+  
     // Event listener for the second switch
-    document.getElementById('flexSwitchCheckDefault').addEventListener('change', function () {
-      if (this.checked) {
-        console.log('Second switch is ON');
-        handleMarkersAddition(reportLocation, map, advertisementBoards);
-      } else {
-        console.log('Second switch is OFF');
-        handleMarkersRemoval(reportLocation, map, advertisementBoards);
-      }
-    });
+    document
+      .getElementById('flexSwitchCheckDefault')
+      .addEventListener('change', function () {
+        if (this.checked) {
+          console.log('Second switch is ON');
+          handleMarkersAddition(reportLocation, map, advertisementBoards);
+        } else {
+          console.log('Second switch is OFF');
+          handleMarkersRemoval(reportLocation, map, advertisementBoards);
+        }
+      });
 
     // turn on board
     document.querySelector('#btnAds').click();
-  });
+  })
 };
 
 const addMarker = (newMarkers, currentMarkers) => {
-  console.log(newMarkers);
+  console.log(newMarkers)
   for (let i = 0; i < newMarkers.length; i++) {
     currentMarkers.push(newMarkers[i]);
   }
@@ -125,45 +129,54 @@ const clusterMarker = async (map, data) => {
   let infoWindow = new google.maps.InfoWindow({
     content: '',
     disableAutoPan: true,
-    maxWidth: 250,
+    maxWidth: 250
   });
 
-  const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary('marker');
+  const { AdvancedMarkerElement, PinElement } = await google.maps.importLibrary(
+    'marker'
+  );
 
   // filter the overlapping data, the report have higher priority than board
 
   // get report first
   var uniqueData = [];
   for (var i = 0; i < data.length; i++) {
-    if (data[i].report) {
+    if(data[i].report)
+    {
       uniqueData.push(data[i]);
     }
   }
 
   // get board if there is no report on it
   for (var i = 0; i < data.length; i++) {
-    if (data[i].report) {
+    if(data[i].report)
+    {
       continue;
-    } else {
+    }
+    else {
+
       var flag = false;
       for (var j = 0; j < uniqueData.length; j++) {
-        if (uniqueData[j].location.lat == data[i].location.lat && uniqueData[j].location.lng == data[i].location.lng) {
+        if (uniqueData[j].location.lat == data[i].location.lat && uniqueData[j].location.lng == data[i].location.lng)
+        {
           flag = true;
           break;
         }
       }
-      if (flag == false) {
+      if (flag == false)
+      {
         uniqueData.push(data[i]);
       }
     }
   }
   data = uniqueData;
 
-  const markers = [];
 
+  const markers = []
+  
   data.forEach((markerInfo) => {
     const iconImage = document.createElement('img');
-    iconImage.style.width = '35px';
+    iconImage.style.width = '35px'
     // console.log(markerInfo.id)
     // if (markerInfo.id.includes('BL'))
     // {
@@ -174,21 +187,31 @@ const clusterMarker = async (map, data) => {
     //   iconImage.src = "../img/ad.256x256.png"
     // }
 
-    if (markerInfo.report) {
-      iconImage.src = '../img/icon/Report.png';
-    } else {
-      if (markerInfo.isPlan == false) {
-        if (markerInfo.num_board == 0) {
-          console.log(markerInfo.num_board);
-          iconImage.src = '/static/img/icon/no_ad_no_plan.png';
-        } else {
-          iconImage.src = '/static/img/icon/ad_no_plan.png';
+
+    if (markerInfo.report)
+    {
+      iconImage.src = "../img/icon/Report.png"
+      
+    }
+    else{
+      if (markerInfo.isPlan == false)
+      {
+        if (markerInfo.num_board == 0)
+        {
+          console.log(markerInfo.num_board)
+          iconImage.src = '/static/img/icon/no_ad_no_plan.png'
         }
-      } else {
-        if (markerInfo.num_board == 0) {
-          iconImage.src = '/static/img/icon/no_ad_plan.png';
-        } else {
-          iconImage.src = '/static/img/icon/ad_plan.png';
+        else {
+          iconImage.src = '/static/img/icon/ad_no_plan.png'
+        }
+      }
+      else{
+        if (markerInfo.num_board == 0)
+        {
+          iconImage.src = '/static/img/icon/no_ad_plan.png'
+        }
+        else {
+          iconImage.src = '/static/img/icon/ad_plan.png'
         }
       }
     }
@@ -203,21 +226,26 @@ const clusterMarker = async (map, data) => {
     //   setMarker(markerInfo, marker, infoWindow);
     // if (markerInfo.id.includes('RP'))
     console.log(markerInfo);
-    if (markerInfo.report) {
+    if (markerInfo.report)
+    {
+
       setMarker.setMarkerReport(markerInfo, marker);
-    } else {
+    }
+    else{
       setMarker.setMarkerBillBoard(map, markerInfo, marker, infoWindow);
     }
-    markers.push(marker);
+    markers.push(marker)
   });
 
   if (mc) mc.clearMarkers();
-  console.log(markers);
+  console.log(markers)
   mc = new markerClusterer.MarkerClusterer({
     map,
     markers,
   });
 };
+
+
 
 // var data2 = [
 //   { lat: 10.778515490199908, lng: 106.69397771139802 },
