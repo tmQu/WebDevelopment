@@ -80,7 +80,7 @@ const boardController = {
       boards.forEach((board,index) => {
         boards[index].imgBillboard = process.env.SERVER_URL + board.imgBillboard;
       });
-      console.log(boards[0].imgBillboard)
+      // console.log(boards[0].imgBillboard)
       var boardLocation = await boardLocationModel
         .findById(req.params.id)
         .populate('advertisementForm')
