@@ -163,6 +163,7 @@ const changeBoardLocationController = {
           advertisementForm: changeBoardLocation.advertisementForm,
           addr: changeBoardLocation.addr,
           location: changeBoardLocation.location,
+          imgBillboardLocation: changeBoardLocation.imgBillboardLocation,
         });
 
       }
