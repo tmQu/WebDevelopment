@@ -53,15 +53,15 @@ http://localhost:4000/login
 
 **Ward admin:**
 
-    - Email:
-    - Password:
+    - Email: lamthanhngoc713@gmail.com
+    - Password: newpass123
 
 **District admin:**
 
-    - Email:
-    - Password:
+    - Email: district@gmail.com
+    - Password: newpass123
 
 **Department admin:**
 
-    - Email:
-    - Password:
+    - Email: hello9@gmail.com
+    - Password: newpass123
