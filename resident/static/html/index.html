@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Advertising Boards Map</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+    <!-- Boostrap5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
+
+    <!-- Boostrap5 icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css" />
+
+    <link rel="stylesheet" href="../css/search.css" />
+    <link rel="stylesheet" href="../css/markerContent.css" />
+    <link rel="stylesheet" href="../css/billboard.css" />
+    <link rel="stylesheet" href="../css/btnCurrentPosition.css" />
+    <link rel="stylesheet" href="../css/markerContent.css" />
+    <link rel="stylesheet" href="../css/popupLocationInfo.css" />
+    <link rel="stylesheet" href="../css/filter.css" />
+    <link rel="stylesheet" href="../css/report.css" />
+    <script type="module" src="../js/map.js"></script>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet" />
+
+    <!-- Main Quill library -->
+    <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
+    <!-- <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script> -->
+
+    <!-- Theme included stylesheets -->
+    <link href="//cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet" />
+    <!-- <link href="//cdn.quilljs.com/1.3.6/quill.bubble.css" rel="stylesheet"> -->
+  </head>
+
+  <body>
+    <!-- Search bar -->
+    <input
+      id="pac-input"
+      class="controls"
+      type="text"
+      placeholder="&#xF002; Search Address" />
+
+    <div id="sub-window">
+      <div class="carousel slide mt-4" data-bs-ride="carousel" id="img-billboard" style="height: 240px;">
+        <div class="carousel-inner" id="carousel-location">
+        </div>
+
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#img-billboard"
+          data-bs-slide="prev">
+          <span
+            class="carousel-control-prev-icon shadow"
+            aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#img-billboard"
+          data-bs-slide="next">
+          <span
+            class="carousel-control-next-icon shadow"
+            aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>  
+      <div class="of-scroll">
+        <div class="overflow-content"></div>
+      </div>
+
+      <!-- <div class = 'detail-infor'>
+
+      </div> -->
+
+      <button id="btn-collapse">
+        <div>
+          <i class="bi bi-arrow-left-short" style="font-size: 15px;"></i>
+        </div>
+      </button>
+      <script>
+        document.querySelector('#btn-collapse').onclick = () => {
+          var subwindow = document.getElementById('sub-window');
+          if (subwindow.classList.contains('narrow')){
+            subwindow.classList.remove('narrow')
+            document.querySelector('#btn-collapse').innerHTML = '<div><i class="bi bi-arrow-left-short" style="font-size: 15px;"></i></div>'
+          }
+          else {
+            subwindow.classList.add('narrow');
+            document.querySelector('#btn-collapse').innerHTML = '<div><i class="bi bi-arrow-right-short" style="font-size: 15px;"></i></div>'
+          }
+        };
+      </script>
+    </div>
+
+    <!-- Current location button -->
+    <div class="location-button" id="btnCurPosition">
+      <div class="location-icon">
+        <i class="bi bi-crosshair"></i>
+      </div>
+    </div>
+
+    <!-- Hiển thị thông tin vị trí khi nhấn -->
+    <div id="info">
+      <span id="close-button"></span>
+      <p id="location-info"></p>
+    </div>
+
+    <!-- Map -->
+    <div id="map"></div>
+    <div id="infowindow-content">
+      <span id="place-name" class="title"></span>
+      <br />
+      <span id="place-address"></span>
+    </div>
+    
+
+    <div id="legend">
+      <div style="overflow: hidden;">
+        <h3 style="text-align: center;">Ký hiệu</h3>
+        <table>
+         <tr>
+         <th></th>
+         <th>Quảng cáo</th>
+         <th>Quy hoạch</th>
+         </tr>
+         <tr>
+           <td style="text-align: center;"><img src="/static/img/icon/ad_plan.png" style="width: 30px;"></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-done.svg"style="width: 15px;"/></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-done.svg" style="width: 15px;"/></td>
+         </tr>
+         <tr>
+           <td style="text-align: center;"><img src="/static/img/icon/ad_no_plan.png" style="width: 30px;"></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-done.svg" style="width: 15px;"/></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-close.svg" style="width: 15px;"/></td>
+         </tr>
+         <tr>
+           <td style="text-align: center;"><img src="/static/img/icon/no_ad_plan.png" style="width: 30px;"></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-close.svg" style="width: 15px;"/></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-done.svg" style="width: 15px;"/></td>
+         </tr>
+         <tr>
+           <td style="text-align: center;"><img src="/static/img/icon/no_ad_no_plan.png" style="width: 30px;"></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-close.svg" style="width: 15px;"/></td>
+           <td style="text-align: center;"><img src="/static/img/icon/legend/icons8-close.svg" style="width: 15px;"/></td>
+         </tr>
+         <tr>
+          <td style="text-align: center;"><img src="/static/img/icon/Report.png" style="width: 30px;"/></td>
+          <td colspan="2" style="text-align: center;">Báo cáo</td>
+         </tr>
+        </table>
+
+      </div>
+      
+     <button id="collapse-legend">
+      <div>
+        <i class="bi bi-arrow-right-short" style="font-size: 15px;"></i>
+      </div>
+    </button>
+    <script>
+      document.querySelector('#collapse-legend').onclick = () => {
+        var legend = document.getElementById('legend');
+        if (legend.classList.contains('narrow')){
+          legend.classList.remove('narrow')
+          document.querySelector('#collapse-legend').innerHTML = '<div><i class="bi bi-arrow-right-short" style="font-size: 15px;"></i></div>'
+        }
+        else {
+          legend.classList.add('narrow');
+          document.querySelector('#collapse-legend').innerHTML = '<div><i class="bi bi-arrow-left-short" style="font-size: 15px;"></i></div>'
+        }
+      };
+    </script>
+    </div>
+   
+    <!-- Filter -->
+    <div id="filter">
+      <div class="form-check form-switch" id="switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="btnAds" />
+        <label class="form-check-label" for="btnAds" id="ads">Bảng QC</label>
+      </div>
+      <div class="form-check form-switch" id="switch">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          role="switch"
+          id="flexSwitchCheckDefault" />
+        <label class="form-check-label" for="flexSwitchCheckDefault" id="report">
+          Báo cáo vi phạm
+        </label>
+      </div>
+    </div>
+    
+    <script>
+      ((g) => {
+        var h,
+          a,
+          k,
+          p = 'The Google Maps JavaScript API',
+          c = 'google',
+          l = 'importLibrary',
+          q = '__ib__',
+          m = document,
+          b = window;
+        b = b[c] || (b[c] = {});
+        var d = b.maps || (b.maps = {}),
+          r = new Set(),
+          e = new URLSearchParams(),
+          u = () =>
+            h ||
+            (h = new Promise(async (f, n) => {
+              await (a = m.createElement('script'));
+              e.set('libraries', [...r] + '');
+              for (k in g)
+                e.set(
+                  k.replace(/[A-Z]/g, (t) => '_' + t[0].toLowerCase()),
+                  g[k]
+                );
+              e.set('callback', c + '.maps.' + q);
+              a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+              d[q] = f;
+              a.onerror = () => (h = n(Error(p + ' could not load.')));
+              a.nonce = m.querySelector('script[nonce]')?.nonce || '';
+              m.head.append(a);
+            }));
+        d[l]
+          ? console.warn(p + ' only loads once. Ignoring:', g)
+          : (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)));
+      })({
+        key: 'AIzaSyBzxW5txxZHhPZCjPrOvrjCE8awoF3IP50',
+        v: 'weekly',
+        // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+        // Add other bootstrap parameters as needed, using camel case.
+      });
+    </script>
+    <!-- import jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+  </body>
+</html>
