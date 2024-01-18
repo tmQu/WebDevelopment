@@ -205,6 +205,7 @@ app.get('/license', (req, res) => {
 app.get('/wardAdmin', authController.protect, async (req, res) => {
 
   var queryBoard = {};
+
   if (req.user.role.level === 'wards') {
     queryBoard['addr.ward'] = mongoose.Types.ObjectId(req.user.role.detail);
     let ward = await wardModel.findById(req.user.role.detail);
@@ -214,36 +215,66 @@ app.get('/wardAdmin', authController.protect, async (req, res) => {
   }
 
   const queryReport = {};
-    if (req.user.role.level === 'wards') {
-      queryReport.ward = req.user.role.detail;
-      let ward = await wardModel.findById(req.user.role.detail);
-      queryReport.district = ward.district;
-    } else if (req.user.role.level === 'districts') {
-      queryReport.district = req.user.role.detail;
-    }
+  if (req.user.role.level === 'wards') {
+    queryReport.ward = req.user.role.detail;
+  } else if (req.user.role.level === 'districts') {
+    queryReport.district = req.user.role.detail;
+  }
 
-  var boardLocation = await boardLocationModel
-    .find(queryBoard)
-    .populate('advertisementForm')
-    .populate('locationCategory')
-    .populate('addr.district')
-    .populate('addr.ward');
+
+  //filter
+  var filter = req.session.filter;
+  var boardLocation;
+  var reports;
+  if ((req.user.role.level === 'districts' || req.user.role.level === 'departmental') && filter) {
+
+      if (filter.wards.length > 0){
+        boardLocation =  await boardLocationModel.find({
+          $and : [
+            queryBoard,
+            {'addr.ward': {$in : filter.wards.map(ward => mongoose.Types.ObjectId(ward))}}
+          ]
+        }).populate('advertisementForm')
+        .populate('locationCategory')
+        .populate('addr.district')
+        .populate('addr.ward');
+
+        reports = await reportModel.find(
+          {
+            $and: [
+              queryReport,
+              { 'ward': { $in: filter.wards.map(ward => mongoose.Types.ObjectId(ward)) } },
+            ]
+          }
+        ).populate('reportMethod').populate('boardLocation').populate('board');
+
+      }
+    
+  }else{
+    boardLocation = await boardLocationModel.find(queryBoard).populate('advertisementForm')
+                            .populate('locationCategory')
+                            .populate('addr.district')
+                            .populate('addr.ward');
+    reports =  await reportModel.find(queryReport).populate('reportMethod').populate('boardLocation').populate('board');
+  }
+
+
 
   var boards = await boardModel.find().populate('boardType');
-  var reports = await reportModel.find(queryReport).populate('reportMethod').populate('boardLocation').populate('board');
 
   var reportObject = [];
-  reports.forEach((report) => {
-    reportObject.push({
-      _id: report._id,
-      location: report.location,
-      createdAt: report.createdAt,
-      method: report.method.reportMethod,
-      sender: report.sender,
-      board: report.board,
-      addr: report.addr,
+  if(reports.length > 0)
+    reports.forEach((report) => {
+      reportObject.push({
+        _id: report._id,
+        location: report.location,
+        createdAt: report.createdAt,
+        method: report.method.reportMethod,
+        sender: report.sender,
+        board: report.board,
+        addr: report.addr,
+      });
     });
-  });
 
   res.render('vwAdmin/wardAdmin', {
     layout: 'main',
@@ -391,7 +422,6 @@ app.get('/accountSetting',authController.protect, async (req, res) => {
       var showButtonWard = false;
       if (!req.session.filter || !req.session.filter.districts)
       {
-        console.log('filter')
         var districts = await districtModel.find();
         var allWard= await wardModel.find();
         selectedDistricts = districts.map(district => district._id.toString());
@@ -413,8 +443,7 @@ app.get('/accountSetting',authController.protect, async (req, res) => {
 
       if (req.session.filter)
         if (filter.districts.length > 0)
-          showButtonWard = true;
-      console.log(wards)  
+          showButtonWard = true; 
       res.render('vwAccount/filterDepartmental', {
           layout: 'list',
           wardInDistrict: wards,
@@ -431,9 +460,8 @@ app.get('/accountSetting',authController.protect, async (req, res) => {
 
       var wards = await wardModel.find({district: mongoose.Types.ObjectId('659271d460292ab573f76030')});
       wards = wards.map(ward => ward.toObject());
-      console.log(wards)
+
       var selectedWards;
-      console.log(filter)
       if (!filter)
       {
         selectedWards = wards.map(ward => ward._id.toString());

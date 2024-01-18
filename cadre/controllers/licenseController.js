@@ -51,6 +51,7 @@ const licenseController = {
     createLicense: async (req, res) => {
         try {
             console.log('test');
+            var board = await boardModel.findById(req.params.id).populate('boardLocation');
             var license = {};
             console.log(req.file);
             console.log(req.body);
@@ -70,8 +71,11 @@ const licenseController = {
                 start_date: new Date(req.body.start_date),
                 end_date: new Date(req.body.end_date)
             }
+            
+            license.ward = mongoose.Types.ObjectId(board.boardLocation.addr.ward._id);
+            license.district = mongoose.Types.ObjectId(board.boardLocation.addr.district._id);
 
-            console.log(license)
+            
 
             const newLicense = await licenseModel.create(license);
             res.redirect('/api/v1/license/list');
@@ -83,12 +87,30 @@ const licenseController = {
         try {
 
             const page = parseInt(req.query.page) || 1;
-            var filter = {};
-            var total = await licenseModel.countDocuments(filter);
+            var query = {};
+            var filter = req.session.filter
+            if (req.user.role.level === 'wards') {
+                query['ward'] = mongoose.Types.ObjectId(req.user.role.detail);
+
+                
+            } else if (req.user.role.level === 'districts') {
+                query['district'] = mongoose.Types.ObjectId(req.user.role.detail);
+            }
 
 
+            if (filter) {
+                query = {
+                    $and: [
+                      query,
+                    {'addr.ward': {$in: filter.wards.map((ward)=>{return mongoose.Types.ObjectId(ward)})}}
+                    ]
+                }
+            }
+            var total = await licenseModel.countDocuments(query);
 
-            var licenses = await licenseModel.find(filter).populate({
+
+            
+            var licenses = await licenseModel.find(query).populate({
                 path: 'board',
                 populate: {
                     path: 'boardLocation',
@@ -210,15 +232,16 @@ const licenseController = {
             var approve = req.body.approve;
             if (approve == 'true') {
                 approve = true;
-                license = await licenseModel.findById(req.params.id);
-                await findByIdAndUpdate(license.board, { isLicense: true });
+                var license = await licenseModel.findById(req.params.id);
+
+                await boardModel.findByIdAndUpdate(license.board, { isLicense: true, imgBillboard: license.imgBoard, expiredDate: license.period.end_date });
             }
             else {
                 approve = false;
             }
             const updateLicense = await licenseModel.findByIdAndUpdate(req.params.id, { status: true, approve: approve });
             io.emit('update status', { id: req.params.id, status: true, approve: approve });
-            res.json(updateLicense);
+            res.redirect(process.env.SERVER_URL + '/api/v1/license/list')
         } catch (err) {
             console.log(err);
         }
@@ -231,11 +254,22 @@ const licenseController = {
             }
             else {
                 // render error page
-
+                render.render('vwError/error', {
+                    statusCode: statusCode,
+                    status: status,
+                    message: 'Yêu cầu đã được xét duyệt không thể xóa',
+                    layout: 'department',
+                  });
             }
             res.redirect(process.env.SERVER_URL + '/api/v1/license/list');
         } catch (err) {
             console.log(err);
+            res.render('vwError/error', {
+                statusCode: statusCode,
+                status: status,
+                message: message,
+                layout: 'department',
+            });
         }
     }
 }

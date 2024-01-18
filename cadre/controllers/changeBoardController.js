@@ -79,12 +79,17 @@ const changeBoardController = {
   viewAllRequest: async (req, res) => {
     try {
       let requests = await changeBoardModel.find();
-
+      var filter = req.session.filter;
       const user = req.user;
-
+      console.log(filter)
       requests = await Promise.all(
         requests.map(async (request) => {
           let boardLocation = await boardLocationModel.findById(request.boardLocation);
+          if (filter && !filter.wards.includes(boardLocation.addr.ward._id.toString())) {
+            
+            return null;
+          }
+
           boardLocation = boardLocation.toObject();
           return {
             ...request.toObject(),
@@ -102,6 +107,7 @@ const changeBoardController = {
         })
       );
 
+      requests = requests.filter(request => request !== null)
       res.render('vwRequest/boardRequestList', {
         requests,
         user: user.toObject(),

@@ -59,11 +59,7 @@
                       <div class="formbold-select-wrapper">
                         <label for="editBoardType" class="formbold-form-label"><b>Loại bảng quảng cáo</b></label>
                         <select name="advertisementForm" id="editAdvertisementForm" class="formbold-form-input">
-                          {{#unless isSuperAdmin}}
-                          {{#unless action.add}}
                           <option value="{{boardLocation.advertisementForm._id}}" selected>{{boardLocation.advertisementForm.advertisementForm}}</option>
-                          {{/unless}}
-                          {{/unless}}
                           {{#each advertisementForm}}
                             {{#compare this.advertisementForm '!=' ../boardLocation.advertisementForm.advertisementForm}}
                               <option value="{{this._id}}">{{this.advertisementForm}}</option>

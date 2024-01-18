@@ -20,7 +20,7 @@ router.route('/form/:id')
     .post(upload.single('imgBoard'),licenseController.createLicense);
 
 router.route('/')
-    .get(licenseController.renderDetailForm)
+    .get(authController.protect, licenseController.renderDetailForm)
 
 
 

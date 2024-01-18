@@ -50,7 +50,15 @@ const changeBoardLocationController = {
 
   viewAllRequest: async (req, res) => {
     try {
-      let changeBoardLocationReq = await changeBoardLocationModel.find();
+
+      var query = {};
+      if (req.session.filter)
+      {
+        query = {
+          'addr.ward' : {$in : req.session.filter.wards.map((ward) => mongoose.Types.ObjectId(ward))}
+        }
+      }
+      let changeBoardLocationReq = await changeBoardLocationModel.find(query);
       const user = req.user;
 
       changeBoardLocationReq = changeBoardLocationReq.map((changeBoardLocationReq) => {

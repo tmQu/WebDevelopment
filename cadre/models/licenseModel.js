@@ -14,6 +14,16 @@ const licenseSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    ward: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'wards',
+        required: true,
+    },
+    district: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'districts',
+        required: true,
+    },
     company:{
         infor: {
             type: String,

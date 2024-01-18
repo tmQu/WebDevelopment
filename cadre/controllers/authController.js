@@ -39,7 +39,7 @@ const createSendToken = (user, statusCode, res) => {
 const authController = {
   signup: async (req, res, next) => {
     try {
-      console.log(req.body);
+
       req.body.role = { level: req.body.btnradio };
       const newUser = await User.create(req.body);
 
@@ -196,7 +196,6 @@ const authController = {
         passwordResetToken: hashedOtp,
         passwordResetExpires: { $gt: Date.now() },
       });
-      console.log('Ok');
       // 3. If OTP is valid and there is a user, set the new password
       createSendToken(user, 200, res);
     } catch (err) {
@@ -213,7 +212,6 @@ const authController = {
     if (!token) {
       return new AppError('Cannot authorize you', 401);
     }
-    console.log(token);
     let decoded;
     try {
       decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);

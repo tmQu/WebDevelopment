@@ -22,11 +22,14 @@ const boardController = {
           message: 'No boards found',
         });
       }
-      var location = []
-      boardLocations.forEach((boardLocation) => {
-        boardLocation = boardLocation.toObject();
-        boardLocation.imgBillboard
+
+      
+      boardLocations.forEach((boardLocation) => {        
+        boardLocation.imgBillboardLocation.forEach((img, index) => {
+          boardLocation.imgBillboardLocation[index] = process.env.SERVER_URL + img;
+        });
       });
+      console.log(boardLocations[0])
 
       res.status(200).json({
         status: 'success',
@@ -80,6 +83,9 @@ const boardController = {
         .populate('addr.district')
         .populate('addr.ward');
 
+      boardLocation.imgBillboardLocation.forEach((img, index) => {
+        boardLocation.imgBillboardLocation[index] = process.env.SERVER_URL + img;
+      });
       res.status(200).json({
         status: 'success',
         data: {
@@ -124,7 +130,7 @@ const boardController = {
         quantity: `${req.body.boardQuantity} ${unit}`,
         boardType: req.body.boardType,
         imgBillboard: '\\' + req.file.path,
-        boardLocation: req.body.boardLocation
+        boardLocation: mongoose.Types.ObjectId(req.body.boardLocation)
       }
       console.log(data);
 
@@ -133,6 +139,7 @@ const boardController = {
 
       var boardLocation = await boardLocationModel.findById(req.body.boardLocation);
       boardLocation.num_board = boardLocation.num_board + 1;
+      await boardLocation.save();
 
 
       res.redirect('/boardsLocation/' + req.body.boardLocation)
