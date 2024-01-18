@@ -1,0 +1,130 @@
+[{
+  "_id": {
+    "$oid": "659e3b5272f21152645fb73d"
+  },
+  "photo": "default.jpg",
+  "active": true,
+  "name": "CBCoSo01",
+  "dateOfBirth": {
+    "$date": "2003-06-04T00:00:00.000Z"
+  },
+  "email": "hello9@gmail.com",
+  "phoneNumber": "0827808102",
+  "password": "$2a$12$nesurEyXjbqmta1ad4M4uuo.xVt0U8JJ3iDdk05AdhCSkDeCrqWde",
+  "role": {
+    "level": "departmental",
+    "detail": null
+  },
+  "__v": 0,
+  "passwordChangedAt": {
+    "$date": "2024-01-13T17:13:56.834Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "659e440543fea002504a4540"
+  },
+  "photo": "default.jpg",
+  "active": true,
+  "name": "CBCoSo05",
+  "dateOfBirth": {
+    "$date": "2003-06-04T00:00:00.000Z"
+  },
+  "email": "coso5@gmail.com",
+  "phoneNumber": "0827808102",
+  "password": "$2a$12$nesurEyXjbqmta1ad4M4uuo.xVt0U8JJ3iDdk05AdhCSkDeCrqWde",
+  "role": {
+    "level": "wards",
+    "detail": {
+      "$oid": "659274ec60292ab573f762c0"
+    }
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a695b0b556914038ce2320"
+  },
+  "role": {
+    "level": "wards",
+    "detail": {
+      "$oid": "659274ec60292ab573f762c0"
+    }
+  },
+  "photo": "default.jpg",
+  "active": true,
+  "email": "lamthanhngoc713@gmail.com",
+  "password": "$2a$12$nesurEyXjbqmta1ad4M4uuo.xVt0U8JJ3iDdk05AdhCSkDeCrqWde",
+  "name": "Ngoc",
+  "phoneNumber": "0123123123",
+  "dateOfBirth": {
+    "$date": "2000-01-01T00:00:00.000Z"
+  },
+  "__v": 0,
+  "passwordChangedAt": {
+    "$date": "2024-01-17T14:16:36.189Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "65a7cd5622119f72e09d251d"
+  },
+  "role": {
+    "level": "wards",
+    "detail": {
+      "$oid": "659274ec60292ab573f762f4"
+    }
+  },
+  "photo": "default.jpg",
+  "active": true,
+  "email": "hello123@gmail.com",
+  "password": "$2a$12$3gD/34w.cDrj3QU4QF.uPuFuGZhkvhBCtqSR2n1U4xcgTOGcls6d.",
+  "name": "Thiên",
+  "phoneNumber": "0921205173",
+  "dateOfBirth": {
+    "$date": "2000-01-11T00:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a7fefe2ce0a340066739de"
+  },
+  "role": {
+    "level": "districts",
+    "detail": {
+      "$oid": "659271d460292ab573f76030"
+    }
+  },
+  "photo": "default.jpg",
+  "active": true,
+  "email": "nttho1@gmail.com",
+  "password": "$2a$12$kF3BYQ3uEWsmpc630CL2z.mVNYWkQp7QE2j9ZI2NBTHk4e4/3JjgC",
+  "name": "Tho",
+  "phoneNumber": "0123123123",
+  "dateOfBirth": {
+    "$date": "2000-01-29T00:00:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65a9087a288bba0eca2eab54"
+  },
+  "role": {
+    "level": "districts",
+    "detail": {
+      "$oid": "659271d460292ab573f76030"
+    }
+  },
+  "photo": "default.jpg",
+  "active": true,
+  "email": "district@gmail.com",
+  "password": "$2a$12$jz8MCqYcZbST9dMhmyFAH.90gDciym0VdCTt/MhrWGRwpo7X.XPxu",
+  "name": "hskha",
+  "phoneNumber": "0123123123",
+  "dateOfBirth": {
+    "$date": "2000-01-01T00:00:00.000Z"
+  },
+  "__v": 0
+}]

@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "6592841b5f724804fc2ec520"
+  },
+  "reportMethod": "Giải đáp thắc mắc",
+  "__v": 0,
+  "steps": [
+    "Tiếp nhận báo cáo và xem xét nội dung và yêu cầu cụ thể của báo cáo.",
+    "Xử lý báo cáo dựa trên nội dung và yêu cầu cụ thể của người gửi.",
+    "Ghi lại quá trình xử lý và kết quả của việc giải đáp thắc mắc.",
+    "hông báo cho người gửi báo cáo về kết quả xử lý."
+  ]
+},
+{
+  "_id": {
+    "$oid": "659284125f724804fc2ec51e"
+  },
+  "reportMethod": "Đóng góp ý kiến",
+  "__v": 0,
+  "steps": [
+    "Tiếp nhận báo cáo và xem xét ý kiến liên quan đến bảng quảng cáo.",
+    "Nếu ý kiến là phù hợp, cán bộ gửi yêu cầu thay đổi lên Sở.",
+    "Thông báo cho người gửi báo cáo về kết quả giải đáp thắc mắc."
+  ]
+},
+{
+  "_id": {
+    "$oid": "659284035f724804fc2ec51c"
+  },
+  "reportMethod": "Đăng ký nội dung",
+  "__v": 0,
+  "steps": [
+    "Thông tin về điểm đặt quảng cáo: Doanh nghiệp/Người dân chọn vị trí muốn đăng kí quảng cáo",
+    "Thông tin về bảng quảng cáo được đăng kí: Hình ảnh muốn quảng cáo; Nội dung quảng cáo.",
+    "Thông tin về doanh nghiệp; Thông tin chung, email, số điện thoại, địa chỉ cụ thể.",
+    "Thời hạn xin đăng kí: Ngày bắt đầu, ngày kết thúc"
+  ]
+},
+{
+  "_id": {
+    "$oid": "65a813bf97909d52f4460e5a"
+  },
+  "steps": [],
+  "reportMethod": "Tố giác vi phạm",
+  "__v": 0
+}]

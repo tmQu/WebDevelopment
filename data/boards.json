@@ -1,0 +1,2926 @@
+[{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28331"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.671Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2832f"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28333"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.672Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28332"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283c3"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.692Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643c"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283c2"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28349"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.676Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643d"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28347"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28364"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.680Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76435"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28362"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283e8"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.697Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283e6"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283c7"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.692Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643c"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283c5"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28391"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.686Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2838f"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283f3"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.698Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283f2"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28423"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.704Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643c"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28422"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283a0"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.688Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2839e"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283a2"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.688Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283a1"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2841d"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.704Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643b"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2841c"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283b2"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.690Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283b0"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28420"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.704Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2841f"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2842c"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.705Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2842b"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283bd"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.691Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643d"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283bc"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283be"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.691Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283bc"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2842f"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.706Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2842e"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283c0"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.691Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643d"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283bf"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283c1"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.692Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283bf"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283cc"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.693Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283cb"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2844a"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.709Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28449"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283d0"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.693Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283ce"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28459"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.710Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28458"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283ea"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.697Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283e9"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283f9"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.698Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283f8"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283fc"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.699Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283fb"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28408"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.700Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643b"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28407"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28418"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.703Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28416"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28456"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.710Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28455"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28444"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.708Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28443"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28330"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.671Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2832f"
+  },
+  "quantity": "3 trụ/bảng",
+  "status": "inactive",
+  "isLicense": true
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283d9"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.695Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283d7"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283c6"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.692Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283c5"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28357"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.678Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28356"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283d2"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.694Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283d1"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283d3"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.694Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283d1"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283d6"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.694Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643d"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283d4"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283f1"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.698Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283ef"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28400"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.699Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76435"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283fe"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28402"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.700Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28401"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28403"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.700Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28401"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2841e"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.704Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643c"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2841c"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28421"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.704Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2841f"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28450"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.709Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2844f"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2843b"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.707Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2843a"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283cd"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.693Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643b"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283cb"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2844b"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.709Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643b"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28449"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283db"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.695Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643c"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283da"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2845a"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.710Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76435"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28458"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283de"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.696Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283dd"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2845d"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.711Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2845b"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283ed"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.697Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643b"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283ec"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28409"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.700Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643b"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28407"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2840b"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.701Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2840a"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28435"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.706Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28434"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28445"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.708Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28443"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28454"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.710Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28452"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28336"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.673Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28335"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28337"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.673Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643d"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28335"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2834c"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.677Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2834a"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283d8"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.694Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283d7"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28363"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.680Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643d"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28362"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283e7"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.697Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283e6"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28372"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.682Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76435"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28371"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28366"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.681Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643c"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28365"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283d5"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.694Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283d4"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283e1"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.696Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283e0"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28405"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.700Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643c"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28404"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28375"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.682Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643c"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28374"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28381"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.684Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28380"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28414"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.702Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28413"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28415"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.703Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643c"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28413"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28384"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.684Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28383"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28385"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.684Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28383"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283f4"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.698Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283f2"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28424"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.704Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28422"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28394"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.686Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28392"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2840f"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.701Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2840d"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28432"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.706Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643d"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28431"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28411"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.701Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28410"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28412"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.701Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28410"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28441"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.708Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643d"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28440"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28442"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.708Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28440"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283ae"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.689Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643b"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283ad"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283af"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.689Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76435"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283ad"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283b1"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.690Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643d"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283b0"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2842d"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.705Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643d"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2842b"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28451"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.709Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2844f"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28430"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.706Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643c"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2842e"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2845f"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.711Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2845e"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28460"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.711Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2845e"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2843e"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.707Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2843d"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2843f"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.708Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2843d"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2844d"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.709Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2844c"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283df"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.696Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643d"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283dd"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283eb"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.697Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283e9"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2845c"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.710Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2845b"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283fa"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.699Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283f8"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2840c"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.701Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2840a"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28417"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.703Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28416"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2841a"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.704Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28419"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2841b"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.704Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643c"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28419"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28426"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.705Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28425"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28438"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.707Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28437"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28457"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.710Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28455"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28453"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.710Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28452"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28462"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.711Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643d"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28461"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2832d"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.668Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "65746f5113fcf355ecd9ae40"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2832e"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.669Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "65746f5113fcf355ecd9ae40"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28334"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.672Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76435"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28332"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283c9"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.693Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283c8"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283ca"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.693Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283c8"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283a8"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.689Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283a7"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283a9"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.689Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643b"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283a7"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283c4"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.692Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643c"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283c2"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2834b"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.677Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2834a"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283b7"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.690Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283b6"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283b8"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.690Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283b6"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28348"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.676Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28347"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28358"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.679Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643b"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28356"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28373"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.682Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28371"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28367"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.681Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643b"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28365"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283f6"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.698Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643d"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283f5"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283f7"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.698Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283f5"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283e2"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.696Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283e0"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28406"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.700Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28404"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28376"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.682Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643a"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28374"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283e4"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.696Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283e3"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283e5"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.696Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283e3"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283f0"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.698Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283ef"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28382"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.684Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28380"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28390"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.686Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2838f"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283ff"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.699Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283fe"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28393"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.686Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28392"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2840e"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.701Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2840d"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2839f"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.688Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2839e"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28433"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.706Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28431"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283a3"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.688Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283a1"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2843c"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.707Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2843a"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283cf"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.693Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283ce"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283dc"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.695Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76439"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283da"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2844e"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.709Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc2844c"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283ee"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.697Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643c"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283ec"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc283fd"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.699Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc283fb"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28427"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.705Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643c"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28425"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28429"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.705Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643b"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28428"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc2842a"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.705Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76434"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28428"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28436"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.706Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76438"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28434"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": true,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28439"
+  },
+  "imgBillboard": "/static/db/advs/adv_3.png",
+  "size": "3x6",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.707Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76437"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28437"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28447"
+  },
+  "imgBillboard": "/static/db/advs/adv_1.jpg",
+  "size": "6x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.708Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28446"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28448"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "12x18",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.708Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f7643d"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28446"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+},
+{
+  "_id": {
+    "$oid": "6572d5979eac4d299cc28463"
+  },
+  "imgBillboard": "/static/db/advs/adv_2.png",
+  "size": "6x12",
+  "expireDate": {
+    "$date": "2023-12-08T08:36:39.711Z"
+  },
+  "boardType": {
+    "$oid": "65928bab60292ab573f76436"
+  },
+  "boardLocation": {
+    "$oid": "6572d5979eac4d299cc28461"
+  },
+  "quantity": "1 trụ/bảng",
+  "isLicense": false,
+  "status": "active"
+}]
