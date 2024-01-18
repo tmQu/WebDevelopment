@@ -7,8 +7,8 @@ Welcome to the Ads Management Website, a comprehensive platform designed to stre
 ## Table of Contents
 
 1. [Introduction](#introduction)
-2. [Installation](#installation)
-3. [Setup database](#setup-database)
+2. [Setup database](#setup-database)
+3. [Installation](#installation)
 4. [Account](#account)
 
 ## Introduction
