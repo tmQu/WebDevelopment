@@ -9,11 +9,11 @@ const locationReportSchema = new mongoose.Schema({
     location: {
         lat: {
         type: Number,
-        require: true,
+        required: true,
         },
         lng: {
         type: Number,
-        require: true,
+        required: true,
         },
     },
 

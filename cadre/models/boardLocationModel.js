@@ -4,22 +4,22 @@ let BillboardLocationSchema = new mongoose.Schema({
   location: {
     lat: {
       type: Number,
-      require: true,
+      required: true,
     },
     lng: {
       type: Number,
-      require: true,
+      required: true,
     },
   },
 
   addr: {
     street_number: {
       type: String,
-      require: true,
+      required: true,
     },
     route: {
       type: String,
-      require: true,
+      required: true,
     },
     ward: {
       type: mongoose.Schema.Types.ObjectId,
@@ -33,13 +33,13 @@ let BillboardLocationSchema = new mongoose.Schema({
     },
     city: {
       type: String,
-      require: true,
+      required: true,
     },
   },
 
   isPlan: {
     type: Boolean,
-    require: true,
+    default: false,
   },
 
   advertisementForm: {
@@ -57,7 +57,7 @@ let BillboardLocationSchema = new mongoose.Schema({
 
   imgBillboardLocation: {
     type: Array,
-    require: true,
+    required: true,
   },
   num_board: {
     type: Number,

@@ -8,7 +8,7 @@ const wardSchema = new mongoose.Schema({
     },
     ward: {
         type: String,
-        require: true,
+        required: true,
     }
 });
 

@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const advtFormSchema = new mongoose.Schema({
     advertisementForm: {
         type: String,
-        require: true
+        required: true
     }
 });
 

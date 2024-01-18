@@ -203,7 +203,7 @@ function parseReportDetail(rp, rpId) {
 
 
     <div class="d-flex justify-content-between mt-4 mb-1">
-    <a class="btn btn-outline-danger" href="https://ads-management-n1j3.onrender.com/reports/${rp._id}"><i class="bi bi-exclamation-octagon"></i> xem chi tiết báo cáo vi phạm</a></div>
+    <a class="btn btn-outline-danger" href="http://localhost:4000/reports/${rp._id}"><i class="bi bi-exclamation-octagon"></i> xem chi tiết báo cáo vi phạm</a></div>
     </div>
     `;
 

@@ -8,11 +8,11 @@ const billboardSchema = new mongoose.Schema({
   },
   imgBillboard: {
     type: String,
-    require: true,
+    required: true,
   },
   size: {
     type: String,
-    require: true,
+    required: true,
   },
   boardType: {
     type: mongoose.Schema.Types.ObjectId,
@@ -21,12 +21,12 @@ const billboardSchema = new mongoose.Schema({
   },
   quantity: {
     type: String,
-    require: true,
+    required: true,
   },
   expireDate: {
     // date with iso8601 format
     type: Date,
-    require: true,
+    required: true,
     default: Date.now,
   },
   isLicense: {

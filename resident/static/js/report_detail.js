@@ -42,7 +42,7 @@ function renderReportDetail(data) {
                         </a>
                     </div>`;
   } else {
-    img_rp.innerHTML = `<img src='https://ads-management-n1j3.onrender.com/static/img/adboard.png' class='img-fluid' alt='user'/>`;
+    img_rp.innerHTML = `<img src='http://localhost:4000/static/img/adboard.png' class='img-fluid' alt='user'/>`;
   }
 
   if (report.board) {

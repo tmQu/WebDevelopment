@@ -103,7 +103,7 @@
                           <img src='{{this.images.[0]}}' alt='' class='img-fluid' style="width: 100%; height: 100%;"/>
                         </div>
                         <div class="col-md-9 align-content-start">
-                          <a href='https://ads-management-n1j3.onrender.com/reports/{{this._id}}' class='user-link'>
+                          <a href='http://localhost:4000/reports/{{this._id}}' class='user-link'>
                             {{this.method.reportMethod}}
                           </a>
                           <span class='user-subhead d-block mt-2'>
@@ -143,14 +143,14 @@
                     </td>
                     <td >
                       {{#if ../isSuperAdmin}}
-                      <a href='https://ads-management-n1j3.onrender.com/reports/{{this._id}}' class='table-link'>
+                      <a href='http://localhost:4000/reports/{{this._id}}' class='table-link'>
                         <i class='bi bi-zoom-in'></i>
 
                       <a href='#' class='table-link'>
                         
                       </a>
                       {{else}}
-                      <a href='https://ads-management-n1j3.onrender.com/reports/{{this._id}}' class='table-link'>
+                      <a href='http://localhost:4000/reports/{{this._id}}' class='table-link'>
                         <i class='bi bi-pencil-square'></i>
                       </a>
                       {{/if}}

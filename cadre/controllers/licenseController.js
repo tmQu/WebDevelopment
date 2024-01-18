@@ -32,7 +32,7 @@ const licenseController = {
             res.render('vwLicense/license', {
                 layout: 'license',
                 imgBoardLocation: board_location.imgBillboardLocation[0],
-                plan: (board_location.isPlanning == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'),
+                plan: (board_location.isPlan == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'),
                 boardLocation: board_location,
                 board: board
             });
@@ -203,7 +203,7 @@ const licenseController = {
                 isSuperAdmin: req.user.role.level === 'departmental',
                 layout: 'license',
                 imgBoardLocation: board_location.imgBillboardLocation[0],
-                plan: (board_location.isPlanning == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'),
+                plan: (board_location.isPlan == true ? 'Đã quy hoạch' : 'Chưa quy hoạch'),
                 boardLocation: board_location,
                 board: board,
                 license: license,

@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const districtSchema = new mongoose.Schema({
   district: {
     type: String,
-    require: true,
+    required: true,
   },
 });
 

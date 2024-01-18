@@ -13,7 +13,7 @@ const authenticationUser = async function (email, password) {
     if (response.data.status === 'success') {
       alert('Login successfully');
       window.setTimeout(() => {
-        location.assign('https://ads-management-n1j3.onrender.com/admin');
+        location.assign('http://localhost:4000/admin');
       }, 1000);
     }
   } catch (err) {

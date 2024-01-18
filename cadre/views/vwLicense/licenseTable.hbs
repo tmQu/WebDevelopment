@@ -80,6 +80,7 @@
                         <span class="badge bg-warning">Chưa duyệt</span>
                         {{/if}}
                     </td>
+                    {{#compare board.boardLocation.addr '!==' 'Điểm đặt quảng cáo đã bị xóa'}}
                     <td>
                         {{#if ../isSuperAdmin}}
                             {{#if this.status}}
@@ -103,6 +104,9 @@
 
                         {{/if}}
                     </td>
+                    {{else}}
+                        <td></td>
+                    {{/compare}}
                 </tr>
                 {{/each}}
             </tbody>

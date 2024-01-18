@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const locationCategorySchema = new mongoose.Schema({
     locationCategory: {
         type: String,
-        require: true,
+        required: true,
     }
 }); 
 

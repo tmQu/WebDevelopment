@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const boardTypeSchema = new mongoose.Schema({
     boardType: {
         type: String,
-        require: true
+        required: true
     }
 });
 
