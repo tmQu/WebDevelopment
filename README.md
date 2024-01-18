@@ -8,12 +8,32 @@ Welcome to the Ads Management Website, a comprehensive platform designed to stre
 
 1. [Introduction](#introduction)
 2. [Installation](#installation)
-3. [Usage](#usage)
+3. [Setup database](#setup-database)
 4. [Account](#account)
 
 ## Introduction
 
 The Ads Management Website is a user-friendly and powerful tool for managing various aspects of advertising boards. It offers a range of features to help cadres create, monitor, and optimize ads effectively.
+
+## Setup database
+Assume that the machine that host our server already have the mongodb and python intepreter.
+1. **Run mongodb**
+
+       mongod
+
+3. **Setup database link**
+
+   From the file db.zip, open the script.py, the default database link is ```mongodb://localhost:27017```, if the database is host on other port, change the ```new_url``` in the script.py at line 13.
+
+       connection_url = f " new_url "
+
+5. **Install all the necessary libraries**
+
+        pip install pymongo
+
+6. **Run the script**
+
+        python script.py
 
 ## Installation
 
