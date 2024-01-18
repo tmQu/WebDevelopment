@@ -73,24 +73,27 @@ const boardController = {
   },
   getBoardInLocation: async (req, res) => {
     try {
+      console.log(req.params.id)
       var boards = await boardModel
         .find({ boardLocation: mongoose.Types.ObjectId(req.params.id) })
         .populate('boardType');
+      console.log(boards)
 
       boards.forEach((board,index) => {
         boards[index].imgBillboard = process.env.SERVER_URL + board.imgBillboard;
       });
-      console.log(boards[0].imgBillboard)
+      // console.log(boards[0].imgBillboard)
       var boardLocation = await boardLocationModel
         .findById(req.params.id)
         .populate('advertisementForm')
         .populate('locationCategory')
         .populate('addr.district')
         .populate('addr.ward');
-
+      console.log(boardLocation)
       boardLocation.imgBillboardLocation.forEach((img, index) => {
         boardLocation.imgBillboardLocation[index] = process.env.SERVER_URL + img;
       });
+      
       res.status(200).json({
         status: 'success',
         data: {
