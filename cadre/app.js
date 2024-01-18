@@ -47,6 +47,7 @@ import changeBoardController from './controllers/changeBoardController.js';
 import changeBoardLocationController from './controllers/changeBoardLocationController.js';
 import areaController from './controllers/areaController.js';
 import advFormController from './controllers/advFormController.js';
+import assignmentController from './controllers/assignmentController.js';
 
 import { Server } from 'socket.io';
 import { createServer } from 'http';
@@ -80,21 +81,19 @@ app.engine(
         return a === b;
       },
       isSelected: function (value, selectedValues) {
-
         if (selectedValues && Array.isArray(selectedValues) && selectedValues.includes(value.toString())) {
           return 'checked';
         }
-  
+
         return '';
       },
       isSelectedTableWard: function (value, selectedValues) {
-
         if (selectedValues && Array.isArray(selectedValues) && selectedValues.includes(value.toString())) {
           return 'display: block;';
         }
         return 'display: none;';
       },
-    }
+    },
   })
 );
 
@@ -104,13 +103,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('trust proxy', 1);
 
 const corsOptions = {
-  origin: ['http://localhost:4000', 'http://localhost:3000'],
+  origin: ['https://ads-management-n1j3.onrender.com', 'https://ads-management.netlify.app'],
   credentials: true,
 };
 app.use(cors(corsOptions));
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
@@ -125,11 +124,14 @@ app.use(
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use(session({
-  resave: true, 
-  saveUninitialized: true, 
-  secret: 'somesecret', 
-  cookie: { maxAge: 60000 }}));
+app.use(
+  session({
+    resave: true,
+    saveUninitialized: true,
+    secret: 'somesecret',
+    cookie: { maxAge: 60000 },
+  })
+);
 
 // Development logging
 if (process.env.NODE_ENV === 'development') {
@@ -201,7 +203,6 @@ app.get('/license', (req, res) => {
 });
 
 app.get('/admin', authController.protect, async (req, res) => {
-
   var queryBoard = {};
 
   if (req.user.role.level === 'wards') {
@@ -219,49 +220,43 @@ app.get('/admin', authController.protect, async (req, res) => {
     queryReport.district = req.user.role.detail;
   }
 
-
   //filter
   var filter = req.session.filter;
   var boardLocation;
   var reports;
   if ((req.user.role.level === 'districts' || req.user.role.level === 'departmental') && filter) {
-
-      if (filter.wards.length > 0){
-        boardLocation =  await boardLocationModel.find({
-          $and : [
-            queryBoard,
-            {'addr.ward': {$in : filter.wards.map(ward => mongoose.Types.ObjectId(ward))}}
-          ]
-        }).populate('advertisementForm')
+    if (filter.wards.length > 0) {
+      boardLocation = await boardLocationModel
+        .find({
+          $and: [queryBoard, { 'addr.ward': { $in: filter.wards.map((ward) => mongoose.Types.ObjectId(ward)) } }],
+        })
+        .populate('advertisementForm')
         .populate('locationCategory')
         .populate('addr.district')
         .populate('addr.ward');
 
-        reports = await reportModel.find(
-          {
-            $and: [
-              queryReport,
-              { 'ward': { $in: filter.wards.map(ward => mongoose.Types.ObjectId(ward)) } },
-            ]
-          }
-        ).populate('reportMethod').populate('boardLocation').populate('board');
-
-      }
-    
-  }else{
-    boardLocation = await boardLocationModel.find(queryBoard).populate('advertisementForm')
-                            .populate('locationCategory')
-                            .populate('addr.district')
-                            .populate('addr.ward');
-    reports =  await reportModel.find(queryReport).populate('reportMethod').populate('boardLocation').populate('board');
+      reports = await reportModel
+        .find({
+          $and: [queryReport, { ward: { $in: filter.wards.map((ward) => mongoose.Types.ObjectId(ward)) } }],
+        })
+        .populate('reportMethod')
+        .populate('boardLocation')
+        .populate('board');
+    }
+  } else {
+    boardLocation = await boardLocationModel
+      .find(queryBoard)
+      .populate('advertisementForm')
+      .populate('locationCategory')
+      .populate('addr.district')
+      .populate('addr.ward');
+    reports = await reportModel.find(queryReport).populate('reportMethod').populate('boardLocation').populate('board');
   }
-
-
 
   var boards = await boardModel.find().populate('boardType');
   console.log(boards)
   var reportObject = [];
-  if(reports.length > 0)
+  if (reports.length > 0)
     reports.forEach((report) => {
       reportObject.push({
         _id: report._id,
@@ -379,11 +374,11 @@ app.get('/reportMethods/add', (req, res) => {
 
 app.get('/reportMethods/edit/:id', async (req, res) => {
   const oldData = await reportMethodModel.findById(req.params.id);
-  
+
   res.render('vwDepartment/reportMethod/reportMethodEdit', {
     id: req.params.id,
     layout: 'department',
-    oldData: oldData.reportMethod
+    oldData: oldData.reportMethod,
   });
 });
 
@@ -403,52 +398,45 @@ app.get('/advForms/edit/:id', async (req, res) => {
   res.render('vwDepartment/advForm/advFormEdit', {
     id: req.params.id,
     layout: 'department',
-    oldData: oldData.advertisementForm
+    oldData: oldData.advertisementForm,
   });
 });
 
 app.get('/accountSetting', authController.protect, async (req, res) => {
   try {
-    if (req.user.role.level === 'departmental')
-    {
+    if (req.user.role.level === 'departmental') {
       var filter = req.session.filter;
       var selectedDistricts;
       var selectedWards;
       var showButtonWard = false;
-      if (!req.session.filter || !req.session.filter.districts)
-      {
+      if (!req.session.filter || !req.session.filter.districts) {
         var districts = await districtModel.find();
-        var allWard= await wardModel.find();
-        selectedDistricts = districts.map(district => district._id.toString());
-        selectedWards = allWard.map(ward => ward._id.toString());
+        var allWard = await wardModel.find();
+        selectedDistricts = districts.map((district) => district._id.toString());
+        selectedWards = allWard.map((ward) => ward._id.toString());
         showButtonWard = true;
-      }
-      else {
+      } else {
         selectedDistricts = req.session.filter.districts;
         selectedWards = req.session.filter.wards;
       }
       var wards = await wardModel.aggregate([
-        {$group: {_id: '$district', wards: {$push: '$$ROOT'}}},
-        {$lookup: {from: 'districts', localField: '_id', foreignField: '_id', as: 'district'}},
+        { $group: { _id: '$district', wards: { $push: '$$ROOT' } } },
+        { $lookup: { from: 'districts', localField: '_id', foreignField: '_id', as: 'district' } },
         // {$sort: {'district.district': 1}},
-        {$project: {_id: -1, district: {$arrayElemAt: ['$district', 0]}, wards: 1}}
-      ])
+        { $project: { _id: -1, district: { $arrayElemAt: ['$district', 0] }, wards: 1 } },
+      ]);
 
       // wards.forEach(ward => { newWards.push(wards.toObject()) });
 
-      if (req.session.filter)
-        if (filter.districts.length > 0)
-          showButtonWard = true; 
+      if (req.session.filter) if (filter.districts.length > 0) showButtonWard = true;
       res.render('vwAccount/filterDepartmental', {
-          layout: 'list',
-          wardInDistrict: wards,
-          selectedDistricts: selectedDistricts,
-          selectedWards: selectedWards,
-          showButtonWard: showButtonWard
+        layout: 'list',
+        wardInDistrict: wards,
+        selectedDistricts: selectedDistricts,
+        selectedWards: selectedWards,
+        showButtonWard: showButtonWard,
       });
-    }
-    else
-    {
+    } else {
       var filter;
       console.log(req.session.filter)
       if (req.session.filter)
@@ -458,57 +446,59 @@ app.get('/accountSetting', authController.protect, async (req, res) => {
       wards = wards.map(ward => ward.toObject());
 
       var selectedWards;
-      if (!filter)
-      {
-        selectedWards = wards.map(ward => ward._id.toString());
-      }
-      else
-      {
+      if (!filter) {
+        selectedWards = wards.map((ward) => ward._id.toString());
+      } else {
         selectedWards = filter.wards;
       }
       console.log()
       res.render('vwAccount/filterDistrict', {
         layout: 'list',
         wards: wards,
-        selectedWards: selectedWards
-      })
+        selectedWards: selectedWards,
+      });
     }
-
-} catch (err) {
-    console.log(err)
+  } catch (err) {
+    console.log(err);
     res.status(404).json({
-        status: 'fail',
-        message: err
+      status: 'fail',
+      message: err,
     });
-}
-})
+  }
+});
 
 app.get('/areas', (req, res) => {
   areaController.getAll(req, res);
 });
-
-import assignmentController from './controllers/assignmentController.js';
 
 app.get('/assignment', (req, res) => {
   assignmentController.getAll(req, res);
 });
 
 app.get('/assignment/districts/:id', async (req, res) => {
-  const districts = await districtModel.find(); 
+  const districts = await districtModel.find();
 
   res.render('vwDepartment/area/districtAssignment', {
     layout: 'department',
     id: req.params.id,
-    districts: districts.map(district => district.toObject())
+    districts: districts.map((district) => district.toObject()),
+  });
+});
+
+app.get('/assignment/wards/:id', async (req, res) => {
+  const wards = await wardModel.find().populate('district');
+
+  res.render('vwDepartment/area/wardAssignment', {
+    layout: 'department',
+    id: req.params.id,
+    wards: wards.map(ward => ward.toObject())
   });
 });
 
 app.get('/', authController.isLoggedIn, async (req, res, next) => {
   if (res.locals.user) {
-    if (res.locals.user.role.level === 'wards' || res.locals.user.role.level === 'districts')
-      res.redirect('/admin');
-    else 
-      res.redirect('/admin');
+    if (res.locals.user.role.level === 'wards' || res.locals.user.role.level === 'districts') res.redirect('/admin');
+    else res.redirect('/admin');
   } else res.redirect('/login');
 });
 

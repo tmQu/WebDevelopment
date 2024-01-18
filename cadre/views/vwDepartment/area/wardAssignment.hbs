@@ -1,4 +1,3 @@
-
 <div id="wrapper">
   <!-- Sidebar -->
   <ul
@@ -9,32 +8,28 @@
     <!-- Sidebar - Brand -->
       {{> sidebarDepartment}}
 
+
   </ul>
 
-
-  <div class="card shadow mx-auto" style="width: 500px;">
-    <h3 class="mt-4 ml-4">Phân công khu vực Quận</h3>
+  <div class="card shadow mx-auto" style="width: 500px">
+    <h3 class="mt-4 ml-4">Phân công khu vực Phường</h3>
     <div class="card-body">
-      <!-- Districts Column -->
-        <!-- Districts List -->
         <form id="filterForm">
-          <!-- Districts Container -->
-          <div id="districtsContainer" style="height: 430px; overflow-y: auto; overflow-x: hidden">
-            {{#each districts}}
+          <div id="wardContainer" style="height: 430px; overflow-y: auto; overflow-x: hidden">
+            {{#each wards}}
             <div class="form-check">
               <div class="row mt-2">
                 <div class="col-md-8">
-                  <input class="form-check-input district-radio" type="radio" name="role.detail" style="margin: 0; margin-top: 3px"
-                    data-id="{{this._id}}" id="district{{@index}}">
-                  <label class="form-check-label ml-4" for="district{{@index}}">
-                    {{this.district}}
+                  <input class="form-check-input ward-radio" type="radio" name="role.detail" style="margin: 0; margin-top: 3px"
+                    data-id="{{this._id}}" id="ward{{@index}}">
+                  <label class="form-check-label ml-4" for="ward{{@index}}">
+                    {{this.ward}} - {{this.district.district}}
                   </label>
                 </div>
               </div>
             </div>
             {{/each}}
           </div>
-          <!-- Apply Button -->
           <button type="submit" class="btn btn-dark btn-lg btn-block mt-4" id="applyButton" data-userID={{this.id}}>Áp dụng</button>
         </form>
       </div>
@@ -48,9 +43,9 @@ const applyButton = document.getElementById('applyButton');
 applyButton.addEventListener('click', async function (event) {
   event.preventDefault();
 
-  const selectedRadio = document.querySelector('.district-radio:checked');
+  const selectedRadio = document.querySelector('.ward-radio:checked');
   if (selectedRadio) {
-    const districtId = selectedRadio.getAttribute('data-id');
+    const wardId = selectedRadio.getAttribute('data-id');
     const userId = this.getAttribute('data-userid');
 
     fetch(`/api/v1/users/${userId}`, {
@@ -61,8 +56,8 @@ applyButton.addEventListener('click', async function (event) {
       body: JSON.stringify({
         id: userId,
         role: {
-          level: "districts",
-          detail: districtId,
+          level: "wards",
+          detail: wardId,
         },
       }),
     })
@@ -77,6 +72,5 @@ applyButton.addEventListener('click', async function (event) {
       });
   }
 });
-
 
 </script>

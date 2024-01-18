@@ -30,7 +30,7 @@
     {{#if isSuperAdmin}}
     <div >
     {{!-- <div >
-      <form action="http://localhost:4000/boardsLocation/departmental" method="get">
+      <form action="https://ads-management-n1j3.onrender.com/boardsLocation/departmental" method="get">
       <input type="hidden" name="action" value="add" >
       <button class="btn btn-primary">
         <i class="bi bi-plus-square"></i> Thêm điểm đặt mới
@@ -47,7 +47,7 @@
                 <th>
                   <span>
                     Vị trí bảng quảng cáo
-                    <a href="http://localhost:4000/boardsLocation/departmental?action=add">
+                    <a href="https://ads-management-n1j3.onrender.com/boardsLocation/departmental?action=add">
                     <i class="bi bi-plus-lg"></i>
                     </a>
                   </span>
@@ -107,7 +107,7 @@
                     </td>
 
                     <td width='11%'>
-                      <a href='http://localhost:4000/boardsLocation/{{this._id}}' class='table-link'>
+                      <a href='https://ads-management-n1j3.onrender.com/boardsLocation/{{this._id}}' class='table-link'>
                         <i class="bi bi-zoom-in"></i>
                       </a>  
                       <a href=
@@ -121,7 +121,7 @@
                       </a>
 
                       {{#if ../isSuperAdmin}}
-                        <a href = 'http://localhost:4000/api/v1/boardLocation/delete/{{this._id}}' class='table-link boardLocationReq'>
+                        <a href = 'https://ads-management-n1j3.onrender.com/api/v1/boardLocation/delete/{{this._id}}' class='table-link boardLocationReq'>
                           <i class="fa fa-trash" aria-hidden="true"></i>
                         </a>
                       {{/if}}
