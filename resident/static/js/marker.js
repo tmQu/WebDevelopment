@@ -1,4 +1,4 @@
-const serverURL = 'https://ads-management-n1j3.onrender.com';
+const serverURL = 'http://localhost:4000';
 
 function getDetailBoard(id, callback) {
   var url = serverURL + '/api/v2/boards/detail/' + id;

@@ -103,7 +103,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('trust proxy', 1);
 
 const corsOptions = {
-  origin: ['https://ads-management-n1j3.onrender.com', 'https://ads-management.netlify.app'],
+  origin: ['http://localhost:4000', 'http://localhost:3000'],
   credentials: true,
 };
 app.use(cors(corsOptions));
