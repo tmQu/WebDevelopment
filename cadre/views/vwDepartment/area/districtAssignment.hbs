@@ -7,24 +7,19 @@
     style="background: linear-gradient(45deg, #5c7ea1, #509177);"
   >
     <!-- Sidebar - Brand -->
-    {{#if isSuperAdmin}}
       {{> sidebarDepartment}}
-    {{else}}
-      {{> sidebarWard}}
-    {{/if}}
 
   </ul>
 
 
-  <div class="container p-2 mb-3">
-    <h2>Phân công khu vực Quận</h2>
-    <div class="row">
+  <div class="card shadow mx-auto" style="width: 500px;">
+    <h3 class="mt-4 ml-4">Phân công khu vực Quận</h3>
+    <div class="card-body">
       <!-- Districts Column -->
-      <div class="col-md-12 shadow-sm">
         <!-- Districts List -->
         <form id="filterForm">
           <!-- Districts Container -->
-          <div id="districtsContainer" style="height: 500px; overflow-y: auto; overflow-x: hidden">
+          <div id="districtsContainer" style="height: 430px; overflow-y: auto; overflow-x: hidden">
             {{#each districts}}
             <div class="form-check">
               <div class="row mt-2">
@@ -42,7 +37,6 @@
           <!-- Apply Button -->
           <button type="submit" class="btn btn-primary mt-3" id="applyButton" data-userID={{this.id}}>Áp dụng</button>
         </form>
-      </div>
       </div>
     </div>
   </div>
