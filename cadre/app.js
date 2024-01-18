@@ -47,6 +47,7 @@ import changeBoardController from './controllers/changeBoardController.js';
 import changeBoardLocationController from './controllers/changeBoardLocationController.js';
 import areaController from './controllers/areaController.js';
 import advFormController from './controllers/advFormController.js';
+import assignmentController from './controllers/assignmentController.js';
 
 import { Server } from 'socket.io';
 import { createServer } from 'http';
@@ -467,8 +468,6 @@ app.get('/areas', (req, res) => {
   areaController.getAll(req, res);
 });
 
-import assignmentController from './controllers/assignmentController.js';
-
 app.get('/assignment', (req, res) => {
   assignmentController.getAll(req, res);
 });
@@ -480,6 +479,16 @@ app.get('/assignment/districts/:id', async (req, res) => {
     layout: 'department',
     id: req.params.id,
     districts: districts.map((district) => district.toObject()),
+  });
+});
+
+app.get('/assignment/wards/:id', async (req, res) => {
+  const wards = await wardModel.find().populate('district');
+
+  res.render('vwDepartment/area/wardAssignment', {
+    layout: 'department',
+    id: req.params.id,
+    wards: wards.map(ward => ward.toObject())
   });
 });
 

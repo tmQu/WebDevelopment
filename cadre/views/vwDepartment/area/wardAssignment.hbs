@@ -1,0 +1,81 @@
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul
+    class="navbar-nav sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+    style="background: linear-gradient(45deg, #5c7ea1, #509177);"
+  >
+    <!-- Sidebar - Brand -->
+    {{#if isSuperAdmin}}
+      {{> sidebarDepartment}}
+    {{else}}
+      {{> sidebarWard}}
+    {{/if}}
+
+  </ul>
+
+  <div class="container p-2 mb-3">
+    <h2>Phân công khu vực Phường</h2>
+    <div class="row">
+      <div class="col-md-12 shadow-sm">
+        <form id="filterForm">
+          <div id="wardContainer" style="height: 500px; overflow-y: auto; overflow-x: hidden">
+            {{#each wards}}
+            <div class="form-check">
+              <div class="row mt-2">
+                <div class="col-md-8">
+                  <input class="form-check-input ward-radio" type="radio" name="role.detail" style="margin: 0; margin-top: 3px"
+                    data-id="{{this._id}}" id="ward{{@index}}">
+                  <label class="form-check-label ml-4" for="ward{{@index}}">
+                    {{this.ward}} - {{this.district.district}}
+                  </label>
+                </div>
+              </div>
+            </div>
+            {{/each}}
+          </div>
+          <button type="submit" class="btn btn-primary mt-3" id="applyButton" data-userID={{this.id}}>Áp dụng</button>
+        </form>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const applyButton = document.getElementById('applyButton');
+
+applyButton.addEventListener('click', async function (event) {
+  event.preventDefault();
+
+  const selectedRadio = document.querySelector('.ward-radio:checked');
+  if (selectedRadio) {
+    const wardId = selectedRadio.getAttribute('data-id');
+    const userId = this.getAttribute('data-userid');
+
+    fetch(`/api/v1/users/${userId}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        id: userId,
+        role: {
+          level: "wards",
+          detail: wardId,
+        },
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data);
+
+        window.location.href = '/assignment';
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+});
+
+</script>
