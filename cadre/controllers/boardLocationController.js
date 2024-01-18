@@ -23,7 +23,6 @@ const boardLocationController = {
       if (req.user.role.level === 'wards') {
         query['addr.ward'] = mongoose.Types.ObjectId(req.user.role.detail);
         let ward = await wardModel.findById(req.user.role.detail);
-        query['addr.district'] = mongoose.Types.ObjectId(ward.district);
         
       } else if (req.user.role.level === 'districts') {
         query['addr.district'] = mongoose.Types.ObjectId(req.user.role.detail);
@@ -34,8 +33,21 @@ const boardLocationController = {
         limit: ITEMS_PER_PAGE,
       };
 
-      const totalItems = await boardLocationModel.countDocuments(query);
+      
+      var filter = req.session.filter;
+      if (filter)
+      {
+        query = {
+          $and: [
+            query,
+          {'addr.ward': {$in: filter.wards.map((ward)=>{return mongoose.Types.ObjectId(ward)})}}
+          ]
+        }
+      }
+
       boardLocation = await boardLocationModel.find(query, null, options);
+      const totalItems = await boardLocationModel.countDocuments(query);
+      console.log(boardLocation.length)
       
       boardLocation = boardLocation.map((boardLocation) => {
         boardLocation = boardLocation.toObject();

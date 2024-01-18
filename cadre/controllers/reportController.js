@@ -105,12 +105,10 @@ const reportController = {
       const page = parseInt(req.query.page) || 1; // Trang mặc định là trang 1
 
       let reports = [];
-      const query = {};
+      var query = {};
 
       if (req.user.role.level === 'wards') {
         query.ward = req.user.role.detail;
-        let ward = await wardModel.findById(req.user.role.detail);
-        query.district = ward.district;
       } else if (req.user.role.level === 'districts') {
         query.district = req.user.role.detail;
       }
@@ -120,9 +118,20 @@ const reportController = {
         limit: ITEMS_PER_PAGE,
       };
 
-      const totalItems = await Report.countDocuments(query);
-
+      var filter = req.session.filter;
+      if (filter)
+      {
+        query = {
+            $and: [
+              query,
+            {'ward': {$in: filter.wards.map((ward)=>{return mongoose.Types.ObjectId(ward)})}}
+            ]
+        }
+        console.log(query)
+      }
       reports = await Report.find(query, null, options);
+      console.log(reports.length);
+      const totalItems = await Report.countDocuments(query);
 
       // Get boardLocation of each board
       console.log(req.user)

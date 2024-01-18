@@ -43,8 +43,7 @@ router_v1.route('/delete/:id')
 
 router_v2
   .route('/')
-  .get(boardController.getAllBoardLocation)
-  .post(boardController.createBoard);
+  .get(boardController.getAllBoardLocation);
 
 
 router_v2
