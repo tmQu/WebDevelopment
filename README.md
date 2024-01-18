@@ -28,7 +28,7 @@ The Ads Management Website is a user-friendly and powerful tool for managing var
 
     Change address to **resident** or **cadre** folder and enter in terminal ```npm start```.
 
-### Run employed server
+### Run deployed server
 
 - Access to *link* as resident
 - Access to *link* as admin
