@@ -109,38 +109,36 @@ const licenseController = {
 
 
             
-            var licenses = await licenseModel.find(query).populate({
-                path: 'board',
-                populate: {
-                    path: 'boardLocation',
-                    populate: {
-                        path: 'addr.district'
-                    },
-                    populate: {
-                        path: 'addr.ward'
-                    }
-                }
-            })
+            var licenses = await licenseModel.find(query).populate('board')
                 .skip((page - 1) * ITEMS_PER_PAGE)
                 .limit(ITEMS_PER_PAGE);
 
 
-
             var districtId = []
             var wardId = []
-
-            licenses = licenses.map(license => license.toObject());
-            licenses.forEach(license => {
-                districtId.push(mongoose.Types.ObjectId(license.board.boardLocation.addr.district._id))
-                wardId.push(mongoose.Types.ObjectId(license.board.boardLocation.addr.ward._id));
-
-                license.board.boardLocation.addr = `${license.board.boardLocation.addr.street_number} ${license.board.boardLocation.addr.route}, ${license.board.boardLocation.addr.ward.ward}, ${license.board.boardLocation.addr.district.district}, ${license.board.boardLocation.addr.city}`;
+            console.log(licenses.length)
+            licenses = await Promise.all(licenses.map(async (license) => {
+                license = license.toObject()
+                var boardLocation = 'Bảng quảng cáo đã bị xóa'
+                
+                if (license.board !== null)
+                    boardLocation = await boardLocationModel.findById(license.board.boardLocation).populate('addr.district').populate('addr.ward').lean();
+                else
+                {
+                    license.board = {boardLocation: {addr: 'Điểm đặt quảng cáo đã bị xóa'}}
+                }
+                if (boardLocation != 'Bảng quảng cáo đã bị xóa'){
+                    license.board.boardLocation.addr = `${boardLocation.addr.street_number} ${boardLocation.addr.route}, ${boardLocation.addr.ward.ward}, ${boardLocation.addr.district.district}, ${boardLocation.addr.city}`;
+                    districtId.push(mongoose.Types.ObjectId(boardLocation.addr.district._id))
+                    wardId.push(mongoose.Types.ObjectId(boardLocation.addr.ward._id));
+                }
+        
                 license.period.start_date = convertVNTime(license.period.start_date);
                 license.period.end_date = convertVNTime(license.period.end_date);
                 license.createAt = convertVNTime(license.createAt);
-
-            });
-            console.log(licenses)
+                return license
+            }));
+            console.log(licenses.length)
             var districts = await districtModel.find({ _id: { $in: districtId } }).lean();
             var wards = await wardModel.find({ _id: { $in: wardId } }).lean();
             console.log(districts)

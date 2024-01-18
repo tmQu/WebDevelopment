@@ -6,7 +6,10 @@
   <script>
     console.log('Hello from the client side');
     const gBoardLocation = JSON.parse('{{{boardLocation}}}');
-    const gBoards = JSON.parse('{{{boards}}}');
+
+    const gBoards = JSON.parse('{{{billboards}}}');
+    console.log('test1')
+
     const gReport = JSON.parse('{{{reports}}}');
     console.log(gBoardLocation);
     console.log(gBoards);
@@ -40,10 +43,6 @@
     style="background: linear-gradient(45deg, #5c7ea1, #509177);"
   >
   
-    {{!-- {{#isSuperAdmin}}
-      {{> sidebarDepartment}}
-    {{/isSuperAdmin}}
-      {{> sidebarWard}} --}}
     {{#if isSuperAdmin}}
       {{> sidebarDepartment}}
     {{else}}

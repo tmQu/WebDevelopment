@@ -28,6 +28,8 @@ const boardLocationController = {
         query['addr.district'] = mongoose.Types.ObjectId(req.user.role.detail);
       }
 
+      console.log(query)
+
       const options = {
         skip: (page - 1) * ITEMS_PER_PAGE,
         limit: ITEMS_PER_PAGE,
@@ -44,7 +46,7 @@ const boardLocationController = {
           ]
         }
       }
-
+      console.log(query)
       boardLocation = await boardLocationModel.find(query, null, options);
       const totalItems = await boardLocationModel.countDocuments(query);
       console.log(boardLocation.length)
@@ -312,7 +314,10 @@ const boardLocationController = {
     try {
       var district_id;
       var ward_id
-      district_id = await districtModel.find({ district: { $regex: req.body.district, $options: 'i' } });
+      district_id = await districtModel.find({ district: req.body.district});
+      if (district_id.length === 0)
+        district_id = await districtModel.find({ district: { $regex: req.body.district, $options: 'i' } });
+
       if(district_id)
         ward_id = await wardModel.find({ ward: { $regex: req.body.ward, $options: 'i' }, district: district_id[0]._id });
       var newInfor = {
@@ -350,7 +355,9 @@ const boardLocationController = {
       var id = req.params.id;
       var district_id;
       var ward_id
-      district_id = await districtModel.find({ district: { $regex: req.body.district, $options: 'i' } });
+      district_id = await districtModel.find({ district: req.body.district});
+      if (district_id.length === 0)
+        district_id = await districtModel.find({ district: { $regex: req.body.district, $options: 'i' } });
       if(district_id)
         ward_id = await wardModel.find({ ward: { $regex: req.body.ward, $options: 'i' }, district: district_id[0]._id });
       var newInfor = {

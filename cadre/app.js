@@ -259,7 +259,7 @@ app.get('/admin', authController.protect, async (req, res) => {
 
 
   var boards = await boardModel.find().populate('boardType');
-
+  console.log(boards)
   var reportObject = [];
   if(reports.length > 0)
     reports.forEach((report) => {
@@ -278,7 +278,7 @@ app.get('/admin', authController.protect, async (req, res) => {
     layout: 'main',
     isSuperAdmin: req.user.role.level === 'departmental',
     boardLocation: JSON.stringify(boardLocation),
-    boards: JSON.stringify(boards),
+    billboards: JSON.stringify(boards),
     reports: JSON.stringify(reportObject),
   });
 });
@@ -450,10 +450,11 @@ app.get('/accountSetting', authController.protect, async (req, res) => {
     else
     {
       var filter;
+      console.log(req.session.filter)
       if (req.session.filter)
         filter = req.session.filter;
 
-      var wards = await wardModel.find({district: mongoose.Types.ObjectId('659271d460292ab573f76030')});
+      var wards = await wardModel.find({district: mongoose.Types.ObjectId(req.user.role.detail)});
       wards = wards.map(ward => ward.toObject());
 
       var selectedWards;
@@ -465,6 +466,7 @@ app.get('/accountSetting', authController.protect, async (req, res) => {
       {
         selectedWards = filter.wards;
       }
+      console.log()
       res.render('vwAccount/filterDistrict', {
         layout: 'list',
         wards: wards,

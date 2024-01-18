@@ -43,7 +43,9 @@ const reportController = {
         district = Mongoose.Types.ObjectId(board.boardLocation.addr.district._id);
         location = board.boardLocation.location;
       } else {
-        var district_id = await districtModel.find({ district: { $regex: req.body.district, $options: 'i' } });
+        var district_id = await  districtModel.find({ district: req.body.district});
+        if (district_id.length === 0)
+          district_id = districtModel.find({ district: { $regex: req.body.district, $options: 'i' } });
         if (district_id.length == 0) {
           district = null;
           ward = null;

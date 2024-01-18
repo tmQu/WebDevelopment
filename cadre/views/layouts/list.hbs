@@ -105,6 +105,39 @@
     ></script>
 
     {{{_sections.js}}}
+      <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+      	<script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
+	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/styles/metro/notify-metro.css" />
+
+    {{#unless res.locals.isSuperAdmin}}
+    <script>
+
+        function globalPositionsNotify(msg){
+                  $.notify(msg ,{position:"top left",className:"success"})
+        }
+
+        var loginUser = JSON.parse('{{{loginUser}}}')
+
+        const socket = io('http://localhost:4000')
+        socket.on('get notification', (data) => {
+            console.log(data);
+            console.log(loginUser)
+            if (loginUser.role.level == 'wards') {
+                console.log('ward')
+                if (loginUser.role.detail == data.receiver.ward._id) {
+                    globalPositionsNotify(data.message);
+                }
+            }
+            if (loginUser.role.level == 'districts')
+            {
+              console.log('district')
+              if (loginUser.role.detail == data.receiver.district._id) {
+                    globalPositionsNotify(data.message);
+                }
+            }
+        })
+    </script>
+    {{/unless}}
   </body>
 
 </html>

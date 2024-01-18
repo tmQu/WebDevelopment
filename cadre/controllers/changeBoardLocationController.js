@@ -5,17 +5,28 @@ import wardModel from '../models/wardModel.js';
 import districtModel from '../models/districtModel.js';
 import mongoose from 'mongoose';
 import sanitizeHtml from 'sanitize-html';
+import { io } from '../app.js';
+
 
 const changeBoardLocationController = {
   createChangeBoardLocationReq: async (req, res) => {
     try {
       console.log(req.body.boardLocation);
-      const district_id = await districtModel.find({ district: { $regex: req.body.district, $options: 'i' } });
-      const ward_id = await wardModel.find({
-        ward: { $regex: req.body.ward, $options: 'i' },
-        district: district_id[0]._id,
-      });
 
+      
+      var district_id = await districtModel.find({ district: req.body.district});
+      
+      if (district_id.length === 0)
+        district_id = await districtModel.find({ district: { $regex: req.body.district, $options: 'i' } });
+      const ward_id = await wardModel.find({
+        $and : [
+          { district: mongoose.Types.ObjectId(district_id[0]._id) },
+          { ward: { $regex: req.body.ward, $options: 'i' } }
+        ]
+      });
+      console.log(req.body.ward)
+      console.log(district_id[0]);
+      console.log(ward_id[0]);
       const changeBoardLocationReq = await changeBoardLocationModel.create({
         boardLocation: req.body.boardLocation,
         reason: sanitizeHtml(req.body.boardReason),
@@ -153,12 +164,25 @@ const changeBoardLocationController = {
           addr: changeBoardLocation.addr,
           location: changeBoardLocation.location,
         });
+
       }
       else {
         await changeBoardLocationModel.findByIdAndUpdate(req.params.id, {
           status: -1,
         });
       }
+      if (changeBoardLocation.status === 0)
+      {
+        io.emit('get notification',  {
+          receiver: {
+            ward: changeBoardLocation.addr.ward,
+            district: changeBoardLocation.addr.district
+          },
+          message: 'Yêu cầu xét duyệt điểm quảng cáo trong khu vực của bạn đã được xử lý'
+        });
+      }
+
+
       res.redirect('/boardLocationRequest/' + req.params.id);
     } catch (err) {
       console.log(err);
