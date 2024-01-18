@@ -135,28 +135,26 @@ const reportController = {
       console.log(reports.length);
       const totalItems = await Report.countDocuments(query);
 
+      for (let i = 0; i < reports.length; i++) {
+        reports[i] = reports[i].toObject();
+      }
       // Get boardLocation of each board
       console.log(req.user)
       var number_statistic = [0,0,0]
-      reports = await Promise.all(
-        reports.map(async (report) => {
-          let boardLocation = null;
+      reports = 
+        reports.map((report) => {
+
           number_statistic[report.status + 1] += 1
 
-          if (report.board) {
-            boardLocation = await BoardLocation.findById(report.board.boardLocation);
-            boardLocation = boardLocation.toObject();
 
-            report = report.toObject();
-          }
-
+        
           return {
             ...report,
-            boardLocation,
             createdAt: new Date(report.createdAt).toLocaleString(),
           };
-        })
-      );
+        });
+
+
       console.log(number_statistic)
       res.render('vwReport/reports', {
         isSuperAdmin: req.user.role.level === 'departmental',
