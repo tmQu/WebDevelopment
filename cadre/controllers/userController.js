@@ -78,10 +78,15 @@ const userController = {
   },
   updateUser: async (req, res) => {
     try {
-      const user = await User.findByIdAndUpdate(req.params.id, req.body, {
+      console.log('req.body: ', req.body); 
+      
+      const user = await User.findByIdAndUpdate(req.body.id, req.body, {
         new: true,
         runValidators: true,
       });
+
+      console.log('user: ', user);
+
       res.status(200).json({
         status: 'success',
         data: {

@@ -6,7 +6,7 @@
         style="background: linear-gradient(45deg, #5c7ea1, #509177);"
     >
         <!-- Sidebar - Brand -->
-        {{> sidebarWard}}
+        {{> sidebarDepartment}}
 
     </ul>
     <div class="container-fluid">
@@ -22,20 +22,18 @@
                                 <input type="txt" class="form-control"
                                     id="floatingInput" name="reportMethod"
                                     placeholder disabled>
-                                <label for="floatingInput">Phương thức
-                                    cũ</label>
+                                <label for="floatingInput">{{this.oldData}}</label>
                             </div>
                             <div class="form-floating mb-5">
                                 <input type="txt" class="form-control"
                                     id="reportMethod" name="reportMethod"
                                     placeholder>
-                                <label for="reportMethod" id="requiredReportMethod">Phương thức
+                                <label for="reportMethod">Phương thức
                                     mới</label>
                             </div>
 
                             <div class="d-grid">
-                                <button
-                                    class="btn btn-primary btn-login text-uppercase fw-bold"
+                                <button class="btn btn-primary btn-login text-uppercase fw-bold"
                                     type="submit">Sửa Đổi</button>
                             </div>
                         </form>
@@ -58,10 +56,9 @@
         const editForm = document.getElementById('editForm');
 
         editForm.addEventListener('submit', function (event) {
-            event.preventDefault(); 
+            event.preventDefault();
 
-            const newReportMethod = document.getElementById('newReportMethod').value;
-
+            const newReportMethod = document.getElementById('reportMethod').value;
             fetch('/api/v1/reportMethods/' + '{{id}}', {
                 method: 'PATCH', 
                 headers: {

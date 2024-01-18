@@ -20,14 +20,13 @@
                         <form id = "editForm">
                             <div class="form-floating mb-3">
                                 <input type="txt" class="form-control"
-                                    id="floatingInput" name="reportMethod"
+                                    id="floatingInput" name="advertisementForm"
                                     placeholder disabled>
-                                <label for="floatingInput">Hình thức
-                                    cũ</label>
+                                <label for="floatingInput">{{this.oldData}}</label>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="txt" class="form-control"
-                                    id="newAdvForm" name="reportMethod"
+                                    id="newAdvForm" name="advertisementForm"
                                     placeholder>
                                 <label for="newAdvForm">Hình thức
                                     mới</label>
@@ -79,7 +78,7 @@
             .then(data => {
                 console.log(data);
 
-                window.location.href = '/reportMethods';
+                window.location.href = '/advForms';
             })
             .catch(error => {
                 console.error(error);

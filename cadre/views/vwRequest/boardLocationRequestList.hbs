@@ -19,80 +19,7 @@
     id="accordionSidebar"
     style="background: linear-gradient(45deg, #5c7ea1, #509177);"
   >
-    <!-- Sidebar - Brand -->
-    <div
-      class="sidebar-brand d-flex align-items-center justify-content-center"
-      href="/"
-    >
-      <div class="sidebar-brand-text mt-5">ADVERTISING BOARDS MANAGEMENT</div>
-    </div>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0" />
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-      <a class="nav-link mt-5" href="/">
-        <i class="bi bi-house"></i>
-        <span>TRANG CHỦ</span></a>
-    </li>
-    <!-- Divider -->
-    <hr class="sidebar-divider" />
-    <!-- Heading -->
-    <div class="sidebar-heading">
-      QUẢN LÝ
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link" href="/boardsLocation" id="option">
-        <i class="bi bi-clipboard-data"></i>
-        <span>Xem danh sách</span>
-      </a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider" />
-    <!-- Heading -->
-    <div class="sidebar-heading mt-4">
-      Xử lý báo cáo
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link" href="/reports" id="option">
-        <i class="bi bi-clipboard-data"></i>
-        <span>Xem danh sách</span>
-      </a>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider" />
-    <!-- Heading -->
-    <div class="sidebar-heading mt-4">
-      Cấp phép quảng cáo
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link" href="#" id="option">
-        <i class="bi bi-plus-circle"></i>
-        <span>Tạo yêu cầu</span>
-      </a>
-    </li>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-      <a class="nav-link" href="#" id="option">
-        <i class="bi bi-clipboard-data"></i>
-        <span>Xem danh sách</span>
-      </a>
-    </li>
-
-    <!-- Log out -->
-    <a class="sidebar-heading mt-5 logout" id="logout" href="/login">
-      ĐĂNG XUẤT
-    </a>
+    {{> sidebarDepartment}}
 
   </ul>
 
@@ -106,8 +33,8 @@
         <div class="col-xs-12 ">
           <nav>
             <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
-              <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-home" aria-selected="true"><b>Profile</b></a>
-              <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-secure" role="tab" aria-controls="nav-profile" aria-selected="false"><b>Security</b></a>
+              <a class="nav-item nav-link active" id="" role="tab" aria-controls="nav-home" aria-selected="true"><b>Thông tin</b></a>
+              
             </div>
           </nav>
           <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
@@ -123,7 +50,7 @@
                           <div class='col-lg-5 col-md-5 col-sm-6'>
                             <div class='white-box text-center carousel-container'>
                               {{#if this.imgBillboardLocation}}
-                                <div id="reportImageCarousel" class="carousel slide" data-ride="carousel">
+                                <div id="reportImageCarousel{{this._id}}" class="carousel slide" data-ride="carousel">
                                   <div class="carousel-inner">
                                     {{#each this.imgBillboardLocation}}
                                       <div class="carousel-item {{#if @first}} active {{/if}}">
@@ -131,19 +58,19 @@
                                       </div>
                                     {{/each}}
                                   </div>
-                                  <a class="carousel-control-prev" href="#reportImageCarousel" role="button" data-slide="prev">
+                                  <button class="carousel-control-prev" type="button" data-bs-target="#reportImageCarousel{{this._id}}" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Previous</span>
-                                  </a>
-                                  <a class="carousel-control-next" href="#reportImageCarousel" role="button" data-slide="next">
+                                    <span class="visually-hidden">Previous</span>
+                                  </button>
+                                  <button class="carousel-control-next" type="button" data-bs-target="#reportImageCarousel{{this._id}}" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="sr-only">Next</span>
-                                  </a>
+                                    <span class="visually-hidden">Next</span>
+                                  </button>
                                 </div>
                               {{else}}
                                 <img src='/static/img/adboard.png' class='img-fluid' alt='Board Location'/>
                               {{/if}}
-                              <div class="button mt-2">
+                              <div class="button mt-2 d-flex justify-content-start">
                                 <a class='badge badge-pill badge-primary square-button edit-button' href="/boardLocationRequest/{{this._id}}/" aria-disabled="true">
                                   <i class="bi bi-gear"></i> Xem xét
                                 </a>

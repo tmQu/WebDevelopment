@@ -38,7 +38,6 @@ nav > div a.nav-item.nav-link.active:after
   bottom: -60px;
   left: -10%;
   border: 15px solid transparent;
-  border-top-color: #7bcbc6 ;
 }
 .tab-content{
   background: #fdfdfd;
@@ -67,4 +66,26 @@ nav > div a.nav-item.nav-link:focus
 #editButton, #licenseButton {
   display: flex;
   align-items: center;
+}
+
+
+.carousel-container {
+  width: 100%; /* or a specific width */
+  height: auto; /* or a specific height */
+  margin: auto; /* for center alignment */
+  position: relative; /* if needed for positioning */
+}
+
+.carousel-item img {
+  width: 100%; /* makes the image responsive */
+  height: auto; /* maintain aspect ratio */
+  object-fit: cover; /* or 'contain' depending on requirement */
+}
+
+.carousel-item {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.carousel-item.active {
+  opacity: 1;
 }

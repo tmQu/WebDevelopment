@@ -58,7 +58,7 @@ function parseContentMarker(content)
 //   </div>
 // </div>`
 
-    return `<div class="marker-content" style="background: linear-gradient(90deg, #c8e0f8, #e4f8f0); border: none; padding: 10px">\n
+    return `<div class="marker-content" style="background: linear-gradient(90deg, #c8e0f8, #e4f8f0); border: none; padding: 10px; color:black">\n
     <h5 class="advt-form mb-0" style="font-weight: bold;">${content.advertisementForm.advertisementForm}</h5>\n
     <div class="location-category">${locationCategory}</div>\n
     <div class="addr">${addr}</div>\n
@@ -88,7 +88,7 @@ function parseBillBoardContent(boardLocation, board){
     const dateString = `${day < 10 ? '0' + day : day}/${month < 10 ? '0' + month : month}/${year}`;
 
     return `
-    <div class="billboard" id = "${board.id}" style="background: linear-gradient(90deg, #c8e0f8, #e4f8f0);">
+    <div class="billboard" id = "${board.id}" style="background: linear-gradient(90deg, #c8e0f8, #e4f8f0);color:black;">
     <div class="billboard-type" style="font-weight: bold; font-size:15pt">
         ${board.boardType.boardType}
     </div>

@@ -76,6 +76,11 @@ const boardController = {
       var boards = await boardModel
         .find({ boardLocation: mongoose.Types.ObjectId(req.params.id) })
         .populate('boardType');
+
+      boards.forEach((board,index) => {
+        boards[index].imgBillboard = process.env.SERVER_URL + board.imgBillboard;
+      });
+      console.log(boards[0].imgBillboard)
       var boardLocation = await boardLocationModel
         .findById(req.params.id)
         .populate('advertisementForm')

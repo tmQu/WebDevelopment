@@ -55,8 +55,7 @@ const licenseController = {
             var license = {};
             console.log(req.file);
             console.log(req.body);
-            license.imgBoard = '/' + req.file.path;
-            license.imgBoard.replace("\\", "/");
+            license.imgBoard = '\\' + req.file.path;
             license.board = req.params.id;
             license.content = req.body.content;
             license.company = {
@@ -234,7 +233,7 @@ const licenseController = {
                 approve = true;
                 var license = await licenseModel.findById(req.params.id);
 
-                await boardModel.findByIdAndUpdate(license.board, { isLicense: true, imgBillboard: license.imgBoard, expiredDate: license.period.end_date });
+                await boardModel.findByIdAndUpdate(license.board, { isLicense: true, imgBillboard: license.imgBoard, expireDate: license.period.end_date });
             }
             else {
                 approve = false;

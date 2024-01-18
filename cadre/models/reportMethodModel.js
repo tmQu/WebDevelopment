@@ -24,6 +24,6 @@ const reportMethodModel = new mongoose.Schema(
   }
 );
 
-const reportMethod = mongoose.model('report_method', reportMethodModel);
+const reportMethod = mongoose.model('report_methods', reportMethodModel);
 
 export default reportMethod;

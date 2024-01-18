@@ -7,24 +7,20 @@
     style="background: linear-gradient(45deg, #5c7ea1, #509177);"
   >
     <!-- Sidebar - Brand -->
-    {{#if isSuperAdmin}}
       {{> sidebarDepartment}}
-    {{else}}
-      {{> sidebarWard}}
-    {{/if}}
 
   </ul>
 
 
-  <div class="container p-2 mb-3">
-    <h2>Quản lý danh sách Phường, Quận</h2>
+  <div class="container p-2 mb-3 ml-5 mt-2">
+    <h3 class="mt-3 mb-3">Quản lý danh sách Phường, Quận</h3>
     <div class="row">
       <!-- Districts Column -->
       <div class="col-md-6 shadow-sm">
         <!-- Districts List -->
         <form id="filterForm" action="/areas" method="get">
           <!-- Districts Container -->
-          <div id="districtsContainer" style="height: 500px; overflow-y: auto; overflow-x: hidden">
+          <div id="districtsContainer" style="height: 400px; overflow-y: auto; overflow-x: hidden">
             {{#each districts}}
             <div class="form-check">
               <div class="row mt-2">
@@ -68,9 +64,9 @@
       </div>
 
       <!-- Wards Column -->
-      <div class="col-md-6 shadow-sm">
+      <div class="col-md-5 shadow-sm">
         <!-- Wards List -->
-        <div id="wardsContainer" style="height: 500px; overflow-y: auto; overflow-x: hidden">
+        <div class="mt-2" id="wardsContainer" style="height: 400; overflow-y: auto; overflow-x: hidden">
           {{#if wards}}
           {{#each wards}}
           <div class="row ward-item">
@@ -106,7 +102,7 @@
         </div>
         {{#if selectedDistricts}}
         <!-- Add New Ward Button -->
-        <button type="button" class="btn btn-success mt-3" id="addWard"
+        <button type="button" class="btn btn-success mt-2" id="addWard"
           data-district-name="{{this.nameDistrict}}"
           data-district-id="{{this.idDistrict}}">Thêm Phường
           Mới</button>

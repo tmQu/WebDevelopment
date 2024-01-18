@@ -39,7 +39,11 @@
     id="accordionSidebar"
     style="background: linear-gradient(45deg, #5c7ea1, #509177);"
   >
-    {{isSuperAdmin}}
+  
+    {{!-- {{#isSuperAdmin}}
+      {{> sidebarDepartment}}
+    {{/isSuperAdmin}}
+      {{> sidebarWard}} --}}
     {{#if isSuperAdmin}}
       {{> sidebarDepartment}}
     {{else}}
@@ -115,7 +119,7 @@
   
     <div id="legend">
       <div style="overflow: hidden;">
-        <h3 style="text-align: center;">Ký hiệu</h3>
+        <h4 style="text-align: center;">Ký hiệu</h4>
         <table>
          <tr>
          <th></th>
